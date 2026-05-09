@@ -162,16 +162,44 @@
 	Der Router kümmert sich darum, dass der optimalen Weg von der Quelle zum Ziel 
 	gefunden wird. Welcher Pfad gewählt wird hängt von den Konfigurationen ab,
 	es kann der schnellste Weg genutzt werden oder auch eine definierte Route
-	über verschiedene Punkte.
+	über verschiedene Punkte. Es gibt zwei Arten des Routing, dynamisches und 
+	statisches Routing. 
 	%---Protokolle oder über was wird das festgelegt?	
 	Wichtig zu Beachten ist der Unterschied zwischen Router und Switch. Beide
 	Geräte sind für die Weiterleitung der Pakete an das richtige Ziel zuständig.
 	Der Unterschied ist, dass ein Switch Pakete innerhalb eines Netzsegments oder
 	einem lokalen Netzwerk weiterleitet, wohin gegen ein Router Pakete über 
 	Netzwerkgrenzen, also auch in ein neues Netzsegment oder das Internet leiten
-	kann. Switch werden daher innerhalb von lokalen Netzwerken, sofern es keine
-	Segmentierung gibt oder Netzsegmenten genutzt und Router an den Grenzen der
-	Netzsegmente oder vom lokalen Netzwerk in das Internet. 
+	kann. Switch werden daher innerhalb von lokalen Netzwerken oder Netzsegmenten
+	genutzt und Router an den Grenzen der Netzsegmente oder vom lokalen Netzwerk
+	in das Internet. 
+	%---Netzwerksegmente und IPv4
+	Die Segmentierung eines Netzwerk ist dann sinnvoll, wenn es
+	sich um eine große Infrastruktur, wie die eines Unternehmen handelt. Die 
+	Netzwerksegmente oder auch Subnetze besitzen einen logischen Adressraum, der
+	abhängig von der Anzahl an Geräten ist, die in diesem Netzwerk sein sollen. 
+	Um zu verstehen, wie eine Segmentierung funktioniert, muss zuerst der Aufbau
+	der Adresse verstanden werden. Eine Adresse ist in diesem Fall die IP-Adresse,
+	wobei IP für Internet Protocol steht. In dieser Ausarbeitung wird nur mit
+	IPv4 Adressen gearbeitet, weshalb nicht näher auf die IPv6 Adressen 
+	eingegangen wird. Eine IPv4 Adresse besteht aus 4 Teilen, die durch einen 
+	Punkt von einander getrennt sind. Jeder Teil beinhaltet eine Zahl zwischen 0
+	und 255, daraus ergibt sich eine größe von 32 Bit, was wiederum 4Byte 
+	entspricht. Um in einem Netzwerksegment kommunizieren zu können haben alle
+	sich darin befindenden Geräte in ihrer IP-Adresse den gleichen Netzwerkanteil.
+	Das kann man sich vorstellen wie der Straßennamen, diesen haben alle Häuser
+	innerhalb der Straße. Das exakte Geräte innerhalb des Subnetz ist im 
+	Hostantiel der IP-Adresse zu finden. Diese muss zwingend einzigartig im 
+	jeweiligen Subnetz sein, da es sonst zu Konflikten kommt. Hätte zwei Häuser
+	in der selben Straße die gleiche Hausnummer, weiß der Postbote ebenfalls
+	nicht an wen der Brief gesendet werden soll. Auf die gleiche Weise verhält
+	es sich mit den Paketen, die der Router anhand der IP-Adressen weiterleiten
+	soll. Der Hostanteil nimmt entsprechend der Größe des Subnetzes mehr Bits
+	der IP-Adresse ein. 
+	Warum Subnetzmasken genutzt werden, wie groß Subnetze werden können etc.
+	MAC Adresse Unterschied zur IP-Adresse
+	Quelle: Computer-Netzwerke, H.Ziesler, 2022
+	%---Modem und wie komm ich ins Internet
 	Ein Router hat heutzutage ein eingebautes Modem, das ihm ermöglicht Pakete,
 	ins Internet zu senden als auch zu empfangen. Ohne ein solches Modem ist
 	die Kommunikation ins Internet nicht möglich. Das Modem wandelt die digitalen
@@ -189,9 +217,13 @@
 	%---
 	Wie in der Abbildung XY zu sehen besteht ein Paket aus einem Header, den
 	Nutzdaten und einer Prüfsumme. Die Ziel-Adresse steht gefolgt von der Quell-
-	Adresse im Header des Pakets. Die Adressen sind sogenannte IP-Adressen. 
-	IP steht für Internet Protocol und kann folgendermaßen aussehen $198.168.1.42$ 
-	
+	Adresse im Header des Pakets. Die Adressen sind die oben beschriebenen IP-
+	Adressen. 
+	\subsection{Router Aufbau und Verbindungsarten}
+	Die Beschreibung des Aufbau eines Routers wird in dieser Ausarbeitung auf
+	die Komponenten beschränkt, die alle Router standardmäßig haben. Auf etwaige
+	herstellerspezifische Hardware oder Designs wird nicht eingegangen.
+	%---viell. nur auf das eingehen was in den ausgesuchten Routern vorhanden ist
 	
 	\subsection{Router Arten}
 	Arten von Routern, jeweils mit Vor-/Nachteilen und Einsatzgebiet
