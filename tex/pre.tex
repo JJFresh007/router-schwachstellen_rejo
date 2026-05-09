@@ -1,0 +1,181 @@
+\documentclass{scrreprt}
+
+% Dam0k1es
+
+\setcounter{tocdepth}{3}                   % Setzt die Tiefe des Inhaltsverzeichnisses auf 3 Ebenen: Kapitel (chapter), Abschnitt (section), Unterabschnitt (subsection)
+\usepackage{tabularx}                      % Ermöglicht erweiterte Tabellenfunktionen, insbesondere Tabellen mit automatisch anpassbarer Spaltenbreite
+
+\usepackage[ngerman]{babel}                % Stellt Spracheinstellungen auf neues Deutsch um, beeinflusst z.B. Datumformat und Silbentrennung
+\usepackage[german]{translator}            % Wird für die Übersetzung von Strings in Paketen verwendet, die nicht direkt von babel unterstützt werden
+
+\usepackage[T1]{fontenc}                   % Wählt eine Schriftkodierung, die eine bessere Darstellung von Umlauten und anderen europäischen Zeichen ermöglicht
+\usepackage{microtype}                     % Verbessert den Textsatz durch Mikrotypografie
+
+\usepackage{fixme}                         % Ermöglicht das Hinzufügen von Kommentaren und Notizen im Dokument, die leicht auffindbar sind
+\fxsetup{status=draft}                     % Legt den Status des Dokuments fest; 'draft' bedeutet, dass Notizen sichtbar sind
+
+\usepackage{minted}                        % Ermöglicht das Hervorheben von Quellcode mit Syntaxfarben, basierend auf Pygments
+
+\setminted{
+  breaklines=true,                         % Erlaubt automatischen Zeilenumbruch im Quellcode
+  breakanywhere=true,                      % Erlaubt Zeilenumbrüche an beliebiger Stelle (nützlich für sehr lange Zeilen)
+  breaksymbolleft=,                        % Definiert das Symbol für einen Zeilenumbruch am Zeilenanfang
+  breaksymbolright=,                       % Definiert das Symbol für einen Zeilenumbruch am Zeilenende
+  breaksymbolsepleft=,                     % Definiert das Trennsymbol für Umbrüche am Zeilenanfang
+  breaksymbolsepright=,                    % Definiert das Trennsymbol für Umbrüche am Zeilenende
+  breaksymbolindentleft=,                  % Definiert den Einzug für das Umbruchsymbol am Zeilenanfang
+  breaksymbolindentright=,                 % Definiert den Einzug für das Umbruchsymbol am Zeilenende
+  breakanywheresymbolpre=,                 % Definiert das Symbol vor einem Zeilenumbruch bei 'breakanywhere'
+  breakanywheresymbolpost=,                % Definiert das Symbol nach einem Zeilenumbruch bei 'breakanywhere'
+  linenos=true,                            % Fügt Zeilennummern zum Quellcode hininzu
+  xleftmargin=20pt,                        % Definiert den linken Rand des Quellcode-Blocks
+  frame=lines                              % Fügt eine Umrahmung aus Linien um den Quellcode-Block hinzu
+}
+
+% END Dam0k1es
+
+\KOMAoptions{DIV      = 10,                % Gibt die Größe des Textbereichs an
+             fontsize = 11pt,              % Schriftgröße
+             paper    = a4,                % DIN A4-Papier
+             parskip  = half}              % Kurzer Abstand statt eingerückter Absatzstart
+\setlength{\headheight}{24pt}
+\displaywidowpenalty=1000%                 % Leicht erhöhte Strafe für Witwen durch abgesetzten
+                                           % Mathematiksatz
+\widowpenalty=1000%                        % Leicht erhöhte Strafe für Witwen
+
+% Auskommentiert aufgrund von 0x01
+% \usepackage{iftex}                         % LuaLaTeX wird vorausgesetzt (für fontspec und selnolig)
+% \RequireLuaTeX%
+
+\usepackage{booktabs}                      % Bessere Tabellenlinien (eigene Befehle, Doku hilft)
+\usepackage{csquotes}                      % Bessere Zitate (eigene Befehle, Doku hilft)
+\usepackage{relsize}                       % Abgesetzte Zitate mit verkleinerter Schrift
+\newenvironment{smallquotes}{\quote\smaller}{\endquote}
+\SetBlockEnvironment{smallquotes}
+\usepackage{ellipsis}                      % Korrigiert Platz nach \dots
+\usepackage{etoolbox}                      % Um das ellipsis-Paket robust zu machen
+\robustify\textellipsis%
+\usepackage{enumerate}                     % Weitere Möglichkeiten für die enumerate-Umgebung
+\usepackage{geometry}                      % Zentriert die Titelseite für die Druckausgabe
+\usepackage{graphicx}                      % Einbinden von Bildern
+\graphicspath{{img/}}                      % Bilder können aus dem Verzeichnis img ohne Pfadangabe
+                                           % eingebunden werden
+\usepackage{icomma}                        % Korrigiert Platz um Kommas in Zahlen
+\usepackage{listings}                      % Einbinden von Quelltexten
+\usepackage{xcolor}                        % Nutzung von Farben
+\lstset{%
+    breaklines       = true,               % Automatischer Zeilenumbruch
+    backgroundcolor  = \color{gray!8},
+    commentstyle     = \textcolor{black!70},
+    numbers          = left,
+    numbersep        = 5pt,
+    numberstyle      = \textcolor{black!40},
+    showspaces       = false,
+    showstringspaces = false,
+    tabsize          = 4
+}
+\renewcommand*{\lstlistlistingname}{Listings-Verzeichnis}
+\usepackage{mathtools}                     % Große Liste von Mathematikbefehlen, enthält amsmath
+\usepackage{fontspec}                      % Für den normalen Schriftsatz (standardmäßig: lmodern)
+\usepackage[final]{microtype}              % Verbessert die Lesbarkeit und verringert die Anzahl der
+                                           % Trennungen
+\usepackage{polyglossia}                   % Trennregeln für Deutsch und Englisch
+\setmainlanguage[babelshorthands,          % Kürzel für Trennregeln wie im Paket babel
+                 spelling = new]{german}
+\setotherlanguage{english}
+\usepackage[backend = biber,               % Standardmäßig ab TeXLive 2016
+            sorting = none,                % Sortieren nach erster Nennung
+            style   = ieee]{biblatex}      % Bibliographie im IEEE-Stil
+\addbibresource{Literatur.bib}
+% Definiert den Bibliographiestil für Online-Quellen nach IEEE StyleGuide von 2009.
+% Unter Umständen muss der Stil aktualisiert werden oder kann entfernt werden, wenn er in den
+% BibLaTeX-Stil integriert wird.
+% https://www.ieee.org/documents/ieeecitationref.pdf
+\DefineBibliographyStrings{german}{%
+    url = {\mkbibbrackets{Online}\adddot\addspace{}Verfügbar}
+}
+\renewbibmacro*{title}{%
+    \ifboolexpr{
+        test {\iffieldundef{title}}
+    }
+    {}
+    {%
+        \printtext[title]{%
+            \printfield[sentencecase]{title}%
+        }%
+    }%
+    \printfield{titleaddon}%
+}
+\DeclareBibliographyDriver{online}{%
+    \usebibmacro{bibindex}%
+    \usebibmacro{begentry}%
+    \usebibmacro{author/editor+others/translator+others}%
+    \adddot\addspace%
+    \mkbibparens{\usebibmacro{date}}%
+    \adddot\addspace%
+    \usebibmacro{title}%
+    \addspace%
+    \usebibmacro{url}%
+}
+\usepackage{scrhack}                       % Verbessert die Kompatibilität zwischen KOMAskript und
+                                           % einigen älteren Paketen
+\usepackage[automark]{scrlayer-scrpage}    % Seitenlayout anpassen
+\cohead*{}
+\cofoot*{}
+\rofoot*{\pagemark}
+% Dieses Paket erzwingt LuaLatex. Damit muss der Font-Cache berechnet werden. 
+% Dies führt zu einer viel langsameren Kompilierung des Projekts.   ID: 0x01
+% \usepackage[ngerman]{selnolig}             % Unterdrückt selektiv Ligaturen
+\usepackage[ngerman]{varioref}             % Referenziert Labels wo möglich und nötig mit
+                                           % relativen Seitenangaben
+\usepackage[breaklinks,                    % Trennung von Links erlauben
+            colorlinks,                    % Links farbig setzen
+            hyperfootnotes = false,        % Sehr fragil und unnötig
+            linkcolor      = black,
+            urlcolor       = blue]
+           {hyperref}                      % Klickbare Hyperlinks
+\usepackage[acronym,                       % Abkürzungsverzeichnis erstellen
+            nogroupskip,                   % Kein Abstand zwischen Gruppen
+            nonumberlist,                  % Keine nummerierte Liste der Einträge
+            nopostdot,                     % Kein automatischer Punkt nach Einträgen
+            xindy]
+           {glossaries}                    % Zum Einbinden eines Abkürzungsverzeichnis und eines
+                                           % Glossars
+\GlsSetXdyCodePage{duden-utf8}             % Einstellungen für Xindy: Sortierung und UTF8
+\setacronymstyle{short-long}               % Erste Abkürzung im Format kurz (lang)
+\setglossarystyle{long}                    % Gleiche Breite für Spalten
+\setlength\LTleft\parindent%               % Linke Spalte linksbündig statt zentriert
+\setlength\LTright\fill%                   % Rechte Spalte füllt die restliche Seite
+\makeglossaries%                           % Glossareinträge erstellen
+\loadglsentries{tex/glossary}              % Glossareinträge aus dieser Datei lesen
+\usepackage{cleveref}                      % Referenziert zusätzlich den Typ eines Labels
+
+\AtBeginDocument{% Folgende Befehle am Beginn des Dokuments ausführen
+    \hyphenation{Hash-al-go-rith-mus} % Hier globale Regeln zur Silbentrennung einfügen
+    \renewcommand*{\acronymname}{Abkürzungsverzeichnis}
+}
+
+% Wenn URLs in der Bibliographie unbedingt an jeder Stelle umgebrochen werden können dürfen müssen,
+% können die nachfolgenden Zeilen genutzt werden. Achtung: Sehr hässlich. Das \raggedright von unten
+% kann in diesem Fall entfernt werden.
+% \setcounter{biburlnumpenalty}{1}
+% \setcounter{biburlucpenalty}{1}
+% \setcounter{biburllcpenalty}{1}
+
+\AtEndDocument{% Folgende Befehle am Ende des Dokuments ausführen
+    \cleardoublepage%
+    \raggedright%
+    % \sloppypar% Kann als Alternative zum \raggedright eingesetzt werden. Blocksatz wie in Word.
+    \printbibliography% Bibliographie ausgeben
+}
+
+\newcommand*{\Signature}{\Author\\[-0.3cm]\rule{6cm}{1pt}\\Autor}
+
+\newcommand*{\command}[1]{\texttt{#1}}  % Befehle innerhalb der Zeile in Schreibmaschinenschrift
+                                        % setzen
+\newcommand*{\definition}[1]{\emph{#1}} % Definitionen in kursiver Schrift setzen
+\newcommand*{\filename}[1]{\texttt{#1}} % Dateinamen in Schreibmaschinenschrift setzen
+\newcommand*{\programname}[1]{\gls{#1}} % Programme automatisch ins Glossar aufnehmen (nicht
+                                        % unbedingt benötigt)
+                                        
+%\end{document}
