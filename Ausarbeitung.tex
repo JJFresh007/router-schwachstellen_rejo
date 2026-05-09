@@ -1,15 +1,15 @@
 \input{tex/pre} % Ausgelagerte Präambel
 
 % Hier können die Informationen über die Ausarbeitung eingetragen werden
-\newcommand*{\Course}{FACH} % Bei vorlesungsbegleitenden Ausarbeitungen
-\newcommand*{\Subject}{THEMA}
-\newcommand*{\Author}{AUTOR}
-\newcommand*{\Matriculation}{MATRIKELNUMMER}
-\newcommand*{\Discipline}{STUDIENGANG}
-\newcommand*{\Semester}{SEMESTER}
-\newcommand*{\Professor}{BETREUER}
-\newcommand*{\Deadline}{ABGABETERMIN}
-\newcommand*{\Location}{ABGABEORT}
+\newcommand*{\Course}{Sichere Hardware} % Bei vorlesungsbegleitenden Ausarbeitungen
+\newcommand*{\Subject}{Router Schwachstellen}
+\newcommand*{\Author}{Johanna Frech, Rebecca Schäfer}
+\newcommand*{\Matriculation}{3006985, 3007203}
+\newcommand*{\Discipline}{Informatik IT-Sicherheit}
+\newcommand*{\Semester}{4}
+\newcommand*{\Professor}{Prof. Roland Hellmann}
+\newcommand*{\Deadline}{17.07.2026}
+\newcommand*{\Location}{HS Aalen}
 
 % Um die Übersetzung zu beschleunigen, kann man hiermit nur Teile der Ausarbeitung übersetzen lassen
 % \includeonly{FILENAME,FILENAME,...}
@@ -163,7 +163,7 @@
 	gefunden wird. Welcher Pfad gewählt wird hängt von den Konfigurationen ab,
 	es kann der schnellste Weg genutzt werden oder auch eine definierte Route
 	über verschiedene Punkte.
-	%<--Protokolle oder über was wird das festgelegt?
+	%---Protokolle oder über was wird das festgelegt?
 	
 	Wichtig zu Beachten ist der Unterschied zwischen Router und Switch. Beide
 	Geräte sind für die Weiterleitung der Pakete an das richtige Ziel zuständig.
@@ -177,7 +177,21 @@
 	ins Internet zu senden als auch zu empfangen. Ohne ein solches Modem ist
 	die Kommunikation ins Internet nicht möglich. Das Modem wandelt die digitalen
 	Signale von einem Endgerät, wie einem Laptop in analoge Signale um und sendet
-	dann die Anfrage in das Internet.
+	dann die Anfrage in das Internet. Die Antwort ist ein analoges Signal welches
+	wiederum in ein digitales gewandelt werden muss, damit der Laptop die 
+	enthaltenen Informationen verarbeiten kann.
+	Um zu wissen wohin ein Paket muss, untersucht der Router das angekommene Paket.
+	Es enthält sowohl die Quell-, als auch die Zieladresse anhand derer der Router
+	entscheiden kann, ob das Ziel eins der Geräte ist, die mit ihm verbunden sind
+	oder ob er das Paket weitergereicht werden muss an den nächsten Switch oder
+	Router.
+	%---
+	%---Bild grober Paketaufbau + Abbildungsnummer unten in Text
+	%---
+	Wie in der Abbildung XY zu sehen besteht ein Paket aus einem Header, den
+	Nutzdaten und eine Prüfsumme. Die Ziel-Adresse steht gefolgt von der Quell-
+	Adresse im Header des Pakets. Die Adressen sind sogenannte IP-Adressen. 
+	IP steht für Internet Protocol und kann folgendermaßen aussehen $198.168.1.42$ 
 	
 	
 	\subsection{Router Arten}
