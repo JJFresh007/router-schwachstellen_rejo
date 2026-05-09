@@ -1,0 +1,15 @@
+#Files to ignore
+Ausarbeitung.acn
+Ausarbeitung.aux
+Ausarbeitung.bcf
+Ausarbeitung.glo
+Ausarbeitung.log
+Ausarbeitung.out
+Ausarbeitung.pdf
+Ausarbeitung.run.xml
+Ausarbeitung.synctex.gz
+Ausarbeitung.toc
+Ausarbeitung.xdy
+Schreibprozess_nach_Krause.pdf
+tex/
+*.log
