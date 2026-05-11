@@ -156,6 +156,9 @@
 	%
 	%Grundlagen von Routern: Definition und Funktion, Routerarten, Aufbau und
 	%Komponenten, Routing-Verfahren
+	%
+	%Gerät identifizieren → Netz strukturieren → lokal kommunizieren → zwischen
+	%Netzen kommunizieren → physische/verbindungstechnische Umsetzung
 	%=========================================================
 	Wie der Name erahnen lässt ist der Router innerhalb eines Netzwerks dafür
 	zuständig Nachrichten von einer angeschlossenen Quelle zum Ziel zu leiten.
@@ -167,38 +170,51 @@
 	%---Protokolle oder über was wird das festgelegt?	
 	Wichtig zu Beachten ist der Unterschied zwischen Router und Switch. Beide
 	Geräte sind für die Weiterleitung der Pakete an das richtige Ziel zuständig.
-	Der Unterschied ist, dass ein Switch Pakete innerhalb eines Netzsegments oder
-	einem lokalen Netzwerk weiterleitet, wohin gegen ein Router Pakete über 
-	Netzwerkgrenzen, also auch in ein neues Netzsegment oder das Internet leiten
-	kann. Switch werden daher innerhalb von lokalen Netzwerken oder Netzsegmenten
-	genutzt und Router an den Grenzen der Netzsegmente oder vom lokalen Netzwerk
+	Der Unterschied ist, dass ein Switch Pakete innerhalb eines Subnetz oder
+	einem lokalen Netzwerk weiterleitet, wohingegen ein Router Pakete über 
+	Netzwerkgrenzen, also auch in ein neues Subnetz oder das Internet leiten
+	kann. Switch werden daher innerhalb von lokalen Netzwerken oder Subnetzen
+	genutzt und Router an den Grenzen der Subnetze oder vom lokalen Netzwerk
 	in das Internet. 
 	%---Netzwerksegmente und IPv4
 	Die Segmentierung eines Netzwerk ist dann sinnvoll, wenn es
 	sich um eine große Infrastruktur, wie die eines Unternehmen handelt. Die 
-	Netzwerksegmente oder auch Subnetze besitzen einen logischen Adressraum, der
-	abhängig von der Anzahl an Geräten ist, die in diesem Netzwerk sein sollen. 
+	Subnetze besitzen einen logischen Adressraum, der abhängig von der Anzahl an 
+	Geräten ist, die in diesem Netzwerk sein sollen. 
 	Um zu verstehen, wie eine Segmentierung funktioniert, muss zuerst der Aufbau
 	der Adresse verstanden werden. Eine Adresse ist in diesem Fall die IP-Adresse,
 	wobei IP für Internet Protocol steht. In dieser Ausarbeitung wird nur mit
 	IPv4 Adressen gearbeitet, weshalb nicht näher auf die IPv6 Adressen 
 	eingegangen wird. Eine IPv4 Adresse besteht aus 4 Teilen, die durch einen 
 	Punkt von einander getrennt sind. Jeder Teil beinhaltet eine Zahl zwischen 0
-	und 255, daraus ergibt sich eine größe von 32 Bit, was wiederum 4Byte 
-	entspricht. Um in einem Netzwerksegment kommunizieren zu können haben alle
+	und 255, daraus ergibt sich eine Größe von 32 Bit, was wiederum 4Byte 
+	entspricht. Um in einem Subnetz kommunizieren zu können haben alle
 	sich darin befindenden Geräte in ihrer IP-Adresse den gleichen Netzwerkanteil.
-	Das kann man sich vorstellen wie der Straßennamen, diesen haben alle Häuser
-	innerhalb der Straße. Das exakte Geräte innerhalb des Subnetz ist im 
-	Hostantiel der IP-Adresse zu finden. Diese muss zwingend einzigartig im 
-	jeweiligen Subnetz sein, da es sonst zu Konflikten kommt. Hätte zwei Häuser
-	in der selben Straße die gleiche Hausnummer, weiß der Postbote ebenfalls
-	nicht an wen der Brief gesendet werden soll. Auf die gleiche Weise verhält
-	es sich mit den Paketen, die der Router anhand der IP-Adressen weiterleiten
-	soll. Der Hostanteil nimmt entsprechend der Größe des Subnetzes mehr Bits
-	der IP-Adresse ein. 
-	Warum Subnetzmasken genutzt werden, wie groß Subnetze werden können etc.
+	Das exakte Geräte innerhalb des Subnetz ist im Hostanteil der IP-Adresse zu
+	finden. Diese muss zwingend einzigartig im jeweiligen Subnetz sein, da es
+	sonst zu Konflikten kommt. Hätten zwei Geräte die gleiche IP-Adresse kann der
+	Router nicht entscheiden an welches, das entsprechende Paket weiter gleitet
+	werden muss. Der Hostanteil nimmt entsprechend der Größe des Subnetzes mehr
+	Bits der IP-Adresse ein. Aufgrund der Anzahl an Geräten, die IP-Adressen 
+	haben ist nicht mehr nur aus der Adresse die Größe des Subnetz auszulesen. 
+	Mit der Subnetzmaske und der IP-Adresse lässt sich das Subnetz und damit 
+	dessen Größe ermitteln
+	%---
+	%---Bild grober Subnetzmaske und IP-Adresse + Abbildungsnummer unten in Text
+	%---
+	Router-Tabelle und ARP
+	Router-Tabelle wird für die Kommunikation in andere Subnetze genutzt, um heraus
+	zufinden über welches Gateway das Paket versendet werden muss. ARP wird in
+	einem Subnetz genutzt, da das Paket direkt an die MAC-Adresse weitergeleitet
+	wird und nicht nur die IP-Adresse. Die MAC-Adresse wird mit der IP-Adresse 
+	und ARP(Adress REsolution Protocol) ermittelt. ARP enthält die IP und 
+	die dazugehörige MAC-Adresse innerhalb eines Subnetztes. Sollte eine IP nicht
+	in der Tabelle sein, wird ein Broadcast mit der IP gemacht und das Gerät mit
+	der IP-Adresse antwortet mit der entsprechenden MAC-Adresse. Diese Informationen
+	werden dann in der ARP gespeichert und nach einer konfigurierte Zeit gelöscht.
+	
 	MAC Adresse Unterschied zur IP-Adresse
-	Quelle: Computer-Netzwerke, H.Ziesler, 2022
+	->Quelle: Computer-Netzwerke, H.Zisler, 2022; 
 	%---Modem und wie komm ich ins Internet
 	Ein Router hat heutzutage ein eingebautes Modem, das ihm ermöglicht Pakete,
 	ins Internet zu senden als auch zu empfangen. Ohne ein solches Modem ist
@@ -211,7 +227,7 @@
 	Es enthält sowohl die Quell-, als auch die Zieladresse anhand derer der Router
 	entscheiden kann, ob das Ziel eins der Geräte ist, die mit ihm verbunden sind
 	oder ob das Paket weitergereicht werden muss an den nächsten Switch oder 
-	Router.
+	Router. 
 	%---
 	%---Bild grober Paketaufbau + Abbildungsnummer unten in Text
 	%---
