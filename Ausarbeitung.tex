@@ -197,9 +197,32 @@
 	Arten von Routern, jeweils mit Vor-/Nachteilen und Einsatzgebiet
 	Unterschiede von Routern in Heimnetzen und Unternehmen
 	\subsection{Definition AB}
-	\section{Grundlagengebiet B}
-	\subsection{Definition BA}
-	\subsection{Definition BB}
+
+
+	\section{Sicherheitsmechanismen im Router}
+	\subsection{Adressverbergung(NAT - RFC 30022)}
+	%--------------------------------------------------------------------------------%
+	%-----------Nochmal überarbeiten----formulierung und rechtschreibung anpassen----%
+	Networke Address Translation(NAT) ist ein Mechanismus, bei dem der Router interne 
+	IP-Adressen eines lokalen Netztwerks (LAN) in eien öffentliche IP-Adresse übersetzt.
+	Es gibt welweit ca 4 Millarden public IPv4 Adressen, sie sind also begrenzt
+	Private Adressen werden nur innerhalb eines lokalen Netztwerks genutzt von den Geräten.
+	Haushalte oder Frimen haben alle eine private IP Adresse mit der sie mit dem Router verbunden sind.
+	Der Router wiederum hat eine public IP Adresse, und hat somit zugriff auf das Internet.
+	Über den Router können so alle Geräte auf das Internet zugreifen.
+	NAT übersetzet also ein Satzt von IP AdrAessen zu einem anderen Satz an IP-Adressen.
+	Es übersetzet also von Privat zu Public aber auch andersherum
+
+	NAT selbst ist nicht offiziel ein Sicherheitsmechanismen, kann aber also solcher intepretiert werden
+	Den Aufgrund der übersetetzung mehrerer lokaler IP-Adressen zu eine publizierten kann von
+	außen nicht festgestellt werden, wie das betrachetet Netztwerk intern aufgebaut ist
+	oder wie viele sich in ihm befinden. Zudem ist keine direkte verbindung von außerhalb mit
+	den Geräten möglich solange dies nicht explizit erlaubt wird.
+
+	NAT bietet eine impllizite Schutzwirkung, aber keine echte Sicherheit im klasischen Sinne.
+	Nicht angeforderte verbindungen werden blockiert, die Angriffsfläche wird reduziert und Geräte können
+	nicht direkt adressiert werden.
+	\subsection{}
 	\newpage
 	
 	\chapter{Hauptteil (1. Kapitel)}
