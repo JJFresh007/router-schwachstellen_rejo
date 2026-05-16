@@ -223,6 +223,7 @@
 	Nicht angeforderte verbindungen werden blockiert, die Angriffsfläche wird reduziert und Geräte können
 	nicht direkt adressiert werden. 
 	%Quelle(https://www.rfc-editor.org/rfc/rfc3022)%
+
 	\subsection{Paketfilterung und Stateful Firewalls}
 	Eine Firewall schützt ein netztwerk vor bedrohungen, in dem sie den Datenverkehr kontrolliert.
 	- zustandbehaftete(Stateful) und zustandlose(Statless) FWs
@@ -249,6 +250,26 @@
 	- sind anfällig für DDoS und Man in the Middle, wenn Code nicht auf neustem Stand
 	- auflistung der Eigenschaften
 
+	\subsection{WLAN-Verschlüsselung}
+	Bei der WLAN-verschlüsselung wird die Funkkommunikation zwischen dem Endgerät und dem 
+	Access-Point abgesichert.
+	- basiert auf IEEE-blabla und IEE blavla (für WPA3)
+	- jedes Gerät in Reichweite kann den Datenverkehr mithören
+	- durch verschlüsselung wird das verhindert
+	WPA2:
+	- Verschlüsselung durch AES-CCMP (Counter Mode with CBC_MAC Protokoll)
+	- AES sorgt für starke symmetrische Verschlüsselung
+	- CCMP = Verschlüsselung und Integritätsprüfung
+	- Daten sind dann gegen Lesen und Manipulation geschützt
+	- Sitzungsschlüssel aushandeln (Genau beschreibung hier noch machen!!!!)
+	- Schwachstellen: schwache Passwörter, KRACK-Angriffe (wtf?), Schlüssel wiederverwenden
+	WPA3:
+	-Weiterentwicklung von WPA2
+	- kein Sitzungsschlüssel sondern WPA3 SAE(Dragonfly Handshake) -> (noch beschreiben!!!)
+	- Foward Security = selbst bei passwort entschlüsselung können daten nicht etschlüsselt werden
+	- OWE (Opportunistic Wireless Encryption)
+	-  -> offene WLANs sind auch verschlüsselt auch ohne PW 
+	%---Quelle()---%
 
 	\newpage
 	
