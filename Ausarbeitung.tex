@@ -86,6 +86,8 @@
 	enthält sowohl die in der Arbeit angegangenen Problempunkte, als auch weitere,
 	nicht behandelte Problempunkte. Eine Negativabgrenzung verhindert, dass beim
 	Leser später nicht erfüllte Erwartungen geweckt werden.
+	Hier vielleicht rein, dass nicht auf das ISO/OSI Modell eingegangen wird, 
+	da es für die Arbeit als Wissen vorausgesetzt wird.
 	\section{Ziel der Arbeit}
 	Mit dem Ziel der Arbeit wird der angestrebte Lösungsansatz festgelegt. An 
 	diesem Ziel wird die Arbeit gemessen.Mit dem Ziel der Arbeit wird der 
@@ -134,13 +136,21 @@
 			\hline
 			Netzwerksegment & ... \\
 			\hline
-			lokales Netzwerk & ... \\
+			LAN & local area network - lokales Netzwerk \\
 			\hline
-			Internet & ... \\
+			WAN & wide area network - Internet \\
+			\hline
+			Schicht / Layer & Schicht im ISO/OSI Referenzmodell, welches die Übertragung
+			von Daten vom Kabel bis hin zur Darstellung auf dem Endgerät beschreibt. \\
 			\hline
 			Pakete & Nachrichten die Informationen und Daten enthalten die von einer 
 			Quelle, zum Beispiel einem Laptop an ein Ziel, beispielsweise ein Desktop PC
-			weitergeleitet werden. Über diese Pakete wird kommuniziert.\\
+			weitergeleitet werden. Über diese Pakete wird in Schicht 3 des ISO/OSI Modells
+			kommuniziert.\\
+			\hline
+			Frames & Rahmeen, die die Inforamtionen und Daten enthalten, die übermittelt
+			werden sollen. Über diese Rahmen wird in Schicht 2 des ISO/OSI Modells
+			kommuniziert.\\
 			\hline
 			Protokolle & Richtlinien zu einem Vorgehen, dass kann die Art und Weiße sein
 			wie Pakete übermittelt werden oder auch welchen Weg ein Paket innerhalb eines
@@ -170,12 +180,16 @@
 	%---Protokolle oder über was wird das festgelegt?	
 	Wichtig zu Beachten ist der Unterschied zwischen Router und Switch. Beide
 	Geräte sind für die Weiterleitung der Pakete an das richtige Ziel zuständig.
-	Der Unterschied ist, dass ein Switch Pakete innerhalb eines Subnetz oder
-	einem lokalen Netzwerk weiterleitet, wohingegen ein Router Pakete über 
-	Netzwerkgrenzen, also auch in ein neues Subnetz oder das Internet leiten
-	kann. Switch werden daher innerhalb von lokalen Netzwerken oder Subnetzen
-	genutzt und Router an den Grenzen der Subnetze oder vom lokalen Netzwerk
-	in das Internet. 
+	Die Switches der Schicht 2 (ISO/OSI Modell) können nur Frames innerhalb 
+	eines lokalen Netzwerks, das heißt der Adressbereich hat eine gewisse
+	Beschränkung weiterleiten. Diese können nicht über Netzwerkgrenzen, also
+	in eine lokales Netzwerk mit anderem Adressbereich, als dem Quellnetzwerk
+	kommunizieren. Switches der Schicht 3 können über Netzwerkgrenzen hinweg
+	Pakete versenden. Der Hauptunterschied zwischen Switches und Routern ist
+	daher, dass der Router nicht nur über Netzwerkgrenzen hinweg Pakete 
+	leiten kann sonder das er aus dem LAN auch in das WAN, besser bekannt als
+	das Internet Pakete versenden kann.
+	%---Quelle: C.Baun. Computernetze kompakt. Wiesbaden, D: Springer Vieweg, 2025, pp. 149-150
 	%---Netzwerksegmente und IPv4
 	Die Segmentierung eines Netzwerk ist dann sinnvoll, wenn es
 	sich um eine große Infrastruktur, wie die eines Unternehmen handelt. Die 
