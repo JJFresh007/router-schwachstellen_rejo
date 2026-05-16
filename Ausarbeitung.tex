@@ -221,8 +221,35 @@
 
 	NAT bietet eine impllizite Schutzwirkung, aber keine echte Sicherheit im klasischen Sinne.
 	Nicht angeforderte verbindungen werden blockiert, die Angriffsfläche wird reduziert und Geräte können
-	nicht direkt adressiert werden.
-	\subsection{}
+	nicht direkt adressiert werden. 
+	%Quelle(https://www.rfc-editor.org/rfc/rfc3022)%
+	\subsection{Paketfilterung und Stateful Firewalls}
+	Eine Firewall schützt ein netztwerk vor bedrohungen, in dem sie den Datenverkehr kontrolliert.
+	- zustandbehaftete(Stateful) und zustandlose(Statless) FWs
+	- ersteres eher die Norm, wei besser
+	Statless:
+	- älter
+	- verlässt dich auf Zugriffskontrolliste beim Filtern
+	- entscheidung auf grundlage von Paket infos
+	- speichern keine infos über status oder kontext der verbindung
+	- überprüft Quell- und Ziel-IP-Adresse, Portnummer und den verkehrstyp im Header
+	- Filterung nur so gut wie vom nutzer definierte -> müssen gescheit verwaltet werden
+	- weniger ressourcen und schneller -> gut bei hohem Datenverkehr
+	- wird heute vorallem dazu verwendet die last der staful firewall zu verringern
+	- bekannte IP-Adressen blocken, geographische Regionen
+	- ist nur so gut wie der Netzwerkadmin (Benutzerfehler)
+
+	Stateful:
+	- überwachen Datenpackete und den Kontext ders Datenverkehrs
+	- verstehen den kontext von NW verbindungen
+	- dynamische Paketflterung
+	- Quell und Ziel IP Erfassung
+	- können Bewegung von Daten im ganzen Netztwerk überwachen
+	- durch Zustandstabelle -> entscheidung daruf basierend in der Zukunft
+	- sind anfällig für DDoS und Man in the Middle, wenn Code nicht auf neustem Stand
+	- auflistung der Eigenschaften
+
+
 	\newpage
 	
 	\chapter{Hauptteil (1. Kapitel)}
