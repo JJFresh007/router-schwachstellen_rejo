@@ -174,8 +174,8 @@
 	%=========================================================
 	Wie der Name erahnen lässt ist der Router innerhalb eines Netzwerks dafür
 	zuständig Nachrichten von einer angeschlossenen Quelle zum Ziel zu leiten.
-	Der Router kümmert sich darum, dass der optimalen Weg von der Quelle zum Ziel 
-	gefunden wird. Welcher Pfad gewählt wird hängt von den Konfigurationen ab,
+	Der Router kümmert sich darum, dass der optimale Weg von der Quelle zum Ziel 
+	gefunden wird. Welcher Pfad gewählt wird hängt von den Protokollen ab,
 	es kann der schnellste Weg genutzt werden oder auch eine definierte Route
 	über verschiedene Punkte. Es gibt zwei Arten des Routing, dynamisches und 
 	statisches Routing. Auf diese Arten und die Protokolle wird im Abschnitt
@@ -193,7 +193,8 @@
 	leiten kann sonder das er aus dem LAN auch in das WAN, besser bekannt als
 	das Internet Pakete versenden kann.
 	%---Quelle: C.Baun. Computernetze kompakt. Wiesbaden, D: Springer Vieweg, 2025, pp. 149-150
-	%---Netzwerksegmente und IPv4
+	
+	\subsection{Netzwerksegmente und IPv4}
 	Die Segmentierung eines Netzwerk ist dann sinnvoll, wenn es
 	sich um eine große Infrastruktur, wie die eines Unternehmen handelt. Die 
 	Subnetze besitzen einen logischen Adressraum, der abhängig von der Anzahl an 
@@ -212,26 +213,33 @@
 	sonst zu Konflikten kommt. Hätten zwei Geräte die gleiche IP-Adresse kann der
 	Router nicht entscheiden an welches, das entsprechende Paket weiter gleitet
 	werden muss. Der Hostanteil nimmt entsprechend der Größe des Subnetzes mehr
-	Bits der IP-Adresse ein. Aufgrund der Anzahl an Geräten, die IP-Adressen 
-	haben ist nicht mehr nur aus der Adresse die Größe des Subnetz auszulesen. 
-	Mit der Subnetzmaske und der IP-Adresse lässt sich das Subnetz und damit 
-	dessen Größe ermitteln
+	Bits der IP-Adresse ein. 
 	%---
 	%---Bild grober Subnetzmaske und IP-Adresse + Abbildungsnummer unten in Text
 	%---
-	Router-Tabelle und ARP
-	Router-Tabelle wird für die Kommunikation in andere Subnetze genutzt, um heraus
-	zufinden über welches Gateway das Paket versendet werden muss. ARP wird in
-	einem Subnetz genutzt, da das Paket direkt an die MAC-Adresse weitergeleitet
-	wird und nicht nur die IP-Adresse. Die MAC-Adresse wird mit der IP-Adresse 
-	und ARP(Adress REsolution Protocol) ermittelt. ARP enthält die IP und 
-	die dazugehörige MAC-Adresse innerhalb eines Subnetztes. Sollte eine IP nicht
-	in der Tabelle sein, wird ein Broadcast mit der IP gemacht und das Gerät mit
-	der IP-Adresse antwortet mit der entsprechenden MAC-Adresse. Diese Informationen
-	werden dann in der ARP gespeichert und nach einer konfigurierte Zeit gelöscht.
+	\subsection{Packet versenden über einen Router}
+	%---Router-Tabelle und ARP
+	Routing-Tabelle wird für die Kommunikation genutzt, um heraus zufinden über
+	welchen Port das Paket versendet werden muss. Da der Router ein Layer 3 
+	Gerät ist, muss er die IP-Adresse des Zielgerätes kennen, um das Paket 
+	in das richtige Netzwerk zu leiten. Die Tabelle beinhaltet alle Netzwerke,
+	die über einen Port am Router angeschlossen sind. 
+	Wird ein Paket innerhalb es gleichen LAN versendet, wird mit der MAC-Adresse
+	gearbeitet. Der Sender hat eine sogenannte ARP Tabelle (Adress Resolution Protocol)
+	in der die Geräte, an die der Sender bereits ein Frame gesendet hat enthalten
+	sind. Es sind die IP-Adressen und die dazugehörige MAC-Adresse enthalten. Diese
+	Informationen werden dann in der Tabelle gespeichert, nach einer konfigurierte
+	Zeit gelöscht und müssen dann bei erneutem Senden an den Empfänger wieder 
+	angefragt und gespeichert werden. Um die MAC-Adresse des Empfängers zu ermitteln
+	sendet der Sender eine ARP-Anfrage in das lokale Netz. Diese Anfrage wird an alle 
+	Geräte im Netz gesendet, der sogenannte Broadcast. Das Gerät welches die
+	gesuchte IP-Adresse hat antwortet mit seiner MAC-Adresse. Der Sender erhält die
+	Adresse und sendet dann den Frame an die MAC-Adresse innerhalb des lokalen
+	Netzwerks.
+
 	
 	MAC Adresse Unterschied zur IP-Adresse
-	->Quelle: Computer-Netzwerke, H.Zisler, 2022; 
+	->Quelle: Computer-Netzwerke, H.Zisler, 2022; Coputernetze kompakt, C.Baun, 2025 Kapitel 7.6
 	%---Modem und wie komm ich ins Internet
 	Ein Router hat heutzutage ein eingebautes Modem, das ihm ermöglicht Pakete,
 	ins Internet zu senden als auch zu empfangen. Ohne ein solches Modem ist
@@ -256,6 +264,18 @@
 	Die Beschreibung des Aufbau eines Routers wird in dieser Ausarbeitung auf
 	die Komponenten beschränkt, die alle Router standardmäßig haben. Auf etwaige
 	herstellerspezifische Hardware oder Designs wird nicht eingegangen.
+
+
+	Ein Router besteht aus einem Gehäuse, in dem sich die Hauptplatine befindet.
+	Auf der Hauptplatine befinden sich die CPU, der Arbeitsspeicher, der Flash
+	Speicher, die Netzwerkschnittstellen und die Stromversorgung. Die CPU ist für die
+	Verarbeitung der Informationen zuständig, die durch die Netzwerkschnittstellen
+	kommen. Der Arbeitsspeicher dient als Zwischenspeicher für die Informationen,
+	die von der CPU verarbeitet werden. Der Flash Speicher speichert die Software
+	des Routers, die für die Funktion des Routers notwendig ist. Die Netzwerkschnitt
+	stellen ermöglichen die Verbindung zu anderen Geräten, wie Endgeräten, Switches
+	oder anderen Routern. Die Stromversorgung versorgt den Router mit Energie, damit
+	er funktionieren kann.
 	%---viell. nur auf das eingehen was in den ausgesuchten Routern vorhanden ist
 	
 	\subsection{Routing Arten}
