@@ -143,14 +143,16 @@
 			Schicht / Layer & Schicht im ISO/OSI Referenzmodell, welches die Übertragung
 			von Daten vom Kabel bis hin zur Darstellung auf dem Endgerät beschreibt. \\
 			\hline
-			Pakete & Nachrichten die Informationen und Daten enthalten die von einer 
+			Pakete & Pakete, die Informationen und Daten enthalten, die von einer 
 			Quelle, zum Beispiel einem Laptop an ein Ziel, beispielsweise ein Desktop PC
 			weitergeleitet werden. Über diese Pakete wird in Schicht 3 des ISO/OSI Modells
 			kommuniziert.\\
 			\hline
-			Frames & Rahmeen, die die Inforamtionen und Daten enthalten, die übermittelt
+			Frames & Rahmen, die die Inforamtionen und Daten enthalten, die übermittelt
 			werden sollen. Über diese Rahmen wird in Schicht 2 des ISO/OSI Modells
-			kommuniziert.\\
+			kommuniziert. Rahmen und Pakete unterscheiden sich nur durch die jeweilige
+			Schicht, beide enthalten die zur übertragenend Informationen. Lediglich
+			die Benennung ist unterschiedlich in der Schicht.\\
 			\hline
 			Protokolle & Richtlinien zu einem Vorgehen, dass kann die Art und Weiße sein
 			wie Pakete übermittelt werden oder auch welchen Weg ein Paket innerhalb eines
@@ -176,8 +178,9 @@
 	gefunden wird. Welcher Pfad gewählt wird hängt von den Konfigurationen ab,
 	es kann der schnellste Weg genutzt werden oder auch eine definierte Route
 	über verschiedene Punkte. Es gibt zwei Arten des Routing, dynamisches und 
-	statisches Routing. 
-	%---Protokolle oder über was wird das festgelegt?	
+	statisches Routing. Auf diese Arten und die Protokolle wird im Abschnitt
+	\ref{sec:Routing-Arten} weiter eingegangen.
+	%---wird über Protokolle festgelegt -> nochmal weiter darauf eingehen	
 	Wichtig zu Beachten ist der Unterschied zwischen Router und Switch. Beide
 	Geräte sind für die Weiterleitung der Pakete an das richtige Ziel zuständig.
 	Die Switches der Schicht 2 (ISO/OSI Modell) können nur Frames innerhalb 
@@ -255,8 +258,9 @@
 	herstellerspezifische Hardware oder Designs wird nicht eingegangen.
 	%---viell. nur auf das eingehen was in den ausgesuchten Routern vorhanden ist
 	
-	\subsection{Router Arten}
-	Arten von Routern, jeweils mit Vor-/Nachteilen und Einsatzgebiet
+	\subsection{Routing Arten}
+	\label{sec:Routing-Arten}
+	Arten von Routing, jeweils mit Vor-/Nachteilen und Einsatzgebiet
 	Unterschiede von Routern in Heimnetzen und Unternehmen
 	\subsection{Definition AB}
 	\section{Grundlagengebiet B}
