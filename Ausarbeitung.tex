@@ -308,13 +308,17 @@
 
 	Eine weitere Zugriffskontrolle bietet die Netztwerksegmentierung. moderne Router bieten das anlegen eines
 	Gastnetzwerks und VLANs. Auch ein VPN Zugriff kann hilfreich sein. Router können als VPN-Endpunkt fungieren,
-	damit ist der Zugriff von außen nur über einen authentifizierten, verschlüsselten Tunnel möglich.
+	damit ist der Zugriff vo\begin{itemize}
+		\item{Hersteller erzeugt Firmware}
+		\item{Firmware wird kryptographisch signiert (Private Key)}
+		\item{Router prüft beim Update die Signatur (Publlic Key im Gerät)}
+	\end{itemize}n außen nur über einen authentifizierten, verschlüsselten Tunnel möglich.
 
 	Gastnetzwerksrundsätzlich ist die Zugriffskontrolle selbst oftmals weniger das Problem, sondern ihre Fehlkonfiguration.
 	Wenn beispielsweise Standartpasswörter nicht geändert werden, der Remote-Admin ofenn ist, unötige Ports
 	freigegeben werden oder unsichere Protokolle aktiviert sind, führt dies dazu das theoretisch vorhandene
 	Mechanismen wirkungslos sind.
-	%---Quelle(https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-41r1.pdf)---%
+	%---Quelle(https://nvlpubs.nist.gov/nistpubs/Legac019-16920: y/SP/nistspecialpublication800-41r1.pdf)---%
 	%---Quelle(https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-44ver2.pdf)---%
 	%---Quelle(https://www.cisco.com/c/en/us/support/docs/ip/access-lists/13608-21.html?utm_source=chatgpt.chttps://www.cisco.com/c/en/us/support/docs/ip/access-lists/13608-21.html?)---%
 	\subsection{Firmware Integrität}
@@ -347,7 +351,74 @@
 	und für den benutzt oftmals unichtbar zu erkenen ist.
 	%---Quelle(https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-193.pdf)---%
 	\newpage
-	
+
+	\chapter{Tests D-Link DIR-600}
+	%-------------TEST die alle NICHT funktioniert haben---------------------%
+	D-Link DIR-600 Router
+	Ziel: Zugang zum Router um Schwachstellen zu testen
+	Umgebung: BS Kali Linux, Verbunden über Ethernet
+	Router IP: 192.168.0.1 (bestätigt durch ping und ip route)
+	Grundtest:
+	\begin{figure}[h]
+		\hypertarget{tabelle1}{}
+		\begin{tabularx}{\columnwidth}{|X|X|X|}
+			\hline
+			Pingen des Routers & ping 192.168.0.1 & Router wurde erreicht \\
+			\hline
+			Zugriff auf die Admin Seite & Firefox (http://192.168.0.1) & Login Seite wurde geladen, aber Credentials schlugen fehl \\
+			\hline
+		\end{tabularx}
+		\caption{Testtabelle}
+	\end{figure}
+
+	Es wurden folgende User und Passwörter getestet (alles schlug Fehl):
+	admin:(blank) -> Standart passwort das zu beginn gesetzt ist
+	admin:admin
+	Alphanetworks:Alphanetworks (known backdoor)
+	dlink:dlink
+	user:user
+	support:support
+	root:admin
+
+	Folgendes wurde noch nicht versucht:
+	\begin{itemize}
+		\item{Soft reset -> würde des factory default wiederherstellen}
+		\item{Hard reset -> würde alle konfigurationen zurücksetzten}
+		\item{Firmware reflash -> FTP (tftp 192.168.0.1, put firmware.bin) -> brauche offiziele Firmware, meine Quelle nicht vertrauenswürdig}
+	\end{itemize}
+
+	Exploit Testing: CVE-2019-16920: UPnP Remote Code Execution
+	Basierend auf folgenden Quellen:
+	https://nvd.nist.gov/vuln/detail/CVE-2019-16920
+	https://www.cve.org/CVERecord?id=CVE-2019-16920
+	\begin{figure}[h]
+		\hypertarget{tabelle1}{}
+		\begin{tabularx}{\columnwidth}{|X|X|X|}
+			\hline
+			Metasploit & use exploit/linux/http/dlink_upnp_msearch & Error: "The supplied module name is ambiguous." Fixed by using the full module path \\ 
+			\hline
+			Manual curl & SOAP request to /upnp/control/basicevent1 & Could trigger command injection (e.g., start a telnet server). \\
+			\hline
+			Python script & Custom UPnP exploit & Alternative zu Metasploit für CVE-2019-16920. \\
+			\hline
+		\end{tabularx}
+		\caption{Exploit Testing: CVE-2019-16920}
+	\end{figure}
+
+	-> Alle verusche schlugen fehl, kann aber auch an meine unwissendheit liegen
+
+	\begin{figure}[h]
+		\hypertarget{tabelle1}{}
+		\begin{tabularx}{\columnwidth}{|X|X|X|}
+			\hline
+			Metasploit & use exploit/multi/http/dlink_hnap_auth_bypass & Bypass Authentifizierung, stellt Session Cookie für admin zugang zur verfügung \\ 
+			\hline
+			Manual curl & HNAP SOAP request with Alphanetworks:Alphanetworks & Uses hardcoded credentials to bypass login. \\
+			\hline
+		\end{tabularx}
+		\caption{CVE-2017-17215: HNAP Auth Bypass}
+	\end{figure}
+
 	\chapter{Hauptteil (1. Kapitel)}
 	Für die Gestaltung des Hauptteils sind in Abhängigkeit von der Aufgabenstellung
 	unterschiedliche Ausformungen möglich. In den Richtlinien zu Studien- und
