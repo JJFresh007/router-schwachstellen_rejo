@@ -239,6 +239,15 @@
 	- wird heute vorallem dazu verwendet die last der staful firewall zu verringern
 	- bekannte IP-Adressen blocken, geographische Regionen
 	- ist nur so gut wie der Netzwerkadmin (Benutzerfehler)
+	Stateles Firewalls gehören zu den älteren Modellen und werden heute nur noch unter bestimmten
+	vorraussetzungen verwendet. Sie verwenden eine Zugriffskontrolliste beim filtern und treffen 
+	entscheidungen auf grundlage von Paket Informationen. Allerdings speichert eine Stateful Firewall
+	nicht den Status oder den Kontet der Verbindung Sie überprüft die Quell und Ziel-IP_Adresse
+	die Portnummer und den Verkehrstyp im Header. Die Filterung des Pakete funktioniert nur so gut,
+	wie sie konfiguriert wurde, und hängt somit fast vollständig von dem Netzwerkadministrator selbst ab.
+	Vorteilhaft ist ihr geringer ressourcen Verbaruch und ihre Fähigkeit Daten schnell zu verarbeit,
+	was vorallem bei hohem Datenverkehr wichtig ist. Heutzutage wird sie vorallem verwendet um 
+	die Last der Stateful Firewall zu verringern.
 
 	Stateful:
 	- überwachen Datenpackete und den Kontext ders Datenverkehrs
@@ -256,13 +265,17 @@
 	- basiert auf IEEE-blabla und IEE blavla (für WPA3)
 	- jedes Gerät in Reichweite kann den Datenverkehr mithören
 	- durch verschlüsselung wird das verhindert
-	WPA2:
-	- Verschlüsselung durch AES-CCMP (Counter Mode with CBC_MAC Protokoll)
+	Für WPA2 muss eine Verschlüsselung durch AES-CCMP (Counter Mode with CBC_MAC Protokoll) gegeben sein.
+	CCMP ist ein Sicherheitsstandart gemäß IEEE 802.1. Hierbei werden verschiedene kryptographische
+	Algorithmen verwendet, CCMP ist der Mechnismus zur Integritätssicherung, verschlüsselung und Authentifizierung 
+	Das Verfahren Nutzt einen 128 Bit langen Schlüssel in kombination mit einem 48 Bit langem Initialisierungsvektor,
+	Das Verfahren basiert auf Advanced Encryption Standart (AES).
 	- AES sorgt für starke symmetrische Verschlüsselung
 	- CCMP = Verschlüsselung und Integritätsprüfung
 	- Daten sind dann gegen Lesen und Manipulation geschützt
 	- Sitzungsschlüssel aushandeln (Genau beschreibung hier noch machen!!!!)
 	- Schwachstellen: schwache Passwörter, KRACK-Angriffe (wtf?), Schlüssel wiederverwenden
+
 	WPA3:
 	-Weiterentwicklung von WPA2
 	- kein Sitzungsschlüssel sondern WPA3 SAE(Dragonfly Handshake) -> (noch beschreiben!!!)
@@ -279,7 +292,7 @@
 	eine Mehrfacktorauthentifizierung und rollen basierte Accounts, also (Admin vs. eingeschränkte Nutzter)
 	Wichtig dabei ist starke Passwörter zu nutzten, sowie keine Default Credentials.
 	Der Router selbst begrenzt oft, von wo aus der administrative Zugriff erlaubt ist.
-	Oftmals nur aus dem lokal area networke (LAN). Der remote Administrator sollte entweder deaktiviert
+	Oftmals nur aus dem Lokal Area Networke (LAN). Der Remote Administrator sollte entweder deaktiviert
 	oder stark eingeschränkt werden. Dies reduziert die Angriffsfläche erheblich, das das Webinterface
 	nicht öffentlich Erreichbar ist.
 	Desweiteren sollten unsichere protokolle wie HTTP und Telnet deaktiviert werden.
@@ -305,7 +318,34 @@
 	%---Quelle(https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-44ver2.pdf)---%
 	%---Quelle(https://www.cisco.com/c/en/us/support/docs/ip/access-lists/13608-21.html?utm_source=chatgpt.chttps://www.cisco.com/c/en/us/support/docs/ip/access-lists/13608-21.html?)---%
 	\subsection{Firmware Integrität}
-
+	Bei der Firmware Integrität beschreibt die Eigenschaft eines Routers, sicherzustellen, dass die auf dem
+	Gerät laufende Firmware unverändert, authentisch und vertrauenswürdig ist. Dies ist ein zentraler
+	Sicherheitsmechanismus, da die Firmware das gesamte Gerät kontrolliert.
+	Die Firmware ist das eingebette Betriebssystem des Routers. Sollte ein Angreifer kontrolle über diese 
+	Ebene bekommen hat er vollständige kontrolle über den netzwerkverkehr, die Möglichkeit zur dauerhaften Persistenz
+	und kann alle höheren Sicherheitsmechanismen wie zb die Firewall umgehen. Der Router prüft daher beim start
+	und bei Updates, ob die Firmware echt und unverändert ist.
+	Technisch funktioniert das über Digitale Signatur. Der Hersteller des Routers signiert jedes Firware-Update.
+	Ablauf:
+	\begin{itemize}
+		\item{Hersteller erzeugt Firmware}
+		\item{Firmware wird kryptographisch signiert (Private Key)}
+		\item{Router prüft beim Update die Signatur (Publlic Key im Gerät)}
+	\end{itemize}
+	Falls das Update ungültig ist wird es abgelehnt.
+	Ein weiterer Sicherheitsmechanismus ist der Secure Boot der den Router während des Startvorgangs schützt.
+	Beim Booten wird zuerst ein Bootlader geladen. Dieser prüft dann die Signatur der Firmware und startet sie nur dann,
+	wenn die prüfung positiv ausfählt. Andersnfalls lässt sich das Gerät nicht starten oder geht in den
+	Recovery-Modus. Dies stellt sicher, das keine dauerhaft kompromittierte Firmware geladen wird.
+	Der Trusted Secure Boot bietet eine Erweiterung des Secure Boot. Jede Stufe des Boot Prozess prüft die nächste,
+	also die Hardare den Bootloade, der Bootloader das Kernel und das kernel die Systemdienste.
+	Ziel dabei ist es eine durchgängige kryptographische Vertrauenskette zu bilden.
+	Zudem verfügt der Rooter über einen Rollback Schutz, welcher verhindet da die Firmware auf eine ältere,
+	verwundbare version zurückgesetzt werden kann. Ohne diesen Schutz hätten Angreifer die Möglichkeit alte Firmware
+	mit bekannten Schwachstellen zu installieren.
+	Angriffe auf die Firmware stellen ein besonders Risiko dar, da sid unterhlab von firewall und Betriebssystem liegt 
+	und für den benutzt oftmals unichtbar zu erkenen ist.
+	%---Quelle(https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-193.pdf)---%
 	\newpage
 	
 	\chapter{Hauptteil (1. Kapitel)}
