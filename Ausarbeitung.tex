@@ -271,6 +271,41 @@
 	-  -> offene WLANs sind auch verschlüsselt auch ohne PW 
 	%---Quelle()---%
 
+	\subsection{Zugriffskontrolle}
+	Der Router selbst ist geschütz vor fremden Zugriff, den wer Zugriff auf den Router hat, der
+	kann alle sicherheitstechnisch kritischen Bereiche des Routers manipulieren.
+	Um den router zu konfigurieren muss dieser durch Authentifizierung geschütz werden.
+	Hierzu werden zumindest ein Benutztername und ein Passwort genutzt, teilweise auch 
+	eine Mehrfacktorauthentifizierung und rollen basierte Accounts, also (Admin vs. eingeschränkte Nutzter)
+	Wichtig dabei ist starke Passwörter zu nutzten, sowie keine Default Credentials.
+	Der Router selbst begrenzt oft, von wo aus der administrative Zugriff erlaubt ist.
+	Oftmals nur aus dem lokal area networke (LAN). Der remote Administrator sollte entweder deaktiviert
+	oder stark eingeschränkt werden. Dies reduziert die Angriffsfläche erheblich, das das Webinterface
+	nicht öffentlich Erreichbar ist.
+	Desweiteren sollten unsichere protokolle wie HTTP und Telnet deaktiviert werden.
+	Dadurch werden Zugangsdaten und Konfigurationen nicht im Klartext übertragen.
+
+	Bei der Zugriffskontrolle im netzwerkverkehr wird konztrolliert welcher Traffic erlaubt oder blockiert wird.
+	Die zentrale instanz ist die Stateful firewall. Sie erlaubt nur etablierte oder explizit erlaubte
+	Verbindungen und blockiert unerwünschte eingehende Packete. Außerdem kann sie eigene Regeln definieren.
+
+	Die Access Controle Lists (ACLs) wird vorallem in Modernen und professionellen Routern genutzt.
+	Mit ihr kann granulat definiert werden welche IP-Adressen kommunizieren dürfen, welche protokolle erlaubt sind
+	und welche Ports genutzt werden dürfen.
+
+	Eine weitere Zugriffskontrolle bietet die Netztwerksegmentierung. moderne Router bieten das anlegen eines
+	Gastnetzwerks und VLANs. Auch ein VPN Zugriff kann hilfreich sein. Router können als VPN-Endpunkt fungieren,
+	damit ist der Zugriff von außen nur über einen authentifizierten, verschlüsselten Tunnel möglich.
+
+	Gastnetzwerksrundsätzlich ist die Zugriffskontrolle selbst oftmals weniger das Problem, sondern ihre Fehlkonfiguration.
+	Wenn beispielsweise Standartpasswörter nicht geändert werden, der Remote-Admin ofenn ist, unötige Ports
+	freigegeben werden oder unsichere Protokolle aktiviert sind, führt dies dazu das theoretisch vorhandene
+	Mechanismen wirkungslos sind.
+	%---Quelle(https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-41r1.pdf)---%
+	%---Quelle(https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-44ver2.pdf)---%
+	%---Quelle(https://www.cisco.com/c/en/us/support/docs/ip/access-lists/13608-21.html?utm_source=chatgpt.chttps://www.cisco.com/c/en/us/support/docs/ip/access-lists/13608-21.html?)---%
+	\subsection{Firmware Integrität}
+
 	\newpage
 	
 	\chapter{Hauptteil (1. Kapitel)}
