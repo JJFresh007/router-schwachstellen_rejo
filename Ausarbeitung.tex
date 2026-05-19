@@ -612,7 +612,8 @@
 	Nutzer: admin
 	Passwort: (blank)
 	Einloggen hat geklappt, Zugriff auf die Adminseite.
-	
+
+	\chapter{Tests Linksys WRT120N}
 	%=======================notes jf - need to be deleted later
 	%testen was passiert wenn Router auf Werkseinstellungen ist
 	% -> kommt man dann einfach rein? ist wahrscheinlich sehr häufig der Fall
@@ -646,6 +647,38 @@
 
 	am nächsten Tag nochmal versucht und es hat funktioniert, aber nur im 
 	Edge oder Chromium Browser, nicht in Firefox mit Default Anmelde Daten
+
+	Ziel: Zugang zum WLAN unter immer besseren Einstellungen des Routers
+	Umgebung: 260413Kali-Basis2026.1, Verbunden über Ethernet
+	Router IP: 192.168.1.1 
+	Grundtest:
+	\begin{enumerate}
+		\item{Pingen des Routers über IP 192.168.1.1 ist erfolgreich}
+		\item{Zugriff auf das browserbasierte Dienstprogramm über den Browser
+		Chromium http://192.168.1.1.}
+		\item{Default Credentials eingegeben und Website erreicht}
+	\end{enumerate}
+	Zugriff auf das browserbasiert Dienstprogramm ist lediglich über die Browser 
+	Chromium (Linux) oder Edge (Windows) möglich. Der Zugriff über Mozilla ist nicht
+	möglich, da eine Anmeldung dauerhaft fehlschlägt, siehe Abbildung \ref{fig:moz_error}.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/mozilla_unabletoreach_browserbased_page.png}
+		\caption{WRT120N Anschlüsse hinten}
+		\label{fig:moz_error}
+	\end{figure}
+	Wichtig zu Beachten ist ebenfalls, dass die IP Adresse nur erreichbar ist 
+	wenn der angeschlossenen Laptop nicht mit dem WLAN verbunden ist, da dieser
+	sonst versucht über das WLAN die Adresse zu finden. Der Router darf für diese
+	erste Einstellungen nur mit einem Ethernet Kabel an einen Laptop ohne Internet
+	Verbindung angeschlossen werden.
+	Von anderen Geräten wird der Router als WLAN Verbindugn angezeigt unter dem 
+	Default Namen $linksys$. Die Verbinung lässt sich einfach herstellen, da es
+	aktuell kein Passwort gibt, jedoch stellt der Router keine Internet Verbindung
+	zur Verfügung.
+
+	Änderung an der VM:
+	Network: Intel PRO/1000 MT Desktop (NAT)
 
 	\chapter{Hauptteil (1. Kapitel)}
 	Für die Gestaltung des Hauptteils sind in Abhängigkeit von der Aufgabenstellung
