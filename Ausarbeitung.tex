@@ -81,15 +81,44 @@
 	\section{Motivation}
 	In der Motivation wird dargestellt, wieso es notwendig ist, sich mit dem in der
 	Arbeit identifizierten und behandelten Problem zu beschäftigen.
+
+	Das Thema Router ist für die meisten Personen sehr relevant, da fast jeder ein 
+	solches Gerät zu Hause hat, es täglich nutzt und damit nicht nur unproblematische
+	Dinge macht, wie bsp. Bilder von einem PC zu einem Tablet zu senden sonder auch
+	persönliche oder gar geheime Daten über das Internet übermittelt. Die meisten
+	Personen denken hierbei erst einmal an persönliche Daten wie die Adresse oder 
+	die Bankdaten, aber auch geheime Dokumente, die während dem Home Office versendet
+	werden, werden über den Router übertragen. Durch eine unsichere Einrichtung des
+	Router können massive Schwachstellen entstehen, die Angreifer ausnutzen können.
+	%---Quelle: But is it exploitable
+	%Chapter 1, p.277 -> Covid Pandemi
+	%G. Chalhoub and A. Martin. "But is it exploitable? Exploring how Router Vendors Manage and Patch Security Vulnerabilities in Consumer-Grade Routers" in EuroUSEC '23: Proceedings of the 2023 European Symposium on Usable Security, 2023, pp. 277-295
+
 	\section{Problemstellung und -abgrenzung}
 	Die Problemstellung beginnt mit der Einordnung in ein thematisches Umfeld und
 	enthält sowohl die in der Arbeit angegangenen Problempunkte, als auch weitere,
 	nicht behandelte Problempunkte. Eine Negativabgrenzung verhindert, dass beim
 	Leser später nicht erfüllte Erwartungen geweckt werden.
+	Hier vielleicht rein, dass nicht auf das ISO/OSI Modell eingegangen wird, 
+	da es für die Arbeit als Wissen vorausgesetzt wird.
 	\section{Ziel der Arbeit}
 	Mit dem Ziel der Arbeit wird der angestrebte Lösungsansatz festgelegt. An 
 	diesem Ziel wird die Arbeit gemessen.Mit dem Ziel der Arbeit wird der 
-	angestrebte Lösungsansatz festgelegt. An diesem Ziel wird die Arbeit gemessen.
+	angestrebte Lösungsansatz festgelegt.
+
+	Ziel der Arbeit ist es dem Leser die Wichtigkeit der Umsetzung von sicheren
+	Einstellungen und der damit verbundenen Sicherheit des eigenen Netzwerks
+	zu Hause und der Kommunikation ins Internet darzulegen. Zudem soll die Arbeit
+	beweisen, dass bereits simple Änderungen der Einstellungen, die Sicherheit
+	massiv verbessern können. Hierzu werden schrittweise die Sicherheitseinstellungen
+	erhöht und jeweils ein Vorher- Nachher Vergleich gemacht, die darstellen
+	sollen welchen Einfluss die getätigten Einstellungen haben.
+	%=======================notes jf - need to be deleted later
+	%viell. noch hinzu: Zudem soll diese Arbeit das Verständis gegenüber dem
+	%Umgang mit öffentlichen WLAN Zugängen schärfen, um im Alltag sicher auch
+	%diese sicher zu nutzen
+	%=========================================================
+	
 	\section{Vorgehen}
 	Nachdem mit Problemstellung und Ziel gewissermaßen Anfangs- und Endpunkt der
 	Arbeit beschrieben sind, wird hier der zur Erreichung des Ziels eingeschlagene
@@ -134,13 +163,23 @@
 			\hline
 			Netzwerksegment & ... \\
 			\hline
-			lokales Netzwerk & ... \\
+			LAN & local area network - lokales Netzwerk \\
 			\hline
-			Internet & ... \\
+			WAN & wide area network - Internet \\
 			\hline
-			Pakete & Nachrichten die Informationen und Daten enthalten die von einer 
+			Schicht / Layer & Schicht im ISO/OSI Referenzmodell, welches die Übertragung
+			von Daten vom Kabel bis hin zur Darstellung auf dem Endgerät beschreibt. \\
+			\hline
+			Pakete & Pakete, die Informationen und Daten enthalten, die von einer 
 			Quelle, zum Beispiel einem Laptop an ein Ziel, beispielsweise ein Desktop PC
-			weitergeleitet werden. Über diese Pakete wird kommuniziert.\\
+			weitergeleitet werden. Über diese Pakete wird in Schicht 3 des ISO/OSI Modells
+			kommuniziert.\\
+			\hline
+			Frames & Rahmen, die die Inforamtionen und Daten enthalten, die übermittelt
+			werden sollen. Über diese Rahmen wird in Schicht 2 des ISO/OSI Modells
+			kommuniziert. Rahmen und Pakete unterscheiden sich nur durch die jeweilige
+			Schicht, beide enthalten die zur übertragenend Informationen. Lediglich
+			die Benennung ist unterschiedlich in der Schicht.\\
 			\hline
 			Protokolle & Richtlinien zu einem Vorgehen, dass kann die Art und Weiße sein
 			wie Pakete übermittelt werden oder auch welchen Weg ein Paket innerhalb eines
@@ -156,22 +195,104 @@
 	%
 	%Grundlagen von Routern: Definition und Funktion, Routerarten, Aufbau und
 	%Komponenten, Routing-Verfahren
+	%
+	%Gerät identifizieren → Netz strukturieren → lokal kommunizieren → zwischen
+	%Netzen kommunizieren → physische/verbindungstechnische Umsetzung
 	%=========================================================
 	Wie der Name erahnen lässt ist der Router innerhalb eines Netzwerks dafür
 	zuständig Nachrichten von einer angeschlossenen Quelle zum Ziel zu leiten.
-	Der Router kümmert sich darum, dass der optimalen Weg von der Quelle zum Ziel 
-	gefunden wird. Welcher Pfad gewählt wird hängt von den Konfigurationen ab,
+	Der Router kümmert sich darum, dass der optimale Weg von der Quelle zum Ziel 
+	gefunden wird. Welcher Pfad gewählt wird hängt von den Protokollen ab,
 	es kann der schnellste Weg genutzt werden oder auch eine definierte Route
-	über verschiedene Punkte.
-	%---Protokolle oder über was wird das festgelegt?	
+	über verschiedene Punkte. Es gibt zwei Arten des Routing, dynamisches und 
+	statisches Routing. Auf diese Arten und die Protokolle wird im Abschnitt
+	\ref{sec:Routing-Arten} weiter eingegangen.
+	%---wird über Protokolle festgelegt -> nochmal weiter darauf eingehen	
 	Wichtig zu Beachten ist der Unterschied zwischen Router und Switch. Beide
 	Geräte sind für die Weiterleitung der Pakete an das richtige Ziel zuständig.
-	Der Unterschied ist, dass ein Switch Pakete innerhalb eines Netzsegments oder
-	einem lokalen Netzwerk weiterleitet, wohin gegen ein Router Pakete über 
-	Netzwerkgrenzen, also auch in ein neues Netzsegment oder das Internet leiten
-	kann. Switch werden daher innerhalb von lokalen Netzwerken, sofern es keine
-	Segmentierung gibt oder Netzsegmenten genutzt und Router an den Grenzen der
-	Netzsegmente oder vom lokalen Netzwerk in das Internet. 
+	Die Switches der Schicht 2 (ISO/OSI Modell) können nur Frames innerhalb 
+	eines lokalen Netzwerks, das heißt der Adressbereich hat eine gewisse
+	Beschränkung weiterleiten. Diese können nicht über Netzwerkgrenzen, also
+	in eine lokales Netzwerk mit anderem Adressbereich, als dem Quellnetzwerk
+	kommunizieren. Switches der Schicht 3 können über Netzwerkgrenzen hinweg
+	Pakete versenden. Der Hauptunterschied zwischen Switches und Routern ist
+	daher, dass der Router nicht nur über Netzwerkgrenzen hinweg Pakete 
+	leiten kann sonder das er aus dem LAN auch in das WAN, besser bekannt als
+	das Internet Pakete versenden kann.
+	%---Quelle: C.Baun. Computernetze kompakt. Wiesbaden, D: Springer Vieweg, 2025, pp. 149-150
+	
+	\subsection{Netzwerksegmente und IPv4}
+	Die Segmentierung eines Netzwerk ist dann sinnvoll, wenn es
+	sich um eine große Infrastruktur, wie die eines Unternehmen handelt. Die 
+	Subnetze besitzen einen logischen Adressraum, der abhängig von der Anzahl an 
+	Geräten ist, die in diesem Netzwerk sein sollen. 
+	Um zu verstehen, wie eine Segmentierung funktioniert, muss zuerst der Aufbau
+	der Adresse verstanden werden. Eine Adresse ist in diesem Fall die IP-Adresse,
+	wobei IP für Internet Protocol steht. In dieser Ausarbeitung wird nur mit
+	IPv4 Adressen gearbeitet, weshalb nicht näher auf die IPv6 Adressen 
+	eingegangen wird. Eine IPv4 Adresse besteht aus 4 Teilen, die durch einen 
+	Punkt von einander getrennt sind. Jeder Teil beinhaltet eine Zahl zwischen 0
+	und 255, daraus ergibt sich eine Größe von 32 Bit, was wiederum 4Byte 
+	entspricht. Um in einem Subnetz kommunizieren zu können haben alle
+	sich darin befindenden Geräte in ihrer IP-Adresse den gleichen Netzwerkanteil.
+	Das exakte Geräte innerhalb des Subnetz ist im Hostanteil der IP-Adresse zu
+	finden. Diese muss zwingend einzigartig im jeweiligen Subnetz sein, da es
+	sonst zu Konflikten kommt. Hätten zwei Geräte die gleiche IP-Adresse kann der
+	Router nicht entscheiden an welches, das entsprechende Paket weiter gleitet
+	werden muss. Der Hostanteil nimmt entsprechend der Größe des Subnetzes mehr
+	Bits der IP-Adresse ein. Die Größe des Anteils kategorisiert das Netz in die
+	Klassen A bis C siehe folgende Abbildung \ref{fig:nwclasses}.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/c-nw_nwklassen_s93.png}
+		\caption{Host- und Netzwerkanteil je Netzwerkklasse \protect \hyperlink{[2]}{[2]}}
+		\label{fig:nwclasses}
+	\end{figure}
+	Ob ein sich Quelle und Ziel im gleichen Subnetz befinden, wird vom Sender, also
+	der Quelle bestimmt. Mit Hilfe der Subnetzmaske wird die IP-Adresse des Senders
+	logisch UND verknüpt. Das gleiche wird mit der Ziel-IP-Adresse gemacht. Kommt bei
+	beiden Rechnungen das gleiche Ergebnis heraus, sidn beide Teilnehmer im gleichen
+	Subnetz und können somit über Layer 2, also mit Hilfe vom MAC-Adressen, die Frames
+	austauschen. Wird ein Paket innerhalb es gleichen LAN versendet, wird mit der MAC-Adresse
+	gearbeitet. Der Sender hat eine sogenannte ARP Tabelle (Adress Resolution Protocol)
+	in der die Geräte, an die der Sender bereits ein Frame gesendet hat enthalten
+	sind. Es sind die IP-Adressen und die dazugehörige MAC-Adresse enthalten. Diese
+	Informationen werden dann in der Tabelle gespeichert, nach einer konfigurierte
+	Zeit gelöscht und müssen dann bei erneutem Senden an den Empfänger wieder 
+	angefragt und gespeichert werden. Um die MAC-Adresse des Empfängers zu ermitteln
+	sendet der Sender eine ARP-Anfrage in das lokale Netz. Diese Anfrage wird an alle 
+	Geräte im Netz gesendet, der sogenannte Broadcast. Das Gerät welches die
+	gesuchte IP-Adresse hat antwortet mit seiner MAC-Adresse. Der Sender erhält die
+	Adresse und sendet dann den Frame an die MAC-Adresse innerhalb des lokalen
+	Netzwerks.
+	Befinden sich die Geräte nicht im gleichen Subnetzt, ist das Ergebnis der 
+	Berechnung mit der Subnetzmaskeverschieden 
+	und es muss über Layer 3, mit Hilfe der IP-Adressen und dem Router das Paket 
+	versendet werden. Dafür wird das Paket an die IP-Adresse des Routers gesende,
+	auch bekannt als Gateway. Die Routing-Tabelle wird für die Kommunikation genutzt, 
+	um heraus zufinden über welchen Port das Paket weitergeleitet werden muss. 
+	Da der Router ein Layer 3 Gerät ist, muss er die IP-Adresse des Zielgerätes
+	kennen, um das Paket in das richtige Netzwerk zu leiten. Die Tabelle beinhaltet
+	alle Netzwerke, die über einen Port am Router angeschlossen sind. Wie bereits 
+	erwähnt lässt sich das Subnetz über IP und Subnetzmaske berechnen, dadurch
+	weiß der Router in welches Subnetz das Paket gesendet werden muss. Er leitet
+	es in das entsprechende Subnetz, wo es dann wieder mit der MAC-Adresse an das 
+	Zielgerät geleitet wird.
+	In der folgenden Abbildung \ref{fig:subnetmask} sind zwei Rechnungen mit 
+	Subnetzmaske zu sehen, die einmal zeigen, dass sich Quelle und Ziel im 
+	gleichen Subnetz befinden und das andere Beispiel zeigt, dass sie in 
+	unterschiedlichen Subnetzen sind.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/subnetmask_calculation_pic.pdf}
+		\caption{Subnetzberechnung}
+		\label{fig:subnetmask}
+	\end{figure}
+	%---Quelle: 
+	%Computer-Netzwerke, H.Zisler, 2022; Coputernetze kompakt, C.Baun, 2025 Kapitel 7.6
+
+	\subsection{Kommunikation von LAN in WAN}
+	%---Modem und wie komm ich ins Internet
 	Ein Router hat heutzutage ein eingebautes Modem, das ihm ermöglicht Pakete,
 	ins Internet zu senden als auch zu empfangen. Ohne ein solches Modem ist
 	die Kommunikation ins Internet nicht möglich. Das Modem wandelt die digitalen
@@ -183,18 +304,81 @@
 	Es enthält sowohl die Quell-, als auch die Zieladresse anhand derer der Router
 	entscheiden kann, ob das Ziel eins der Geräte ist, die mit ihm verbunden sind
 	oder ob das Paket weitergereicht werden muss an den nächsten Switch oder 
-	Router.
+	Router. 
 	%---
 	%---Bild grober Paketaufbau + Abbildungsnummer unten in Text
 	%---
 	Wie in der Abbildung XY zu sehen besteht ein Paket aus einem Header, den
 	Nutzdaten und einer Prüfsumme. Die Ziel-Adresse steht gefolgt von der Quell-
-	Adresse im Header des Pakets. Die Adressen sind sogenannte IP-Adressen. 
-	IP steht für Internet Protocol und kann folgendermaßen aussehen $198.168.1.42$ 
-	
-	
-	\subsection{Router Arten}
-	Arten von Routern, jeweils mit Vor-/Nachteilen und Einsatzgebiet
+	Adresse im Header des Pakets. Die Adressen sind die oben beschriebenen IP-
+	Adressen. 
+	\subsection{Router Aufbau und Verbindungsarten}
+	Die Beschreibung des Aufbau eines Routers wird in dieser Ausarbeitung auf
+	die Komponenten beschränkt, die die beiden Router haben, die für die Tests
+	verwendet werden. Es handelt sich dabei um folgende Geräte, die für den
+	Gebrauch im eigenen Zuhause geeignet sind:
+	\begin{description}
+		\item[WRT120] Wireless-N Home Router, Hersteller: Linksys by Cisco
+		\item[DIR-600] Wireless N 150 Home Router, Hersteller: D-Link
+	\end{description}
+	Es wird vorallem auf die Anschlüsse eingegangen und die Möglichkeiten 
+	die Verbindung zum Internet herzustellen. Etwaige interne Hardwarekomponenten
+	werden nur beschrieben, wenn diese eine mögliche Schwachstelle darstellen,
+	die von außerhalb von einem Angreifer ausgenutzt werden kann.
+	An der Rückseite der Router befinden sich die Ports, Resetbutton zum 
+	zurücksetzen auf Werkseinstellungen, Internet-Port als auch der Anschluss
+	für die Stromversorgung.
+	Beide Router werden über den Internet Port mit einem Ethernet Kabel an das 
+	eigene Netz entweder per Kabel- oder DSL-Internetverbindung angeschlossen.
+	Über die 4 weiteren Ports werden Geräte im lokalen Netz direkt mit dem 
+	Router verbunden. Weitere Geräte können per WLAN mit den Routern verbunden
+	werden. Dabei stellt die Verbindung über WLAN die größte Schwachstelle dar,
+	da man für diesen Zugang nicht physisch direkt am Router sein muss. Daher
+	ist es sehr wichtig die Standardpasswwörter als auch den Namen des Router
+	bei der Ersteinrichtung zu ändern. Damit kann verhindert werden, dass ein 
+	Angreifer erstens herausfindet welchen Router man nutzt, da dies meist der
+	Default Name des Router ist und daraus dann per Websuche das Datenblatt
+	findet indem dann die Default Anmeldedaten zu finden sind. In der folgenden
+	Abbildung \ref{fig:wrt120n-ports} ist die Rückseite des WSR120N von Linksys
+	zu sehen.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/wrt120n_ports-benutzerhandbuch_s1.png}
+		\caption{WRT120N Anschlüsse hinten}
+		\label{fig:wrt120n-ports}
+	\end{figure}
+	Wurde das WLAN mit Hilfe der Anleitung eingerichtet sind die Router nicht
+	nur sichtbar als WLAN Provider sondern können nach erfolgreicher Verbindung
+	auch eine stabile Internet Verbindung bieten.
+	%---Quelle: Datenblätter der Router
+	%User Guide in differente languages, downloaded: 16.05.2026
+	%https://downloads.linksys.com/downloads/userguide/1224697214905/WRT120N-EMEA_combo_UG.pdf
+	%Datasheet, downloaded: 18.05.2026
+	%https://www.dlink.com/al/sq/-/media/consumer_products/dir/dir-600/datasheet/dir_600_c1_datasheet_03_ww.pdf
+
+	%=======================notes jf - need to be deleted later
+	% ich wusste nicht worein damit, vielleicht nachher in Tipps
+	% oder an was man selbst denken soll für eine sichere
+	% Nutzung von Routern daheim
+	%=========================================================
+	Die Nutzung eines Routers daheim ist für die meisten Personen unabdingbar
+	und gerades deshalb sollten die Anweisungen der Routerhersteller umgesetzt
+	werden. Dies stellt sich auf als nicht immer umsetzbar raus, da viele User
+	nicht die technischen Kenntnisse haben diese Anweisungen umzusetzen $To-Do:Quelle hier$.
+	Um Angriffe wie in Abschnitt $ToDo:so und so$ zu vermeiden können als erster
+	Schritt die Punkte 1 bis 4 aus der Handbuch von WRT120N umgesetzt werden.
+	Die folgenden Tests zeigen, dass das einfache Eindringen in System mit
+	diesen Handgriffen bereits verhindert wurde $ToDo: hier Tests für ins WLAN
+	kommen mit Standardpw und so weiter$
+	%---Quelle: But is it exploitable
+	%Chapter 4.4, pp. 284-285
+	%G. Chalhoub and A. Martin. "But is it exploitable? Exploring how Router Vendors Manage and Patch Security Vulnerabilities in Consumer-Grade Routers" in EuroUSEC '23: Proceedings of the 2023 European Symposium on Usable Security, 2023, pp. 277-295
+	%User Guide in differente languages, downloaded: 16.05.2026
+	%https://downloads.linksys.com/downloads/userguide/1224697214905/WRT120N-EMEA_combo_UG.pdf
+
+	\subsection{Routing Arten}
+	\label{sec:Routing-Arten}
+	Arten von Routing, jeweils mit Vor-/Nachteilen und Einsatzgebiet
 	Unterschiede von Routern in Heimnetzen und Unternehmen
 	\subsection{Definition AB}
 
@@ -350,6 +534,10 @@
 	Angriffe auf die Firmware stellen ein besonders Risiko dar, da sid unterhlab von firewall und Betriebssystem liegt 
 	und für den benutzt oftmals unichtbar zu erkenen ist.
 	%---Quelle(https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-193.pdf)---%
+
+	\section{Grundlagengebiet B}
+	\subsection{Definition BA}
+	\subsection{Definition BB}
 	\newpage
 
 	\chapter{Tests D-Link DIR-600}
@@ -425,6 +613,40 @@
 	Passwort: (blank)
 	Einloggen hat geklappt, Zugriff auf die Adminseite.
 	
+	%=======================notes jf - need to be deleted later
+	%testen was passiert wenn Router auf Werkseinstellungen ist
+	% -> kommt man dann einfach rein? ist wahrscheinlich sehr häufig der Fall
+	% Bezugnahme Frauenhofer Router Test und das Paper "But is it exploitable?"
+	% da dort auch beschrieben wird wie das "normale" user handhaben
+	%=========================================================
+	Was ich versucht habe bei Linksys WRT120N
+	- Reset Button lange gedrückt
+		einmal auch mit Anschluss ans LAN, aber LAN flackert nicht, d.h. keine
+		Datenübertragung (LAN als auch Switch funktioniert, da es an Laptop
+		läuft)
+		LEDs flackern auch nicht beim Reset -> funktioniert es überhaupt?
+	- Stromlos schalten versucht
+		mit LAN Kabel eingesteck, leuchtet kurz auch das Internet zeichen 
+		beim Boot aber geht gleich wieder aus
+	- via Linux, als auch Windows auf die Konifguration zu kommen
+	- beides mal reboot ausfgeführt -> keine Veränderung
+	- firmware Update über Kali 
+		.iso Setup Datei von Archive.org -> "file to big"
+		.bin 1.0.05 Firmware -> in Progress, aber nach Beendung keine
+		Änderung
+	- firmware Update über Windows
+		.iso Setup Datei von Archive.org -> "file to big"
+		.bin 1.0.05 Firmware -> in Progress, aber nach Beendung keine
+		Änderung
+	- pingen:
+		pingen funktioniert nur wenn der Router direkt an den Laptop
+		angeschlossen ist
+		pingen wenn beide im gleichen Netzwerk sind, funktioniert nicht
+		egal ob über Internet oder normaler Port am Router
+
+	am nächsten Tag nochmal versucht und es hat funktioniert, aber nur im 
+	Edge oder Chromium Browser, nicht in Firefox mit Default Anmelde Daten
+
 	\chapter{Hauptteil (1. Kapitel)}
 	Für die Gestaltung des Hauptteils sind in Abhängigkeit von der Aufgabenstellung
 	unterschiedliche Ausformungen möglich. In den Richtlinien zu Studien- und
@@ -462,6 +684,8 @@
 	
 	\chapter{Literaturverzeichnis}
 	\hypertarget{[1]}{[1]} \href{http://digbib.ubka.uni-karlsruhe.de/volltexte/91999}{R. Schmidt, “Aspektorientierte Komponentensysteme zur Unterstützung weitreichender Geschäftsprozesse,” 2000, S. 10; http://digbib.ubka.uni-karlsruhe.de/volltexte/91999.}
+	\hypertarget{[2]}{[2]} \href{https://ebookcentral.proquest.com/lib/hochschule-aalen/reader.action?docID=6383015&c=UERG&ppg=184}
+	{H. Zisler, “Computer-Netzwerke : Grundlagen, Funktionsweise, Anwendung” 2022, S. 93; https://ebookcentral.proquest.com/lib/hochschule-aalen/reader.action?docID=6383015&c=UERG&ppg=184.}
 	\section*{Anlage 1}
 	\addcontentsline{toc}{section}{Anlage 1}
 	\section*{Anlage 2}
