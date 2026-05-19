@@ -261,7 +261,9 @@
 		\caption{Subnetzberechnung}
 		\label{fig:subnetmask}
 	\end{figure}
-	->Quelle: Computer-Netzwerke, H.Zisler, 2022; Coputernetze kompakt, C.Baun, 2025 Kapitel 7.6
+	%---Quelle: 
+	%Computer-Netzwerke, H.Zisler, 2022; Coputernetze kompakt, C.Baun, 2025 Kapitel 7.6
+	
 	\subsection{Kommunikation von LAN in WAN}
 	%---Modem und wie komm ich ins Internet
 	Ein Router hat heutzutage ein eingebautes Modem, das ihm ermöglicht Pakete,
@@ -296,8 +298,44 @@
 	die Verbindung zum Internet herzustellen. Etwaige interne Hardwarekomponenten
 	werden nur beschrieben, wenn diese eine mögliche Schwachstelle darstellen,
 	die von außerhalb von einem Angreifer ausgenutzt werden kann.
+	An der Rückseite der Router befinden sich die Ports, Resetbutton zum 
+	zurücksetzen auf Werkseinstellungen, Internet-Port als auch der Anschluss
+	für die Stromversorgung.
+	Beide Router werden über den Internet Port mit einem Ethernet Kabel an das 
+	eigene Netz entweder per Kabel- oder DSL-Internetverbindung angeschlossen.
+	Über die 4 weiteren Ports werden Geräte im lokalen Netz direkt mit dem 
+	Router verbunden. Weitere Geräte können per WLAN mit den Routern verbunden
+	werden. Dabei stellt die Verbindung über WLAN die größte Schwachstelle dar,
+	da man für diesen Zugang nicht physisch direkt am Router sein muss. Daher
+	ist es sehr wichtig die Standardpasswwörter als auch den Namen des Router
+	bei der Ersteinrichtung zu ändern. Damit kann verhindert werden, dass ein 
+	Angreifer erstens herausfindet welchen Router man nutzt, da dies meist der
+	Default Name des Router ist und daraus dann per Websuche das Datenblatt
+	findet indem dann die Default Anmeldedaten zu finden sind. In der folgenden
+	Abbildung \ref{fig:wrt120n-ports} ist die Rückseite des WSR120N von Linksys
+	zu sehen.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/wrt120n_ports-benutzerhandbuch_s1.png}
+		\caption{WRT120N Anschlüsse hinten}
+		\label{fig:wrt120n-ports}
+	\end{figure}
+	Wurde das WLAN mit Hilfe der Anleitung eingerichtet sind die Router nicht
+	nur sichtbar als WLAN Provider sondern können nach erfolgreicher Verbindung
+	auch eine stabile Internet Verbindung bieten.
+	%---Quelle: Datenblätter der Router
+	%User Guide in differente languages, downloaded: 16.05.2026
+	%https://downloads.linksys.com/downloads/userguide/1224697214905/WRT120N-EMEA_combo_UG.pdf
+	%Datasheet, downloaded: 18.05.2026
+	%https://www.dlink.com/al/sq/-/media/consumer_products/dir/dir-600/datasheet/dir_600_c1_datasheet_03_ww.pdf
 
-	
+	%=======================notes jf - need to be deleted later
+	% ich wusste nicht worein damit, vielleicht nachher in Tipps
+	% oder an was man selbst denken soll für eine sichere
+	% Nutzung von Routern daheim
+	%=========================================================
+
+
 	\subsection{Routing Arten}
 	\label{sec:Routing-Arten}
 	Arten von Routing, jeweils mit Vor-/Nachteilen und Einsatzgebiet
@@ -335,7 +373,8 @@
 		egal ob über Internet oder normaler Port am Router
 
 	am nächsten Tag nochmal versucht und es hat funktioniert, aber nur im 
-	Edge oder Chromium Browser, nicht in Firefox
+	Edge oder Chromium Browser, nicht in Firefox mit Default Anmelde Daten
+
 	\section{Grundlagengebiet B}
 	\subsection{Definition BA}
 	\subsection{Definition BB}
