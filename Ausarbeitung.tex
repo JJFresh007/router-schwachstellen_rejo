@@ -648,6 +648,7 @@
 	am nächsten Tag nochmal versucht und es hat funktioniert, aber nur im 
 	Edge oder Chromium Browser, nicht in Firefox mit Default Anmelde Daten
 
+	\subsection{Erreichbarkeit des Routers testen}
 	Ziel: Zugang zum WLAN unter immer besseren Einstellungen des Routers
 	Umgebung: 260413Kali-Basis2026.1, Verbunden über Ethernet
 	Router IP: 192.168.1.1 
@@ -664,7 +665,7 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{img/mozilla_unabletoreach_browserbased_page.png}
-		\caption{WRT120N Anschlüsse hinten}
+		\caption{Fehler beim Laden der Seite - Mozilla}
 		\label{fig:moz_error}
 	\end{figure}
 	Wichtig zu Beachten ist ebenfalls, dass die IP Adresse nur erreichbar ist 
@@ -679,6 +680,34 @@
 
 	Änderung an der VM:
 	Network: Intel PRO/1000 MT Desktop (NAT)
+	\subsection{Grundeinstellungen und deren Auswirkungen}
+	Getätigte Einstellungen mit Hilfe des Userguides $hier muss die Quelle hin$
+	\begin{itemize}
+		\item{Neues Routerpasswort angelegt $wrtcentoventin$}
+		\item{Internetverbindungstyp: DHCP}
+		\item{Lokale IP: 192.168.1.1}
+		\item{DHCP-Server: Aktiviert}
+	\end{itemize}
+
+
+	%User Guide in differente languages, downloaded: 16.05.2026
+	%https://downloads.linksys.com/downloads/userguide/1224697214905/WRT120N-EMEA_combo_UG.pdf
+
+	\subsection{Schwachstelle CVE-2014-125122}
+	Der Router hat die Firmwareversion 1.0.07, siehe Abbildung $so und so$. 
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/linksys_page-firmware_v1-0-07.png}
+		\caption{Firmware Version - WRT120N}
+		\label{fig:firmware_version_wrt120n}
+	\end{figure}
+	In der 
+	Datenbank CVE.org ist eine Schwachstelle zu diesem Typ von Router unter der
+	Firmware angegeben. 
+	EOL, da dass von Frauenhofer und dem But is it exploitable aufnehmen als Quellen
+	Daran zeigen das beide Router EOL sind -> Qeuelle vielleicht auch ein Bild von
+	der Website
+
 
 	\chapter{Hauptteil (1. Kapitel)}
 	Für die Gestaltung des Hauptteils sind in Abhängigkeit von der Aufgabenstellung
