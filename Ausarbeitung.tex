@@ -381,6 +381,238 @@
 	Arten von Routing, jeweils mit Vor-/Nachteilen und Einsatzgebiet
 	Unterschiede von Routern in Heimnetzen und Unternehmen
 	\subsection{Definition AB}
+
+
+	\section{Sicherheitsmechanismen im Router}
+	\subsection{Adressverbergung(NAT - RFC 30022)}
+	%--------------------------------------------------------------------------------%
+	%-----------Nochmal überarbeiten----formulierung und rechtschreibung anpassen----%
+	Networke Address Translation(NAT) ist ein Mechanismus, bei dem der Router interne 
+	IP-Adressen eines lokalen Netztwerks (LAN) in eien öffentliche IP-Adresse übersetzt.
+	Es gibt welweit ca 4 Millarden public IPv4 Adressen, sie sind also begrenzt
+	Private Adressen werden nur innerhalb eines lokalen Netztwerks genutzt von den Geräten.
+	Haushalte oder Frimen haben alle eine private IP Adresse mit der sie mit dem Router verbunden sind.
+	Der Router wiederum hat eine public IP Adresse, und hat somit zugriff auf das Internet.
+	Über den Router können so alle Geräte auf das Internet zugreifen.
+	NAT übersetzet also ein Satzt von IP AdrAessen zu einem anderen Satz an IP-Adressen.
+	Es übersetzet also von Privat zu Public aber auch andersherum
+
+	NAT selbst ist nicht offiziel ein Sicherheitsmechanismen, kann aber also solcher intepretiert werden
+	Den Aufgrund der übersetetzung mehrerer lokaler IP-Adressen zu eine publizierten kann von
+	außen nicht festgestellt werden, wie das betrachetet Netztwerk intern aufgebaut ist
+	oder wie viele sich in ihm befinden. Zudem ist keine direkte verbindung von außerhalb mit
+	den Geräten möglich solange dies nicht explizit erlaubt wird.
+
+	NAT bietet eine impllizite Schutzwirkung, aber keine echte Sicherheit im klasischen Sinne.
+	Nicht angeforderte verbindungen werden blockiert, die Angriffsfläche wird reduziert und Geräte können
+	nicht direkt adressiert werden. 
+	%Quelle(https://www.rfc-editor.org/rfc/rfc3022)%
+
+	\subsection{Paketfilterung und Stateful Firewalls}
+	Eine Firewall schützt ein netztwerk vor bedrohungen, in dem sie den Datenverkehr kontrolliert.
+	- zustandbehaftete(Stateful) und zustandlose(Statless) FWs
+	- ersteres eher die Norm, wei besser
+	Statless:
+	- älter
+	- verlässt dich auf Zugriffskontrolliste beim Filtern
+	- entscheidung auf grundlage von Paket infos
+	- speichern keine infos über status oder kontext der verbindung
+	- überprüft Quell- und Ziel-IP-Adresse, Portnummer und den verkehrstyp im Header
+	- Filterung nur so gut wie vom nutzer definierte -> müssen gescheit verwaltet werden
+	- weniger ressourcen und schneller -> gut bei hohem Datenverkehr
+	- wird heute vorallem dazu verwendet die last der staful firewall zu verringern
+	- bekannte IP-Adressen blocken, geographische Regionen
+	- ist nur so gut wie der Netzwerkadmin (Benutzerfehler)
+	Stateles Firewalls gehören zu den älteren Modellen und werden heute nur noch unter bestimmten
+	vorraussetzungen verwendet. Sie verwenden eine Zugriffskontrolliste beim filtern und treffen 
+	entscheidungen auf grundlage von Paket Informationen. Allerdings speichert eine Stateful Firewall
+	nicht den Status oder den Kontet der Verbindung Sie überprüft die Quell und Ziel-IP_Adresse
+	die Portnummer und den Verkehrstyp im Header. Die Filterung des Pakete funktioniert nur so gut,
+	wie sie konfiguriert wurde, und hängt somit fast vollständig von dem Netzwerkadministrator selbst ab.
+	Vorteilhaft ist ihr geringer ressourcen Verbaruch und ihre Fähigkeit Daten schnell zu verarbeit,
+	was vorallem bei hohem Datenverkehr wichtig ist. Heutzutage wird sie vorallem verwendet um 
+	die Last der Stateful Firewall zu verringern.
+
+	Stateful:
+	- überwachen Datenpackete und den Kontext ders Datenverkehrs
+	- verstehen den kontext von NW verbindungen
+	- dynamische Paketflterung
+	- Quell und Ziel IP Erfassung
+	- können Bewegung von Daten im ganzen Netztwerk überwachen
+	- durch Zustandstabelle -> entscheidung daruf basierend in der Zukunft
+	- sind anfällig für DDoS und Man in the Middle, wenn Code nicht auf neustem Stand
+	- auflistung der Eigenschaften
+
+	\subsection{WLAN-Verschlüsselung}
+	Bei der WLAN-verschlüsselung wird die Funkkommunikation zwischen dem Endgerät und dem 
+	Access-Point abgesichert.
+	- basiert auf IEEE-blabla und IEE blavla (für WPA3)
+	- jedes Gerät in Reichweite kann den Datenverkehr mithören
+	- durch verschlüsselung wird das verhindert
+	Für WPA2 muss eine Verschlüsselung durch AES-CCMP (Counter Mode with CBC_MAC Protokoll) gegeben sein.
+	CCMP ist ein Sicherheitsstandart gemäß IEEE 802.1. Hierbei werden verschiedene kryptographische
+	Algorithmen verwendet, CCMP ist der Mechnismus zur Integritätssicherung, verschlüsselung und Authentifizierung 
+	Das Verfahren Nutzt einen 128 Bit langen Schlüssel in kombination mit einem 48 Bit langem Initialisierungsvektor,
+	Das Verfahren basiert auf Advanced Encryption Standart (AES).
+	- AES sorgt für starke symmetrische Verschlüsselung
+	- CCMP = Verschlüsselung und Integritätsprüfung
+	- Daten sind dann gegen Lesen und Manipulation geschützt
+	- Sitzungsschlüssel aushandeln (Genau beschreibung hier noch machen!!!!)
+	- Schwachstellen: schwache Passwörter, KRACK-Angriffe (wtf?), Schlüssel wiederverwenden
+
+	WPA3:
+	-Weiterentwicklung von WPA2
+	- kein Sitzungsschlüssel sondern WPA3 SAE(Dragonfly Handshake) -> (noch beschreiben!!!)
+	- Foward Security = selbst bei passwort entschlüsselung können daten nicht etschlüsselt werden
+	- OWE (Opportunistic Wireless Encryption)
+	-  -> offene WLANs sind auch verschlüsselt auch ohne PW 
+	%---Quelle()---%
+
+	\subsection{Zugriffskontrolle}
+	Der Router selbst ist geschütz vor fremden Zugriff, den wer Zugriff auf den Router hat, der
+	kann alle sicherheitstechnisch kritischen Bereiche des Routers manipulieren.
+	Um den router zu konfigurieren muss dieser durch Authentifizierung geschütz werden.
+	Hierzu werden zumindest ein Benutztername und ein Passwort genutzt, teilweise auch 
+	eine Mehrfacktorauthentifizierung und rollen basierte Accounts, also (Admin vs. eingeschränkte Nutzter)
+	Wichtig dabei ist starke Passwörter zu nutzten, sowie keine Default Credentials.
+	Der Router selbst begrenzt oft, von wo aus der administrative Zugriff erlaubt ist.
+	Oftmals nur aus dem Lokal Area Networke (LAN). Der Remote Administrator sollte entweder deaktiviert
+	oder stark eingeschränkt werden. Dies reduziert die Angriffsfläche erheblich, das das Webinterface
+	nicht öffentlich Erreichbar ist.
+	Desweiteren sollten unsichere protokolle wie HTTP und Telnet deaktiviert werden.
+	Dadurch werden Zugangsdaten und Konfigurationen nicht im Klartext übertragen.
+
+	Bei der Zugriffskontrolle im netzwerkverkehr wird konztrolliert welcher Traffic erlaubt oder blockiert wird.
+	Die zentrale instanz ist die Stateful firewall. Sie erlaubt nur etablierte oder explizit erlaubte
+	Verbindungen und blockiert unerwünschte eingehende Packete. Außerdem kann sie eigene Regeln definieren.
+
+	Die Access Controle Lists (ACLs) wird vorallem in Modernen und professionellen Routern genutzt.
+	Mit ihr kann granulat definiert werden welche IP-Adressen kommunizieren dürfen, welche protokolle erlaubt sind
+	und welche Ports genutzt werden dürfen.
+
+	Eine weitere Zugriffskontrolle bietet die Netztwerksegmentierung. moderne Router bieten das anlegen eines
+	Gastnetzwerks und VLANs. Auch ein VPN Zugriff kann hilfreich sein. Router können als VPN-Endpunkt fungieren,
+	damit ist der Zugriff vo\begin{itemize}
+		\item{Hersteller erzeugt Firmware}
+		\item{Firmware wird kryptographisch signiert (Private Key)}
+		\item{Router prüft beim Update die Signatur (Publlic Key im Gerät)}
+	\end{itemize}n außen nur über einen authentifizierten, verschlüsselten Tunnel möglich.
+
+	Gastnetzwerksrundsätzlich ist die Zugriffskontrolle selbst oftmals weniger das Problem, sondern ihre Fehlkonfiguration.
+	Wenn beispielsweise Standartpasswörter nicht geändert werden, der Remote-Admin ofenn ist, unötige Ports
+	freigegeben werden oder unsichere Protokolle aktiviert sind, führt dies dazu das theoretisch vorhandene
+	Mechanismen wirkungslos sind.
+	%---Quelle(https://nvlpubs.nist.gov/nistpubs/Legac019-16920: y/SP/nistspecialpublication800-41r1.pdf)---%
+	%---Quelle(https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-44ver2.pdf)---%
+	%---Quelle(https://www.cisco.com/c/en/us/support/docs/ip/access-lists/13608-21.html?utm_source=chatgpt.chttps://www.cisco.com/c/en/us/support/docs/ip/access-lists/13608-21.html?)---%
+	\subsection{Firmware Integrität}
+	Bei der Firmware Integrität beschreibt die Eigenschaft eines Routers, sicherzustellen, dass die auf dem
+	Gerät laufende Firmware unverändert, authentisch und vertrauenswürdig ist. Dies ist ein zentraler
+	Sicherheitsmechanismus, da die Firmware das gesamte Gerät kontrolliert.
+	Die Firmware ist das eingebette Betriebssystem des Routers. Sollte ein Angreifer kontrolle über diese 
+	Ebene bekommen hat er vollständige kontrolle über den netzwerkverkehr, die Möglichkeit zur dauerhaften Persistenz
+	und kann alle höheren Sicherheitsmechanismen wie zb die Firewall umgehen. Der Router prüft daher beim start
+	und bei Updates, ob die Firmware echt und unverändert ist.
+	Technisch funktioniert das über Digitale Signatur. Der Hersteller des Routers signiert jedes Firware-Update.
+	Ablauf:
+	\begin{itemize}
+		\item{Hersteller erzeugt Firmware}
+		\item{Firmware wird kryptographisch signiert (Private Key)}
+		\item{Router prüft beim Update die Signatur (Publlic Key im Gerät)}
+	\end{itemize}
+	Falls das Update ungültig ist wird es abgelehnt.
+	Ein weiterer Sicherheitsmechanismus ist der Secure Boot der den Router während des Startvorgangs schützt.
+	Beim Booten wird zuerst ein Bootlader geladen. Dieser prüft dann die Signatur der Firmware und startet sie nur dann,
+	wenn die prüfung positiv ausfählt. Andersnfalls lässt sich das Gerät nicht starten oder geht in den
+	Recovery-Modus. Dies stellt sicher, das keine dauerhaft kompromittierte Firmware geladen wird.
+	Der Trusted Secure Boot bietet eine Erweiterung des Secure Boot. Jede Stufe des Boot Prozess prüft die nächste,
+	also die Hardare den Bootloade, der Bootloader das Kernel und das kernel die Systemdienste.
+	Ziel dabei ist es eine durchgängige kryptographische Vertrauenskette zu bilden.
+	Zudem verfügt der Rooter über einen Rollback Schutz, welcher verhindet da die Firmware auf eine ältere,
+	verwundbare version zurückgesetzt werden kann. Ohne diesen Schutz hätten Angreifer die Möglichkeit alte Firmware
+	mit bekannten Schwachstellen zu installieren.
+	Angriffe auf die Firmware stellen ein besonders Risiko dar, da sid unterhlab von firewall und Betriebssystem liegt 
+	und für den benutzt oftmals unichtbar zu erkenen ist.
+	%---Quelle(https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-193.pdf)---%
+
+	\section{Grundlagengebiet B}
+	\subsection{Definition BA}
+	\subsection{Definition BB}
+	\newpage
+
+	\chapter{Tests D-Link DIR-600}
+	%-------------TEST die alle NICHT funktioniert haben---------------------%
+	D-Link DIR-600 Router
+	Ziel: Zugang zum Router um Schwachstellen zu testen
+	Umgebung: BS Kali Linux, Verbunden über Ethernet
+	Router IP: 192.168.0.1 (bestätigt durch ping und ip route)
+	Grundtest:
+	\begin{figure}[h]
+		\hypertarget{tabelle1}{}
+		\begin{tabularx}{\columnwidth}{|X|X|X|}
+			\hline
+			Pingen des Routers & ping 192.168.0.1 & Router wurde erreicht \\
+			\hline
+			Zugriff auf die Admin Seite & Firefox (http://192.168.0.1) & Login Seite wurde geladen, aber Credentials schlugen fehl \\
+			\hline
+		\end{tabularx}
+		\caption{Testtabelle}
+	\end{figure}
+
+	Es wurden folgende User und Passwörter getestet (alles schlug Fehl):
+	admin:(blank) -> Standart passwort das zu beginn gesetzt ist
+	admin:admin
+	Alphanetworks:Alphanetworks (known backdoor)
+	dlink:dlink
+	user:user
+	support:support
+	root:admin
+
+	Folgendes wurde noch nicht versucht:
+	\begin{itemize}
+		\item{Soft reset -> würde des factory default wiederherstellen}
+		\item{Hard reset -> würde alle konfigurationen zurücksetzten}
+		\item{Firmware reflash -> FTP (tftp 192.168.0.1, put firmware.bin) -> brauche offiziele Firmware, meine Quelle nicht vertrauenswürdig}
+	\end{itemize}
+
+	Exploit Testing: CVE-2019-16920: UPnP Remote Code Execution
+	Basierend auf folgenden Quellen:
+	https://nvd.nist.gov/vuln/detail/CVE-2019-16920
+	https://www.cve.org/CVERecord?id=CVE-2019-16920
+	\begin{figure}[h]
+		\hypertarget{tabelle1}{}
+		\begin{tabularx}{\columnwidth}{|X|X|X|}
+			\hline
+			Metasploit & use exploit/linux/http/dlink_upnp_msearch & Error: "The supplied module name is ambiguous." Fixed by using the full module path \\ 
+			\hline
+			Manual curl & SOAP request to /upnp/control/basicevent1 & Could trigger command injection (e.g., start a telnet server). \\
+			\hline
+			Python script & Custom UPnP exploit & Alternative zu Metasploit für CVE-2019-16920. \\
+			\hline
+		\end{tabularx}
+		\caption{Exploit Testing: CVE-2019-16920}
+	\end{figure}
+
+	-> Alle verusche schlugen fehl, kann aber auch an meine unwissendheit liegen
+
+	\begin{figure}[h]
+		\hypertarget{tabelle1}{}
+		\begin{tabularx}{\columnwidth}{|X|X|X|}
+			\hline
+			Metasploit & use exploit/multi/http/dlink_hnap_auth_bypass & Bypass Authentifizierung, stellt Session Cookie für admin zugang zur verfügung \\ 
+			\hline
+			Manual curl & HNAP SOAP request with Alphanetworks:Alphanetworks & Uses hardcoded credentials to bypass login. \\
+			\hline
+		\end{tabularx}
+		\caption{CVE-2017-17215: HNAP Auth Bypass}
+	\end{figure}
+
+	Router wurde reseted, durch langes drücken des Reset Knopfs.
+	Nutzer und Passwort wurden zurückgesetzt.
+	Nutzer: admin
+	Passwort: (blank)
+	Einloggen hat geklappt, Zugriff auf die Adminseite.
+	
 	%=======================notes jf - need to be deleted later
 	%testen was passiert wenn Router auf Werkseinstellungen ist
 	% -> kommt man dann einfach rein? ist wahrscheinlich sehr häufig der Fall
@@ -415,11 +647,6 @@
 	am nächsten Tag nochmal versucht und es hat funktioniert, aber nur im 
 	Edge oder Chromium Browser, nicht in Firefox mit Default Anmelde Daten
 
-	\section{Grundlagengebiet B}
-	\subsection{Definition BA}
-	\subsection{Definition BB}
-	\newpage
-	
 	\chapter{Hauptteil (1. Kapitel)}
 	Für die Gestaltung des Hauptteils sind in Abhängigkeit von der Aufgabenstellung
 	unterschiedliche Ausformungen möglich. In den Richtlinien zu Studien- und
