@@ -248,10 +248,10 @@
 		\caption{Host- und Netzwerkanteil je Netzwerkklasse \protect \hyperlink{[2]}{[2]}}
 		\label{fig:nwclasses}
 	\end{figure}
-	Ob ein sich Quelle und Ziel im gleichen Subnetz befinden, wird vom Sender, also
+	Ob sich Quelle und Ziel im gleichen Subnetz befinden, wird vom Sender, also
 	der Quelle bestimmt. Mit Hilfe der Subnetzmaske wird die IP-Adresse des Senders
 	logisch UND verknüpt. Das gleiche wird mit der Ziel-IP-Adresse gemacht. Kommt bei
-	beiden Rechnungen das gleiche Ergebnis heraus, sidn beide Teilnehmer im gleichen
+	beiden Rechnungen das gleiche Ergebnis heraus, sind die Teilnehmer im gleichen
 	Subnetz und können somit über Layer 2, also mit Hilfe vom MAC-Adressen, die Frames
 	austauschen. Wird ein Paket innerhalb es gleichen LAN versendet, wird mit der MAC-Adresse
 	gearbeitet. Der Sender hat eine sogenannte ARP Tabelle (Adress Resolution Protocol)
@@ -266,18 +266,21 @@
 	Adresse und sendet dann den Frame an die MAC-Adresse innerhalb des lokalen
 	Netzwerks.
 	Befinden sich die Geräte nicht im gleichen Subnetzt, ist das Ergebnis der 
-	Berechnung mit der Subnetzmaskeverschieden 
+	Berechnung mit der Subnetzmaske verschieden 
 	und es muss über Layer 3, mit Hilfe der IP-Adressen und dem Router das Paket 
 	versendet werden. Dafür wird das Paket an die IP-Adresse des Routers gesende,
 	auch bekannt als Gateway. Die Routing-Tabelle wird für die Kommunikation genutzt, 
 	um heraus zufinden über welchen Port das Paket weitergeleitet werden muss. 
 	Da der Router ein Layer 3 Gerät ist, muss er die IP-Adresse des Zielgerätes
 	kennen, um das Paket in das richtige Netzwerk zu leiten. Die Tabelle beinhaltet
-	alle Netzwerke, die über einen Port am Router angeschlossen sind. Wie bereits 
-	erwähnt lässt sich das Subnetz über IP und Subnetzmaske berechnen, dadurch
-	weiß der Router in welches Subnetz das Paket gesendet werden muss. Er leitet
-	es in das entsprechende Subnetz, wo es dann wieder mit der MAC-Adresse an das 
-	Zielgerät geleitet wird.
+	alle Netzwerke, die über einen Port am Router angeschlossen sind. Durch das 
+	Versenden der Pakete über den Router wird die Routing Tabelle nach und nach 
+	gefüllt, da der Router durch die Quelladressen des Pakets lernt, welches Gerät
+	an welchem 	Port hängt. In der Tabelle steht dann der jeweilige Port mit der 
+	entsprechenden IP-Adresse. Da sich das Subnetz über IP und Subnetzmaske berechnen,
+	lässt erkennt der Router in welches Subnetz das Paket gesendet werden muss. 
+	Dieser leitet es in das entsprechende Subnetz, wo es dann entweder weiter
+	geleitet wird oder direkt mit der MAC-Adresse an das Zielgerät geleitet wird.
 	In der folgenden Abbildung \ref{fig:subnetmask} sind zwei Rechnungen mit 
 	Subnetzmaske zu sehen, die einmal zeigen, dass sich Quelle und Ziel im 
 	gleichen Subnetz befinden und das andere Beispiel zeigt, dass sie in 
@@ -288,12 +291,32 @@
 		\caption{Subnetzberechnung}
 		\label{fig:subnetmask}
 	\end{figure}
+	\subsubsection{Private und öffentliche Adressen}
+	Die Einführung von IPv6 wurde unteranderem wegen der aufkommenden Adressknappheit
+	umgesetzt. Fast jede Person hat mehrer Endgeräte, die entweder im lokalen Netz
+	oder auch ins Internet kommunizieren können. Das führt dazu, dass die Anzahl
+	an Adressen der Art IPv4 knapp werde. Ansätze wie die Netzwerksegmentierung,
+	das oben beschriebene Subnetting, wirken diese Knappheit entgegen aber dies 
+	reicht lange noch nicht aus. Damit es während der Kommunikation ins Internet keine
+	Probleme gibt, weil eine lokales Endgerät die gleiche IP-Adresse hat wie zum
+	Beispiel der Server von Google, wurden mit RFC 1918 die Adressbereiche für 
+	private IP-Adressen definiert. Dafür wurden ein Teil der IPv4 Adressen reserviert,
+	für den privaten Gebrauch. Diese IP-Adressen sind die am meisten genutzten
+	Adressen in lokalen Netzen, deshalb haben die Geräte in den meisten Haushalten
+	den Netzwerkanteil 192.168.0.0/16, was wiederum bedeutet, dass innerhalb eines
+	Haushaltes 256 einzelne Netze mit jeweils 256 Adressen zur Verfügung stehen.
+	Das ist in der Regel ausreichen für einen normalen Haushalt.
+	Die öffentliche IP-Adresse ist die Adresse, die vom ISP zugewiesen wird. Der
+	Router übersetzt die private IP-Adresse für die Kommunikation ins Internet
+	durch die öffentliche IP-Adresse. Für diese Umwandlung kommt das NAT (Network
+	Adress Translation) zum Einsatz. Auf NAT und dessen genaue Funktionsweise wird
+	in Abschnitt \ref{sec:NAT} eingegangen.
 	%---Quelle: 
 	%Computer-Netzwerke, H.Zisler, 2022; Coputernetze kompakt, C.Baun, 2025 Kapitel 7.6
 
 	\subsection{Kommunikation von LAN in WAN}
 	%---Modem und wie komm ich ins Internet
-	Ein Router hat heutzutage ein eingebautes Modem, das ihm ermöglicht Pakete,
+	Eingie Router haben ein eingebautes Modem, das ihnen ermöglicht Pakete,
 	ins Internet zu senden als auch zu empfangen. Ohne ein solches Modem ist
 	die Kommunikation ins Internet nicht möglich. Das Modem wandelt die digitalen
 	Signale von einem Endgerät, wie einem Laptop in analoge Signale um und sendet
@@ -312,6 +335,8 @@
 	Nutzdaten und einer Prüfsumme. Die Ziel-Adresse steht gefolgt von der Quell-
 	Adresse im Header des Pakets. Die Adressen sind die oben beschriebenen IP-
 	Adressen. 
+
+	
 	\subsection{Router Aufbau und Verbindungsarten}
 	Die Beschreibung des Aufbau eines Routers wird in dieser Ausarbeitung auf
 	die Komponenten beschränkt, die die beiden Router haben, die für die Tests
@@ -350,6 +375,14 @@
 	Wurde das WLAN mit Hilfe der Anleitung eingerichtet sind die Router nicht
 	nur sichtbar als WLAN Provider sondern können nach erfolgreicher Verbindung
 	auch eine stabile Internet Verbindung bieten.
+
+	Anhand der LEDs am Ethernet Kabel kann in geringen Maße ein Fehler festgestellt
+	werden. 
+	\begin{description}
+		\item[linke LED] Verbindung aber keine Daten werden übertragen %hier muss noch recherchiert werden
+		\item[rechte LED] Daten werden übertragen % hier muss noch recherchiert werden
+	\end{description}
+
 	%---Quelle: Datenblätter der Router
 	%User Guide in differente languages, downloaded: 16.05.2026
 	%https://downloads.linksys.com/downloads/userguide/1224697214905/WRT120N-EMEA_combo_UG.pdf
@@ -385,6 +418,7 @@
 
 	\section{Sicherheitsmechanismen im Router}
 	\subsection{Adressverbergung(NAT - RFC 30022)}
+	\label{sec:NAT}
 	%--------------------------------------------------------------------------------%
 	%-----------Nochmal überarbeiten----formulierung und rechtschreibung anpassen----%
 	Networke Address Translation(NAT) ist ein Mechanismus, bei dem der Router interne 
