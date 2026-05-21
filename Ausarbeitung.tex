@@ -339,12 +339,23 @@
 	Header, Quell-Adresse gefolgt von der Ziel-Adresse - diese gehören standardmäßig
 	zum Header, werden hier aber zur Veranschaulichung extra aufgeführt- und den 
 	Nutzdaten. 
-
-	Paket von IPv4 hat auch eine Prüfsumme inkludiert, welche aber zur Verbeserung
+	Informationen über den Aufbau, Art und größe des Paketes sind im Header zu finden.
+	Dort ist festgehalten ab wann die Nutzdaten beginnen, ob das Paket aufgrund
+	seiner Größe fragmentiert wurde und auch die Lebenszeit des Paketes. Diese ist
+	wichtig, dass das Paket nur diese definierte Zeit im Netzwerk "lebt" und dann 
+	automatisch gelöscht wird, damit es nicht unnötig Ressourcen verbraucht. Fragmentierung
+	von Paketen ist nötig, wenn das Paket die vordefinierte maximale Größe 
+	überschreitet, dann wird das Pakete entweder vom Router oder dem Sender geteilt.
+	Jedes Fragement wird als einzelnes Paket versendet, mit dem Unterschied das es 
+	im Header die Information enthält, an welche Stelle das Fragement im unfragmentierten
+	Paket gehört. Kommt ein Paket bei einem Router an und müsste fragmentiert werden,
+	um in das Zielnetz weitergeleitet zu werden, kann es sein das diese verworfen
+	wird, da eine Flag im Paket ausdrücklich das Fragmentieren, diese Pakets verbietet.
+	Pakete von IPv4 haben auch eine Prüfsumme inkludiert, welche aber zur Verbeserung
 	der Datenübertragungsgeschwindigkeit nicht von Router überprüft wird. 
 	%---Quelle: 
 	%C.Baun. Computernetze kompakt. Wiesbaden, D: Springer Vieweg, 2025, pp. 149-150
-	%Chapter 7.2.4
+	%Chapter 7.2.4 ff
 	\subsection{Router Aufbau und Verbindungsarten}
 	Die Beschreibung des Aufbau eines Routers wird in dieser Ausarbeitung auf
 	die Komponenten beschränkt, die die beiden Router haben, die für die Tests
