@@ -1,0 +1,74 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{baun_computernetze_2025}{book}{}
+      \name{author}{1}{}{%
+        {{hash=c8362ec3de9dbb4de64fee2d8b9cfe70}{%
+           family={Baun},
+           familyi={B\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {de}%
+      }
+      \list{location}{1}{%
+        {Wiesbaden}%
+      }
+      \list{publisher}{1}{%
+        {Springer Fachmedien Wiesbaden}%
+      }
+      \strng{namehash}{c8362ec3de9dbb4de64fee2d8b9cfe70}
+      \strng{fullhash}{c8362ec3de9dbb4de64fee2d8b9cfe70}
+      \strng{bibnamehash}{c8362ec3de9dbb4de64fee2d8b9cfe70}
+      \strng{authorbibnamehash}{c8362ec3de9dbb4de64fee2d8b9cfe70}
+      \strng{authornamehash}{c8362ec3de9dbb4de64fee2d8b9cfe70}
+      \strng{authorfullhash}{c8362ec3de9dbb4de64fee2d8b9cfe70}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{isbn}{978-3-658-48604-4 978-3-658-48605-1}
+      \field{series}{{IT} kompakt}
+      \field{shorttitle}{Computernetze kompakt}
+      \field{title}{Computernetze kompakt: {Eine} praxisorientierte {Einführung} für {Studium} und {Beruf}}
+      \field{urlday}{21}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.1007/978-3-658-48605-1
+      \endverb
+      \verb{file}
+      \verb Full Text:/home/johanna/Zotero/storage/ZKRBFTG4/Baun - 2025 - Computernetze kompakt Eine praxisorientierte Einführung für Studium und Beruf.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://link.springer.com/10.1007/978-3-658-48605-1
+      \endverb
+      \verb{url}
+      \verb https://link.springer.com/10.1007/978-3-658-48605-1
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
