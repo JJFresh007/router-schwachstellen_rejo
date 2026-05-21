@@ -245,7 +245,8 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.75\textwidth]{img/c-nw_nwklassen_s93.png}
-		\caption{Host- und Netzwerkanteil je Netzwerkklasse \protect \hyperlink{[2]}{[2]}}
+		\caption{Host- und Netzwerkanteil je Netzwerkklasse 
+		\cite{zisler_computer-netzwerke_2022}}
 		\label{fig:nwclasses}
 	\end{figure}
 	Ob sich Quelle und Ziel im gleichen Subnetz befinden, wird vom Sender, also
@@ -291,6 +292,7 @@
 		\caption{Subnetzberechnung}
 		\label{fig:subnetmask}
 	\end{figure}
+
 	\subsubsection{Private und öffentliche Adressen}
 	Die Einführung von IPv6 wurde unteranderem wegen der aufkommenden Adressknappheit
 	umgesetzt. Fast jede Person hat mehrer Endgeräte, die entweder im lokalen Netz
@@ -311,9 +313,8 @@
 	durch die öffentliche IP-Adresse. Für diese Umwandlung kommt das NAT (Network
 	Adress Translation) zum Einsatz. Auf NAT und dessen genaue Funktionsweise wird
 	in Abschnitt \ref{sec:NAT} eingegangen.
-	%---Quelle: 
-	%Computer-Netzwerke, H.Zisler, 2022; Coputernetze kompakt, C.Baun, 2025 Kapitel 7.6
-	%C.Baun. Computernetze kompakt. Wiesbaden, D: Springer Vieweg, 2025, pp. 149-150
+	\cite{zisler_computer-netzwerke_2022, baun_computernetze_2025}
+	%Computernetze kompakt pp. 149-150
 	
 	\subsection{Kommunikation von LAN in WAN}
 	%---Modem und wie komm ich ins Internet
@@ -353,9 +354,9 @@
 	wird, da eine Flag im Paket ausdrücklich das Fragmentieren, diese Pakets verbietet.
 	Pakete von IPv4 haben auch eine Prüfsumme inkludiert, welche aber zur Verbeserung
 	der Datenübertragungsgeschwindigkeit nicht von Router überprüft wird. 
-	%---Quelle: 
-	%C.Baun. Computernetze kompakt. Wiesbaden, D: Springer Vieweg, 2025, pp. 149-150
-	%Chapter 7.2.4 ff
+	\cite{zisler_computer-netzwerke_2022, baun_computernetze_2025}
+	%Chapter 7.2.4 ff von Baun
+	
 	\subsection{Router Aufbau und Verbindungsarten}
 	Die Beschreibung des Aufbau eines Routers wird in dieser Ausarbeitung auf
 	die Komponenten beschränkt, die die beiden Router haben, die für die Tests
@@ -422,9 +423,8 @@
 	Die folgenden Tests zeigen, dass das einfache Eindringen in System mit
 	diesen Handgriffen bereits verhindert wurde $ToDo: hier Tests für ins WLAN
 	kommen mit Standardpw und so weiter$
-	%---Quelle: But is it exploitable
-	%Chapter 4.4, pp. 284-285
-	%G. Chalhoub and A. Martin. "But is it exploitable? Exploring how Router Vendors Manage and Patch Security Vulnerabilities in Consumer-Grade Routers" in EuroUSEC '23: Proceedings of the 2023 European Symposium on Usable Security, 2023, pp. 277-295
+	\cite{chalhoub_but_2023}
+	%---But is it exploitable Chapter 4.4, pp. 284-285
 	%User Guide in differente languages, downloaded: 16.05.2026
 	%https://downloads.linksys.com/downloads/userguide/1224697214905/WRT120N-EMEA_combo_UG.pdf
 
