@@ -244,7 +244,7 @@
 	Klassen A bis C siehe folgende Abbildung \ref{fig:nwclasses}.
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\textwidth]{img/c-nw_nwklassen_s93.png}
+		\includegraphics[width=0.75\textwidth]{img/c-nw_nwklassen_s93.png}
 		\caption{Host- und Netzwerkanteil je Netzwerkklasse \protect \hyperlink{[2]}{[2]}}
 		\label{fig:nwclasses}
 	\end{figure}
@@ -313,7 +313,8 @@
 	in Abschnitt \ref{sec:NAT} eingegangen.
 	%---Quelle: 
 	%Computer-Netzwerke, H.Zisler, 2022; Coputernetze kompakt, C.Baun, 2025 Kapitel 7.6
-
+	%C.Baun. Computernetze kompakt. Wiesbaden, D: Springer Vieweg, 2025, pp. 149-150
+	
 	\subsection{Kommunikation von LAN in WAN}
 	%---Modem und wie komm ich ins Internet
 	Eingie Router haben ein eingebautes Modem, das ihnen ermöglicht Pakete,
@@ -328,15 +329,22 @@
 	entscheiden kann, ob das Ziel eins der Geräte ist, die mit ihm verbunden sind
 	oder ob das Paket weitergereicht werden muss an den nächsten Switch oder 
 	Router. 
-	%---
-	%---Bild grober Paketaufbau + Abbildungsnummer unten in Text
-	%---
-	Wie in der Abbildung XY zu sehen besteht ein Paket aus einem Header, den
-	Nutzdaten und einer Prüfsumme. Die Ziel-Adresse steht gefolgt von der Quell-
-	Adresse im Header des Pakets. Die Adressen sind die oben beschriebenen IP-
-	Adressen. 
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/ipv4_packet-structure.pdf}
+		\caption{Grober Aufbau eines IPv4-Pakets}
+		\label{fig:ipv4-packet}
+	\end{figure}
+	Wie in der Abbildung \ref{fig:ipv4-packet} zu sehen besteht ein Paket aus einem 
+	Header, Quell-Adresse gefolgt von der Ziel-Adresse - diese gehören standardmäßig
+	zum Header, werden hier aber zur Veranschaulichung extra aufgeführt- und den 
+	Nutzdaten. 
 
-	
+	Paket von IPv4 hat auch eine Prüfsumme inkludiert, welche aber zur Verbeserung
+	der Datenübertragungsgeschwindigkeit nicht von Router überprüft wird. 
+	%---Quelle: 
+	%C.Baun. Computernetze kompakt. Wiesbaden, D: Springer Vieweg, 2025, pp. 149-150
+	%Chapter 7.2.4
 	\subsection{Router Aufbau und Verbindungsarten}
 	Die Beschreibung des Aufbau eines Routers wird in dieser Ausarbeitung auf
 	die Komponenten beschränkt, die die beiden Router haben, die für die Tests
@@ -368,7 +376,7 @@
 	zu sehen.
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\textwidth]{img/wrt120n_ports-benutzerhandbuch_s1.png}
+		\includegraphics[width=0.75\textwidth]{img/wrt120n_ports-benutzerhandbuch_s1.png}
 		\caption{WRT120N Anschlüsse hinten}
 		\label{fig:wrt120n-ports}
 	\end{figure}
