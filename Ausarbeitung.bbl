@@ -19,16 +19,13 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global}
-    \entry{baun_computernetze_2025}{book}{}
+    \entry{baun2025}{book}{}
       \name{author}{1}{}{%
         {{hash=c8362ec3de9dbb4de64fee2d8b9cfe70}{%
            family={Baun},
            familyi={B\bibinitperiod},
            given={Christian},
            giveni={C\bibinitperiod}}}%
-      }
-      \list{language}{1}{%
-        {de}%
       }
       \list{location}{1}{%
         {Wiesbaden}%
@@ -46,10 +43,11 @@
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
-      \field{isbn}{978-3-658-48605-1}
-      \field{series}{{IT} kompakt}
-      \field{shorttitle}{Computernetze kompakt}
-      \field{title}{Computernetze kompakt: {Eine} praxisorientierte {Einführung} für {Studium} und {Beruf}}
+      \field{isbn}{978-3-658-48604-4 978-3-658-48605-1}
+      \field{langid}{ngerman}
+      \field{series}{{IT kompakt}}
+      \field{shorttitle}{{Computernetze kompakt}}
+      \field{title}{{Computernetze kompakt: Eine praxisorientierte Einführung für Studium und Beruf}}
       \field{urlday}{21}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
@@ -59,25 +57,16 @@
       \verb 10.1007/978-3-658-48605-1
       \endverb
       \verb{file}
-      \verb Full Text:/home/johanna/Zotero/storage/ZKRBFTG4/Baun - 2025 - Computernetze kompakt Eine praxisorientierte Einführung für Studium und Beruf.pdf:application/pdf
-      \endverb
-      \verb{urlraw}
-      \verb https://link.springer.com/10.1007/978-3-658-48605-1
-      \endverb
-      \verb{url}
-      \verb https://link.springer.com/10.1007/978-3-658-48605-1
+      \verb /home/johanna/Zotero/storage/ZKRBFTG4/Baun - 2025 - Computernetze kompakt Eine praxisorientierte Einführung für Studium und Beruf.pdf
       \endverb
     \endentry
-    \entry{zisler_computer-netzwerke_2022}{book}{}
+    \entry{zisler2022}{book}{}
       \name{author}{1}{}{%
         {{hash=ebaa2525f3b3aa3b4c9ec0374e031f67}{%
            family={Zisler},
            familyi={Z\bibinitperiod},
            given={Harald},
            giveni={H\bibinitperiod}}}%
-      }
-      \list{language}{1}{%
-        {ger}%
       }
       \list{location}{1}{%
         {Bonn}%
@@ -97,12 +86,13 @@
       \field{labeltitlesource}{shorttitle}
       \field{edition}{7., aktualisierte Auflage}
       \field{isbn}{978-3-8362-8950-4}
-      \field{series}{Rheinwerk {Computing}}
-      \field{shorttitle}{Computer-{Netzwerke}}
-      \field{title}{Computer-{Netzwerke}: {Grundlagen}, {Funktionsweisen}, {Anwendung}}
+      \field{langid}{german}
+      \field{series}{{Rheinwerk Computing}}
+      \field{shorttitle}{{Computer-Netzwerke}}
+      \field{title}{{Computer-Netzwerke: Grundlagen, Funktionsweisen, Anwendung}}
       \field{year}{2022}
     \endentry
-    \entry{chalhoub_but_2023}{inproceedings}{}
+    \entry{chalhoub2023}{inproceedings}{}
       \name{author}{2}{}{%
         {{hash=a537cabb41acee03e1ca4c64e2f6a927}{%
            family={Chalhoub},
@@ -114,9 +104,6 @@
            familyi={M\bibinitperiod},
            given={Andrew},
            giveni={A\bibinitperiod}}}%
-      }
-      \list{language}{1}{%
-        {en}%
       }
       \list{location}{1}{%
         {Copenhagen Denmark}%
@@ -134,11 +121,12 @@
       \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
-      \field{booktitle}{Proceedings of the 2023 {European} {Symposium} on {Usable} {Security}}
+      \field{booktitle}{Proceedings of the 2023 {{European Symposium}} on {{Usable Security}}}
       \field{isbn}{979-8-4007-0814-5}
+      \field{langid}{english}
       \field{month}{10}
-      \field{shorttitle}{But is it exploitable?}
-      \field{title}{But is it exploitable? {Exploring} how {Router} {Vendors} {Manage} and {Patch} {Security} {Vulnerabilities} in {Consumer}-{Grade} {Routers}}
+      \field{shorttitle}{But Is It Exploitable?}
+      \field{title}{But Is It Exploitable? {{Exploring}} How {{Router Vendors Manage}} and {{Patch Security Vulnerabilities}} in {{Consumer-Grade Routers}}}
       \field{urlday}{21}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
@@ -150,13 +138,7 @@
       \verb 10.1145/3617072.3617110
       \endverb
       \verb{file}
-      \verb Submitted Version:/home/johanna/Zotero/storage/QPNHYR7G/Chalhoub and Martin - 2023 - But is it exploitable Exploring how Router Vendors Manage and Patch Security Vulnerabilities in Con.pdf:application/pdf
-      \endverb
-      \verb{urlraw}
-      \verb https://dl.acm.org/doi/10.1145/3617072.3617110
-      \endverb
-      \verb{url}
-      \verb https://dl.acm.org/doi/10.1145/3617072.3617110
+      \verb /home/johanna/Zotero/storage/QPNHYR7G/Chalhoub and Martin - 2023 - But is it exploitable Exploring how Router Vendors Manage and Patch Security Vulnerabilities in Con.pdf
       \endverb
     \endentry
   \enddatalist
