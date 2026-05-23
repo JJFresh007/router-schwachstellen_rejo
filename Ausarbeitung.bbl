@@ -19,6 +19,55 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global}
+    \entry{chalhoub2023}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=a537cabb41acee03e1ca4c64e2f6a927}{%
+           family={Chalhoub},
+           familyi={C\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod}}}%
+        {{hash=0f8b44db96f0051ceb98a264428f2aff}{%
+           family={Martin},
+           familyi={M\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Copenhagen Denmark}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{e5be30a7acefc4efe39f9ba263bd1a91}
+      \strng{fullhash}{e5be30a7acefc4efe39f9ba263bd1a91}
+      \strng{bibnamehash}{e5be30a7acefc4efe39f9ba263bd1a91}
+      \strng{authorbibnamehash}{e5be30a7acefc4efe39f9ba263bd1a91}
+      \strng{authornamehash}{e5be30a7acefc4efe39f9ba263bd1a91}
+      \strng{authorfullhash}{e5be30a7acefc4efe39f9ba263bd1a91}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{booktitle}{Proceedings of the 2023 {{European Symposium}} on {{Usable Security}}}
+      \field{isbn}{979-8-4007-0814-5}
+      \field{langid}{english}
+      \field{month}{10}
+      \field{shorttitle}{But Is It Exploitable?}
+      \field{title}{But Is It Exploitable? {{Exploring}} How {{Router Vendors Manage}} and {{Patch Security Vulnerabilities}} in {{Consumer-Grade Routers}}}
+      \field{urlday}{21}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \field{pages}{277\bibrangedash 295}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1145/3617072.3617110
+      \endverb
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/QPNHYR7G/Chalhoub and Martin - 2023 - But is it exploitable Exploring how Router Vendors Manage and Patch Security Vulnerabilities in Con.pdf
+      \endverb
+    \endentry
     \entry{zisler2022}{book}{}
       \name{author}{1}{}{%
         {{hash=ebaa2525f3b3aa3b4c9ec0374e031f67}{%
@@ -39,8 +88,8 @@
       \strng{authorbibnamehash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
       \strng{authornamehash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
       \strng{authorfullhash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{edition}{7., aktualisierte Auflage}
@@ -71,8 +120,8 @@
       \strng{authorbibnamehash}{c8362ec3de9dbb4de64fee2d8b9cfe70}
       \strng{authornamehash}{c8362ec3de9dbb4de64fee2d8b9cfe70}
       \strng{authorfullhash}{c8362ec3de9dbb4de64fee2d8b9cfe70}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{isbn}{978-3-658-48604-4 978-3-658-48605-1}
@@ -122,8 +171,8 @@
       \strng{editorbibnamehash}{73dc89dd47d5782f97fff283749ded14}
       \strng{editornamehash}{73dc89dd47d5782f97fff283749ded14}
       \strng{editorfullhash}{73dc89dd47d5782f97fff283749ded14}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Für die Wegewahl werden im Internet verschiedene Verfahren eingesetzt und man muss prinzipiell zwischen der Wegewahl innerhalb autonomer Systeme (Intra-AS-Routing) und der Wegewahl im globalen Internet, also zwischen den autonomen Systemen (Inter-AS-Routing), unterscheiden. Jedes autonome System kann intern eigene Routing-Algorithmen verwenden, die in IPv4-Routern ablaufen. Jeder IPv4-Router verwaltet neben der protokollabhängigen Routing-Tabelle auch eine Forwarding-Tabelle, die der Entscheidung für eine Weiterleitung dient. Es gibt ein Regelwerk, nach dem die Forwarding-Tabelle in Routern durchsucht wird.}
@@ -143,55 +192,6 @@
       \endverb
       \verb{file}
       \verb /home/johanna/Zotero/storage/SXWL6G7F/Mandl - 2019 - Routing und Forwarding.pdf
-      \endverb
-    \endentry
-    \entry{chalhoub2023}{inproceedings}{}
-      \name{author}{2}{}{%
-        {{hash=a537cabb41acee03e1ca4c64e2f6a927}{%
-           family={Chalhoub},
-           familyi={C\bibinitperiod},
-           given={George},
-           giveni={G\bibinitperiod}}}%
-        {{hash=0f8b44db96f0051ceb98a264428f2aff}{%
-           family={Martin},
-           familyi={M\bibinitperiod},
-           given={Andrew},
-           giveni={A\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {Copenhagen Denmark}%
-      }
-      \list{publisher}{1}{%
-        {ACM}%
-      }
-      \strng{namehash}{e5be30a7acefc4efe39f9ba263bd1a91}
-      \strng{fullhash}{e5be30a7acefc4efe39f9ba263bd1a91}
-      \strng{bibnamehash}{e5be30a7acefc4efe39f9ba263bd1a91}
-      \strng{authorbibnamehash}{e5be30a7acefc4efe39f9ba263bd1a91}
-      \strng{authornamehash}{e5be30a7acefc4efe39f9ba263bd1a91}
-      \strng{authorfullhash}{e5be30a7acefc4efe39f9ba263bd1a91}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{shorttitle}
-      \field{booktitle}{Proceedings of the 2023 {{European Symposium}} on {{Usable Security}}}
-      \field{isbn}{979-8-4007-0814-5}
-      \field{langid}{english}
-      \field{month}{10}
-      \field{shorttitle}{But Is It Exploitable?}
-      \field{title}{But Is It Exploitable? {{Exploring}} How {{Router Vendors Manage}} and {{Patch Security Vulnerabilities}} in {{Consumer-Grade Routers}}}
-      \field{urlday}{21}
-      \field{urlmonth}{5}
-      \field{urlyear}{2026}
-      \field{year}{2023}
-      \field{urldateera}{ce}
-      \field{pages}{277\bibrangedash 295}
-      \range{pages}{19}
-      \verb{doi}
-      \verb 10.1145/3617072.3617110
-      \endverb
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/QPNHYR7G/Chalhoub and Martin - 2023 - But is it exploitable Exploring how Router Vendors Manage and Patch Security Vulnerabilities in Con.pdf
       \endverb
     \endentry
   \enddatalist

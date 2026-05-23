@@ -90,17 +90,29 @@
 	die Bankdaten, aber auch geheime Dokumente, die während dem Home Office versendet
 	werden, werden über den Router übertragen. Durch eine unsichere Einrichtung des
 	Router können massive Schwachstellen entstehen, die Angreifer ausnutzen können.
-	%---Quelle: But is it exploitable
-	%Chapter 1, p.277 -> Covid Pandemi
-	%G. Chalhoub and A. Martin. "But is it exploitable? Exploring how Router Vendors Manage and Patch Security Vulnerabilities in Consumer-Grade Routers" in EuroUSEC '23: Proceedings of the 2023 European Symposium on Usable Security, 2023, pp. 277-295
+	\cite{chalhoub2023}
+	%Chapter 1, p.277 -> Covid Pandemie
 
 	\section{Problemstellung und -abgrenzung}
 	Die Problemstellung beginnt mit der Einordnung in ein thematisches Umfeld und
 	enthält sowohl die in der Arbeit angegangenen Problempunkte, als auch weitere,
 	nicht behandelte Problempunkte. Eine Negativabgrenzung verhindert, dass beim
 	Leser später nicht erfüllte Erwartungen geweckt werden.
-	Hier vielleicht rein, dass nicht auf das ISO/OSI Modell eingegangen wird, 
-	da es für die Arbeit als Wissen vorausgesetzt wird.
+
+	In dieser Ausarbeitung werden primär Router für Heimnetzwerke betrachtet. 
+	Sowohl im theoretischen Teil als auch im Rahmen der praktischen Tests liegt 
+	der Fokus auf Geräten und Einsatzszenarien im privaten beziehungsweise 
+	kleineren Netzwerkumfeld. Router für große beziehungsweise unternehmensweite 
+	Netzwerke werden lediglich dann berücksichtigt, wenn dies zum besseren 
+	Verständnis, zur fachlichen Vollständigkeit oder zur Abgrenzung zwischen 
+	Heimnetzwerken und größeren Netzwerkinfrastrukturen erforderlich ist.
+	Modelle und theoretische Grundlagen, die für das Verständnis dieser
+	Ausarbeitung vorausgesetzt werden, werden entweder kurz erläutert oder
+	– wie beispielsweise das ISO/OSI-Modell – mit entsprechenden Quellen versehen.
+	Dadurch soll den Leserinnen und Lesern die Möglichkeit gegeben werden,
+	fehlende Grundlagen selbstständig nachzuschlagen und sich das notwendige
+	Hintergrundwissen anzueignen.
+
 	\section{Ziel der Arbeit}
 	Mit dem Ziel der Arbeit wird der angestrebte Lösungsansatz festgelegt. An 
 	diesem Ziel wird die Arbeit gemessen.Mit dem Ziel der Arbeit wird der 
@@ -109,7 +121,7 @@
 	Ziel der Arbeit ist es dem Leser die Wichtigkeit der Umsetzung von sicheren
 	Einstellungen und der damit verbundenen Sicherheit des eigenen Netzwerks
 	zu Hause und der Kommunikation ins Internet darzulegen. Zudem soll die Arbeit
-	beweisen, dass bereits simple Änderungen der Einstellungen, die Sicherheit
+	zeigen, dass bereits simple Änderungen der Einstellungen, die Sicherheit
 	massiv verbessern können. Hierzu werden schrittweise die Sicherheitseinstellungen
 	erhöht und jeweils ein Vorher- Nachher Vergleich gemacht, die darstellen
 	sollen welchen Einfluss die getätigten Einstellungen haben.
@@ -203,8 +215,8 @@
 	Wie der Name erahnen lässt ist der Router innerhalb eines Netzwerks dafür
 	zuständig Nachrichten von einer angeschlossenen Quelle zum Ziel zu leiten.
 	Der Router kümmert sich darum, dass der optimale Weg von der Quelle zum Ziel 
-	gefunden wird. Welcher Pfad gewählt wird hängt von den Protokollen ab,
-	es kann der schnellste Weg genutzt werden oder auch eine definierte Route
+	gefunden wird. Welcher Pfad gewählt wird hängt unteranderem von den Protokollen
+	ab, es kann der schnellste Weg genutzt werden oder auch eine definierte Route
 	über verschiedene Punkte. Es gibt zwei Arten des Routing, dynamisches und 
 	statisches Routing. Auf diese Arten und die Protokolle wird im Abschnitt
 	\ref{sec:Routing-Arten} weiter eingegangen.
@@ -413,6 +425,11 @@
 	dynamischen Routing eingesetzt, da dort die Wege mit den übermittelten Informationen
 	automatisch angepasst werden. Im weiteren wird in aller Kürze auf einige der
 	Protokolle eingegangen:
+
+Distanzvektorprotokolle -> RIP
+Link-State-Routing-Protokolle ->OSPF
+
+
 	\begin{description}
 		\item[OSPF] Open Shortest Path First: Pakete werden immer über den kürzesten
 		Weg übermittelt. Stehen mehrere gleich kurze Wege zur Verfügung, werden alle
