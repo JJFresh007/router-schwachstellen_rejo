@@ -217,8 +217,10 @@
 	kommunizieren. Switches der Schicht 3 können über Netzwerkgrenzen hinweg
 	Pakete versenden. Der Hauptunterschied zwischen Switches und Routern ist
 	daher, dass der Router nicht nur über Netzwerkgrenzen hinweg Pakete 
-	leiten kann sonder das er aus dem LAN auch in das WAN, besser bekannt als
-	das Internet Pakete versenden kann.\cite{baun2025}
+	leiten kann sonder, dass er aus dem LAN auch in das WAN, besser bekannt als
+	das Internet Pakete versenden kann. Auch der Router ist ein Gerät der Schicht
+	3 im ISO/OSI-Modell und vermittelt daher die Pakete mit anhand der IP-Adressen.
+	\cite{zisler2022, baun2025}
 	%pp. 149-150
 	
 	\subsection{Netzwerksegmente und IPv4}
@@ -315,48 +317,7 @@
 	in Abschnitt \ref{sec:NAT} eingegangen.
 	\cite{zisler2022, baun2025}
 	%Computernetze kompakt pp. 149-150
-	
-	\subsection{Kommunikation von LAN in WAN}
-	%---Modem und wie komm ich ins Internet
-	Eingie Router haben ein eingebautes Modem, das ihnen ermöglicht Pakete,
-	ins Internet zu senden als auch zu empfangen. Ohne ein solches Modem ist
-	die Kommunikation ins Internet nicht möglich. Das Modem wandelt die digitalen
-	Signale von einem Endgerät, wie einem Laptop in analoge Signale um und sendet
-	dann die Anfrage in das Internet. Die Antwort ist ein analoges Signal welches
-	wiederum in ein digitales gewandelt werden muss, damit der Laptop die 
-	enthaltenen Informationen verarbeiten kann.
-	Um zu wissen wohin ein Paket muss, untersucht der Router das angekommene Paket.
-	Es enthält sowohl die Quell-, als auch die Zieladresse anhand derer der Router
-	entscheiden kann, ob das Ziel eins der Geräte ist, die mit ihm verbunden sind
-	oder ob das Paket weitergereicht werden muss an den nächsten Switch oder 
-	Router. 
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{img/ipv4_packet-structure.pdf}
-		\caption{Grober Aufbau eines IPv4-Pakets}
-		\label{fig:ipv4-packet}
-	\end{figure}
-	Wie in der Abbildung \ref{fig:ipv4-packet} zu sehen besteht ein Paket aus einem 
-	Header, Quell-Adresse gefolgt von der Ziel-Adresse - diese gehören standardmäßig
-	zum Header, werden hier aber zur Veranschaulichung extra aufgeführt- und den 
-	Nutzdaten. 
-	Informationen über den Aufbau, Art und größe des Paketes sind im Header zu finden.
-	Dort ist festgehalten ab wann die Nutzdaten beginnen, ob das Paket aufgrund
-	seiner Größe fragmentiert wurde und auch die Lebenszeit des Paketes. Diese ist
-	wichtig, dass das Paket nur diese definierte Zeit im Netzwerk "lebt" und dann 
-	automatisch gelöscht wird, damit es nicht unnötig Ressourcen verbraucht. Fragmentierung
-	von Paketen ist nötig, wenn das Paket die vordefinierte maximale Größe 
-	überschreitet, dann wird das Pakete entweder vom Router oder dem Sender geteilt.
-	Jedes Fragement wird als einzelnes Paket versendet, mit dem Unterschied das es 
-	im Header die Information enthält, an welche Stelle das Fragement im unfragmentierten
-	Paket gehört. Kommt ein Paket bei einem Router an und müsste fragmentiert werden,
-	um in das Zielnetz weitergeleitet zu werden, kann es sein das diese verworfen
-	wird, da eine Flag im Paket ausdrücklich das Fragmentieren, diese Pakets verbietet.
-	Pakete von IPv4 haben auch eine Prüfsumme inkludiert, welche aber zur Verbeserung
-	der Datenübertragungsgeschwindigkeit nicht von Router überprüft wird. 
-	\cite{zisler2022, baun2025}
-	%Chapter 7.2.4 ff von Baun
-	
+
 	\subsection{Router Aufbau und Verbindungsarten}
 	Die Beschreibung des Aufbau eines Routers wird in dieser Ausarbeitung auf
 	die Komponenten beschränkt, die die beiden Router haben, die für die Tests
@@ -396,18 +357,57 @@
 	nur sichtbar als WLAN Provider sondern können nach erfolgreicher Verbindung
 	auch eine stabile Internet Verbindung bieten.
 
-	Anhand der LEDs am Ethernet Kabel kann in geringen Maße ein Fehler festgestellt
-	werden. 
-	\begin{description}
-		\item[linke LED] Verbindung aber keine Daten werden übertragen %hier muss noch recherchiert werden
-		\item[rechte LED] Daten werden übertragen % hier muss noch recherchiert werden
-	\end{description}
-
 	%---Quelle: Datenblätter der Router
 	%User Guide in differente languages, downloaded: 16.05.2026
 	%https://downloads.linksys.com/downloads/userguide/1224697214905/WRT120N-EMEA_combo_UG.pdf
 	%Datasheet, downloaded: 18.05.2026
 	%https://www.dlink.com/al/sq/-/media/consumer_products/dir/dir-600/datasheet/dir_600_c1_datasheet_03_ww.pdf
+	
+	\subsection{Kommunikation von LAN in WAN}
+	%---Modem und wie komm ich ins Internet
+	Eingie Router haben ein eingebautes Modem, das ihnen ermöglicht Pakete,
+	ins Internet zu senden als auch zu empfangen. Ohne ein solches Modem ist
+	die Kommunikation ins Internet nicht möglich. Das Modem wandelt die digitalen
+	Signale von einem Endgerät, wie einem Laptop in analoge Signale um und sendet
+	dann die Anfrage in das Internet. Die Antwort ist ein analoges Signal welches
+	wiederum in ein digitales gewandelt werden muss, damit der Laptop die 
+	enthaltenen Informationen verarbeiten kann.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/ipv4_packet-structure.pdf}
+		\caption{Grober Aufbau eines IPv4-Pakets}
+		\label{fig:ipv4-packet}
+	\end{figure}
+	Wie in der Abbildung \ref{fig:ipv4-packet} zu sehen besteht ein Paket aus einem 
+	Header, Quell-Adresse gefolgt von der Ziel-Adresse - diese gehören standardmäßig
+	zum Header, werden hier aber zur Veranschaulichung extra aufgeführt- und den 
+	Nutzdaten. 
+	Informationen über den Aufbau, Art und größe des Paketes sind im Header zu finden.
+	Dort ist festgehalten ab wann die Nutzdaten beginnen, ob das Paket aufgrund
+	seiner Größe fragmentiert wurde und auch die Lebenszeit des Paketes. Diese ist
+	wichtig, dass das Paket nur diese definierte Zeit im Netzwerk "lebt" und dann 
+	automatisch gelöscht wird, damit es nicht unnötig Ressourcen verbraucht. Fragmentierung
+	von Paketen ist nötig, wenn das Paket die vordefinierte maximale Größe 
+	überschreitet, dann wird das Pakete entweder vom Router oder dem Sender geteilt.
+	Jedes Fragement wird als einzelnes Paket versendet, mit dem Unterschied das es 
+	im Header die Information enthält, an welche Stelle das Fragement im unfragmentierten
+	Paket gehört. Kommt ein Paket bei einem Router an und müsste fragmentiert werden,
+	um in das Zielnetz weitergeleitet zu werden, kann es sein das diese verworfen
+	wird, da eine Flag im Paket ausdrücklich das Fragmentieren, diese Pakets verbietet.
+	Pakete von IPv4 haben auch eine Prüfsumme inkludiert, welche aber zur Verbeserung
+	der Datenübertragungsgeschwindigkeit nicht von Router überprüft wird. 
+	\cite{zisler2022, baun2025}
+	%Chapter 7.2.4 ff von Baun
+
+	Über das Protokoll ICMP oder IGMP bleiben Router miteinander in Kontakt und
+	tauschen Informationen über die genutzten Wege und die angeschlossenen Hosts
+	aus.
+	Das Paket das ein Router erhält wird entweder an einen weiteren Router, das 
+	wird als Hop bezeichnet oder an das entsprechende Endgerät im selben Netz
+	weitergeleitet. Dazu wird der Datenanteil aus dem Paket gelöst und vom Router
+	entsprechend wieder verpackt, um dem benötigten Format zu entsprechen.
+	
 
 	%=======================notes jf - need to be deleted later
 	% ich wusste nicht worein damit, vielleicht nachher in Tipps
@@ -432,6 +432,13 @@
 	\label{sec:Routing-Arten}
 	Arten von Routing, jeweils mit Vor-/Nachteilen und Einsatzgebiet
 	Unterschiede von Routern in Heimnetzen und Unternehmen
+	\begin{quote}
+		Für den Heimbereich und das Kleingewerbe bekommen Sie auch Ausfürhungen
+		mit eingebautem Router für den Internetzugang
+	\end{quote}	\cite[S. 166]{zisler2022}
+
+	\subsection{Router als attraktives Ziel für Angreifer}
+	\label{sec:attraktives_ziel}
 	\subsection{Definition AB}
 
 
