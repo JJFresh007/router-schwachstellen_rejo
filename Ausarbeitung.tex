@@ -130,7 +130,7 @@
 	werden. Ein Beispiel hierfür findet sich in \hyperlink{Abbildung1}{Abbildung1}.
 	
 	\newpage
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\hypertarget{Abbildung1}{}
 		\includegraphics{img/Abbildung1.png}
@@ -152,7 +152,7 @@
 	Hilfreich kann der Vergleich von Definitionen mit Hilfe einer Tabelle sein, 
 	wie in \hyperlink{tabelle1}{Tabelle 1} dargestellt.
 	\newline
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\hypertarget{tabelle1}{}
 		\begin{tabularx}{\columnwidth}{|X|X|}
 			\hline
@@ -168,7 +168,8 @@
 			WAN & wide area network - Internet \\
 			\hline
 			Schicht / Layer & Schicht im ISO/OSI Referenzmodell, welches die Übertragung
-			von Daten vom Kabel bis hin zur Darstellung auf dem Endgerät beschreibt. \\
+			von Daten vom Kabel bis hin zur Darstellung auf dem Endgerät beschreibt. 
+			Weitere Informationen hierzu siehe \cite[S.25-16]{zisler2022}.\\
 			\hline
 			Pakete & Pakete, die Informationen und Daten enthalten, die von einer 
 			Quelle, zum Beispiel einem Laptop an ein Ziel, beispielsweise ein Desktop PC
@@ -183,7 +184,7 @@
 			\hline
 			Protokolle & Richtlinien zu einem Vorgehen, dass kann die Art und Weiße sein
 			wie Pakete übermittelt werden oder auch welchen Weg ein Paket innerhalb eines
-			Netzwerkes nehmen soll\\
+			Netzwerkes nutzen soll\\
 			\hline
 		\end{tabularx}
 		\caption{Testtabelle}
@@ -224,6 +225,7 @@
 	%pp. 149-150
 	
 	\subsection{Netzwerksegmente und IPv4}
+	\label{sec:nwsegment_ipv4}
 	Die Segmentierung eines Netzwerk ist dann sinnvoll, wenn es
 	sich um eine große Infrastruktur, wie die eines Unternehmen handelt. Die 
 	Subnetze besitzen einen logischen Adressraum, der abhängig von der Anzahl an 
@@ -296,6 +298,7 @@
 	\end{figure}
 
 	\subsubsection{Private und öffentliche Adressen}
+	\label{sec:priv_pub_adr}
 	Die Einführung von IPv6 wurde unteranderem wegen der aufkommenden Adressknappheit
 	umgesetzt. Fast jede Person hat mehrer Endgeräte, die entweder im lokalen Netz
 	oder auch ins Internet kommunizieren können. Das führt dazu, dass die Anzahl
@@ -319,6 +322,7 @@
 	%Computernetze kompakt pp. 149-150
 
 	\subsection{Router Aufbau und Verbindungsarten}
+	\label{sec:build_connect}
 	Die Beschreibung des Aufbau eines Routers wird in dieser Ausarbeitung auf
 	die Komponenten beschränkt, die die beiden Router haben, die für die Tests
 	verwendet werden. Es handelt sich dabei um folgende Geräte, die für den
@@ -363,7 +367,68 @@
 	%Datasheet, downloaded: 18.05.2026
 	%https://www.dlink.com/al/sq/-/media/consumer_products/dir/dir-600/datasheet/dir_600_c1_datasheet_03_ww.pdf
 	
+	\subsection{Routing Arten und Protokolle}
+	\label{sec:Routing-Arten}
+	Bevor auf das Routing, dessen Arten und die dazugehörigen Protokolle eingegangen
+	wird müssen die folgenden zwei Tabelle und deren Funktionsweise erläutert werden:
+	\subsubsection*{Forwarding Table}
+
+	\subsubsection*{Routing Table}
+
+	Der Unterschied zwischen diesen beiden Tabelle ist, dass die Routing Tabelle
+	alle möglichen Routen enthält während in der Forwarding Tabelle festgelegt wird
+	welche Route für das gegebene Paket genutzt wird.
+	Es folgen die zwei Arten des Routing mit Vor- und Nachteilen als auch deren
+	übliches Einsatzgebiet.
+	\begin{description}
+		\item[Statisches Routing]
+		Die Route werden fest definiert und die Pakete werden immer auf dem selben 
+		Weg versendet. 
+		\begin{itemize}
+			\item Vorteile: Keine Austausch über die Pfade mit anderen Routern
+			notwendig, was wiederum zu weniger Datenverkehr führt. 
+			\item Nachteile: Ist eine Route gestört, gibt es keine Alternative. 
+			Bei Änderungen oder Störungen muss der Administrator manuell eine andere
+			Route festlegen. Manuelle Konfiguration der Forwarding Tabelle.
+			\item Einsatzgebiet: Kleine Unternehmensnetze \cite[S.72]{mandl2019}
+		\end{itemize}
+
+		\item[Dynamisches Routing]
+		Die Route wird dynamisch gewählt, abhänging von den Informationen in der 
+		Routing Tabelle. Die Pakete können daher auf verschiedenen Routen versendet
+		werden.
+		\begin{itemize}
+			\item Vorteile: Auch bei Netzwerkstörungen werden Pakete weitergeleitet.
+			Bei einer ausgefallenen Route muss kein Administrator eingreifen.
+			\item Nachteile: Austausch mit anderen Routern notwendig, um die Routing
+			Tabelle aktuell zu halten, dadurch entsteht mehr Datenverkehr.
+			\item Einsatzgebiet: 
+		\end{itemize}
+	\end{description}
+	Routing-Protokolle definieren die Regeln für die Kommunikation zwischen Routern.
+	Sie können die Wegfindung im Netzwerk steuern, die Verwaltung der Routingtabellen
+	sowie das Verhalten bei Störungen. Im Falle eines Ausfalls ermöglichen sie die
+	automatische Berechnung alternativer Routen. Welche Informationen ausgetauscht
+	werden hängt vom jeweiligen Protokoll ab. Diese Protokolle werden nur beim 
+	dynamischen Routing eingesetzt, da dort die Wege mit den übermittelten Informationen
+	automatisch angepasst werden. Im weiteren wird in aller Kürze auf einige der
+	Protokolle eingegangen:
+	\begin{description}
+		\item[OSPF] Open Shortest Path First: Pakete werden immer über den kürzesten
+		Weg übermittelt. Stehen mehrere gleich kurze Wege zur Verfügung, werden alle
+		Wege genutzt, um die Daten in leichtgewichtigeren Paketen zu versenden. Für
+		das Routing außerhalb des Internets.
+		\item[BGP] Border Gateway Protocol: Informationen für das Routing im Internet.
+	\end{description}
+	\cite{zisler2022, baun2025, mandl2019}
+
+	\begin{quote}
+		Test ob das funktioniert mit dem Einrücken beim wörtlichen Zitaten
+		\cite[S. 166]{zisler2022}
+	\end{quote}
+
 	\subsection{Kommunikation von LAN in WAN}
+	\label{sec:lan_wan}
 	%---Modem und wie komm ich ins Internet
 	Eingie Router haben ein eingebautes Modem, das ihnen ermöglicht Pakete,
 	ins Internet zu senden als auch zu empfangen. Ohne ein solches Modem ist
@@ -403,10 +468,16 @@
 	Über das Protokoll ICMP oder IGMP bleiben Router miteinander in Kontakt und
 	tauschen Informationen über die genutzten Wege und die angeschlossenen Hosts
 	aus.
-	Das Paket das ein Router erhält wird entweder an einen weiteren Router, das 
-	wird als Hop bezeichnet oder an das entsprechende Endgerät im selben Netz
-	weitergeleitet. Dazu wird der Datenanteil aus dem Paket gelöst und vom Router
-	entsprechend wieder verpackt, um dem benötigten Format zu entsprechen.
+	Das Paket das ein Router erhält wird entweder an einen weiteren Router oder an
+	das entsprechende Endgerät im selben Netz weitergeleitet. Die Dazu wird der 
+	Datenanteil aus dem Paket gelöst und vom Router entsprechend wieder verpackt,
+	um dem benötigten Format zu entsprechen. 
+
+	-Router mehrer Verbindungen zum gleichen Ziel unterstützen, damit falls die 
+	schnellere Verbindung ausfällt auf die andere zurückgegriffen werden kann. Dafür
+	muss das Netzt die entsprechende Größe und Verbindungen besitzen. Dies ist eine
+	Sicherheitsmaßnahme, für eine stabile Übertragung und bietet Redundanz. 
+	\cite[S. 186]{zisler2022}
 	
 
 	%=======================notes jf - need to be deleted later
@@ -428,17 +499,10 @@
 	%User Guide in differente languages, downloaded: 16.05.2026
 	%https://downloads.linksys.com/downloads/userguide/1224697214905/WRT120N-EMEA_combo_UG.pdf
 
-	\subsection{Routing Arten}
-	\label{sec:Routing-Arten}
-	Arten von Routing, jeweils mit Vor-/Nachteilen und Einsatzgebiet
-	Unterschiede von Routern in Heimnetzen und Unternehmen
-	\begin{quote}
-		Für den Heimbereich und das Kleingewerbe bekommen Sie auch Ausfürhungen
-		mit eingebautem Router für den Internetzugang
-	\end{quote}	\cite[S. 166]{zisler2022}
+
 
 	\subsection{Router als attraktives Ziel für Angreifer}
-	\label{sec:attraktives_ziel}
+	\label{sec:attractiv_target}
 	\subsection{Definition AB}
 
 

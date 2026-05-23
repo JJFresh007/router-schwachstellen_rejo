@@ -19,6 +19,38 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global}
+    \entry{zisler2022}{book}{}
+      \name{author}{1}{}{%
+        {{hash=ebaa2525f3b3aa3b4c9ec0374e031f67}{%
+           family={Zisler},
+           familyi={Z\bibinitperiod},
+           given={Harald},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Bonn}%
+      }
+      \list{publisher}{1}{%
+        {Rheinwerk Verlag}%
+      }
+      \strng{namehash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
+      \strng{fullhash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
+      \strng{bibnamehash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
+      \strng{authorbibnamehash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
+      \strng{authornamehash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
+      \strng{authorfullhash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{edition}{7., aktualisierte Auflage}
+      \field{isbn}{978-3-8362-8950-4}
+      \field{langid}{german}
+      \field{series}{{Rheinwerk Computing}}
+      \field{shorttitle}{{Computer-Netzwerke}}
+      \field{title}{{Computer-Netzwerke: Grundlagen, Funktionsweisen, Anwendung}}
+      \field{year}{2022}
+    \endentry
     \entry{baun2025}{book}{}
       \name{author}{1}{}{%
         {{hash=c8362ec3de9dbb4de64fee2d8b9cfe70}{%
@@ -60,37 +92,58 @@
       \verb /home/johanna/Zotero/storage/ZKRBFTG4/Baun - 2025 - Computernetze kompakt Eine praxisorientierte Einführung für Studium und Beruf.pdf
       \endverb
     \endentry
-    \entry{zisler2022}{book}{}
+    \entry{mandl2019}{incollection}{}
       \name{author}{1}{}{%
-        {{hash=ebaa2525f3b3aa3b4c9ec0374e031f67}{%
-           family={Zisler},
-           familyi={Z\bibinitperiod},
-           given={Harald},
-           giveni={H\bibinitperiod}}}%
+        {{hash=73dc89dd47d5782f97fff283749ded14}{%
+           family={Mandl},
+           familyi={M\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=73dc89dd47d5782f97fff283749ded14}{%
+           family={Mandl},
+           familyi={M\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
       }
       \list{location}{1}{%
-        {Bonn}%
+        {Wiesbaden}%
       }
       \list{publisher}{1}{%
-        {Rheinwerk Verlag}%
+        {Springer Fachmedien}%
       }
-      \strng{namehash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
-      \strng{fullhash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
-      \strng{bibnamehash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
-      \strng{authorbibnamehash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
-      \strng{authornamehash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
-      \strng{authorfullhash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \strng{namehash}{73dc89dd47d5782f97fff283749ded14}
+      \strng{fullhash}{73dc89dd47d5782f97fff283749ded14}
+      \strng{bibnamehash}{73dc89dd47d5782f97fff283749ded14}
+      \strng{authorbibnamehash}{73dc89dd47d5782f97fff283749ded14}
+      \strng{authornamehash}{73dc89dd47d5782f97fff283749ded14}
+      \strng{authorfullhash}{73dc89dd47d5782f97fff283749ded14}
+      \strng{editorbibnamehash}{73dc89dd47d5782f97fff283749ded14}
+      \strng{editornamehash}{73dc89dd47d5782f97fff283749ded14}
+      \strng{editorfullhash}{73dc89dd47d5782f97fff283749ded14}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
-      \field{labeltitlesource}{shorttitle}
-      \field{edition}{7., aktualisierte Auflage}
-      \field{isbn}{978-3-8362-8950-4}
-      \field{langid}{german}
-      \field{series}{{Rheinwerk Computing}}
-      \field{shorttitle}{{Computer-Netzwerke}}
-      \field{title}{{Computer-Netzwerke: Grundlagen, Funktionsweisen, Anwendung}}
-      \field{year}{2022}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Für die Wegewahl werden im Internet verschiedene Verfahren eingesetzt und man muss prinzipiell zwischen der Wegewahl innerhalb autonomer Systeme (Intra-AS-Routing) und der Wegewahl im globalen Internet, also zwischen den autonomen Systemen (Inter-AS-Routing), unterscheiden. Jedes autonome System kann intern eigene Routing-Algorithmen verwenden, die in IPv4-Routern ablaufen. Jeder IPv4-Router verwaltet neben der protokollabhängigen Routing-Tabelle auch eine Forwarding-Tabelle, die der Entscheidung für eine Weiterleitung dient. Es gibt ein Regelwerk, nach dem die Forwarding-Tabelle in Routern durchsucht wird.}
+      \field{booktitle}{{Internet Internals: Vermittlungsschicht, Aufbau und Protokolle}}
+      \field{isbn}{978-3-658-23536-9}
+      \field{langid}{ngerman}
+      \field{title}{{Routing und Forwarding}}
+      \field{urlday}{23}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \field{pages}{71\bibrangedash 104}
+      \range{pages}{34}
+      \verb{doi}
+      \verb 10.1007/978-3-658-23536-9_5
+      \endverb
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/SXWL6G7F/Mandl - 2019 - Routing und Forwarding.pdf
+      \endverb
     \endentry
     \entry{chalhoub2023}{inproceedings}{}
       \name{author}{2}{}{%
@@ -117,8 +170,8 @@
       \strng{authorbibnamehash}{e5be30a7acefc4efe39f9ba263bd1a91}
       \strng{authornamehash}{e5be30a7acefc4efe39f9ba263bd1a91}
       \strng{authorfullhash}{e5be30a7acefc4efe39f9ba263bd1a91}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{booktitle}{Proceedings of the 2023 {{European Symposium}} on {{Usable Security}}}

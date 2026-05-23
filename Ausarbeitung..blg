@@ -1,0 +1,5 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'Ausarbeitung..blg'
+[69] biber:340> INFO - === Sat May 23, 2026, 19:37:21
+[188] Utils.pm:399> ERROR - Cannot find 'Ausarbeitung..bcf'!
+[188] Biber.pm:136> INFO - ERRORS: 1
