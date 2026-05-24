@@ -155,11 +155,7 @@
 	Dabei ist darauf zu achten, nur solche Inhalte in das Grundlagenkapitel 
 	aufzunehmen, die später auch verwendet werden (Problembezogenheit). Ebenso
 	ist auf eine ausreichend tiefe und vollständige Darstellung der Grundlagen
-	zu achten.
-	\newline \newline
-	Für die Erstellung des Literaturverzeichnisses wird das Werkzeug Zotero 
-	\href{www.zotero.org}{www.zotero.org} verwendet. Das Literaturverzeichnis in 
-	dieser Vorlage wurde mit Zotero gemäß dem IEEE Format erstellt. 
+	zu achten. 
 	\newline \newline
 	Hilfreich kann der Vergleich von Definitionen mit Hilfe einer Tabelle sein, 
 	wie in \hyperlink{tabelle1}{Tabelle 1} dargestellt.
@@ -170,10 +166,6 @@
 			\hline
 			Endgerät & Geräte, die an einem Router angeschlossen sein können. Dazu zählen
 			Laptops, Desktop PCs, Server, Drucker, Smartphone, etc.\\ %---muss das rein?
-			\hline
-			Netzwerk & ... \\
-			\hline
-			Netzwerksegment & ... \\
 			\hline
 			LAN & local area network - lokales Netzwerk \\
 			\hline
@@ -203,21 +195,10 @@
 			den alles vermittelt wird, das in ein anderen Netzwerk muss. Kurz gesagt,
 			enthält die Routing Tabelle die Standardrouten.\\
 			\hline
-			
 		\end{tabularx}
 		\caption{Testtabelle}
 	\end{figure}
 	\section{Router Grundlagen}
-	%=======================notes jf - need to be deleted later
-	%was ein Router ist, wie er funktioniert, welche Arten es gibt, wie er aufgebaut
-	%ist,und warum er sicherheitsrelevant ist.
-	%
-	%Grundlagen von Routern: Definition und Funktion, Routerarten, Aufbau und
-	%Komponenten, Routing-Verfahren
-	%
-	%Gerät identifizieren → Netz strukturieren → lokal kommunizieren → zwischen
-	%Netzen kommunizieren → physische/verbindungstechnische Umsetzung
-	%=========================================================
 	Wie der Name erahnen lässt ist der Router innerhalb eines Netzwerks dafür
 	zuständig Nachrichten von einer angeschlossenen Quelle zum Ziel zu leiten.
 	Der Router kümmert sich darum, dass der optimale Weg von der Quelle zum Ziel 
@@ -226,7 +207,6 @@
 	über verschiedene Punkte. Es gibt zwei Arten des Routing, dynamisches und 
 	statisches Routing. Auf diese Arten und die Protokolle wird im Abschnitt
 	\ref{sec:Routing-Arten} weiter eingegangen.
-	%---wird über Protokolle festgelegt -> nochmal weiter darauf eingehen	
 	Wichtig zu Beachten ist der Unterschied zwischen Router und Switch. Beide
 	Geräte sind für die Weiterleitung der Pakete an das richtige Ziel zuständig.
 	Die Switches der Schicht 2 (ISO/OSI Modell) können nur Frames innerhalb 
@@ -268,7 +248,7 @@
 		\centering
 		\includegraphics[width=0.75\textwidth]{img/c-nw_nwklassen_s93.png}
 		\caption{Host- und Netzwerkanteil je Netzwerkklasse 
-		\cite{zisler2022}}
+		\cite[S.95]{zisler2022}}
 		\label{fig:nwclasses}
 	\end{figure}
 	Ob sich Quelle und Ziel im gleichen Subnetz befinden, wird vom Sender, also
@@ -372,19 +352,14 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.75\textwidth]{img/wrt120n_ports-benutzerhandbuch_s1.png}
-		\caption{WRT120N Anschlüsse hinten}
+		\caption{WRT120N Anschlüsse hinten, Quelle: WRT120N-EMEA_combo_UG.pdf}
 		\label{fig:wrt120n-ports}
 	\end{figure}
 	Wurde das WLAN mit Hilfe der Anleitung eingerichtet sind die Router nicht
 	nur sichtbar als WLAN Provider sondern können nach erfolgreicher Verbindung
-	auch eine stabile Internet Verbindung bieten.
+	auch eine stabile Internet Verbindung bieten. [Qelle: WRT120N-EMEA_combo_UG.pdf,
+	dir_600_c1_datasheet_03_ww.pdf]
 
-	%---Quelle: Datenblätter der Router
-	%User Guide in differente languages, downloaded: 16.05.2026
-	%https://downloads.linksys.com/downloads/userguide/1224697214905/WRT120N-EMEA_combo_UG.pdf
-	%Datasheet, downloaded: 18.05.2026
-	%https://www.dlink.com/al/sq/-/media/consumer_products/dir/dir-600/datasheet/dir_600_c1_datasheet_03_ww.pdf
-	
 	\subsection{Routing Arten und Protokolle}
 	\label{sec:Routing-Arten}
 	Es folgen die zwei Arten des Routing mit Vor- und Nachteilen als auch deren
@@ -419,59 +394,31 @@
 	automatische Berechnung alternativer Routen. Welche Informationen ausgetauscht
 	werden hängt vom jeweiligen Protokoll ab. Diese Protokolle werden nur beim 
 	dynamischen Routing eingesetzt, da dort die Wege mit den übermittelten Informationen
-	automatisch angepasst werden. Im weiteren wird in aller Kürze auf einige der
-	Protokolle eingegangen:
-
-Distanzvektorprotokolle -> RIP
-Link-State-Routing-Protokolle ->OSPF
-
-
+	automatisch angepasst werden. Im weiteren werden in aller Kürze die zwei Typen von
+	Protokollen aufgezählt als auch jeweils ein speziellen Typen:
 	\begin{description}
-		\item[OSPF] Open Shortest Path First: Pakete werden immer über den kürzesten
-		Weg übermittelt. Stehen mehrere gleich kurze Wege zur Verfügung, werden alle
-		Wege genutzt, um die Daten in leichtgewichtigeren Paketen zu versenden. Für
-		das Routing außerhalb des Internets.
-		\item[BGP] Border Gateway Protocol: Informationen für das Routing im Internet.
-	\end{description}
+		\item[Distanzvektorprotokolle] arbeitet auf Grundlage des Bellman-Ford 
+		Algorithmus. Beispiel: RIP (Routing Information Protocol) 
+		\item[Link-State-Routing-Protokolle] arbeite auf Grundlage des Dijkstra-
+		Algorithmus. Beispiel: OSPF (Open Shortest Path First)
+	\end{description} \cite[S.191]{baun2025}
+	Auf die Unterschiede der Routing-Protokolle hinsichtlich ihrer Einsatzgebiete
+	wird im Folgenden nicht näher eingegangen.
 	\cite{zisler2022, baun2025, mandl2019}
-
-	\begin{quote}
-		Test ob das funktioniert mit dem Einrücken beim wörtlichen Zitaten
-		\cite[S. 166]{zisler2022}
-	\end{quote}
 
 	\subsection{Kommunikation von LAN in WAN}
 	\label{sec:lan_wan}
 	Im folgenden Abschnitt wird erläutert, wie ein Router Datenpakete aus einem
 	lokalen Netzwerk (LAN) in das Internet weiterleitet.
-	Möchte ein Benutzer eine Website im Internet aufrufen, gibt dieser in der
-	Regel nicht direkt die IP-Adresse des Zielservers ein, da diese meist nicht
-	bekannt ist. Stattdessen wird üblicherweise ein Domainname wie beispielsweise 
-	$www.google.com$ verwendet. Damit eine Verbindung aufgebaut werden kann,
-	muss zunächst die zugehörige IP-Adresse ermittelt werden. Dies geschieht
-	mithilfe des Domain Name Systems (DNS). Ein DNS-Server liefert zu einem
-	Domainnamen die entsprechende IP-Adresse zurück. Anschließend wird das Paket
-	anhand der Ziel-IP-Adresse über mehrere Router weitergeleitet. Jeder Router
-	entscheidet mithilfe seiner Routing-Tabelle, über welches Interface das
-	Paket weitergeleitet werden soll. Die Ziel-IP-Adresse bleibt dabei unverändert.
-	Lediglich die MAC-Adressen werden bei jedem Übertragungsschritt neu gesetzt.
-	Wie im Abschnitt \ref{sec:priv_pub_adr} beschrieben, werden in lokalen 
-	Netzwerken häufig private IP-Adressen verwendet. Damit Geräte mit dem Internet 
-	kommunizieren können, führt der Router eine Network Address Translation (NAT) 
-	durch. Dabei wird die private Quell-IP-Adresse im Paket durch die öffentliche 
-	IP-Adresse ersetzt. Erhält der Router eine Antwort aus dem Internet, kann er
-	diese mithilfe seiner NAT-Tabelle dem entsprechenden Endgerät im lokalen 
-	Netzwerk zuordnen und an dessen private IP-Adresse weiterleiten.
 
-	%---Modem und wie komm ich ins Internet
-	Eingie Router haben ein eingebautes Modem, das ihnen ermöglicht Pakete,
+	Router haben heutzutage ein eingebautes Modem, das ihnen ermöglicht Pakete,
 	ins Internet zu senden als auch zu empfangen. Ohne ein solches Modem ist
 	die Kommunikation ins Internet nicht möglich. Das Modem wandelt die digitalen
 	Signale von einem Endgerät, wie einem Laptop in analoge Signale um und sendet
 	dann die Anfrage in das Internet. Die Antwort ist ein analoges Signal welches
 	wiederum in ein digitales gewandelt werden muss, damit der Laptop die 
-	enthaltenen Informationen verarbeiten kann.
-	
+	enthaltenen Informationen verarbeiten kann. 
+	%S.22 baun2025
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{img/ipv4_packet-structure.pdf}
@@ -494,8 +441,27 @@ Link-State-Routing-Protokolle ->OSPF
 	Paket gehört. Kommt ein Paket bei einem Router an und müsste fragmentiert werden,
 	um in das Zielnetz weitergeleitet zu werden, kann es sein das diese verworfen
 	wird, da eine Flag im Paket ausdrücklich das Fragmentieren, diese Pakets verbietet.
-	Pakete von IPv4 haben auch eine Prüfsumme inkludiert, welche aber zur Verbeserung
+	Pakete von IPv4 haben auch eine Prüfsumme inkludiert, welche aber zur Verbesserung
 	der Datenübertragungsgeschwindigkeit nicht von Router überprüft wird. 
+	
+	Möchte ein Benutzer eine Website im Internet aufrufen, gibt dieser in der
+	Regel nicht direkt die IP-Adresse des Zielservers ein, da diese meist nicht
+	bekannt ist. Stattdessen wird üblicherweise ein Domainname wie beispielsweise 
+	$www.google.com$ verwendet. Damit eine Verbindung aufgebaut werden kann,
+	muss zunächst die zugehörige IP-Adresse ermittelt werden. Dies geschieht
+	mithilfe des Domain Name Systems (DNS). Ein DNS-Server liefert zu einem
+	Domainnamen die entsprechende IP-Adresse zurück. Anschließend wird das Paket
+	anhand der Ziel-IP-Adresse über mehrere Router weitergeleitet. Jeder Router
+	entscheidet mithilfe seiner Routing-Tabelle, über welches Interface das
+	Paket weitergeleitet werden soll. Die Ziel-IP-Adresse bleibt dabei unverändert.
+	Lediglich die MAC-Adressen werden bei jedem Übertragungsschritt neu gesetzt.
+	Wie im Abschnitt \ref{sec:priv_pub_adr} beschrieben, werden in lokalen 
+	Netzwerken häufig private IP-Adressen verwendet. Damit Geräte mit dem Internet 
+	kommunizieren können, führt der Router eine Network Address Translation (NAT) 
+	durch. Dabei wird die private Quell-IP-Adresse im Paket durch die öffentliche 
+	IP-Adresse ersetzt. Erhält der Router eine Antwort aus dem Internet, kann er
+	diese mithilfe seiner NAT-Tabelle dem entsprechenden Endgerät im lokalen 
+	Netzwerk zuordnen und an dessen private IP-Adresse weiterleiten.
 	\cite{zisler2022, baun2025}
 	%Chapter 7.2.4 ff von Baun
 	
@@ -520,8 +486,16 @@ Link-State-Routing-Protokolle ->OSPF
 	%https://downloads.linksys.com/downloads/userguide/1224697214905/WRT120N-EMEA_combo_UG.pdf
 
 
+	\begin{quote}
+		Test ob das funktioniert mit dem Einrücken beim wörtlichen Zitaten
+		\newline\cite[S. 166]{zisler2022}
+	\end{quote}
 
 	\subsection{Router als attraktives Ziel für Angreifer}
+	%=======================notes jf - need to be deleted later
+	%warum er sicherheitsrelevant ist.
+	%=========================================================
+	
 	\label{sec:attractiv_target}
 	\subsection{Definition AB}
 
