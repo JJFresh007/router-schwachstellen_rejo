@@ -198,6 +198,12 @@
 			wie Pakete übermittelt werden oder auch welchen Weg ein Paket innerhalb eines
 			Netzwerkes nutzen soll\\
 			\hline
+			Routing Table & Diese Tabelle besitzt jedes Gerät im Netzwerk und enthält
+			die Routen zu den anderen Geräten im Netz oder das Gateway, der Router an
+			den alles vermittelt wird, das in ein anderen Netzwerk muss. Kurz gesagt,
+			enthält die Routing Tabelle die Standardrouten.\\
+			\hline
+			
 		\end{tabularx}
 		\caption{Testtabelle}
 	\end{figure}
@@ -290,7 +296,7 @@
 	um heraus zufinden über welchen Port das Paket weitergeleitet werden muss. 
 	Da der Router ein Layer 3 Gerät ist, muss er die IP-Adresse des Zielgerätes
 	kennen, um das Paket in das richtige Netzwerk zu leiten. Die Tabelle beinhaltet
-	alle Netzwerke, die über einen Port am Router angeschlossen sind. Durch das 
+	alle Netzwerke, die über ein Interface mit dem Router verbunden sind. Durch das 
 	Versenden der Pakete über den Router wird die Routing Tabelle nach und nach 
 	gefüllt, da der Router durch die Quelladressen des Pakets lernt, welches Gerät
 	an welchem 	Port hängt. In der Tabelle steht dann der jeweilige Port mit der 
@@ -333,7 +339,7 @@
 	\cite{zisler2022, baun2025}
 	%Computernetze kompakt pp. 149-150
 
-	\subsection{Router Aufbau und Verbindungsarten}
+	\subsection{Aufbau und Verbindungsarten}
 	\label{sec:build_connect}
 	Die Beschreibung des Aufbau eines Routers wird in dieser Ausarbeitung auf
 	die Komponenten beschränkt, die die beiden Router haben, die für die Tests
@@ -381,15 +387,6 @@
 	
 	\subsection{Routing Arten und Protokolle}
 	\label{sec:Routing-Arten}
-	Bevor auf das Routing, dessen Arten und die dazugehörigen Protokolle eingegangen
-	wird müssen die folgenden zwei Tabelle und deren Funktionsweise erläutert werden:
-	\subsubsection*{Forwarding Table}
-
-	\subsubsection*{Routing Table}
-
-	Der Unterschied zwischen diesen beiden Tabelle ist, dass die Routing Tabelle
-	alle möglichen Routen enthält während in der Forwarding Tabelle festgelegt wird
-	welche Route für das gegebene Paket genutzt wird.
 	Es folgen die zwei Arten des Routing mit Vor- und Nachteilen als auch deren
 	übliches Einsatzgebiet.
 	\begin{description}
@@ -404,7 +401,6 @@
 			Route festlegen. Manuelle Konfiguration der Forwarding Tabelle.
 			\item Einsatzgebiet: Kleine Unternehmensnetze \cite[S.72]{mandl2019}
 		\end{itemize}
-
 		\item[Dynamisches Routing]
 		Die Route wird dynamisch gewählt, abhänging von den Informationen in der 
 		Routing Tabelle. Die Pakete können daher auf verschiedenen Routen versendet
@@ -446,6 +442,27 @@ Link-State-Routing-Protokolle ->OSPF
 
 	\subsection{Kommunikation von LAN in WAN}
 	\label{sec:lan_wan}
+	Im folgenden Abschnitt wird erläutert, wie ein Router Datenpakete aus einem
+	lokalen Netzwerk (LAN) in das Internet weiterleitet.
+	Möchte ein Benutzer eine Website im Internet aufrufen, gibt dieser in der
+	Regel nicht direkt die IP-Adresse des Zielservers ein, da diese meist nicht
+	bekannt ist. Stattdessen wird üblicherweise ein Domainname wie beispielsweise 
+	$www.google.com$ verwendet. Damit eine Verbindung aufgebaut werden kann,
+	muss zunächst die zugehörige IP-Adresse ermittelt werden. Dies geschieht
+	mithilfe des Domain Name Systems (DNS). Ein DNS-Server liefert zu einem
+	Domainnamen die entsprechende IP-Adresse zurück. Anschließend wird das Paket
+	anhand der Ziel-IP-Adresse über mehrere Router weitergeleitet. Jeder Router
+	entscheidet mithilfe seiner Routing-Tabelle, über welches Interface das
+	Paket weitergeleitet werden soll. Die Ziel-IP-Adresse bleibt dabei unverändert.
+	Lediglich die MAC-Adressen werden bei jedem Übertragungsschritt neu gesetzt.
+	Wie im Abschnitt \ref{sec:priv_pub_adr} beschrieben, werden in lokalen 
+	Netzwerken häufig private IP-Adressen verwendet. Damit Geräte mit dem Internet 
+	kommunizieren können, führt der Router eine Network Address Translation (NAT) 
+	durch. Dabei wird die private Quell-IP-Adresse im Paket durch die öffentliche 
+	IP-Adresse ersetzt. Erhält der Router eine Antwort aus dem Internet, kann er
+	diese mithilfe seiner NAT-Tabelle dem entsprechenden Endgerät im lokalen 
+	Netzwerk zuordnen und an dessen private IP-Adresse weiterleiten.
+
 	%---Modem und wie komm ich ins Internet
 	Eingie Router haben ein eingebautes Modem, das ihnen ermöglicht Pakete,
 	ins Internet zu senden als auch zu empfangen. Ohne ein solches Modem ist
@@ -481,20 +498,6 @@ Link-State-Routing-Protokolle ->OSPF
 	der Datenübertragungsgeschwindigkeit nicht von Router überprüft wird. 
 	\cite{zisler2022, baun2025}
 	%Chapter 7.2.4 ff von Baun
-
-	Über das Protokoll ICMP oder IGMP bleiben Router miteinander in Kontakt und
-	tauschen Informationen über die genutzten Wege und die angeschlossenen Hosts
-	aus.
-	Das Paket das ein Router erhält wird entweder an einen weiteren Router oder an
-	das entsprechende Endgerät im selben Netz weitergeleitet. Die Dazu wird der 
-	Datenanteil aus dem Paket gelöst und vom Router entsprechend wieder verpackt,
-	um dem benötigten Format zu entsprechen. 
-
-	-Router mehrer Verbindungen zum gleichen Ziel unterstützen, damit falls die 
-	schnellere Verbindung ausfällt auf die andere zurückgegriffen werden kann. Dafür
-	muss das Netzt die entsprechende Größe und Verbindungen besitzen. Dies ist eine
-	Sicherheitsmaßnahme, für eine stabile Übertragung und bietet Redundanz. 
-	\cite[S. 186]{zisler2022}
 	
 
 	%=======================notes jf - need to be deleted later
