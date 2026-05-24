@@ -194,6 +194,143 @@
       \verb /home/johanna/Zotero/storage/SXWL6G7F/Mandl - 2019 - Routing und Forwarding.pdf
       \endverb
     \endentry
+    \entry{schwarz2021}{article}{}
+      \name{author}{9}{}{%
+        {{hash=3662566dd587bc459588c274bb283dd5}{%
+           family={Schwarz},
+           familyi={S\bibinitperiod},
+           given={Franziska},
+           giveni={F\bibinitperiod}}}%
+        {{hash=00d0cd8739b90e48d5cfcc4dd755a728}{%
+           family={Schwarz},
+           familyi={S\bibinitperiod},
+           given={Klaus},
+           giveni={K\bibinitperiod}}}%
+        {{hash=73c13916f166886243fd3641ebe3f2d9}{%
+           family={Fuchs},
+           familyi={F\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=38ab76b3116c29f31bf05bd56fbbdfa4}{%
+           family={Creutzburg},
+           familyi={C\bibinitperiod},
+           given={Reiner},
+           giveni={R\bibinitperiod}}}%
+        {{hash=9360a1c302f0f7a91cec0c894b3d1bc8}{%
+           family={Akopian},
+           familyi={A\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=00d0cd8739b90e48d5cfcc4dd755a728}{%
+           family={Schwarz},
+           familyi={S\bibinitperiod},
+           given={Klaus},
+           giveni={K\bibinitperiod}}}%
+        {{hash=73c13916f166886243fd3641ebe3f2d9}{%
+           family={Fuchs},
+           familyi={F\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=38ab76b3116c29f31bf05bd56fbbdfa4}{%
+           family={Creutzburg},
+           familyi={C\bibinitperiod},
+           given={Reiner},
+           giveni={R\bibinitperiod}}}%
+        {{hash=9360a1c302f0f7a91cec0c894b3d1bc8}{%
+           family={Akopian},
+           familyi={A\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Society for Imaging Science and Technology}%
+      }
+      \strng{namehash}{c7825ed3fec0b5966c016fa4fc80c184}
+      \strng{fullhash}{246a330077366af807b4120d528fe797}
+      \strng{bibnamehash}{c7825ed3fec0b5966c016fa4fc80c184}
+      \strng{authorbibnamehash}{c7825ed3fec0b5966c016fa4fc80c184}
+      \strng{authornamehash}{c7825ed3fec0b5966c016fa4fc80c184}
+      \strng{authorfullhash}{246a330077366af807b4120d528fe797}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{TP-Link Technologies Co, Ltd. is a Chinese manufacturer of networking products and has a 42\% share of the consumer WLAN market, making it the market leader. The company sells about 150 million devices per year. Many people worldwide use the Internet every day and are connected to the Internet with their computers. In the world of smart homes, even coffee machines, refrigerators, smart sockets, and light bulbs have found their way to the Internet, not to mention the many smartphones, which are, of course, also connected to the Internet. Since many different dangers come from a heater or printer and the many other smart devices directly connected to the Internet, there is a safe haven: the local area network. To connect to the Internet, one needs a modem, which is built into a router in many cases. Routers route network packets back and forth between several computer networks. They are used to connect to the Internet, and they are the bridge between the home network and the Internet in almost every household connected to the Internet. Because of their nature as a bridge between local and global networks, they are also the largest attack vector. [19] This paper examines how up-to-date the firmware of standard home network routers is and how secure the firmware is. In order to obtain a representative result, the examined routers were selected according to fixed rules. Each router had to be a product of the manufacturer TP-Link, the routers had to be in the low-budged range (less than 20 Euro) and be available from Amazon. Also, two different types of investigations were identified for the selected devices. Firstly, the devices were examined in the form of physically existing hardware, and secondly, an attempt was made to access the firmware via the manufacturer\&\#x2019;s website. It was found that even the fixing of current vulnerabilities and recently released update files are no guarantee that older vulnerabilities have been fixed. Secrets such as private keys and certificates are hard-coded in the firmware and can be extracted from update files. Moreover, devices are deliberately built to make it impossible to install the latest alternative firmware.}
+      \field{issn}{2470-1173}
+      \field{journaltitle}{Electronic Imaging}
+      \field{langid}{english}
+      \field{month}{6}
+      \field{title}{Firmware {{Vulnerability Analysis}} of {{Widely Used Low-Budget TP-Link Routers}}}
+      \field{urlday}{24}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{volume}{33}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \field{pages}{1\bibrangedash 11}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.2352/ISSN.2470-1173.2021.3.MOBMU-135
+      \endverb
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/VW9SA56L/Schwarz et al. - 2021 - Firmware Vulnerability Analysis of Widely Used Low-Budget TP-Link Routers.pdf
+      \endverb
+    \endentry
+    \entry{bsia}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=44ea1b356dcd7bfe0ece54601fb6bcec}{%
+           family={BSI},
+           familyi={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \strng{fullhash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \strng{bibnamehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \strng{authorbibnamehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \strng{authornamehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \strng{authorfullhash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Cyber-Sicherheitsempfehlungen/Router-WLAN-VPN/Sicherheitstipps-fuer-privates-und-oeffentliches-WLAN/sicherheitstipps-fuer-privates-und-oeffentliches-wlan.html?nn=131138}
+      \field{journaltitle}{Bundesamt für Sicherheit in der Informationstechnik}
+      \field{langid}{ngerman}
+      \field{title}{{Sicherheitstipps im privaten und öffentlichen WLAN}}
+      \field{urlday}{21}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/3DM7MGQT/sicherheitstipps-fuer-privates-und-oeffentliches-wlan.html
+      \endverb
+    \endentry
+    \entry{vomdorp2022}{article}{}
+      \name{author}{2}{}{%
+        {{hash=98ef6eb94e972b7b0b97ea0dd04b0217}{%
+           family={{vom Dorp}},
+           familyi={v\bibinitperiod},
+           given={Johannes},
+           giveni={J\bibinitperiod}}}%
+        {{hash=06ba38bfcacc8237a4282a49366e37a2}{%
+           family={Helmke},
+           familyi={H\bibinitperiod},
+           given={René},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{8b040496e752f97487040c025e4f89b8}
+      \strng{fullhash}{8b040496e752f97487040c025e4f89b8}
+      \strng{bibnamehash}{8b040496e752f97487040c025e4f89b8}
+      \strng{authorbibnamehash}{8b040496e752f97487040c025e4f89b8}
+      \strng{authornamehash}{8b040496e752f97487040c025e4f89b8}
+      \strng{authorfullhash}{8b040496e752f97487040c025e4f89b8}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Fraunhofer}
+      \field{title}{Home Router Security Report 2022}
+      \field{year}{2022}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
