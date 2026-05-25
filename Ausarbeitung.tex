@@ -485,16 +485,8 @@
 	%User Guide in differente languages, downloaded: 16.05.2026
 	%https://downloads.linksys.com/downloads/userguide/1224697214905/WRT120N-EMEA_combo_UG.pdf
 
-
-	\begin{quote}
-		Test ob das funktioniert mit dem Einrücken beim wörtlichen Zitaten
-		\newline\cite[S. 166]{zisler2022}
-	\end{quote}
-
 	\subsection{Router als attraktives Ziel für Angreifer}
-	%=======================notes jf - need to be deleted later
-	%warum er sicherheitsrelevant ist.
-	%=========================================================
+	\label{sec:attractiv_target}
 	Die oben genannten Funktionen des Router machen deutlich das dieser auch
 	über das Internet als Angriffsziel genutzt werden kann. Zumdem ist ein Router
 	attraktiv, da man keinen physischen Zugang zum Gerät braucht, um in ein 
@@ -502,32 +494,61 @@
 	Pandemie 2020 an Attraktivität stark zugenommen, da seit dieser Zeit mehr im 
 	Home Office gearbeitet wird und Betriebsinterna, geheime Dokumente oder
 	auch der Nachrichtenaustausch über den Router zu Hause geleitet werden
-	\cite[S.277]{chalhoub2023}. In den meisten Haushalten ist ein Router Bestandteil
-	und sehr oft sind die Besitzer technisch nicht versiert genug, um einen
-	Router weiter einzurichten als lediglich die Standardfunktionen, um 
-	eine Verbindung ins Internet zu haben. Wie die Studie von Chalhoub und Martin
-	\cite{chalhoub2023} bewies haben die Router Hersteller viele Probleme,
-	welche die Routersicherheit stark ins Negative beeinflussen. Es folgen
-	die  wichtigsten Punkte:
+	\cite[S.277]{chalhoub2023}.
+	\begin{quote}
+		Aufgrund ihrer Funktion als Brücke zwischen lokalen und globalen 
+		Netzwerken stellen sie zudem den größten Angriffsvektor dar.
+		\cite{schwarz2021}
+	\end{quote}
+	In den meisten Haushalten ist ein Router Bestandteil und sehr oft sind 
+	die Besitzer technisch nicht versiert genug oder sie interessieren sich 
+	nicht für die Sicherheit ihres Routers, es reicht völlig aus wenn sie 
+	ihn anschließen, dieser funktioniert und ab dann wird am Router selbst
+	nichts mehr gemacht. Ein Hersteller erwähnte, dass die meisten User zum 
+	Einrichten des Routers nicht einmal die dafür vorgesehene Website 
+	aufsuchen \cite[S.285, Kapitel 4.4.3]{chalhoub2023}. 
+	Dieses Vorgehen sorgt dafür das Standard Credentials als Anmeldedaten 
+	bestehen bleiben und es für Angreifer einfach ist Zugang zum WLAN zu erhalten.
+	Desweiteren ergab die Studie von Chalhoub und Martin \cite{chalhoub2023}
+	das die Router Hersteller viele Probleme haben, welche die Routersicherheit
+	stark ins Negative beeinflussen. Es folgen einige Punkte:
 	\begin{itemize}
 		\item{Herstellung durch Dritte, die nach Auslieferung aufgrund
 		fehlernder Verträge nicht weiteren Support für die Geräte leisten}
 		\item{Firmware Updates werden trotz Bekanntmachung und Anleitung
 		nicht von den Besitzern ausgeführt}
-		\item{Router werden weiterhin benutzt, obwohl EOL (End of Life), 
-		Schwachstellen oder EOS(End of Support)}
+		\item{Router werden weiterhin benutzt, trotz EOL (End of Life), 
+		Schwachstellen oder EOS(End of Support). Nach drei bis fünf Jahren
+		werden keine Updates mehr gemacht und auch sonst kein weiterer Support 
+		angeboten.}
 	\end{itemize}
-	\cite{chalhoub2023, schwarz2021, bsia}
-	In der Studie wird zudem erwähnt, dass bekannte Schwachstellen häufig
-	nicht gepatched werden, da die Priosisierung für Updates in den Unternehmen
-	nicht wie erwartet, durch die Schwere der Schwachstelle bestimmt wird 
-	sondern durch den Einfluss auf den Benutzer. Der Bericht der Fraunhofer-
-	Gesellschaft von 2022 \cite{vomdorp2022} wurde zwar in manchen Teilen
-	der Untersuchungen Verbesserungen zum vorherigen Test festgestellt, jedoch
-	stellt die Firmware, auch die des genutzten Betreissystem immer noch eine
-	Schachstelle dar.
+	
+	Zudem wird erwähnt, dass bekannte Schwachstellen teilweise
+	nicht gepatched werden, da die Hersteller entweder zeitlich nicht die 
+	Kapazität haben erstellte Patches ausreichend zu testen oder aber auch 
+	weil die Priorisierung von Schwachstellen nicht standardisiert ist und jeder
+	Hersteller eine ander Taktik anwendet. Die Schachstellen werden teilweise
+	nach der aktuellen Gefahrenlage priorisiert, das heißt gibt es eine 
+	Schachstelle die oft ausgenutzt wird, hat diese einen größeren Einfluss
+	auf den User und wird daher höher eingestuft als vielleicht eine Zero-Day
+	Schwachstelle, die von der CVE schwerwiegender eingestuft wird aber nicht
+	oft ausgenutzt wird. Hierbei ist $nicht$ $oft$, relativ zu sehen, da diese
+	Schwachstellen seltener ausgenutzt werden als die Priorisierten.
+	Andere Hersteller nutzen Datenmodelle oder Matizen zur Priorisierung.
 
-	\label{sec:attractiv_target}
+	Router haben meist ein Standardpasswort, weshalb es zwingend erforderlich 
+	ist zu Beginn der Einrichtung des Routers den Namen als auch das Passwort 
+	zu ändern. Durch die Änderung des Namens lässt sich von außerhalb nicht
+	bestimmen, um welchen Typen von Router es sich handelt. Dies erschwert es
+	dem Angreifer den Router Typen zu erfahren, so dass er entweder im Internet
+	die Default Credetials über die Datenblätter erfährt oder den gleichen
+	Router kauft, um über die UARG Schnittstelle auf der Hardware Daten
+	auszulesen und dadurch eventuell hartcodierte private Schlüssel 
+	herauszufinden, die er dann nutzen kann um sich in das lokale Netzwerk
+	einzubinden. Als Nutzer ist es ebenfalls wichtig zu wissen, dass ein Update 
+	der Firmware nicht zwingend bedeutet, dass ältere Schwachstellen auch 
+	beseitigt wurden.\cite{chalhoub2023, schwarz2021, bsia}
+
 	\subsection{Definition AB}
 
 
