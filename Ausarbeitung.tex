@@ -784,39 +784,109 @@
 	Einloggen hat geklappt, Zugriff auf die Adminseite.
 
 	\chapter{Tests Linksys WRT120N}
+	In diesem Kapitel werden die durchgeführten Tests des Linksys WRT120N dokumentiert
+	Alle Testumgebungen basieren auf dem Einsatz dieses Routers. Ziel der Untersuchungen
+	ist es, schrittweise verschiedene Sicherheitskonfigurationen zu analysieren und
+	deren Einfluss auf die Widerstandsfähigkeit des Routers sowie des WLAN-Netzwerks 
+	gegenüber potenziellen Angriffen zu bewerten.
+	Zu Beginn werden die Werkseinstellungen des Routers betrachtet, da diese häufig 
+	nur grundlegende Sicherheitsmechanismen enthalten. Anschließend werden die 
+	Sicherheitseinstellungen schrittweise erweitert beziehungsweise verschärft. Nach
+	jeder Änderung wird überprüft, wie einfach beziehungsweise schwierig ein unbefugter
+	Zugriff auf den Router oder das WLAN-Netzwerk weiterhin möglich ist.
+	Jeder Test wird dabei nach einem einheitlichen Schema dokumentiert. Dieses umfasst
+	das jeweilige Ziel des Tests, die verwendete Testumgebung, die Durchführung sowie 
+	die erzielten Ergebnisse und augetrenede Probleme. Darüber hinaus werden die daraus
+	gewonnenen Erkenntnisse analysiert und bewertet. Falls relevant, werden die
+	Ergebnisse zusätzlich mit wissenschaftlichen Quellen oder Studien verglichen.
 	%=======================notes jf - need to be deleted later
 	%testen was passiert wenn Router auf Werkseinstellungen ist
 	% -> kommt man dann einfach rein? ist wahrscheinlich sehr häufig der Fall
 	% Bezugnahme Frauenhofer Router Test und das Paper "But is it exploitable?"
 	% da dort auch beschrieben wird wie das "normale" user handhaben
 	%=========================================================
-	Was ich versucht habe bei Linksys WRT120N
-	- Reset Button lange gedrückt
-		einmal auch mit Anschluss ans LAN, aber LAN flackert nicht, d.h. keine
-		Datenübertragung (LAN als auch Switch funktioniert, da es an Laptop
-		läuft)
-		LEDs flackern auch nicht beim Reset -> funktioniert es überhaupt?
-	- Stromlos schalten versucht
-		mit LAN Kabel eingesteck, leuchtet kurz auch das Internet zeichen 
-		beim Boot aber geht gleich wieder aus
-	- via Linux, als auch Windows auf die Konifguration zu kommen
-	- beides mal reboot ausfgeführt -> keine Veränderung
-	- firmware Update über Kali 
-		.iso Setup Datei von Archive.org -> "file to big"
-		.bin 1.0.05 Firmware -> in Progress, aber nach Beendung keine
-		Änderung
-	- firmware Update über Windows
-		.iso Setup Datei von Archive.org -> "file to big"
-		.bin 1.0.05 Firmware -> in Progress, aber nach Beendung keine
-		Änderung
-	- pingen:
-		pingen funktioniert nur wenn der Router direkt an den Laptop
-		angeschlossen ist
-		pingen wenn beide im gleichen Netzwerk sind, funktioniert nicht
-		egal ob über Internet oder normaler Port am Router
-
-	am nächsten Tag nochmal versucht und es hat funktioniert, aber nur im 
-	Edge oder Chromium Browser, nicht in Firefox mit Default Anmelde Daten
+	\subsection{Erster Versuch des Verbindungsaufbaus}
+	Ziel: Router Webinterface erreichen und Standardeinstellungen prüfen
+	\begin{figure}[H]
+		\hypertarget{tabelle1}{}
+		\begin{tabularx}{\columnwidth}{|X|X|}
+			\hline
+			VM & Kali Linux, Windows10 22H2\\
+			\hline
+			Installierte Pakete & - \\
+			\hline
+			Browser & Chromium \\
+			\hline
+			Internetzugang & Nein \\
+			\hline
+			Kabel & 1x Ethernet-Kable (Cat 5) \\
+			\hline
+			Netzwerkaufbau &  Router via Ethernet Kabel direkt mit dem Laptop
+			verbunden\\
+			\hline
+		\end{tabularx}
+		\caption{WRT120N 1.Test: Umgebung}
+	\end{figure}
+	Nachdem der Router per Ehternet Kabel von Port 1 (nicht der Internetport)
+	an den Laptop angeschlossen war, sollten zuerst der aktuelle Stand des Router 
+	geprüft werden. Bereits beim Verbinden von Port 1 wurde eine Unstimmigkeit mit 
+	dem Userguide \emph{Quelle:WRT120N-EMEA_combo_UG.pdf} deutlich, da statt der LED für 
+	Port 1, die für Port 4 aufleuchtete. Durch das Testen der restlichen Port wurde 
+	klar, das die LED's nicht mit dem tatsächlich verbundnen Port übereinstimmen. 
+	Die IP-Adresse für die Browseranwendung lautet \emph{192.168.1.1} und ist im
+	Userguid zufinden, ebenso die Default Credentials.
+	Für die erste Anmeldung wurde der Standardbrowser von Kali Linux genutzt -
+	Mozilla Firefox. Der Zugriff über Mozilla ist nicht möglich, da eine Anmeldung
+	dauerhaft fehlschlägt.
+	Der Browser Chromium wurde als nächstes genutzt unter welchem die Anmeldung 
+	erfolgreich war. Die Webanwendung entsprach nicht dem Handbuch, siehe Abbildung
+	\ref{fig:wrong_site_01}.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/192-168-1-1_fstConnection_noWAN.png}
+		\caption{Hauptseite der Website}
+		\label{fig:wrong_site_01}
+	\end{figure}
+	Um die Erreichbarkeit des Routers zutesten wurde dieser angepingt, was wiederum
+	erfolgreich war und die bestehende Verbindung bestätigte.	
+	Da der aktuelle Stand nicht der des Default Zustandes war, sollte dieser
+	duch das Betätigen des Resetbuttons wiederhergestellt werden. Der Resetbutton
+	wurde entsprechend der Anleitung betätigt und nach erneutem Anmelden erreichte
+	der Browser die selbe Seite. Dieser Vorgang wurde ebenfalls in der VM auf Basis
+	von Windows10 22h2 versucht und ist ebenfalls fehlgeschlagen.
+	Wie in Abbildung \ref{fig:wrong_site_02} bot die Website ebenfalls einen 
+	Reboot Button, der ebenfalls getestet wurde. Nach der Meldung \emph{Processing 
+	...}, während der kurz die LED des Port geflackert hat, wurde das Hauptmenü 
+	erneut sichtbar. 
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/192-168-1-1_reboot_menue.png}
+		\caption{Reboot Seite}
+		\label{fig:wrong_site_02}
+	\end{figure}
+	Aufgrund der Artikel \cite{chalhoub2023, vomdorp2022, 
+	schwarz2021} war eine veraltete Firmwareversion nicht abwägig daher wurde über 
+	die Website \emph{archive.org} eine Firmware Version 1.0.05 heruntergeladen und diese
+	über das Feld "Browse" ausgewählt. Die Meldung \emph{File to big}. wurde ausgegeben.
+	Diese Abfolge von Test wurde ebenfalls in der Windows10 VM durchgeführt und hatte
+	die selben negativen Ergebnisse.
+	Da der Zustand des Routers unverändert blieb wurde mehrfach versucht über
+	den Reset Button das Gerät auf Werkseinstellungen zurück zusetzten, was jedoch
+	nicht den erwartete Effekt hatte. Ebenfalls wurde der Router stromlos geschalten,
+	um diesen typischen Test durchzuführen, welche ebenfalls erfolglos blieb.
+	Die Nutzung des Routers wurde am folgenden Tag erneut aufgenommen. Über die 
+	zugewiesene IP-Adresse konnte anschließend die Weboberfläche von Linksys erreicht
+	werden. Weshalb der Zugriff zuvor nicht funktioniert hatte, konnte nicht eindeutig
+	festgestellt werden. Allerdings leuchteten nun die entsprechenden LEDs beim 
+	Verbinden mit dem Port korrekt auf, ebenso war die WLAN-Anzeige aktiv und der 
+	Router als WLAN-Netzwerk sichtbar.
+	Ergebnis: Der Router ist erreichbar und auf den Standardeinstellungen. Da der 
+	Router speziell für diese Tests verwendet wird, wird vermutet, dass vorherige 
+	Nutzer entsprechende Umkonfigurationen vorgenommen hatten, um den Zugriff auf 
+	die Weboberfläche zu ermöglichen.
+	%---
+	%ToDo: Firmware muss mit abgegeben werden
+	%---
 
 	\subsection{Erreichbarkeit des Routers testen}
 	Ziel: Zugang zum WLAN unter immer besseren Einstellungen des Routers
@@ -830,14 +900,7 @@
 		\item{Default Credentials eingegeben und Website erreicht}
 	\end{enumerate}
 	Zugriff auf das browserbasiert Dienstprogramm ist lediglich über die Browser 
-	Chromium (Linux) oder Edge (Windows) möglich. Der Zugriff über Mozilla ist nicht
-	möglich, da eine Anmeldung dauerhaft fehlschlägt, siehe Abbildung \ref{fig:moz_error}.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{img/mozilla_unabletoreach_browserbased_page.png}
-		\caption{Fehler beim Laden der Seite - Mozilla}
-		\label{fig:moz_error}
-	\end{figure}
+	Chromium (Linux) oder Edge (Windows) möglich. 
 	Wichtig zu Beachten ist ebenfalls, dass die IP Adresse nur erreichbar ist 
 	wenn der angeschlossenen Laptop nicht mit dem WLAN verbunden ist, da dieser
 	sonst versucht über das WLAN die Adresse zu finden. Der Router darf für diese
@@ -850,6 +913,7 @@
 
 	Änderung an der VM:
 	Network: Intel PRO/1000 MT Desktop (NAT)
+
 	\subsection{Grundeinstellungen und deren Auswirkungen}
 	Getätigte Einstellungen mit Hilfe des Userguides $hier muss die Quelle hin$
 	\begin{itemize}
@@ -867,7 +931,7 @@
 	Der Router hat die Firmwareversion 1.0.07, siehe Abbildung $so und so$. 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\textwidth]{img/linksys_page-firmware_v1-0-07.png}
+		\includegraphics[width=0.8\textwidth]{img/linksys_page-firmware_v1-0-07.png}
 		\caption{Firmware Version - WRT120N}
 		\label{fig:firmware_version_wrt120n}
 	\end{figure}
