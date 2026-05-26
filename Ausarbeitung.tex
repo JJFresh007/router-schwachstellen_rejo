@@ -161,7 +161,7 @@
 	wie in \hyperlink{tabelle1}{Tabelle 1} dargestellt.
 	\newline
 	\begin{figure}[H]
-		\hypertarget{tabelle1}{}
+		\hypertarget{tab_definition}{}
 		\begin{tabularx}{\columnwidth}{|X|X|}
 			\hline
 			Endgerät & Geräte, die an einem Router angeschlossen sein können. Dazu zählen
@@ -805,13 +805,13 @@
 	% Bezugnahme Frauenhofer Router Test und das Paper "But is it exploitable?"
 	% da dort auch beschrieben wird wie das "normale" user handhaben
 	%=========================================================
-	\subsection{Erster Versuch des Verbindungsaufbaus}
+	\section{Erster Versuch des Verbindungsaufbaus}
 	Ziel: Router Webinterface erreichen und Standardeinstellungen prüfen
 	\begin{figure}[H]
-		\hypertarget{tabelle1}{}
-		\begin{tabularx}{\columnwidth}{|X|X|}
+		\hypertarget{tab_w_01}{}
+		\begin{tabularx}{\columnwidth}{|l|X|}
 			\hline
-			VM & Kali Linux, Windows10 22H2\\
+			VM & Kali Linux (260413Kali-Basis2026.1), Windows10 22H2\\
 			\hline
 			Installierte Pakete & - \\
 			\hline
@@ -825,12 +825,12 @@
 			verbunden\\
 			\hline
 		\end{tabularx}
-		\caption{WRT120N 1.Test: Umgebung}
+		\caption{WRT120N Testumgebung 1}
 	\end{figure}
 	Nachdem der Router per Ehternet Kabel von Port 1 (nicht der Internetport)
 	an den Laptop angeschlossen war, sollten zuerst der aktuelle Stand des Router 
 	geprüft werden. Bereits beim Verbinden von Port 1 wurde eine Unstimmigkeit mit 
-	dem Userguide \emph{Quelle:WRT120N-EMEA_combo_UG.pdf} deutlich, da statt der LED für 
+	dem Userguide \emph{Quelle:WRT120N-EMEA\_combo\_UG.pdf} deutlich, da statt der LED für 
 	Port 1, die für Port 4 aufleuchtete. Durch das Testen der restlichen Port wurde 
 	klar, das die LED's nicht mit dem tatsächlich verbundnen Port übereinstimmen. 
 	Die IP-Adresse für die Browseranwendung lautet \emph{192.168.1.1} und ist im
@@ -839,8 +839,9 @@
 	Mozilla Firefox. Der Zugriff über Mozilla ist nicht möglich, da eine Anmeldung
 	dauerhaft fehlschlägt.
 	Der Browser Chromium wurde als nächstes genutzt unter welchem die Anmeldung 
-	erfolgreich war. Die Webanwendung entsprach nicht dem Handbuch, siehe Abbildung
-	\ref{fig:wrong_site_01}.
+	erfolgreich war. Zugriff auf das browserbasiert Dienstprogramm ist lediglich
+	über die Browser Chromium (Linux) oder Edge (Windows) möglich. Die 
+	Webanwendung entsprach nicht dem Handbuch, siehe Abbildung \ref{fig:wrong_site_01}.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{img/192-168-1-1_fstConnection_noWAN.png}
@@ -850,7 +851,7 @@
 	Um die Erreichbarkeit des Routers zutesten wurde dieser angepingt, was wiederum
 	erfolgreich war und die bestehende Verbindung bestätigte.	
 	Da der aktuelle Stand nicht der des Default Zustandes war, sollte dieser
-	duch das Betätigen des Resetbuttons wiederhergestellt werden. Der Resetbutton
+	durch das Betätigen des Resetbuttons wiederhergestellt werden. Der Resetbutton
 	wurde entsprechend der Anleitung betätigt und nach erneutem Anmelden erreichte
 	der Browser die selbe Seite. Dieser Vorgang wurde ebenfalls in der VM auf Basis
 	von Windows10 22h2 versucht und ist ebenfalls fehlgeschlagen.
@@ -880,6 +881,7 @@
 	festgestellt werden. Allerdings leuchteten nun die entsprechenden LEDs beim 
 	Verbinden mit dem Port korrekt auf, ebenso war die WLAN-Anzeige aktiv und der 
 	Router als WLAN-Netzwerk sichtbar.
+	\newline
 	Ergebnis: Der Router ist erreichbar und auf den Standardeinstellungen. Da der 
 	Router speziell für diese Tests verwendet wird, wird vermutet, dass vorherige 
 	Nutzer entsprechende Umkonfigurationen vorgenommen hatten, um den Zugriff auf 
@@ -888,33 +890,75 @@
 	%ToDo: Firmware muss mit abgegeben werden
 	%---
 
-	\subsection{Erreichbarkeit des Routers testen}
-	Ziel: Zugang zum WLAN unter immer besseren Einstellungen des Routers
-	Umgebung: 260413Kali-Basis2026.1, Verbunden über Ethernet
-	Router IP: 192.168.1.1 
-	Grundtest:
-	\begin{enumerate}
-		\item{Pingen des Routers über IP 192.168.1.1 ist erfolgreich}
-		\item{Zugriff auf das browserbasierte Dienstprogramm über den Browser
-		Chromium http://192.168.1.1.}
-		\item{Default Credentials eingegeben und Website erreicht}
-	\end{enumerate}
-	Zugriff auf das browserbasiert Dienstprogramm ist lediglich über die Browser 
-	Chromium (Linux) oder Edge (Windows) möglich. 
-	Wichtig zu Beachten ist ebenfalls, dass die IP Adresse nur erreichbar ist 
+	\section{Erreichbarkeit testen}
+	Ziel: Zugang zur Browserbasierten Website und Erreichbarkeit des Routers
+	prüfen
+	\begin{figure}[H]
+		\hypertarget{tab_w_02}{}
+		\begin{tabularx}{\columnwidth}{|l|X|}
+			\hline
+			VM & Kali Linux (260413Kali-Basis2026.1)\\
+			\hline
+			Installierte Pakete & - \\
+			\hline
+			Browser & Chromium \\
+			\hline
+			Internetzugang & Nein \\
+			\hline
+			Kabel & 1x Ethernet-Kable (Cat 5) \\
+			\hline
+			Netzwerkaufbau & Router via Ethernet Kabel direkt mit dem Laptop
+			verbunden\\
+			\hline
+			IP-Adresse & 192.168.1.1 \\
+			\hline
+		\end{tabularx}
+		\caption{WRT120N Testumgebung 2}
+	\end{figure}
+	Wichtig zu Beachten ist, dass die IP Adresse nur erreichbar ist 
 	wenn der angeschlossenen Laptop nicht mit dem WLAN verbunden ist, da dieser
 	sonst versucht über das WLAN die Adresse zu finden. Der Router darf für diese
 	erste Einstellungen nur mit einem Ethernet Kabel an einen Laptop ohne Internet
 	Verbindung angeschlossen werden.
-	Von anderen Geräten wird der Router als WLAN Verbindugn angezeigt unter dem 
-	Default Namen $linksys$. Die Verbinung lässt sich einfach herstellen, da es
-	aktuell kein Passwort gibt, jedoch stellt der Router keine Internet Verbindung
-	zur Verfügung.
+	In der Kali Linux Shell wird mit dem Befehl \texttt{ping 192.168.1.1} der 
+	Router angepingt und erfolgreich alle Pakete erhalten. Es folgt der Zugriff
+	innerhalb von Chronium auf das browserbasierte Dienstprogramm in dem die 
+	IP eingegeben wird. Die Anmeldung erfolgt über die Default Credentials und
+	die Website läd erfolgreich.
+	\newline
+	Ergebnis: Von anderen Geräten wird der Router als WLAN Verbindung angezeigt
+	unter dem Default Namen $linksys$. Die Verbinung lässt sich einfach 
+	herstellen, da es aktuell kein Passwort gibt, jedoch stellt der Router keine
+	Internet Verbindung zur Verfügung.
 
-	Änderung an der VM:
-	Network: Intel PRO/1000 MT Desktop (NAT)
+	%Änderung an der VM: Network: Intel PRO/1000 MT Desktop (NAT)
 
-	\subsection{Grundeinstellungen und deren Auswirkungen}
+	\section{Grundeinstellungen und Internetverbindung aufbauen}
+	Ziel: Zugang zum WLAN sowie Konfiguration des Internetzugangs, sodass das 
+	WLAN eine aktive Internetverbindung aufbaut.
+	\begin{figure}[H]
+		\hypertarget{tab_w_03}{}
+		\begin{tabularx}{\columnwidth}{|l|X|}
+			\hline
+			VM & Kali Linux (260413Kali-Basis2026.1)\\
+			\hline
+			Installierte Pakete & - \\
+			\hline
+			Browser & Chromium \\
+			\hline
+			Internetzugang & Nein \\
+			\hline
+			Kabel & 2x Ethernet-Kable (Cat 5) \\
+			\hline
+			Netzwerkaufbau & Router(Port1) via Ethernet Kabel direkt mit dem Laptop
+			verbunden, Router(Internet Port) via Ethernet Kabel mit dem Internet 
+			verbunden\\
+			\hline
+			IP-Adresse & 192.168.1.1 \\
+			\hline
+		\end{tabularx}
+		\caption{WRT120N Testumgebung 3}
+	\end{figure}
 	Getätigte Einstellungen mit Hilfe des Userguides $hier muss die Quelle hin$
 	\begin{itemize}
 		\item{Neues Routerpasswort angelegt $wrtcentoventin$}
@@ -927,7 +971,7 @@
 	%User Guide in differente languages, downloaded: 16.05.2026
 	%https://downloads.linksys.com/downloads/userguide/1224697214905/WRT120N-EMEA_combo_UG.pdf
 
-	\subsection{Schwachstelle CVE-2014-125122}
+	\section{Schwachstelle CVE-2014-125122}
 	Der Router hat die Firmwareversion 1.0.07, siehe Abbildung $so und so$. 
 	\begin{figure}[H]
 		\centering
