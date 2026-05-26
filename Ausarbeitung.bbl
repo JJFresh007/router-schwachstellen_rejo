@@ -345,20 +345,6 @@
       \verb /home/johanna/Zotero/storage/RA4UNK92/WLAN.html
       \endverb
     \endentry
-    \entry{airmonngaircrackng}{misc}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{https://www.aircrack-ng.org/doku.php?id=airmon-ng\&utm\_source=chatgpt.com}
-      \field{title}{Airmon-Ng [{{Aircrack-ng}}]}
-      \field{urlday}{26}
-      \field{urlmonth}{5}
-      \field{urlyear}{2026}
-      \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/YXKCYQY8/doku.html
-      \endverb
-    \endentry
     \entry{linksysproductend}{misc}{}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}

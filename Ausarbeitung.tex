@@ -963,12 +963,12 @@
 		\caption{WRT120N Testumgebung 3}
 	\end{figure}
 	Getätigte Einstellungen mit Hilfe des Userguides \emph{Quelle:WRT120N-EMEA\_combo\_UG.pdf}:
-	\begin{itemize}
-		\item{Neues Routerpasswort angelegt $wrtcentoventin$}
-		\item{Internetverbindungstyp: DHCP}
-		\item{Lokale IP: 192.168.1.1}
-		\item{DHCP-Server: Aktiviert}
-	\end{itemize}
+	\begin{enumerate}
+		\item Neues Routerpasswort angelegt $wrtcentoventin$
+		\item Internetverbindungstyp: DHCP
+		\item Lokale IP: 192.168.1.1
+		\item DHCP-Server: Aktiviert
+	\end{enumerate}
 	Die Einstellungen für Wireless, sind per Default deaktiviert, weshalb es kein
 	Passwort für den Zugang zum WLAN gibt. Unter dem Reiter Wireless können die
 	Einstellungen eingesehen werden. Nachdem der Router via Ethernetkabel mit
@@ -977,25 +977,35 @@
 	Laptop und Router wird getrennt und der Laptop wird per WLAN mit dem Router 
 	verbunden. Wird \emph{www.google.com} aufgerufen flackert die Internet LED, 
 	welche Netzwerkaktivität auf dem Internetport symbolisiert. 
-	IP-Adresse der VM mittels \texttt[ip addr] ermittelt und Broadcast mithilfe 
+	IP-Adresse der VM mittels \texttt{ip addr} ermittelt und Broadcast mithilfe 
 	\texttt{ping 10.2.255 -b} ausgeführt. Dieser schlägt fehl, da sich außer
 	der VM niemand in diesem Subnetz befindet. Ohne weiter Einstellungen wie 
 	WLAN Passwort, ist der Zugriff in das WLAN einfach und es wäre möglich 
-	mit dem Tool \emph{Wireshark} im \emph{Monitor Mode} den Netzwerkverkehr
-	des gesamten WLAN aufzuzeichnen \cite{capturesetupwlanwireshark}. Aufgrund
-	der fehlenden Netzwerkkarte in der VM wird das Aufzeichnen des Netzwerkverkehrs
-	über den Laptop gemacht. Dieser hat folgendes Setup:
-	\begin{itemize}
-		\item{Ubuntu Linux}
-		\item{Software Wireshark}
-		\item{Installierte Pakete: 
-		\begin{lstlisting}[language=bash]
-			sudo apt install aircrack-ng
-		\end{lstlisting} }
-	\end{itemize}
-	Um den Monitor Mode nutzen zu könne muss \texttt{airmon-ng} auf dem System
-	verfügbar sein. Dies ist ein Tool des oben genannten Pakets \texttt{aircrack-ng}
-	\cite{airmonngaircrackng}.
+	mit dem Tool \emph{Wireshark} den Netzwerkverkehr des gesamten WLAN 
+	aufzuzeichnen \cite{capturesetupwlanwireshark}. Aufgrund der fehlenden 
+	Netzwerkkarte in der VM wird das Aufzeichnen des Netzwerkverkehrs
+	über den Laptop gemacht. Dieser verwendet Ubuntu Linux als Betriebssystem 
+	und verfügt über die installierte Software \emph{Wireshark}.
+	Für die Aufzeichnung muss Wireshark mit Root Rechten ausgeführt werden
+	\begin{lstlisting}[language=bash]
+	sudo wireshark
+	\end{lstlisting}
+	Im Terminal kann mit \texttt{iwconfig} kann die WLAN Netzwerkschnittstellen
+	abgefragt werden. Die Bezeichnungen in der ersten Spalte sind in Wireshark
+	ebenfalls aufgelistet und nach Anwahl des WLAN Adapters wird der 
+	Netzwerkverkehr im WLAN des Router mitgeschnitten.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/nwtraffic_laptop_t3.png}
+		\caption{Netzwerkverkehr PC Test3}
+		\label{fig:nwtraff_pc_t3}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/nwtraffic_iphone_t3.png}
+		\caption{Netzwerkverkehr Iphone Test3}
+		\label{fig:nwtraff_iphone_t3}
+	\end{figure}
 
 
 	\section{Schwachstelle CVE-2014-125122}
