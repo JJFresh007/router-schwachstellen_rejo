@@ -806,6 +806,7 @@
 	% da dort auch beschrieben wird wie das "normale" user handhaben
 	%=========================================================
 	\section{Erster Versuch des Verbindungsaufbaus}
+	\label{w_failed_test}
 	Ziel: Router Webinterface erreichen und Standardeinstellungen prüfen
 	\begin{figure}[H]
 		\hypertarget{tab_w_01}{}
@@ -891,6 +892,7 @@
 	%---
 
 	\section{Erreichbarkeit testen}
+	\label{w_reachabel}
 	Ziel: Zugang zur Browserbasierten Website und Erreichbarkeit des Routers
 	prüfen
 	\begin{figure}[H]
@@ -934,6 +936,7 @@
 	%Änderung an der VM: Network: Intel PRO/1000 MT Desktop (NAT)
 
 	\section{Grundeinstellungen und Internetverbindung aufbauen}
+	\label{w_basic_settings}
 	Ziel: Zugang zum WLAN sowie Konfiguration des Internetzugangs, sodass das 
 	WLAN eine aktive Internetverbindung aufbaut.
 	\begin{figure}[H]
@@ -959,32 +962,55 @@
 		\end{tabularx}
 		\caption{WRT120N Testumgebung 3}
 	\end{figure}
-	Getätigte Einstellungen mit Hilfe des Userguides $hier muss die Quelle hin$
+	Getätigte Einstellungen mit Hilfe des Userguides \emph{Quelle:WRT120N-EMEA\_combo\_UG.pdf}:
 	\begin{itemize}
 		\item{Neues Routerpasswort angelegt $wrtcentoventin$}
 		\item{Internetverbindungstyp: DHCP}
 		\item{Lokale IP: 192.168.1.1}
 		\item{DHCP-Server: Aktiviert}
 	\end{itemize}
+	Die Einstellungen für Wireless, sind per Default deaktiviert, weshalb es kein
+	Passwort für den Zugang zum WLAN gibt. Unter dem Reiter Wireless können die
+	Einstellungen eingesehen werden. Nachdem der Router via Ethernetkabel mit
+	dem Internet verbunden ist leuchtet die LED. Der Router ist sichtbar und hat
+	eine aktive Verbindung ins Internet. Die physikalische Verbindung zwischen
+	Laptop und Router wird getrennt und der Laptop wird per WLAN mit dem Router 
+	verbunden. Wird \emph{www.google.com} aufgerufen flackert die Internet LED, 
+	welche Netzwerkaktivität auf dem Internetport symbolisiert. 
+	IP-Adresse der VM mittels \texttt[ip addr] ermittelt und Broadcast mithilfe 
+	\texttt{ping 10.2.255 -b} ausgeführt. Dieser schlägt fehl, da sich außer
+	der VM niemand in diesem Subnetz befindet. Ohne weiter Einstellungen wie 
+	WLAN Passwort, ist der Zugriff in das WLAN einfach und es wäre möglich 
+	mit dem Tool \emph{Wireshark} im \emph{Monitor Mode} den Netzwerkverkehr
+	des gesamten WLAN aufzuzeichnen \cite{capturesetupwlanwireshark}. Aufgrund
+	der fehlenden Netzwerkkarte in der VM wird das Aufzeichnen des Netzwerkverkehrs
+	über den Laptop gemacht. Dieser hat folgendes Setup:
+	\begin{itemize}
+		\item{Ubuntu Linux}
+		\item{Software Wireshark}
+		\item{Installierte Pakete: 
+		\begin{lstlisting}[language=bash]
+			sudo apt install aircrack-ng
+		\end{lstlisting} }
+	\end{itemize}
+	Um den Monitor Mode nutzen zu könne muss \texttt{airmon-ng} auf dem System
+	verfügbar sein. Dies ist ein Tool des oben genannten Pakets \texttt{aircrack-ng}
+	\cite{airmonngaircrackng}.
 
-
-	%User Guide in differente languages, downloaded: 16.05.2026
-	%https://downloads.linksys.com/downloads/userguide/1224697214905/WRT120N-EMEA_combo_UG.pdf
 
 	\section{Schwachstelle CVE-2014-125122}
-	Der Router hat die Firmwareversion 1.0.07, siehe Abbildung $so und so$. 
+	\label{w_cve}
+	Der Router hat die Firmwareversion 1.0.07, siehe Abbildung \ref{fig:firmware_version_wrt120n}
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.8\textwidth]{img/linksys_page-firmware_v1-0-07.png}
 		\caption{Firmware Version - WRT120N}
 		\label{fig:firmware_version_wrt120n}
 	\end{figure}
-	In der 
-	Datenbank CVE.org ist eine Schwachstelle zu diesem Typ von Router unter der
-	Firmware angegeben. 
-	EOL, da dass von Frauenhofer und dem But is it exploitable aufnehmen als Quellen
-	Daran zeigen das beide Router EOL sind -> Qeuelle vielleicht auch ein Bild von
-	der Website
+	In der Datenbank \emph{CVE.org} ist eine Schwachstelle zu diesem Typ Router unter 
+	mit der gegebene Firmwareversion aufgelistet. Da der Router sowohl EOL als auch
+	EOS ist \cite{linksysproductend} ist diese Schwachstelle nicht mehr behoben worden.
+
 
 
 	\chapter{Hauptteil (1. Kapitel)}
