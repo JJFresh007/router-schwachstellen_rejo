@@ -288,6 +288,7 @@
       \strng{authorbibnamehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
       \strng{authornamehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
       \strng{authorfullhash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \field{extraname}{1}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
@@ -361,6 +362,34 @@
       \verb{file}
       \verb /home/johanna/Zotero/storage/24PYIGLQ/142.251.150.html
       \endverb
+    \endentry
+    \entry{bsi}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=44ea1b356dcd7bfe0ece54601fb6bcec}{%
+           family={BSI},
+           familyi={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \strng{fullhash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \strng{bibnamehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \strng{authorbibnamehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \strng{authornamehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \strng{authorfullhash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Welche Aufgabe hat ein Router? Wie sichere ich meinen Router wirksam ab? Adil Aden erklärt die wichtigsten Dinge, die man über Router wissen muss.}
+      \field{howpublished}{https://www.bsi.bund.de/SharedDocs/Videos/DE/BSI/VerbraucherInnen/statementvideo-routersicherheit.html?nn=132646}
+      \field{journaltitle}{Bundesamt für Sicherheit in der Informationstechnik}
+      \field{langid}{ngerman}
+      \field{shorttitle}{{BSI-Experte erklärt}}
+      \field{title}{{BSI-Experte erklärt: Alles Wichtige rund um den Router}}
+      \field{urlday}{21}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
     \endentry
     \entry{linksysproductend}{misc}{}
       \field{sortinit}{2}

@@ -799,6 +799,10 @@
 	die erzielten Ergebnisse und augetrenede Probleme. Darüber hinaus werden die daraus
 	gewonnenen Erkenntnisse analysiert und bewertet. Falls relevant, werden die
 	Ergebnisse zusätzlich mit wissenschaftlichen Quellen oder Studien verglichen.
+	Sofern im Folgenden auf das Handbuch bzw. den User Guide verwiesen wird, ist 
+	das Dokument \emph{WRT120N-EMEA\_combo\_UG.pdf} gemeint. Da keine öffentlich
+	zugängliche und dauerhaft verfügbare Online-Quelle mehr existiert, wird das 
+	PDF-Dokument der Ausarbeitung als Anhang beigefügt.
 	%=======================notes jf - need to be deleted later
 	%testen was passiert wenn Router auf Werkseinstellungen ist
 	% -> kommt man dann einfach rein? ist wahrscheinlich sehr häufig der Fall
@@ -831,7 +835,7 @@
 	Nachdem der Router per Ehternet Kabel von Port 1 (nicht der Internetport)
 	an den Laptop angeschlossen war, sollten zuerst der aktuelle Stand des Router 
 	geprüft werden. Bereits beim Verbinden von Port 1 wurde eine Unstimmigkeit mit 
-	dem Userguide \emph{Quelle:WRT120N-EMEA\_combo\_UG.pdf} deutlich, da statt der LED für 
+	dem Userguide deutlich, da statt der LED für 
 	Port 1, die für Port 4 aufleuchtete. Durch das Testen der restlichen Port wurde 
 	klar, das die LED's nicht mit dem tatsächlich verbundnen Port übereinstimmen. 
 	Die IP-Adresse für die Browseranwendung lautet \emph{192.168.1.1} und ist im
@@ -949,7 +953,7 @@
 			\hline
 			Browser & Chromium \\
 			\hline
-			Internetzugang & Nein \\
+			Internetzugang & Ja \\
 			\hline
 			Kabel & 2x Ethernet-Kable (Cat 5) \\
 			\hline
@@ -962,9 +966,9 @@
 		\end{tabularx}
 		\caption{WRT120N Testumgebung 3}
 	\end{figure}
-	Getätigte Einstellungen mit Hilfe des Userguides \emph{Quelle:WRT120N-EMEA\_combo\_UG.pdf}:
+	Getätigte Einstellungen mit Hilfe des Userguides:
 	\begin{enumerate}
-		\item Neues Routerpasswort angelegt $wrtcentoventin$
+		\item Neues Routerpasswort angelegt \emph{wrtcentoventin}
 		\item Internetverbindungstyp: DHCP
 		\item Lokale IP: 192.168.1.1
 		\item DHCP-Server: Aktiviert
@@ -1037,6 +1041,58 @@
 	\label{w_wlan_settings}
 	Ziel: Konfiguration des Internetzugangs durch Anpassung der Default 
 	Einstellungen des WLAN.
+	Testumgebung siehe \ref{tab_w_03}
+	\newline
+	Zur Konfiguration der WLAN Einstellugen wurde der Router von Port 1 via
+	Ehternet Kabel direkt mit dem PC verbunden. Es besteht zu diesem Zeitpunkt
+	keine Verbindung zum Internet.
+	Da der Router die Möglichkeit hat mit Wi-Fi Protected Setup konfigutiert zu
+	werden, werden die dafür nötigen Schritte unter Beachtung des Handbuchs 
+	umgesetzt. Nach mehrfachem Versuch wurde der Router manuell eingerichtet,
+	da jegliche Test mit Wi-Fi Protect in einem Verbindungsfehler endeten.
+	Getätigte Einstellungen unter Verwendung des Userguides:
+	\begin{enumerate}
+		\item Netzwerkmodus: Wireless-N Only
+		\item Netzwerkname (SSID): r2d2_c3po
+		\item Kanalbandbreite: nur 40 MHz
+		\item Zusatzkanal: Automatisch
+		\item SSID-Übertragung: Aktiviert
+	\end{enumerate}
+	Eine wichtige Maßnahme ist das Deaktivieren des Netzwerkmodus, wenn alle Geräte
+	sich per Ethernet Kabel mit dem Router verbinden. Dann ist der Router nicht
+	als WLAN sichtbar und es wird dieser Angriffsvektor ausgeschlossen. Allgmein
+	sollten Dienste deaktiviert werden, die nicht genutzt werden, da dies die
+	Angriffsfläche verringert \cite{bsi}. Mit der Einstellung des Netzwerkmodus
+	werden ältere Geräte, die nicht den IEEE 802.11n unterstützen ausgeschlossen,
+	was wiederum die erlaubten Geräte eingrenzt. Die möglichen Modi geben an
+	welche IEEE Wireless-Standards unterstützt werden. Wireless-N steht für
+	Geräte die IEEE 802.11n und aktuellere unterstützen. Eine Übersicht ist hier
+	\cite[S.54]{baun2025} zu finden. Wie im Abschnitt \ref{sec:attractiv_target} 
+	erwähnt, wird der Standardname des Router geändert, um daraus keine Schlüsse
+	auf den genutzten Router zu ziehen. Die SSID-Übertragung wurde auf den
+	Standardeintellungen belassen, der Router keinen sprechenden Namen mehr hat.
+	Per Default ist die Wireless-Sicherheit deaktiviert, diese wird auf WPA2-
+	Personal gesetzt, da diese das sicherste Verfahren der angebotenen Möglichkeiten
+	ist und es keine RADIUS Server im Netz gibt \cite[S.64]{baun2025}.
+	\begin{enumerate}
+		\item Verschlüsselung: AES
+		\item Passphrase: lsco2705916_shw
+		\item Schlüsselerneuerung: 3600 Sekunden
+	\end{enumerate}
+	Um eine weiter Sicherheitsstufe hinzuzufügen können unter \emph{Wireless MAC-Filter}
+	MAC-Adressen definiert werden, denen der Zugriff auf das WLAN elaubt oder 
+	verweigert wird. Die MAC-Adresse des PCs wird explizit erlaubt für das WLAN.
+
+
+	mit PC in WLAN und schauen was man sniffen kann?
+	komm ich mit den Iphone noch rein, wenn ich das passwort habe? Welche Meldung
+	kommt
+
+	Wie im Abschnitt $\ref{label Abschnitt MAC-Adressen Verschleierung}$ erläutert
+	können MAC-Adressen von einem Gerät aus verschleiert werden. Das erschwert 
+	es die Funktion der MAC-Adress Filterung. Die MAC-Adresse kann teilweise
+	für bestimmte Netzwerke unverschleiert angezeigt werden, dies muss dann aber
+	auf dem Gerät für das bestimmte WLAN eingestellt sein.
 
 
 	\section{Schwachstelle CVE-2014-125122}
