@@ -333,8 +333,8 @@
       \field{year}{2022}
     \endentry
     \entry{capturesetupwlanwireshark}{misc}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labeltitlesource}{title}
       \field{howpublished}{https://wiki.wireshark.org/CaptureSetup/WLAN}
       \field{title}{{{CaptureSetup}}/{{WLAN}} - {{Wireshark Wiki}}}
