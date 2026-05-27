@@ -928,7 +928,7 @@
 	Verbindung angeschlossen werden.
 	In der Kali Linux Shell wird mit dem Befehl \texttt{ping 192.168.1.1} der 
 	Router angepingt und erfolgreich alle Pakete erhalten. Es folgt der Zugriff
-	innerhalb von Chronium auf das browserbasierte Dienstprogramm in dem die 
+	innerhalb von Chromium auf das browserbasierte Dienstprogramm in dem die 
 	IP eingegeben wird. Die Anmeldung erfolgt über die Default Credentials und
 	die Website läd erfolgreich.
 	\newline
@@ -963,8 +963,9 @@
 			\hline
 			IP-Adresse & 192.168.1.1 \\
 			\hline
-		\end{tabularx}
+		\end{tabularx}		
 		\caption{WRT120N Testumgebung 3}
+		\label{tab:tab_03}
 	\end{figure}
 	Getätigte Einstellungen mit Hilfe des Userguides:
 	\begin{enumerate}
@@ -1041,7 +1042,7 @@
 	\label{w_wlan_settings}
 	Ziel: Konfiguration des Internetzugangs durch Anpassung der Default 
 	Einstellungen des WLAN.
-	Testumgebung siehe \ref{tab_w_03}
+	Testumgebung siehe Tabelle \ref{tab:tab_03}.
 	\newline
 	Zur Konfiguration der WLAN Einstellugen wurde der Router von Port 1 via
 	Ehternet Kabel direkt mit dem PC verbunden. Es besteht zu diesem Zeitpunkt
@@ -1053,7 +1054,7 @@
 	Getätigte Einstellungen unter Verwendung des Userguides:
 	\begin{enumerate}
 		\item Netzwerkmodus: Wireless-N Only
-		\item Netzwerkname (SSID): r2d2_c3po
+		\item Netzwerkname (SSID): r2d2\_c3po
 		\item Kanalbandbreite: nur 40 MHz
 		\item Zusatzkanal: Automatisch
 		\item SSID-Übertragung: Aktiviert
@@ -1076,23 +1077,61 @@
 	ist und es keine RADIUS Server im Netz gibt \cite[S.64]{baun2025}.
 	\begin{enumerate}
 		\item Verschlüsselung: AES
-		\item Passphrase: lsco2705916_shw
+		\item Passphrase: lsco2705916\_shw
 		\item Schlüsselerneuerung: 3600 Sekunden
 	\end{enumerate}
+	Nachdem die genannten Einstellungen getätigt sind, ist an der Darstellung
+	der WLAN Verbindung zu sehen, dass sie verschlüsselt ist, siehe Abbildung
+	\ref{fig:nw_visibility_r2d2} und beim Versuch sich zu verbinden wird nach 
+	dem vorher definierten Passphrase als Kennwort gefragt.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.3\textwidth]{img/visibility_r2d2.png}
+		\caption{Ansicht WLAN Verbindung nach Konfiguration}
+		\label{fig:nw_visibility_r2d2}
+	\end{figure}
 	Um eine weiter Sicherheitsstufe hinzuzufügen können unter \emph{Wireless MAC-Filter}
 	MAC-Adressen definiert werden, denen der Zugriff auf das WLAN elaubt oder 
 	verweigert wird. Die MAC-Adresse des PCs wird explizit erlaubt für das WLAN.
+	Die Verbindung zum Internet über das Ethernet Kabel und den Internetport wurde
+	wieder hergestellt für die nachfolgenden Tests.
+	\begin{description}
+		\item[Zugriff mit Passwort] Der zuvor in die Liste der erlaubten MAC-Adressen
+		eingetragen PC lässt sich mit der Eingabe des Kennworts mit dem WLAN
+		verbinden und hat eine stabile Internetverbindung. Nachdem die MAC-Adresse
+		des PCs aus der Liste entfernt wurde, ist nochmals ein Verbindungsaufbau
+		versucht worden. Die Verbindung wird versucht aufgebaut zu werden, aber 
+		es wird abgebrochen mit der Meldung "Verbindung fehlgeschlagen". Erst 
+		nachdem die Wireless-MAC-Filter Liste umgestellt wurde, dass diese
+		Liste nur die darin definierten Adressen verweigert, wird die Verbindung
+		unter Kenntnis des Passworts erlaubt. Steht eine MAC-Adresse auf der
+		Verweigern Liste wird die Verbindung mit der gleichen Fehlermeldung
+		wie bereits erwähnt abgebrochen.
+		\item[Zugriff ohne Passwort] Dies ist unabhänging von der Liste nicht
+		möglich, es seiden man versucht mit Bruteforce oder einem anderen 
+		Angriff das Passwort zu knacken.
+	\end{description}
+	Der Wireless-LAN-Filter wurde der Einfachheit halber so konfiguriert, dass
+	die Liste ausschließlich Geräte enthält, denen der Zugriff verweigert wird.
+	Dadurch lassen sich die weiteren Tests einfacher durchführen, ohne fortlaufend 
+	Änderungen an den Routereinstellungen vornehmen zu müssen.
 
+	Desweitern wurde getestet, ob sich beim Aufzeichnen des Netzwerkverkers mit
+	Wireshark eine Veränderung zeigt. Der PC, der sich im besagten WLAN befindet
+	konnte die gleichen Vorgänge mitschneiden wie in Abschnitt \ref{w_basic_settings}.
 
-	mit PC in WLAN und schauen was man sniffen kann?
-	komm ich mit den Iphone noch rein, wenn ich das passwort habe? Welche Meldung
-	kommt
-
-	Wie im Abschnitt $\ref{label Abschnitt MAC-Adressen Verschleierung}$ erläutert
+	Wie im Abschnitt %$\ref{label Abschnitt MAC-Adressen Verschleierung}$ erläutert
 	können MAC-Adressen von einem Gerät aus verschleiert werden. Das erschwert 
 	es die Funktion der MAC-Adress Filterung. Die MAC-Adresse kann teilweise
 	für bestimmte Netzwerke unverschleiert angezeigt werden, dies muss dann aber
 	auf dem Gerät für das bestimmte WLAN eingestellt sein.
+	\newline
+	Ergebnis: Die Sicherheitseinstellungen für das WLAN sollten zwingend gemacht
+	werden, da sie den Zugriff stark einschränken und es den potentiellen 
+	Angreifern deutlich erschweren sich selbst direkt mit dem WLAN zu verbinden.
+	Gerade im Heimnetzwerk bietet es sich an, den Wireless-MAC-Filter zu 
+	nutzen und nur den eigenen Geräte, deren MAC-Adressen man kennt den Zugriff
+	ins WLAN zu erlauben.
 
 
 	\section{Schwachstelle CVE-2014-125122}
