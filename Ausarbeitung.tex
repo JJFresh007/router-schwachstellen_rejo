@@ -162,10 +162,10 @@
 	\newline
 	\begin{figure}[H]
 		\hypertarget{tab_definition}{}
-		\begin{tabularx}{\columnwidth}{|X|X|}
+		\begin{tabularx}{\columnwidth}{|l|X|}
 			\hline
-			Endgerät & Geräte, die an einem Router angeschlossen sein können. Dazu zählen
-			Laptops, Desktop PCs, Server, Drucker, Smartphone, etc.\\ %---muss das rein?
+			Endgerät & Internetfähige Geräte, die an einem Router angeschlossen sein können. 
+			Dazu zählen Laptops, Desktop PCs, Server, Drucker, Smartphone, etc.\\ %---muss das rein?
 			\hline
 			LAN & local area network - lokales Netzwerk \\
 			\hline
@@ -993,19 +993,50 @@
 	Im Terminal kann mit \texttt{iwconfig} kann die WLAN Netzwerkschnittstellen
 	abgefragt werden. Die Bezeichnungen in der ersten Spalte sind in Wireshark
 	ebenfalls aufgelistet und nach Anwahl des WLAN Adapters wird der 
-	Netzwerkverkehr im WLAN des Router mitgeschnitten.
+	Netzwerkverkehr im WLAN des Router mitgeschnitten. Um das erfolgreiche
+	Sniffen des Kanals zu zeigen wurde zusätzlich zum Laptop ebenfalls ein 
+	Smartphone  mit dem WLAN verbunden.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{img/nwtraffic_laptop_t3.png}
 		\caption{Netzwerkverkehr PC Test3}
 		\label{fig:nwtraff_pc_t3}
 	\end{figure}
+	Abbildung \ref{fig:nwtraff_pc_t3} zeigt einen gefilterten Ausschnitt der
+	Kommunikation des Laptops. Man kann im Info Feld sehen, dass die Seite
+	hackthebox aufgerufen wurde. Weitere Informationen können aus den IP-Adressen 
+	gewonnen werden, da durch die Eingabe der Adressen in Websiten wie 
+	\emph{WhoIsFreaks} \cite{ipwhois142251150119} teilweise ermittelt
+	werden kann wessen Server diese IP-Adresse hat. In der genannten Quelle
+	handelt es sich um einen Google Server, der die IP 142.251.150.119 hat. 
+	Die IP des Laptops im WLAN wurde vor der Aufzeichnung über das Terminal 
+	mit \texttt{ip addr} in Erfahrung gebracht und innerhalb der Aufzeichnung
+	von Wireshark dann explizit nach dieser IP gesucht. Das gleiche Verfahren
+	wurde für das Smartphone angewandt, dessen IP-Adresse in den WLAN 
+	Einstellungen zu finden ist. Die Abbildung \ref{fig:nwtraff_iphone_t3}
+	zeigt den Teil der Kommunikation der mitgeschnitten wurde.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{img/nwtraffic_iphone_t3.png}
 		\caption{Netzwerkverkehr Iphone Test3}
 		\label{fig:nwtraff_iphone_t3}
 	\end{figure}
+	Da das genutzte Smartphone (Iphone 13Mini) selbst noch Sicherheitsmechanismen
+	hat, kann nicht alles akkurat erfasst werden. Dies wird jedoch einen 
+	versierten Angreifer nicht aufhalten, aus den gewonnen Informationen
+	Nutzen zu ziehen.
+	\newline
+	Ergebnis: Der Zutritt zum WLAN ist aufgund des fehlenden Passworts 
+	einfach und kann dazuführen, dass der Netzwerkverker aufgenommen und
+	ausgewertet wird. 
+	%---
+	%hier noch Bilder von der IP des Iphone und der des PC
+	%Bilder sind bereits in /img
+
+	\section{WLAN Grundeinstellungen und Internetverbindung aufbauen}
+	\label{w_wlan_settings}
+	Ziel: Konfiguration des Internetzugangs durch Anpassung der Default 
+	Einstellungen des WLAN.
 
 
 	\section{Schwachstelle CVE-2014-125122}

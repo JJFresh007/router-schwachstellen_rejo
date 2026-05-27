@@ -345,6 +345,23 @@
       \verb /home/johanna/Zotero/storage/RA4UNK92/WLAN.html
       \endverb
     \endentry
+    \entry{ipwhois142251150119}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{abstract}{WHOIS data for IP 142.251.150.119: owner, ISP, ASN, CIDR, abuse contact. Free lookup with live data from ARIN, RIPE, APNIC, LACNIC, AFRINIC.}
+      \field{howpublished}{https://whoisfreaks.com/tools/ip-whois/lookup/142.251.150.119}
+      \field{journaltitle}{WhoisFreaks}
+      \field{langid}{english}
+      \field{title}{{{IP WHOIS}} for 142.251.150.119 |{} {{Owner}}, {{ISP}} \& {{ASN}} for {{Any IP}}}
+      \field{urlday}{26}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/24PYIGLQ/142.251.150.html
+      \endverb
+    \endentry
     \entry{linksysproductend}{misc}{}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
