@@ -594,6 +594,77 @@
 	Passwort: (blank)
 
 	\subsection{Exploit Testing}
+	Binwalk
+	Befehl:
+	\begin{lstlisting}
+		binwalk DIR600B_FW205b01.bin 
+	\end{lstlisting}
+	\begin{lstlisting}
+		DECIMAL       HEXADECIMAL     DESCRIPTION
+		--------------------------------------------------------------------------------
+		48            0x30            Unix path: /dev/mtdblock/2
+		96            0x60            uImage header, header size: 64 bytes, header CRC: 0xED547F26, created: 2010-11-23 03:39:40, image size: 879555 bytes, Data Address: 0x80000000, Entry Point: 0x802B7000, data CRC: 0x2C30AF3A, OS: Linux, CPU: MIPS, image type: OS Kernel Image, compression type: lzma, image name: "Linux Kernel Image"
+		160           0xA0            LZMA compressed data, properties: 0x5D, dictionary size: 33554432 bytes, uncompressed size: 2963524 bytes
+		917600        0xE0060         PackImg section delimiter tag, little endian size: 8397056 bytes; big endian size: 2195456 bytes
+		917632        0xE0080         Squashfs filesystem, little endian, non-standard signature, version 3.0, size: 2194347 bytes, 1065 inodes, blocksize: 65536 bytes, created: 2010-11-23 03:39:48                    
+	\end{lstlisting}
+	In Zeile 1 steht das sogennante String-Fund im Binary,also kein echtes dateisystemobject.
+	/dev/mtdblock/2 ist die Flash-Speicher-Partition. Das bedeutet, die Firmware ist für den Flash-Speiche gebaut.
+	Der uImage header in Zeile 2 ist ein von U-Boot verwendetes Kernel-Format, welhces aus einem Header (Metadaten) un dem Kernel besteht.
+
+	\begin{table}[h]
+		\centering
+		\hypertarget{tabelle1}{}
+			\begin{tabularx}{\columnwidth}{|X|X|}
+			\hline
+			header size: 64 bytes & beschreibt den Kernel \newline enthält CRCs, Entry Point \\
+			\hline
+			image size: 879555 bytes & Größe des Kernel-Images \\
+			\hline
+			Data Address: 0x80000000 & RAM-Adresse, wo Kernel geladen wird \\
+			\hline
+			Entry Point: 0x802B7000 & Startadresse der Kernel-Ausführung \\
+			\hline
+			OS: Linux, CPU: MIPS & Zielarchitektur MIPS \\
+			\hline
+			compression: lzma & Kernel ist komprimiert, spart Flash-Speicher \\
+			\hline
+			\end{tabularx}
+		\caption{Inside The uImage}
+	\end{table}
+	
+	Das Linux Kernel hat die Version OS Kernel Image, MIPS, Linux 2.6.x, das ist eine sehr alte Kernel-Version von 2010
+	und hat eine MIPS-Architektur (Embedded Router Standard). 
+
+	In LZMA compressed data sthet der eigentliche Kernel Code, komprimiert LZMA.
+	dictionary size: 32MB bestimmt das Kompressionsfenster und ist typisch für Embedded Linux Kernel.
+	uncompressed size ~ 2.9MB ist die reale Kernelgröße nach dem Entpacken.
+
+	PackImg section delimiter tag Das ist ein marker für den Begin einer weiteren Firmware-Section. 
+
+	SquashFS ist ein komprimiertes readonly Linux Dateisystem der version 3.0. Es hat 1065 inodes, also ein sehr kleines System.
+	Hier steht das gesamte Linux-System des Routers.
+
+	Befehl:
+	\begin{lstlisting}
+		binwalk -e DIR600B_FW205b01.bin 
+	\end{lstlisting}
+	Der Befehl entpackt die Förmwear.
+	In squashfs-root/www/ liegt das Webinterface, verteilt auf eine Vielzahl von Ordner. Um den Rahmen der Arbeit nicht zu sprengen
+	wird im folgendne nur auf die wesentlichen bestandteile der Datei eingegangen.
+
+	squashfs-root/www/model/__show_info.php
+	Die Datei ist ein generischer Content-Renderer für das Webinterface. Sie kann zum einen Standartanzeigen machen und
+	Dynamische Includes machen. \texttt{require($LOCALE_PATH."/".$REQUIRE_FILE);} lädt hierbei eine externe Datei in die Seite.
+	Der Entwickler wollte damit vermutlich bezwecken, das zb mehrer Sprachen auf die Seite geladen werdern können.
+	Allerdings kann so auch auf andere 
+	\begin{lstlisting}
+		if($REQUIRE_FILE!="")
+		{
+			require($LOCALE_PATH."/".$REQUIRE_FILE);
+		}
+	\end{lstlisting}
+
 	CVE-2017-17215 (HNAP Auth Bypass):
 	Laut dem CVE Verzeichniss hat der Router eine Schwachstelle in der Login Page.
 	Bei dieser wird an die URL http://192.168.0.1 folgender String angehängt:
