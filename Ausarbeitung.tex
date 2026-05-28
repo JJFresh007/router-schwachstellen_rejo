@@ -63,15 +63,11 @@
 	\include{tex/frontmatter}    % Verzeichnisse, Vorbereitung Layout eigene Kapitel
 	
 	
-	\chapter*{Abbildungsverzeichnis}
-	Abbildung 1: Vorgehen nach (1)
+	%\chapter*{Abbildungsverzeichnis}
 	\listoffigures
-	\newpage
 	
-	\chapter*{Tabellenverzeichnis}
-	Tabelle 1: Testtabelle
+	%\chapter*{Tabellenverzeichnis}
 	\listoftables
-	\newpage
 	
 	\chapter*{Abkürzungssverzeichnis}
 	\newpage
@@ -162,7 +158,7 @@
 	Hilfreich kann der Vergleich von Definitionen mit Hilfe einer Tabelle sein, 
 	wie in \hyperlink{tabelle1}{Tabelle 1} dargestellt.
 	\newline
-	\begin{figure}[H]
+	\begin{table}[H]
 		\hypertarget{tab_definition}{}
 		\begin{tabularx}{\columnwidth}{|l|X|}
 			\hline
@@ -201,7 +197,7 @@
 			\hline
 		\end{tabularx}
 		\caption{Testtabelle}
-	\end{figure}
+	\end{table}
 	\section{Router Grundlagen}
 	Wie der Name erahnen lässt ist der Router innerhalb eines Netzwerks dafür
 	zuständig Nachrichten von einer verbundenen Quelle zum Ziel zu leiten.
@@ -787,7 +783,7 @@
 	\section{Erster Versuch des Verbindungsaufbaus}
 	\label{w_failed_test}
 	Ziel: Router Webinterface erreichen und Standardeinstellungen prüfen
-	\begin{figure}[H]
+	\begin{table}[H]
 		\hypertarget{tab_w_01}{}
 		\begin{tabularx}{\columnwidth}{|l|X|}
 			\hline
@@ -806,7 +802,7 @@
 			\hline
 		\end{tabularx}
 		\caption{WRT120N Testumgebung 1}
-	\end{figure}
+	\end{table}
 	Nachdem der Router per Ehternet Kabel von Port 1 (nicht der Internetport)
 	an den Laptop angeschlossen war, sollten zuerst der aktuelle Stand des Router 
 	geprüft werden. Bereits beim Verbinden von Port 1 wurde eine Unstimmigkeit mit 
@@ -874,7 +870,7 @@
 	\label{w_reachabel}
 	Ziel: Zugang zur Browserbasierten Website und Erreichbarkeit des Routers
 	prüfen
-	\begin{figure}[H]
+	\begin{table}[H]
 		\hypertarget{tab_w_02}{}
 		\begin{tabularx}{\columnwidth}{|l|X|}
 			\hline
@@ -895,7 +891,7 @@
 			\hline
 		\end{tabularx}
 		\caption{WRT120N Testumgebung 2}
-	\end{figure}
+	\end{table}
 	Wichtig zu Beachten ist, dass die IP Adresse nur erreichbar ist 
 	wenn der angeschlossenen Laptop nicht mit dem WLAN verbunden ist, da dieser
 	sonst versucht über das WLAN die Adresse zu finden. Der Router darf für diese
@@ -918,7 +914,7 @@
 	\label{w_basic_settings}
 	Ziel: Zugang zum WLAN sowie Konfiguration des Internetzugangs, sodass das 
 	WLAN eine aktive Internetverbindung aufbaut.
-	\begin{figure}[H]
+	\begin{table}[H]
 		\hypertarget{tab_w_03}{}
 		\begin{tabularx}{\columnwidth}{|l|X|}
 			\hline
@@ -941,7 +937,7 @@
 		\end{tabularx}		
 		\caption{WRT120N Testumgebung 3}
 		\label{tab:tab_03}
-	\end{figure}
+	\end{table}
 	Getätigte Einstellungen mit Hilfe des Userguides:
 	\begin{enumerate}
 		\item Neues Routerpasswort angelegt \emph{wrtcentoventin}
@@ -1177,7 +1173,7 @@
 	\subsection{Übertragbarkeit der Ergebnisse}
 	\newpage
 	
-	\chapter{Literaturverzeichnis}
+	%\chapter{Literaturverzeichnis}
 	%\section*{Anlage 1}
 	%\addcontentsline{toc}{section}{Anlage 1}
 	%\section*{Anlage 2}
