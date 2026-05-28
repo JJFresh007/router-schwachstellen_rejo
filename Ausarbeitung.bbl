@@ -44,8 +44,8 @@
       \strng{authorbibnamehash}{e5be30a7acefc4efe39f9ba263bd1a91}
       \strng{authornamehash}{e5be30a7acefc4efe39f9ba263bd1a91}
       \strng{authorfullhash}{e5be30a7acefc4efe39f9ba263bd1a91}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{booktitle}{Proceedings of the 2023 {{European Symposium}} on {{Usable Security}}}
@@ -88,8 +88,8 @@
       \strng{authorbibnamehash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
       \strng{authornamehash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
       \strng{authorfullhash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{edition}{7., aktualisierte Auflage}
@@ -120,8 +120,8 @@
       \strng{authorbibnamehash}{c8362ec3de9dbb4de64fee2d8b9cfe70}
       \strng{authornamehash}{c8362ec3de9dbb4de64fee2d8b9cfe70}
       \strng{authorfullhash}{c8362ec3de9dbb4de64fee2d8b9cfe70}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{isbn}{978-3-658-48604-4 978-3-658-48605-1}
@@ -171,8 +171,8 @@
       \strng{editorbibnamehash}{73dc89dd47d5782f97fff283749ded14}
       \strng{editornamehash}{73dc89dd47d5782f97fff283749ded14}
       \strng{editorfullhash}{73dc89dd47d5782f97fff283749ded14}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Für die Wegewahl werden im Internet verschiedene Verfahren eingesetzt und man muss prinzipiell zwischen der Wegewahl innerhalb autonomer Systeme (Intra-AS-Routing) und der Wegewahl im globalen Internet, also zwischen den autonomen Systemen (Inter-AS-Routing), unterscheiden. Jedes autonome System kann intern eigene Routing-Algorithmen verwenden, die in IPv4-Routern ablaufen. Jeder IPv4-Router verwaltet neben der protokollabhängigen Routing-Tabelle auch eine Forwarding-Tabelle, die der Entscheidung für eine Weiterleitung dient. Es gibt ein Regelwerk, nach dem die Forwarding-Tabelle in Routern durchsucht wird.}
@@ -333,8 +333,8 @@
       \field{year}{2022}
     \endentry
     \entry{capturesetupwlanwireshark}{misc}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labeltitlesource}{title}
       \field{howpublished}{https://wiki.wireshark.org/CaptureSetup/WLAN}
       \field{title}{{{CaptureSetup}}/{{WLAN}} - {{Wireshark Wiki}}}
@@ -406,6 +406,105 @@
       \field{urldateera}{ce}
       \verb{file}
       \verb /home/johanna/Zotero/storage/KTALRCNX/linksys-product-end-of-life.html
+      \endverb
+    \endentry
+    \entry{cverecordcve2014125122}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://www.cve.org/CVERecord?id=CVE-2014-125122}
+      \field{title}{{{CVE Record}}: {{CVE-2014-125122}}}
+      \field{urlday}{28}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/GD37HZPL/CVERecord.html
+      \endverb
+    \endentry
+    \entry{cwecwe121stackbased}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://cwe.mitre.org/data/definitions/121.html}
+      \field{title}{{{CWE}} - {{CWE-121}}: {{Stack-based Buffer Overflow}} (4.20)}
+      \field{urlday}{28}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/RR3B8R58/121.html
+      \endverb
+    \endentry
+    \entry{porath2020}{book}{}
+      \name{author}{1}{}{%
+        {{hash=0b5e8d0bc0fbb0f67d1710ae7daa409a}{%
+           family={Porath},
+           familyi={P\bibinitperiod},
+           given={Ron},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin, Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{0b5e8d0bc0fbb0f67d1710ae7daa409a}
+      \strng{fullhash}{0b5e8d0bc0fbb0f67d1710ae7daa409a}
+      \strng{bibnamehash}{0b5e8d0bc0fbb0f67d1710ae7daa409a}
+      \strng{authorbibnamehash}{0b5e8d0bc0fbb0f67d1710ae7daa409a}
+      \strng{authornamehash}{0b5e8d0bc0fbb0f67d1710ae7daa409a}
+      \strng{authorfullhash}{0b5e8d0bc0fbb0f67d1710ae7daa409a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{isbn}{978-3-662-60910-1 978-3-662-60911-8}
+      \field{langid}{ngerman}
+      \field{shorttitle}{{Internet, Cyber- und IT-Sicherheit von A-Z}}
+      \field{title}{{Internet, Cyber- und IT-Sicherheit von A-Z: Aktuelle Begriffe kurz und einfach erklärt -- Für Beruf, Studium und Privatleben}}
+      \field{urlday}{28}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2020}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.1007/978-3-662-60911-8
+      \endverb
+    \endentry
+    \entry{httpmethodsget}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{abstract}{W3Schools offers free online tutorials, references and exercises in all the major languages of the web. Covering popular subjects like HTML, CSS, JavaScript, Python, SQL, Java, and many, many more.}
+      \field{howpublished}{https://www.w3schools.com/tags/ref\_httpmethods.asp}
+      \field{langid}{american}
+      \field{title}{{{HTTP Methods GET}} vs {{POST}}}
+      \field{urlday}{28}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/SYSF7RMZ/ref_httpmethods.html
+      \endverb
+    \endentry
+    \entry{ibm}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The Common Gateway Interface (CGI) specification was introduced to enable and standardize the interface between Web servers and external programs. The CGI is a relatively simple, platform and language independent, industry-standard interface for Web application development. Programs that implement the CGI standard are commonly called CGI programs.}
+      \field{howpublished}{https://www.ibm.com/docs/en/i/7.6.0?topic=functionality-cgi}
+      \field{langid}{american}
+      \field{month}{9}
+      \field{title}{{{IBM}} i}
+      \field{urlday}{28}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/F5D73J95/7.6.html
       \endverb
     \endentry
   \enddatalist

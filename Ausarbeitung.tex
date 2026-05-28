@@ -347,13 +347,13 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.75\textwidth]{img/wrt120n_ports-benutzerhandbuch_s1.png}
-		\caption{WRT120N Anschlüsse hinten, Quelle: WRT120N-EMEA_combo_UG.pdf}
+		\caption{WRT120N Anschlüsse hinten, Quelle: WRT120N-EMEA\_combo\_UG.pdf}
 		\label{fig:wrt120n-ports}
 	\end{figure}
 	Wurde das WLAN mit Hilfe der Anleitung eingerichtet sind die Router nicht
 	nur sichtbar als WLAN Provider sondern können nach erfolgreicher Verbindung
-	auch eine stabile Internet Verbindung bieten. [Quelle: WRT120N-EMEA_combo_UG.pdf,
-	dir_600_c1_datasheet_03_ww.pdf]
+	auch eine stabile Internet Verbindung bieten. [Quelle: WRT120N-EMEA\_combo\_UG.pdf,
+	dir\_600\_c1\_datasheet\_03\_ww.pdf]
 
 	\subsection{Routing Arten und Protokolle}
 	\label{sec:Routing-Arten}
@@ -767,7 +767,7 @@
 	Zugriff auf den Router oder das WLAN-Netzwerk weiterhin möglich ist.
 	Jeder Test wird dabei nach einem einheitlichen Schema dokumentiert. Dieses umfasst
 	das jeweilige Ziel des Tests, die verwendete Testumgebung, die Durchführung sowie 
-	die erzielten Ergebnisse und augetrenede Probleme. Darüber hinaus werden die daraus
+	die erzielten Ergebnisse und aufgetrenede Probleme. Darüber hinaus werden die daraus
 	gewonnenen Erkenntnisse analysiert und bewertet. Falls relevant, werden die
 	Ergebnisse zusätzlich mit wissenschaftlichen Quellen oder Studien verglichen.
 	Sofern im Folgenden auf das Handbuch bzw. den User Guide verwiesen wird, ist 
@@ -841,8 +841,8 @@
 		\caption{Reboot Seite}
 		\label{fig:wrong_site_02}
 	\end{figure}
-	Aufgrund der Artikel \cite{chalhoub2023, vomdorp2022, 
-	schwarz2021} war eine veraltete Firmwareversion nicht abwägig daher wurde über 
+	Aufgrund der Artikel \cite{chalhoub2023, vomdorp2022, schwarz2021} 
+	war eine veraltete Firmwareversion nicht abwägig daher wurde über 
 	die Website \emph{archive.org} eine Firmware Version 1.0.05 heruntergeladen und diese
 	über das Feld "Browse" ausgewählt. Die Meldung \emph{File to big}. wurde ausgegeben.
 	Diese Abfolge von Test wurde ebenfalls in der Windows10 VM durchgeführt und hatte
@@ -892,11 +892,10 @@
 		\end{tabularx}
 		\caption{WRT120N Testumgebung 2}
 	\end{table}
-	Wichtig zu Beachten ist, dass die IP Adresse nur erreichbar ist 
-	wenn der angeschlossenen Laptop nicht mit dem WLAN verbunden ist, da dieser
-	sonst versucht über das WLAN die Adresse zu finden. Der Router darf für diese
-	erste Einstellungen nur mit einem Ethernet Kabel an einen Laptop ohne Internet
-	Verbindung angeschlossen werden.
+	Wichtig zu Beachten ist, dass die IP Adresse nur erreichbar ist wenn der 
+	angeschlossenen Laptop nicht mit einem anderen WLAN verbunden ist, da dieser
+	sonst versucht über das WLAN die Adresse zu finden. Der Router wurde für diese
+	ersten Einstellungen mit einem Ethernet Kabel an einen Laptop angeschlossen.
 	In der Kali Linux Shell wird mit dem Befehl \texttt{ping 192.168.1.1} der 
 	Router angepingt und erfolgreich alle Pakete erhalten. Es folgt der Zugriff
 	innerhalb von Chromium auf das browserbasierte Dienstprogramm in dem die 
@@ -1105,18 +1104,54 @@
 
 	\section{Schwachstelle CVE-2014-125122}
 	\label{w_cve}
-	Der Router hat die Firmwareversion 1.0.07, siehe Abbildung \ref{fig:firmware_version_wrt120n}
+	Ziel: Schwachstelle und deren Auswirkungen verstehen. Mit Hilfe des Tools
+	\emph{Metasploit} oder einem Bashskript die Schwachstelle auslösen.
+	\newline
+	In der Datenbank \emph{CVE.org} ist eine Schwachstelle zu diesem Typ Router	
+	aufgelistet. Da der Router sowohl EOL als auch seit Juli 2022 EOS ist 
+	\cite{linksysproductend} und die Schachstelle am 31.07.2025 
+	veröffentlich wurde, ist diese vom Hersteller nicht mehr behoben worden.
+	Im Bericht der CVE ist zudem die betroffenen Firmwareversion festgehalten,
+	welche der aktuellen Firmwareversion 1.0.07 des Routers entspricht, 
+	siehe Abbildung \ref{fig:firmware_version_wrt120n}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.8\textwidth]{img/linksys_page-firmware_v1-0-07.png}
+		\includegraphics[width=0.7\textwidth]{img/linksys_page-firmware_v1-0-07.png}
 		\caption{Firmware Version - WRT120N}
 		\label{fig:firmware_version_wrt120n}
 	\end{figure}
-	In der Datenbank \emph{CVE.org} ist eine Schwachstelle zu diesem Typ Router	mit 
-	der gegebene Firmwareversion aufgelistet. Da der Router sowohl EOL als auch
-	EOS ist \cite{linksysproductend} ist diese Schwachstelle nicht mehr behoben worden.
+	In der Datei \emph{tmUnblock.cgi} befindet sich die Schwachstelle, welche
+	einen Stack-Overflow auslösen kann und damit kurzzeitig das Adminpasswort
+	des Routers zurücksetzt, sodass ein Angreifer sich zur Website des Routers 
+	Zugriff verschaffen kann. Dafür muss ein zulanger TM\_Block\_URL Parameter
+	per HTTP Post-Anfrage an den Router gesendet werden.
+	\cite{cverecordcve2014125122, cwecwe121stackbased} 
+	\begin{description}
+		\item[HTTP POST] Das Hypertext Transfer Protocol (HTTP) ist ein Protokoll zur 
+		Datenübertragung im Internet zwischen Client und Server. Post ist eine 
+		HTTP Anfragemethode, die verwendet wird, um Daten vom Client an 
+		den Server zu übermitteln. Diese Daten können unterschiedliche Inhalte 
+		umfassen, beispielsweise Dokumente, Bilder oder Authentifizierungsinformationen 
+		im Rahmen einer Anmeldung auf einer Website. Im Body der HTTP-Anfrage befinden
+		sich die Daten, die dem Server zur Weiterverabreitung zur Verfügung gestellt 
+		werden.	\cite{porath2020, httpmethodsget}
+		\item[.cgi File] Common Gateway Interface ist eine standardisierte Schnittstelle
+		zwischen einem Webserver und externen Programmen. CGI wird in Verbindung 
+		mit HTTP genutzt und ermöglicht es dem Webserver die externen Programme
+		auszuführen.Eine \emph{.cgi} Datei bezeichnet in diesem Kontext 
+		typischerweise ein ausführbares Skript oder Programm, das über die 
+		CGI-Schnittstelle vom Webserver gestartet werden kann.\cite{ibm}
+	\end{description}
+	Neben dem Finder der Schwachstelle sind Referenzen enthalten, die teilweise
+	Code enthalten, der die besagte Schwachstelle ausnutzt. Hierzu gibt es zwei
+	Möglichkeiten, einmal ein Bashskript und ein Programm für die Software
+	Metasploit, welche standardmäßig bei Kali Linux installiert ist.
+	%wenns funktioniert, sollte der Code erklärt werden .. lsting
 
 
+	%( )was erkennt man in der CVE
+	%( )wie kann ich ihn auslösen (Bash Sctip, Metasploit)
+	%( )Metasploit erklären
 
 	\chapter{Hauptteil (1. Kapitel)}
 	Für die Gestaltung des Hauptteils sind in Abhängigkeit von der Aufgabenstellung
