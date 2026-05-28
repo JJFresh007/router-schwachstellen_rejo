@@ -468,46 +468,67 @@
 	- Foward Security = selbst bei passwort entschlüsselung können daten nicht etschlüsselt werden
 	- OWE (Opportunistic Wireless Encryption)
 	-  -> offene WLANs sind auch verschlüsselt auch ohne PW 
-	%---Quelle()---%
+	%---Quelle(https://csrc.nist.rip/external/nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-153.pdf)---%
 
 	\subsection{Zugriffskontrolle}
 	\label{sec:Zugriffskontrolle}
-	Der Router selbst ist geschütz vor fremden Zugriff, den wer Zugriff auf den Router hat, der
-	kann alle sicherheitstechnisch kritischen Bereiche des Routers manipulieren.
-	Um den router zu konfigurieren muss dieser durch Authentifizierung geschütz werden.
-	Hierzu werden zumindest ein Benutztername und ein Passwort genutzt, teilweise auch 
-	eine Mehrfacktorauthentifizierung und rollen basierte Accounts, also (Admin vs. eingeschränkte Nutzter)
-	Wichtig dabei ist starke Passwörter zu nutzten, sowie keine Default Credentials.
-	Der Router selbst begrenzt oft, von wo aus der administrative Zugriff erlaubt ist.
-	Oftmals nur aus dem Lokal Area Networke (LAN). Der Remote Administrator sollte entweder deaktiviert
-	oder stark eingeschränkt werden. Dies reduziert die Angriffsfläche erheblich, das das Webinterface
-	nicht öffentlich Erreichbar ist.
-	Desweiteren sollten unsichere protokolle wie HTTP und Telnet deaktiviert werden.
-	Dadurch werden Zugangsdaten und Konfigurationen nicht im Klartext übertragen.
+	Da der Router einen zentralen Bestandteil der Netzwerkinfrastruktur darstellt, muss der administrative
+	Zugriff besonders geschütz werden.
+	Zur absicherung des administrativen Zugriffs werden Authentifizierungsmechanismen eingesetzt.
+	Üblicherweise erfolgt dies über einen Benutztername und ein Passwort. 
+	Moderne Router unterstützten zusätzlich eine Mehrfaktorauthentifizierung sowie rollenbasierte Accounts, 
+	also die Aufteilung in Admin sowie eingeschränkte Nutzter.
+	Besonders wichtig ist es, ein starkes Passwort zu nutzten, sowie die Standartzugangsdaten zu ändern.
+	
+	Darüber hinaus sollte der Zugriff auf vertrauenswürdige Netzwerke beschränkt werden
+	Häufig wird der Zugriff ausschließlich aus dem Lokal Area Networke (LAN) erlaubt. 
+	Der Remote Administrator wird entweder deaktiviert oder stark eingeschränkt werden. 
+	Dies reduziert die Angriffsfläche erheblich, da das Webinterface nicht öffentlich Erreichbar ist.
 
-	Bei der Zugriffskontrolle im netzwerkverkehr wird konztrolliert welcher Traffic erlaubt oder blockiert wird.
-	Die zentrale instanz ist die Stateful firewall. Sie erlaubt nur etablierte oder explizit erlaubte
-	Verbindungen und blockiert unerwünschte eingehende Packete. Außerdem kann sie eigene Regeln definieren.
+	Desweiteren sollten unsichere Verwaltungsprotokolle wie HTTP und Telnet deaktiviert werden,
+	da diese Daten unverschlüsselt übertragen. Stattdessen sollten HTTPS und SSH verwendet werden.
+
+	Neben dem administrativen Zugriff spielt auch die Zugriffskontrolle im Netzwerkverkehr eine bedeutente Rolle.
+	Router und Firewall kontrollieren hierbei welcher Netzwerkverkehr erlaubt oder blockiert wird.
+	Die zentrale Sicherheitskomponente ist die Stateful Firewall. 
+	Diese überwacht aktive Verbindungen und erlaubt nur etablierte oder explizit erlaubte Packete
+	und blockiert unerwünschte eingehende Packete. Außerdem kann sie eigene Regeln definieren.
 
 	Die Access Controle Lists (ACLs) wird vorallem in Modernen und professionellen Routern genutzt.
-	Mit ihr kann granulat definiert werden welche IP-Adressen kommunizieren dürfen, welche protokolle erlaubt sind
+	Mit ihr kann granular definiert werden welche IP-Adressen kommunizieren dürfen, welche protokolle erlaubt sind
 	und welche Ports genutzt werden dürfen.
+	Dadurch kann der Netztwerkverkehr gezielt kontrolliert und eingeschränkt werden.
 
-	Eine weitere Zugriffskontrolle bietet die Netztwerksegmentierung. moderne Router bieten das anlegen eines
-	Gastnetzwerks und VLANs. Auch ein VPN Zugriff kann hilfreich sein. Router können als VPN-Endpunkt fungieren,
-	damit ist der Zugriff vo\begin{itemize}
-		\item{Hersteller erzeugt Firmware}
-		\item{Firmware wird kryptographisch signiert (Private Key)}
-		\item{Router prüft beim Update die Signatur (Publlic Key im Gerät)}
-	\end{itemize}n außen nur über einen authentifizierten, verschlüsselten Tunnel möglich.
+	Eine weitere Zugriffskontrolle bietet die Netztwerksegmentierung. Moderne Router ermöglichen die Einrichtung 
+	seperater Netztbereiche beispielsweise durch das anlegen eines Gastnetzwerks und VLANs. 
+	Dadurch können Geräte sowie Benutztergruppen voneinander getrennt werden, wodurch die Ausbreitung eines Angriffs beschränkt wird.
+	Zusätzlich können Router als VPNB-Endpunkte fungieren. 
+	Der Zugriff erfolgt dann über einen verschlüsselten und authentifizierten Tunnel,
+	wodurch der Zugriff auf den Router aus externen Netztwerken abgesichert ist. 
 
-	Gastnetzwerksrundsätzlich ist die Zugriffskontrolle selbst oftmals weniger das Problem, sondern ihre Fehlkonfiguration.
-	Wenn beispielsweise Standartpasswörter nicht geändert werden, der Remote-Admin ofenn ist, unötige Ports
+	In der Praxis ist die Zugriffskontrolle selbst oftmals weniger das Problem, sondern ihre Fehlkonfiguration.
+	Wenn beispielsweise Standartpasswörter nicht geändert werden, der Remote-Admin offen ist, unötige Ports
 	freigegeben werden oder unsichere Protokolle aktiviert sind, führt dies dazu das theoretisch vorhandene
 	Mechanismen wirkungslos sind.
+
+	Administrative Zugriffskontrolle
+Authentifizierung
+Rollen (RBAC)
+Zugriffsbeschränkung (LAN only)
+sichere Protokolle
+Netzwerkbasierte Zugriffskontrolle
+Packet Filtering
+Stateful Firewall
+ACLs
+Strukturelle Zugriffskontrolle
+VLANs
+Gastnetzwerke
+Segmentierung
+Fehlkonfiguration als Risiko
+sehr gut, unbedingt behalten
+
 	%---Quelle(https://nvlpubs.nist.gov/nistpubs/Legac019-16920: y/SP/nistspecialpublication800-41r1.pdf)---%
 	%---Quelle(https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-44ver2.pdf)---%
-	%---Quelle(https://www.cisco.com/c/en/us/support/docs/ip/access-lists/13608-21.html?utm_source=chatgpt.chttps://www.cisco.com/c/en/us/support/docs/ip/access-lists/13608-21.html?)---%
 	
 	\subsection{Firmware Integrität}
 	\label{sec:Firmware Integrität}
