@@ -1085,7 +1085,7 @@ sudo wireshark
 	\section{Schwachstelle CVE-2014-125122}
 	\label{w_cve}
 	Ziel: Schwachstelle und deren Auswirkungen verstehen. Mit Hilfe des Tools
-	\emph{Metasploit} oder einem Bashskript die Schwachstelle auslösen.
+	\emph{Metasploit} oder einem Pythonskript die Schwachstelle auslösen.
 	\newline
 	In der Datenbank \emph{CVE.org} ist eine Schwachstelle zu diesem Typ Router	
 	aufgelistet. Da der Router sowohl EOL als auch seit Juli 2022 EOS ist 
@@ -1100,6 +1100,9 @@ sudo wireshark
 		\caption{Firmware Version - WRT120N}
 		\label{fig:firmware_version_wrt120n}
 	\end{figure}
+	Für diese Schwachstelle muss sich der Angreifer im WLAN des Routers befinden,
+	dass heißt die erste Hürde, das WLAN Passwort muss von im geknackt werden,
+	sofer es nicht das Default Passwort ist, welches einfach zu erfahren ist.
 	In der Datei \emph{tmUnblock.cgi} befindet sich die Schwachstelle, welche
 	einen Stack-Overflow auslösen kann und damit kurzzeitig das Adminpasswort
 	des Routers zurücksetzt, sodass ein Angreifer sich zur Website des Routers 
@@ -1199,10 +1202,8 @@ except KeyboardInterrupt:
 		\caption{Netzwerkverkehr - HTTP-Post Exploit}
 		\label{fig:w_exploit}
 	\end{figure}
-	%beschreiben was man hier genau sieht in der Wireshark Aufzeichnung
 	In der Abbildung ist unten rechts blau markiert der HTTP-Post zusehen 
 	der durch die Zeilen 16-29, 32 erzeugt und in Zeile 33 im ausgeführt wurde.
-	
 	Zur besseren Lesbarkeit in diesem Dokument wurden Kommentare teilweise 
 	entfernt und die Importe entsprechen nicht PEP8 wie im tatsächlichen 
 	Skript, welches dieser Ausarbeitung beigelegt ist. Da auf der genutzten 
@@ -1230,7 +1231,7 @@ except KeyboardInterrupt:
 		Änderunge im Verhalten. Das Passwort für die Website wird immer noch gefordert
 		\item Grundlegende Wirelesseinstellungen auf Default setzen: keine
 		Änderung im Verhalten.
-		\item Firmware upload durch die genutze Firmware von Heffner 
+		\item Firmware Upload durch die genutze Firmware von Heffner 
 		\cite{reversingwrt120nsfirmware}. Angehängt an die Ausarbeitung. 
 		Firmware-Verifizierung hat sich geändert aber keine Veränderung beim
 		Ausführen des Exploits.
@@ -1252,7 +1253,7 @@ msf auxiliary(admin/http/linksys_tmunblock_admin_reset_bof) > exploit 192.168.1.
 	Geräte im WLAN haben ohne Passwort Zugriff auf die Website des Routers.
 	Da der Router sich im Zustand der Werkseintsllung befindet werden alle
 	getätigten Sicherheitsmechanismen bis einschließlich Abbschnit \ref{w_wlan_settings}
-	getätigt und nochmals versucht den Exploit über Metasploit auszuführen.
+	getätigt und nochmals versucht den Exploit über Metasploit auszuführen. 
 	Der Exploit funktioniert wie gehabt
 	Zudem ist aufgefallen, dass der Router keinen Reboot macht und dadurch nicht
 	die Verbindung abbricht. In der folgenden Abbildung \ref{fig:w_metasploit} sieht 
@@ -1268,17 +1269,23 @@ msf auxiliary(admin/http/linksys_tmunblock_admin_reset_bof) > exploit 192.168.1.
 		\caption{Netzwerkverkehr - HTTP-Post Exploit in Metasploit}
 		\label{fig:w_metasploit}
 	\end{figure}
-	
+	Die Darstellung in Wireshark wird getestet indem der  Router nochmals auf Werkseinstellungen
+	zurückgesetzt wird und der Exploit erneut ausgeführt wird. Dies Verändert die 
+	Ausgabe in Wireshark nicht. Auf die Unterschiede zwischen den 
+	beiden Programmcodes wird nachfolgend eingegagnen..
+
+	Sollte die IP-Adresse vom Besitzer des Routers umkonfiguriert worden sein, ändert
+	das lediglich den Befehl in Metasploit. Der Angreifer überwacht das Netzwerk 
+	mit Wireshark, erfährt die IP des Routers indem er ins Internet geht und damit
+	ein Pakte über das Gateway, den Router sendet. Die erhaltenen IP gibt er dann
+	anstatt der Default IP beim Ausführen ein. 
 
 	funktioniert das remote script wenn man die abfragen mit drin hat wie bei
 	Metasploit?
-	funktioniert es wenn der router eine andere ip adresse hat? 
 
 
 	%schauen ob ich die Hex Adressen vom Python Skirpt in der Datei von
 	%Binwalk finde. Z.B. \x81\x54\x4A\xF0
-	%( )was erkennt man in der CVE
-	%( )wie kann ich ihn auslösen (Bash Sctip, Metasploit)
 	%( )Metasploit erklären
 
 	Erkenntnisse: Chromium hat einen Passwort Cache der per Default die eingegebenen
