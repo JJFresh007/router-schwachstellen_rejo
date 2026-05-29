@@ -165,10 +165,6 @@
 			Endgerät & Internetfähige Geräte, die an einem Router angeschlossen sein können. 
 			Dazu zählen Laptops, Desktop PCs, Server, Drucker, Smartphone, etc.\\ %---muss das rein?
 			\hline
-			LAN & local area network - lokales Netzwerk \\
-			\hline
-			WAN & wide area network - Internet \\
-			\hline
 			Schicht / Layer & Schicht im ISO/OSI Referenzmodell, welches die Übertragung
 			von Daten vom Kabel bis hin zur Darstellung auf dem Endgerät beschreibt. 
 			Weitere Informationen hierzu siehe \cite[S.25-16]{zisler2022}.\\
@@ -193,10 +189,8 @@
 			also den Router, an den Pakete weitergeleitet werden, die in ein anderes 
 			Netzwerk müssen.\\
 			\hline
-			ISP & Internet Service Provider\\
-			\hline
 		\end{tabularx}
-		\caption{Testtabelle}
+		\caption{Definitionen}
 	\end{table}
 	\section{Router Grundlagen}
 	Wie der Name erahnen lässt ist der Router innerhalb eines Netzwerks dafür
@@ -210,14 +204,14 @@
 	Wichtig zu Beachten ist der Unterschied zwischen Router und Switch. Beide
 	Geräte sind für die Weiterleitung der Pakete an das richtige Ziel zuständig.
 	Die Switches der Schicht 2 (ISO/OSI Modell) können nur Frames innerhalb 
-	eines lokalen Netzwerks - das heißt der Adressbereich hat eine gewisse
-	Beschränkung - weiterleiten. Diese können nicht über Netzwerkgrenzen, also
-	in eine lokales Netzwerk mit anderem Adressbereich, als dem Quellnetzwerk
-	kommunizieren. Switches der Schicht 3 können über Netzwerkgrenzen hinweg
-	Pakete versenden. Der Hauptunterschied zwischen Switches und Routern ist,
-	 dass der Router nicht nur über Netzwerkgrenzen hinweg Pakete 
-	leiten kann sonder, dass er aus dem LAN auch in das WAN, besser bekannt als
-	das Internet, Pakete versenden kann. Auch der Router ist ein Gerät der Schicht
+	eines lokalen Netzwerks auf Basis der MAC-Adressen weiterleiten. 
+	Diese können nicht über Layer 3 Netzwerkgrenzen, also in ein anderes 
+	IP-Netzwerk mit anderem Adressbereich, als dem Quellnetzwerk kommunizieren. 
+	Switches der Schicht 3 können über Netzwerkgrenzen hinweg Pakete versenden 
+	und Kombinierend ie Funktion von Switch und Router. Der Hauptunterschied 
+	zwischen Switches und Routern ist, dass der Router nicht nur über Netzwerkgrenzen 
+	hinweg Pakete leiten kann sonder, dass er aus dem LAN auch in das Internet, 
+	Pakete versenden kann. Auch der Router ist ein Gerät der Schicht
 	3 im ISO/OSI-Modell und vermittelt daher die Pakete anhand der IP-Adressen.
 	\cite{zisler2022, baun2025}
 	%pp. 149-150
@@ -229,8 +223,8 @@
 	Subnetze besitzen einen logischen Adressraum, der abhängig sein sollte 
 	von der Anzahl an Geräten, die in diesem Netzwerk sein sollen. 
 	Um zu verstehen, wie eine Segmentierung funktioniert, muss zuerst der Aufbau
-	der Adresse verstanden werden. Eine Adresse ist in diesem Fall die IP-Adresse,
-	wobei IP für Internet Protocol steht. In dieser Ausarbeitung wird nur mit
+	der IP-Adresse verstanden werden, wobei IP für Internet Protocol steht. 
+	In dieser Ausarbeitung wird nur mit
 	IPv4 Adressen gearbeitet, weshalb nicht näher auf die IPv6 Adressen 
 	eingegangen wird. Eine IPv4 Adresse besteht aus 4 Teilen, die durch einen 
 	Punkt von einander getrennt sind. Jeder Teil beinhaltet eine Zahl zwischen 0
@@ -239,11 +233,10 @@
 	sich darin befindenden Geräte in ihrer IP-Adresse den gleichen Netzanteil.
 	Das exakte Geräte innerhalb des Subnetz ist im Hostanteil der IP-Adresse zu
 	finden. Diese muss zwingend einzigartig im jeweiligen Subnetz sein, da es
-	sonst zu Konflikten kommt. Hätten zwei Geräte die gleiche IP-Adresse kann der
-	Router nicht entscheiden an welches, das entsprechende Paket weiter gleitet
-	werden muss. Der Hostanteil nimmt entsprechend der Größe des Subnetzes mehr
-	oder weniger Bits der IP-Adresse ein. Die Größe des Anteils kategorisiert
-	das Netz in die Klassen A bis C siehe folgende Abbildung \ref{fig:nwclasses}.
+	sonst zu Konflikten kommt. Der Hostanteil nimmt entsprechend der Größe des 
+	Subnetzes mehr oder weniger Bits der IP-Adresse ein. Die Größe des Anteils 
+	kategorisiert das Netz in die Klassen A bis C siehe folgende Abbildung 
+	\ref{fig:nwclasses}.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.75\textwidth]{img/c-nw_nwklassen_s93.png}
@@ -251,37 +244,34 @@
 		\cite[S.95]{zisler2022}}
 		\label{fig:nwclasses}
 	\end{figure}
-	Ob sich Quelle und Ziel im gleichen Subnetz befinden, wird vom Sender, also
-	der Quelle bestimmt. Mit Hilfe der Subnetzmaske wird die IP-Adresse des Senders
+	Ob sich Quelle und Ziel im gleichen Subnetz befinden, wird von der Subnetzmaske
+	bestimmt. Mit Hilfe dieser wird die IP-Adresse des Senders
 	logisch UND verknüpt. Das gleiche wird mit der Ziel-IP-Adresse gemacht. Kommt bei
 	beiden Rechnungen das gleiche Ergebnis heraus, sind die Teilnehmer im gleichen
 	Subnetz und können somit über Layer 2, also mit Hilfe vom MAC-Adressen, die Frames
-	austauschen. Wird ein Paket innerhalb des gleichen LAN versendet, wird mit der MAC-Adresse
+	austauschen. Wird ein Paket innerhalb des gleichen IP-Subnetz versendet, wird mit der MAC-Adresse
 	gearbeitet. Der Sender hat eine sogenannte ARP Tabelle (Adress Resolution Protocol)
-	in der die Geräte, an die der Sender bereits ein Frame gesendet hat enthalten
+	in der die MAC-Adressen der Geräte, an die der Sender bereits ein Frame gesendet hat, enthalten
 	sind. Es sind die IP-Adressen und die dazugehörige MAC-Adresse enthalten. Diese
 	Informationen werden dann in der Tabelle gespeichert, nach einer konfigurierte
 	Zeit gelöscht und müssen dann bei erneutem Senden an den Empfänger wieder 
 	angefragt und gespeichert werden. Um die MAC-Adresse des Empfängers zu ermitteln
-	sendet der Sender eine ARP-Anfrage in das lokale Netz. Diese Anfrage wird an alle 
+	sendet der Sender eine ARP-Anfrage in das lokale IP-Netz. Diese Anfrage wird an alle 
 	Geräte im Netz gesendet, der sogenannte Broadcast. Das Gerät welches die
 	gesuchte IP-Adresse hat antwortet mit seiner MAC-Adresse. Der Sender erhält die
 	Adresse und sendet dann den Frame an die MAC-Adresse innerhalb des lokalen
 	Netzwerks. 
 	Befinden sich die Geräte nicht im gleichen Subnetzt, ist das Ergebnis der 
-	Berechnung mit der Subnetzmaske verschieden und es muss über Layer 3, mit Hilfe 
-	der IP-Adressen und dem Router das Paket versendet werden. Dafür wird das Paket 
+	Berechnung mit der Subnetzmaske verschieden und es muss über Layer 3, mit 
+	dem Router das Paket versendet werden. Dafür wird das Paket 
 	an die IP-Adresse des Routers gesendet, auch bekannt als Gateway. Die Routing-
-	Tabelle wird für die Kommunikation genutzt, um heraus zufinden über welchen 
-	Port das Paket weitergeleitet werden muss. Da der Router ein Layer 3 Gerät ist, 
+	Tabelle im Router wird für die Kommunikation genutzt, um heraus zufinden über welchen 
+	Port der Router das Paket weitergeleitet werden muss. Da der Router ein Layer 3 Gerät ist, 
 	muss er die IP-Adresse des Zielgerätes kennen, um das Paket in das richtige 
 	Netzwerk zu leiten. Die Tabelle beinhaltet alle Netzwerke, die über ein 
 	Interface mit dem Router verbunden sind als auch deren Standardrouten. 
-	Durch das Versenden der Pakete über den Router wird die Routing Tabelle nach 
-	und nach gefüllt, da der Router durch die Quelladressen des Pakets lernt, 
-	welches Gerät an welchem Port hängt. In der Tabelle steht dann der jeweilige 
-	Port mit der entsprechenden IP-Adresse. Da sich das Subnetz über IP und 
-	Subnetzmaske berechnen, lässt erkennt der Router in welches Subnetz das 
+	Da sich das Subnetz über IP und Subnetzmaske berechnen lässt erkennt der 
+	Router in welches Subnetz das 
 	Paket gesendet werden muss. Dieser leitet es in das entsprechende Subnetz, 
 	wo es dann entweder weiter geleitet oder direkt mit der MAC-Adresse an das 
 	Zielgerät geleitet wird. In der folgenden Abbildung \ref{fig:subnetmask}
@@ -352,8 +342,8 @@
 	\end{figure}
 	Wurde das WLAN mit Hilfe der Anleitung eingerichtet sind die Router nicht
 	nur sichtbar als WLAN Provider sondern können nach erfolgreicher Verbindung
-	auch eine stabile Internet Verbindung bieten. [Quelle: WRT120N-EMEA\_combo\_UG.pdf,
-	dir\_600\_c1\_datasheet\_03\_ww.pdf]
+	auch eine stabile Internet Verbindung bieten, siehe WRT120N-EMEA\_combo\_UG.pdf,
+	dir\_600\_c1\_datasheet\_03\_ww.pdf
 
 	\subsection{Routing Arten und Protokolle}
 	\label{sec:Routing-Arten}
@@ -405,15 +395,6 @@
 	\label{sec:lan_wan}
 	Im folgenden Abschnitt wird erläutert, wie ein Router Datenpakete aus einem
 	lokalen Netzwerk (LAN) in das Internet weiterleitet.
-	\newline
-	Router haben heutzutage ein eingebautes Modem, das ihnen ermöglicht Pakete,
-	ins Internet zu senden als auch zu empfangen. Ohne ein solches Modem ist
-	die Kommunikation ins Internet nicht möglich. Das Modem wandelt die digitalen
-	Signale von einem Endgerät, wie einem Laptop in analoge Signale um und sendet
-	dann die Anfrage in das Internet. Die Antwort ist ein analoges Signal welches
-	wiederum in ein digitales gewandelt werden muss, damit der Laptop die 
-	enthaltenen Informationen verarbeiten kann. 
-	%S.22 baun2025
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{img/ipv4_packet-structure.pdf}
