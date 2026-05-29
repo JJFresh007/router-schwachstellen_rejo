@@ -540,6 +540,23 @@
       \verb /home/johanna/Zotero/storage/J3MVEV5G/31758.html
       \endverb
     \endentry
+    \entry{urllibrequestextensiblelibrary}{misc}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Source code: Lib/urllib/request.py The urllib.request module defines functions and classes which help in opening URLs (mostly HTTP) in a complex world --- basic and digest authentication, redirection...}
+      \field{howpublished}{https://docs.python.org/3/library/urllib.request.html}
+      \field{journaltitle}{Python documentation}
+      \field{langid}{english}
+      \field{title}{Urllib.Request --- {{Extensible}} Library for Opening {{URLs}}}
+      \field{urlday}{29}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/VBUY8SNG/urllib.request.html
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
