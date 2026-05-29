@@ -885,8 +885,8 @@
 	\newline
 	Ergebnis: Von anderen Geräten wird der Router als WLAN Verbindung angezeigt
 	unter dem Default Namen $linksys$. Die Verbinung lässt sich einfach 
-	herstellen, da es aktuell kein Passwort gibt, jedoch stellt der Router keine
-	Internet Verbindung zur Verfügung.
+	herstellen, da es aktuell kein Passwort gibt, jedoch stellt der Router kein
+	Internet zur Verfügung.
 
 	%Änderung an der VM: Network: Intel PRO/1000 MT Desktop (NAT)
 
@@ -906,7 +906,7 @@
 			\hline
 			Internetzugang & Ja \\
 			\hline
-			Kabel & 2x Ethernet-Kable (Cat 5) \\
+			Kabel & 1x Ethernet-Kable (Cat 5) \\
 			\hline
 			Netzwerkaufbau & Router(Port1) via Ethernet Kabel direkt mit dem Laptop
 			verbunden, Router(Internet Port) via Ethernet Kabel mit dem Internet 
@@ -926,11 +926,10 @@
 		\item DHCP-Server: Aktiviert
 	\end{enumerate}
 	Die Einstellungen für Wireless, sind per Default deaktiviert, weshalb es kein
-	Passwort für den Zugang zum WLAN gibt. Unter dem Reiter Wireless können die
+	Passwort für den Zugang zum WLAN gibt. Unter dem Reiter \emph{Wireless} können die
 	Einstellungen eingesehen werden. Nachdem der Router via Ethernetkabel mit
 	dem Internet verbunden ist leuchtet die LED. Der Router ist sichtbar und hat
-	eine aktive Verbindung ins Internet. Die physikalische Verbindung zwischen
-	Laptop und Router wird getrennt und der Laptop wird per WLAN mit dem Router 
+	eine aktive Verbindung ins Internet. Der Laptop wird per WLAN mit dem Router 
 	verbunden. Wird \emph{www.google.com} aufgerufen flackert die Internet LED, 
 	welche Netzwerkaktivität auf dem Internetport symbolisiert. 
 	IP-Adresse der VM mittels \texttt{ip addr} ermittelt und Broadcast mithilfe 
@@ -943,9 +942,9 @@
 	über den Laptop gemacht. Dieser verwendet Ubuntu Linux als Betriebssystem 
 	und verfügt über die installierte Software \emph{Wireshark}.
 	Für die Aufzeichnung muss Wireshark mit Root Rechten ausgeführt werden
-	\begin{lstlisting}[language=bash]
-	sudo wireshark
-	\end{lstlisting}
+\begin{lstlisting}[language=bash]
+sudo wireshark
+\end{lstlisting}
 	Im Terminal kann mit \texttt{iwconfig} kann die WLAN Netzwerkschnittstellen
 	abgefragt werden. Die Bezeichnungen in der ersten Spalte sind in Wireshark
 	ebenfalls aufgelistet und nach Anwahl des WLAN Adapters wird der 
@@ -995,9 +994,9 @@
 	Einstellungen des WLAN.
 	Testumgebung siehe Tabelle \ref{tab:tab_03}.
 	\newline
-	Zur Konfiguration der WLAN Einstellugen wurde der Router von Port 1 via
-	Ehternet Kabel direkt mit dem PC verbunden. Es besteht zu diesem Zeitpunkt
-	keine Verbindung zum Internet.
+	Zur Konfiguration der WLAN Einstellugen wurde der PC mit dem WLAN verbunden
+	und dann die gegebene IP 192.168.1.1 eingegeben, um auf die Website des
+	Routers zugelangegn. Es besteht zu diesem Zeitpunkt keine Verbindung zum Internet.
 	Da der Router die Möglichkeit hat mit Wi-Fi Protected Setup konfigutiert zu
 	werden, werden die dafür nötigen Schritte unter Beachtung des Handbuchs 
 	umgesetzt. Nach mehrfachem Versuch wurde der Router manuell eingerichtet,
@@ -1069,7 +1068,7 @@
 	Desweitern wurde getestet, ob sich beim Aufzeichnen des Netzwerkverkers mit
 	Wireshark eine Veränderung zeigt. Der PC, der sich im besagten WLAN befindet
 	konnte die gleichen Vorgänge mitschneiden wie in Abschnitt \ref{w_basic_settings}.
-	Wie im Abschnitt %$\ref{label Abschnitt MAC-Adressen Verschleierung}$ erläutert
+	Wie im Abschnitt %<-----------------------$\ref{label Abschnitt MAC-Adressen Verschleierung}$ erläutert
 	können MAC-Adressen von einem Gerät aus verschleiert werden. Das erschwert 
 	es die Funktion der MAC-Adress Filterung. Die MAC-Adresse kann teilweise
 	für bestimmte Netzwerke unverschleiert angezeigt werden, dies muss dann aber
@@ -1127,7 +1126,7 @@
 	Code enthalten, der die besagte Schwachstelle ausnutzt. Hierzu gibt es zwei
 	Möglichkeiten, einmal ein Bashskript und ein Programm für die Software
 	Metasploit, welche standardmäßig bei Kali Linux installiert ist.
-	Mit dem folgenden Python Skript wurde der Exploit ausgeführt:
+	Mit dem folgenden Python Skript wurde der Exploit getestet:
 \begin{lstlisting}[language=Python]
 #!/usr/bin/env python
 #...
@@ -1173,8 +1172,30 @@ except KeyboardInterrupt:
 \end{lstlisting}
 	%hier script erklären
 	In der ersten Zeile wird definiert, dass es sich um ein Python Skript handelt. 
-	Nachdem die benötigten Bibliotheken in der Zeile 
-	%<----------------------hier gehts weiter
+	Nachdem die benötigten Bibliotheken eingebunden wurden, folgt in einem try-
+	except Block (Z. 6-10) der die Übergabeparameter prüft. Wird kein Parameter
+	übergeben löst das einen IndexError aus, der dann wiederum eine Fehlermeldung
+	auf dem Konsole ausgibt und das Programm in Zeile 10 beendet \cite{builtinexceptions}.
+	Die fehlerhafte cgi Datei wird in Zeile 14 an die übergebene IP angeghängt und
+	in den folgenden zwei Zeilen wird sicher gestellt, dass die URL mit 
+	\emph{http://} beginnt. Der Rest der URL wird in den Zeilen 16-29 gebildet und
+	zu einem String \texttt{post\_data} zusammengefasst. 
+	Für diesen Explot wurde der Stack analysiert und die entsprechenden Stellen im 
+	Speicher hardcodiert in den String geschrieben, siehe Kommentare \cite{wrt120nfprintfstack}.
+	Im try-Block in Zeile 31 bis 32 wird der eigentliche HTTP-Post 
+	zusammengesetzt und abgesendet. Die Request Methode in Zeile 32
+	erwartet als erstes eine Parameter vom Typ String, der eine korrekt kodierte URL 
+	enthält. Der zweite Parameter enthält die zu übertragenden Daten. Mithilfe von 
+	encode("utf-8") wird der String in UTF-8-kodierte Bytes umgewandelt. Die Variable 
+	\emph{req} enhält die Beschreibung der HTTP-Anfrage als auch die rohen Daten in Byte
+	jedoch erst in Zeile 33 wir die Anfrage als HTTP-Post ausgeführt, unter Verwendung der
+	Methode \emph{urlopen}. \emph{res} enthält die Antwort des HTTP-Servers.
+	\cite{urllibrequestextensibelibrary}
+
+
+	
+	firmware von auf Router spielen -> firmware von \cite{reversingwrt120nsfirmware}
+	%<----------------------hier gehts nach Beschreibung von gestern weiter
 
 	In der folgenden Abbildung \ref{fig:w_exploit} ist ein Ausschnitt 
 	des Netzwerkverkehrs der VM zu sehen. 
@@ -1186,9 +1207,8 @@ except KeyboardInterrupt:
 	\end{figure}
 	%beschreiben was man hier genau sieht in der Wireshark Aufzeichnung
 	In der Abbildung ist unten rechts blau markiert der HTTP-Post zusehen 
-	der durch die Zeilen 16-29 erzeugt wurde und in Zeile 32 im Python Skript
-	per Request an den Server - hier der Router - gesendet wurde.
-	% stimmt das so? oder ist der request das urlopen
+	der durch die Zeilen 16-29, 32 erzeugt und in Zeile 33 im ausgeführt wurde.
+	
 	Zur besseren Lesbarkeit in diesem Dokument wurden Kommentare teilweise 
 	entfernt und die Importe entsprechen nicht PEP8 wie im tatsächlichen 
 	Skript, welches dieser Ausarbeitung beigelegt ist. Da auf der genutzten 
@@ -1202,25 +1222,32 @@ except KeyboardInterrupt:
 	Beim Ausführen des Codes wird der Router neu gebootetet und das WLAN Signal
 	neu aufgebaut, daher erscheint kurz die Meldung "Verbindung abgebrochen".
 	Da das Skript nach dem senden des HTTP-POST nicht weiter ausgeführt wird
-	wurde das Skript weiter untersucht. Ideen zur erfolgreichen Ausführung des
-	Skripts 
+	wurde das Skript weiter untersucht. 
+	Nachdem die jeweiligen Ergebnisse nacheinander mit dem print Befehl
+	ausgegeben und auf Korrektheitgeprüft wurde konnte das Problem soweit 
+	eingegrenzt werden, dass der Post korrekt zusammengesetzt und versendet
+	wird, jedoch das Booten des Routes zum Problem wird, wie in der 
+	Beschreibung von Heffner \cite{wrt120nfprintfstack}.
+	Die in den vorangegangenen Abschnitten gemachten Einstellungen werden
+	schrittweise wieder rückgängig gemacht, um deren Auswirkungen auf die 
+	Ausführung des Skripts zu überprüfen.
+	\begin{enumerate}
+		\item Wireless Sicherheit \emph{Sicherheitsmodus} deaktivieren: keine 
+		Änderunge im Verhalten. Das Passwort für die Website wird immer noch gefordert
+		\item Grundlegende Wirelesseinstellungen auf Default setzen: keine
+		Änderung im Verhalten.
+		\item Router Reset auf Werkseinstellungen:
+	\end{enumerate}
+	\cite{urllibrequestextensibelibrary, fielding2022, builtinexceptions}
 
-	Es funktionier bis zur schleife, die wird nicht mehr abgebrochen
-	der urlob wird nicht ausgegeben
-
-	wireless sicherheit deaktiviert -> funktioniert immer noch nicht
+	%<<-------------------hier weiter bevor Firmware upgedated wird
+	%<--------------------erst die Test von 28.05. aufschreiben
 
 	passt die mac adresse im Skript: 90:78:41:CD:23:96
-	was macht res und req genau
-	ulropen öffent den URL \cite{urllibrequestextensiblelibrary}
 
-	Viele APIs brauchen einen Header, habe ich diesen bzw welchen brauche
-	ich falls der fehlen sollte?
-	weil die Antwort nicht mehr gelesen wird, vielleicht data = res.read()
 
 	geht es wenn ich den router resete?
 
-	wie sieht ein url korrekt aus?
 	kann ich eine schleife über den request machen sodass der Router
 	dauern aus und anschaltete und damit nicht mehr funktioniert?
 	geht es wenn der Router zurück gesetzt wurde?
@@ -1241,7 +1268,7 @@ except KeyboardInterrupt:
 	%=======================notes jf - need to be deleted later
 	% sind die Grundlagen hinreichen Tief?
 	% wie sollen wir die Programme und Wireshark Files abgeben?
-	% 
+	% welche Zeitform beim Beschreiben der Tests?
 	%=========================================================
 
 	\chapter{Hauptteil (1. Kapitel)}

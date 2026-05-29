@@ -507,6 +507,49 @@
       \verb /home/johanna/Zotero/storage/F5D73J95/7.6.html
       \endverb
     \endentry
+    \entry{builtinexceptions}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In Python, all exceptions must be instances of a class that derives from BaseException. In a try statement with an except clause that mentions a particular class, that clause also handles any excep...}
+      \field{howpublished}{https://docs.python.org/3/library/exceptions.html}
+      \field{journaltitle}{Python documentation}
+      \field{langid}{english}
+      \field{title}{Built-in {{Exceptions}}}
+      \field{urlday}{29}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/EYH2IQNS/exceptions.html
+      \endverb
+    \endentry
+    \entry{wrt120nfprintfstack}{misc}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://web.archive.org/web/20210424073058/http://www.devttys0.com/2014/02/wrt120n-fprintf-stack-overflow/}
+      \field{month}{4}
+      \field{title}{{{WRT120N}} Fprintf {{Stack Overflow}} -- /Dev/{{ttyS0}}}
+      \field{urlday}{21}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+    \endentry
+    \entry{reversingwrt120nsfirmware}{misc}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://web.archive.org/web/20210416210329/http://www.devttys0.com/2014/02/reversing-the-wrt120n-firmware-obfuscation/}
+      \field{month}{4}
+      \field{title}{Reversing the {{WRT120N}}'s {{Firmware Obfuscation}} -- /Dev/{{ttyS0}}}
+      \field{urlday}{29}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+    \endentry
     \entry{heffner2014}{misc}{}
       \name{author}{1}{}{%
         {{hash=61913b91f853f86042f045cee8ee97a7}{%
@@ -521,8 +564,8 @@
       \strng{authorbibnamehash}{61913b91f853f86042f045cee8ee97a7}
       \strng{authornamehash}{61913b91f853f86042f045cee8ee97a7}
       \strng{authorfullhash}{61913b91f853f86042f045cee8ee97a7}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{WRT120N 1.0.0.7 - Remote Stack Overflow. CVE-103521 . remote exploit for Hardware platform}
@@ -540,24 +583,56 @@
       \verb /home/johanna/Zotero/storage/J3MVEV5G/31758.html
       \endverb
     \endentry
-    \entry{urllibrequestextensiblelibrary}{misc}{}
+    \entry{fielding2022}{report}{}
+      \name{author}{3}{}{%
+        {{hash=489e3655cdca151facfb40953b9759f8}{%
+           family={Fielding},
+           familyi={F\bibinitperiod},
+           given={Roy\bibnamedelima T.},
+           giveni={R\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=7d1635d30c3304a4da18074b0201f6b0}{%
+           family={Nottingham},
+           familyi={N\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+        {{hash=c07b881ce18f1c139ec16860aa2c8dad}{%
+           family={Reschke},
+           familyi={R\bibinitperiod},
+           given={Julian},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Internet Engineering Task Force}%
+      }
+      \strng{namehash}{71f5c2585c576fd9af736848fe11bc35}
+      \strng{fullhash}{71f5c2585c576fd9af736848fe11bc35}
+      \strng{bibnamehash}{71f5c2585c576fd9af736848fe11bc35}
+      \strng{authorbibnamehash}{71f5c2585c576fd9af736848fe11bc35}
+      \strng{authornamehash}{71f5c2585c576fd9af736848fe11bc35}
+      \strng{authorfullhash}{71f5c2585c576fd9af736848fe11bc35}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{Source code: Lib/urllib/request.py The urllib.request module defines functions and classes which help in opening URLs (mostly HTTP) in a complex world --- basic and digest authentication, redirection...}
-      \field{howpublished}{https://docs.python.org/3/library/urllib.request.html}
-      \field{journaltitle}{Python documentation}
-      \field{langid}{english}
-      \field{title}{Urllib.Request --- {{Extensible}} Library for Opening {{URLs}}}
+      \field{abstract}{The Hypertext Transfer Protocol (HTTP) is a stateless application-level protocol for distributed, collaborative, hypertext information systems. This document describes the overall architecture of HTTP, establishes common terminology, and defines aspects of the protocol that are shared by all versions. In this definition are core protocol elements, extensibility mechanisms, and the "http" and "https" Uniform Resource Identifier (URI) schemes. This document updates RFC 3864 and obsoletes RFCs 2818, 7231, 7232, 7233, 7235, 7538, 7615, 7694, and portions of 7230.}
+      \field{month}{6}
+      \field{number}{RFC 9110}
+      \field{title}{{{HTTP Semantics}}}
+      \field{type}{Request for {{Comments}}}
       \field{urlday}{29}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
+      \field{year}{2022}
       \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.17487/RFC9110
+      \endverb
       \verb{file}
-      \verb /home/johanna/Zotero/storage/VBUY8SNG/urllib.request.html
+      \verb /home/johanna/Zotero/storage/HUX9GQFP/Fielding et al. - 2022 - HTTP Semantics.pdf
       \endverb
     \endentry
   \enddatalist
+  \missing{urllibrequestextensibelibrary}
 \endrefsection
 \endinput
 
