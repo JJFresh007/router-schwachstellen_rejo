@@ -655,15 +655,143 @@
 
 	squashfs-root/www/model/__show_info.php
 	Die Datei ist ein generischer Content-Renderer für das Webinterface. Sie kann zum einen Standartanzeigen machen und
-	Dynamische Includes machen. \texttt{require($LOCALE_PATH."/".$REQUIRE_FILE);} lädt hierbei eine externe Datei in die Seite.
-	Der Entwickler wollte damit vermutlich bezwecken, das zb mehrer Sprachen auf die Seite geladen werdern können.
-	Allerdings kann so auch auf andere 
+	Dynamische Includes machen. 
+	Folgende stelle ist kritisch:
 	\begin{lstlisting}
 		if($REQUIRE_FILE!="")
 		{
 			require($LOCALE_PATH."/".$REQUIRE_FILE);
 		}
 	\end{lstlisting}
+	
+	Zeile sowiso lädt hierbei eine externe Datei in die Seite.
+	Der Entwickler wollte damit vermutlich bezwecken, das zb mehrer Sprachen auf die Seite geladen werdern können.
+	REQUIRE_FILE kommt indirekt aus der URL, also vom Nutzter selbst. Der Pfad wird dann eine Zeile weiter unten Zusammengesetzt.
+	Beispielsweise: \texttt{/www/locale/en_US/ + ../../../../var/etc/httpasswd}. Später wird dann einfach
+	\texttt{require(...)} ausgeführt. PHP löst das dann zu /var/etc/httpasswd auf, die Datei wird dann eingebunden und der Inhalt wird sichtbar.
+	
+	Im folgenden wird noch etwas tiefer in die Architecktur des Routers eingestiegen.
+	Ziel der Untersuchung war es die interne Funktionsweise des Routers, sowie potenzielle sicherheitsrelevamte Aspekte 
+	der implementierung nachvollziebar darzustellen.
+	Im Fokus stand die rekonstruktion der Programmstruktur mittels Reverse Engineering %nochmal erklräen
+	sowie eine anschließenden Bewertung.
+
+	Die Firmware des D-Link DIR-600 Routers zeigt eine typische Architecktur für eingebettete Linux-Systeme.
+	Die DDNS-Funktionalität ist nicht als externe Bibliothek implementiert, sondern als eigenständiges Binärprogramm.
+	Dieses Programm verarbeitet zunächst Kommandozeilenparameter und liest anschließend Konfigurationsdaten aus einer
+	internen Konfigurationsdatenbank (xmldbc). Zu den relevanten Parametern gehören unter anderem der gewählte DDNS-Service,
+	der Hostname, die Ziel-IP-Adresse sowie Authentifizierungsdaten wie benutzername und Passwort.
+	
+	Der Dienst wird nicht direkt gestartet sondern über ein generiertes Shell-Skript:
+	\begin{lstlisting}
+		# dyndns.sh
+		rgdb -A $TROOT/misc/dyndns_run.php -V generate_start=$START > /var/run/dyndns.sh
+		sh /var/run/dyndns.sh > /dev/console
+	\end{lstlisting}
+	Die eigentliche Logik wird dabei durch ein PHP-Template dynamisch, also während der Laufzeit erzeugt.
+	Dieses Template entscheidet aufgrund von Konfigurationswerten aus der Router-Datenbank, ob und welche DDNS-Client
+	gestartet wird.
+	\begin{lstlisting}
+		if ($USER!="" && $PASS!="")
+		{
+			echo "echo Start dyndns #".$provider."... > /dev/console\n";
+			echo "echo dyndns > ".$progfile."\n";
+			echo "dyndns -S \"".$provider;
+			echo "\" -u \"".$USER."\" -p \"".$PASS."\" -i ".$IPADDR." -t ".$TIME;
+			echo " -o /var/run/dyndns.html -d \"".$vendor." ".$model."\"";
+			echo " -q \"/var/run/dyndns.info\"";
+			if ($HOST!="") { echo " -n \"".$HOST."\""; }
+			echo " > /dev/console &\n";
+		}
+	\end{lstlisting}
+	Es wird zur Laufzeit ein Systembefehl generiert der dem nativen DDNS-Deamon mit Parameter aus der Konfigurationsdatei startet.
+
+	Die zentrale Konfigurationsquelle ist xmldbc. Zugangsdaten und Zielhost werden ohne validierung übernommen, die Laufzeit-IP wird direkt aus dem WAN-Interface gelesen. 
+	\begin{lstlisting}
+		if ($USER!="" && $PASS!="")
+		{
+			echo "echo Start dyndns #".$provider."... > /dev/console\n";
+			echo "echo dyndns > ".$progfile."\n";
+			echo "dyndns -S \"".$provider;
+			echo "\" -u \"".$USER."\" -p \"".$PASS."\" -i ".$IPADDR." -t ".$TIME;
+			echo " -o /var/run/dyndns.html -d \"".$vendor." ".$model."\"";
+			echo " -q \"/var/run/dyndns.info\"";
+			if ($HOST!="") { echo " -n \"".$HOST."\""; }
+			echo " > /dev/console &\n";
+		}
+	\end{lstlisting}
+
+	Im Binary /usr/bin/dyndns welches mithilfe von Ghira genauer analysiert wurde, werden folgende Kommandozeilenargumente übernommen:
+	\begin{lstlisting}
+		case 0x6e:  // -n
+			pcRam1000027c = optarg;   // hostname
+		case 0x70:  // -p
+			DAT_10000288 = optarg;    // password
+		case 0x69:  // -i
+			DAT_10000280 = optarg;    // IP address
+		case 0x53: // -S
+  			DAT_10000274 = atoi(optarg);  // provider ID
+	\end{lstlisting}
+	Alle sicherheitsrelevanten Parameter also Provider, Credentials, Zielhost und IP stammen direkt aus einer
+	untrusted configuration ohne zusätzliche Validierungsschicht.
+
+	Anschließend wird anhand einer Service-ID entschieden, welcher DDNS-Anbieter
+	verwendet wird. Hierfür gibt es intern eine Tabelle die jedem Service-Namen eine numerische Identifikation zuordnet.
+	Falls die Parameter ungültig oder unvollständig sind wird das Programm abgebrochen.
+
+	Nach der Konfigurationsphase kommt die Netzwerklogik. Das Programm arbeitet mit verschieden Zuständen,
+	\begin{lstlisting}
+		iVar2 = select(uVar7 + 1,
+               (fd_set *)local_288,
+               (fd_set *)__writefds,
+               (fd_set *)0x0,
+               &local_290);
+	\end{lstlisting}
+	Der Zustand wird über uVar7 + 1 = uVar8 gesteuert:
+	0 = disconnected
+	1 = connecting
+	2 = connected/update running
+	Abhängig vom aktuellen Zustand werden zyklisch Netzwerkverbindungen aufgebaut, geprüft oder erneuert. 
+	Dabei werden klassische BSD-Socket-Funktioenen verwendet, insbesondere socket() und connect(),
+	um eine Verbindung zu den jeweiligen DDNS-Servern herzustellen.
+	
+	Die Auswahl des DDNS-Anbieter bestimmt dabei den Aufbau der HTTP-Anfrage. Die Firmware unterstützt mehrere Anbieter
+	(z.B. DynDNS, No-IP, usw), wobei jeder Anbieter ein spezifisches Anfrageformat verwendet. 
+	Beispiel DynDNS.org
+	\begin{lstlisting}
+		snprintf(acStack_260,500,
+            "GET /nic/update?&hostname=%s&ip=%s HTTP/1.0\r\n
+			 Authorization: Basic %s\r\n
+			 User-Agent: %s\r\n
+			 Host: %s\r\n\r\n",
+             uRam1000027c,puVar2,uVar1,DAT_10000294,DAT_10000278);
+	\end{lstlisting}
+	Die HTTP-Requests werden manuell zusammengestezt und direkt über eine Socket-Verbindung versendet.
+	Zusätzlich wird in den meisten Fällen eine Basis-Authentifizierung, bestehend aus Username und Passwort
+	verlangt, welche Base64 Codiert in den HTTP-Header integriert werden (siehe oben).
+	\texttt{base64encode(pcVar4,sVar3,&uStack_28);}
+	
+	Außerdem enthält die main-loop einen vergleich der einen Runtime-Wert mit gespeicherten Konfigurationswerten
+	vergleicht:
+	\begin{lstlisting}
+		if ((uptime != 0) &&
+    		(provider == runtime_provider) &&
+    		(strcmp(ipaddr, runtime_ip) == 0))
+		{
+    		sysinfo(&local_188);
+    		iVar2 = local_188.uptime - iVar2;
+		}
+	\end{lstlisting}
+	Die Implementierung weist einige sicherheitskritischen Schwächen auf, die für ältere Embedded-Systeme typisch sind.
+	Insbesondere der Verzicht auf eine verschlüsselte Kommunikation ist kritisch. Sämtliche DDNS-Anfragen erfolgen
+	über eine ungesicherte HTTP-Verbindung, wodurch Zugangsdaten im Klartext über das Netztwerk übertragen werden können.
+	Dadurch besteht ein erhebliches Risiko für Man-in-the-Middle Attacken sowie das Anbgreifen von Zugangsdaten.
+
+	Zudem werden sensible Daten im Speicher verarbeitet. Authentifizierunginformationen werden global abgelegt und mehrfach
+	in unterschiedlichen Verarbeitungsschritten verwendet. Obwohl keine klassischen Speicherfehler wie Buffer-Overflows
+	oder Format-Strings im untersuchten Codeabschnitt sichbar sind, bleibt durch due unsauberen Datenflüsse und
+	die fehlende strikte Validierung ein erhötes Sicherheitsrisiko.
+
 
 	CVE-2017-17215 (HNAP Auth Bypass):
 	Laut dem CVE Verzeichniss hat der Router eine Schwachstelle in der Login Page.
@@ -679,8 +807,8 @@
 	\end{figure}
 
 	So kann anschließend der aktuelle Username so wie das Passwort des Routers ausgelesen werden.
-	Offenbar verarbeitet __show_info.php den Parameter REQUIRE_FILE folgendermaßen:
-	texttt{required(\$_GET['REQUIRED_FILE']);}
+	Offenbar verarbeitet show_info.php den Parameter REQUIRE_FILE folgendermaßen:
+	\texttt{required(\$_GET['REQUIRED_FILE']);}
 	required() lädt beliebige Dateien aus dem Datei System, ohne Validierung oder Einschränkung.
 	Der Benutzter selbst kontrolliert direkt welche Dateien geladen werden.
 	Die Datei /var/etc/passwd enbthält für gewöhnlich Benutztername und Passowrt,
@@ -807,6 +935,10 @@
 
 	am nächsten Tag nochmal versucht und es hat funktioniert, aber nur im 
 	Edge oder Chromium Browser, nicht in Firefox mit Default Anmelde Daten
+
+	Erfolglose Versuche:
+	Folgende Schwachstellen wurden ebenfalls getestet, konnten aber nicht ausgenutzt werden:
+
 
 	\chapter{Hauptteil (1. Kapitel)}
 	Für die Gestaltung des Hauptteils sind in Abhängigkeit von der Aufgabenstellung
