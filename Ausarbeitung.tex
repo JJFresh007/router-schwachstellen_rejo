@@ -427,7 +427,7 @@
 	Stateles Firewalls gehören zu den älteren Modellen und werden heute nur noch unter bestimmten
 	vorraussetzungen verwendet. Sie verwenden eine Zugriffskontrolliste beim filtern und treffen 
 	entscheidungen auf grundlage von Paket Informationen. Allerdings speichert eine Stateful Firewall
-	nicht den Status oder den Kontet der Verbindung Sie überprüft die Quell und Ziel-IP_Adresse
+	nicht den Status oder den Kontet der Verbindung Sie überprüft die Quell und Ziel-IP-Adresse
 	die Portnummer und den Verkehrstyp im Header. Die Filterung des Pakete funktioniert nur so gut,
 	wie sie konfiguriert wurde, und hängt somit fast vollständig von dem Netzwerkadministrator selbst ab.
 	Vorteilhaft ist ihr geringer ressourcen Verbaruch und ihre Fähigkeit Daten schnell zu verarbeit,
@@ -451,7 +451,7 @@
 	- basiert auf IEEE-blabla und IEE blavla (für WPA3)
 	- jedes Gerät in Reichweite kann den Datenverkehr mithören
 	- durch verschlüsselung wird das verhindert
-	Für WPA2 muss eine Verschlüsselung durch AES-CCMP (Counter Mode with CBC_MAC Protokoll) gegeben sein.
+	Für WPA2 muss eine Verschlüsselung durch AES-CCMP (Counter Mode with CBC\_MAC Protokoll) gegeben sein.
 	CCMP ist ein Sicherheitsstandart gemäß IEEE 802.1. Hierbei werden verschiedene kryptographische
 	Algorithmen verwendet, CCMP ist der Mechnismus zur Integritätssicherung, verschlüsselung und Authentifizierung 
 	Das Verfahren Nutzt einen 128 Bit langen Schlüssel in kombination mit einem 48 Bit langem Initialisierungsvektor,
@@ -559,7 +559,7 @@
 	Umgebung: BS Kali Linux, Verbunden über Ethernet
 	Router IP: 192.168.0.1 (bestätigt durch ping und ip route)
 	Grundtest:
-	\begin{figure}[h]
+	\begin{table}[h]
 		\hypertarget{tabelle1}{}
 		\begin{tabularx}{\columnwidth}{|X|X|X|}
 			\hline
@@ -569,7 +569,7 @@
 			\hline
 		\end{tabularx}
 		\caption{Testtabelle}
-	\end{figure}
+	\end{table}
 
 	Es wurden folgende User und Passwörter getestet (alles schlug Fehl):
 	admin:(blank) -> Standart passwort das zu beginn gesetzt ist
@@ -597,16 +597,19 @@
 	Binwalk
 	Befehl:
 	\begin{lstlisting}
-		binwalk DIR600B_FW205b01.bin 
-	\end{lstlisting}
-	\begin{lstlisting}
-		DECIMAL       HEXADECIMAL     DESCRIPTION
-		--------------------------------------------------------------------------------
-		48            0x30            Unix path: /dev/mtdblock/2
-		96            0x60            uImage header, header size: 64 bytes, header CRC: 0xED547F26, created: 2010-11-23 03:39:40, image size: 879555 bytes, Data Address: 0x80000000, Entry Point: 0x802B7000, data CRC: 0x2C30AF3A, OS: Linux, CPU: MIPS, image type: OS Kernel Image, compression type: lzma, image name: "Linux Kernel Image"
-		160           0xA0            LZMA compressed data, properties: 0x5D, dictionary size: 33554432 bytes, uncompressed size: 2963524 bytes
-		917600        0xE0060         PackImg section delimiter tag, little endian size: 8397056 bytes; big endian size: 2195456 bytes
-		917632        0xE0080         Squashfs filesystem, little endian, non-standard signature, version 3.0, size: 2194347 bytes, 1065 inodes, blocksize: 65536 bytes, created: 2010-11-23 03:39:48                    
+	binwalk DIR600B_FW205b01.bin 
+	
+	ECIMAL       HEXADECIMAL     DESCRIPTION
+	------------------------------------------------------------
+	48            0x30           Unix path: /dev/mtdblock/2
+	96            0x60           uImage header, header size: 64 bytes,
+									image size: 879555 bytes,
+									Data Address: 0x80000000,
+									Entry Point: 0x802B7000,
+									OS: Linux, CPU: MIPS,
+									compression type: lzma
+	160           0xA0           LZMA compressed data
+	917600        0xE0060        Squashfs filesystem
 	\end{lstlisting}
 	In Zeile 1 steht das sogennante String-Fund im Binary,also kein echtes dateisystemobject.
 	/dev/mtdblock/2 ist die Flash-Speicher-Partition. Das bedeutet, die Firmware ist für den Flash-Speiche gebaut.
@@ -646,6 +649,7 @@
 	Hier steht das gesamte Linux-System des Routers.
 
 	Befehl:
+
 	\begin{lstlisting}
 		binwalk -e DIR600B_FW205b01.bin 
 	\end{lstlisting}
@@ -653,7 +657,7 @@
 	In squashfs-root/www/ liegt das Webinterface, verteilt auf eine Vielzahl von Ordner. Um den Rahmen der Arbeit nicht zu sprengen
 	wird im folgendne nur auf die wesentlichen bestandteile der Datei eingegangen.
 
-	squashfs-root/www/model/__show_info.php
+	squashfs-root/www/model/\_\_show\_info.php
 	Die Datei ist ein generischer Content-Renderer für das Webinterface. Sie kann zum einen Standartanzeigen machen und
 	Dynamische Includes machen. 
 	Folgende stelle ist kritisch:
@@ -666,8 +670,8 @@
 	
 	Zeile sowiso lädt hierbei eine externe Datei in die Seite.
 	Der Entwickler wollte damit vermutlich bezwecken, das zb mehrer Sprachen auf die Seite geladen werdern können.
-	REQUIRE_FILE kommt indirekt aus der URL, also vom Nutzter selbst. Der Pfad wird dann eine Zeile weiter unten Zusammengesetzt.
-	Beispielsweise: \texttt{/www/locale/en_US/ + ../../../../var/etc/httpasswd}. Später wird dann einfach
+	REQUIRE\_FILE kommt indirekt aus der URL, also vom Nutzter selbst. Der Pfad wird dann eine Zeile weiter unten Zusammengesetzt.
+	Beispielsweise: \texttt{/www/locale/en\_US/ + ../../../../var/etc/httpasswd}. Später wird dann einfach
 	\texttt{require(...)} ausgeführt. PHP löst das dann zu /var/etc/httpasswd auf, die Datei wird dann eingebunden und der Inhalt wird sichtbar.
 	
 	Im folgenden wird noch etwas tiefer in die Architecktur des Routers eingestiegen.
@@ -770,7 +774,7 @@
 	Zusätzlich wird in den meisten Fällen eine Basis-Authentifizierung, bestehend aus Username und Passwort
 	verlangt, welche Base64 Codiert in den HTTP-Header integriert werden (siehe oben).
 	\texttt{base64encode(pcVar4,sVar3,&uStack_28);}
-	
+
 	Außerdem enthält die main-loop einen vergleich der einen Runtime-Wert mit gespeicherten Konfigurationswerten
 	vergleicht:
 	\begin{lstlisting}
@@ -796,8 +800,8 @@
 	CVE-2017-17215 (HNAP Auth Bypass):
 	Laut dem CVE Verzeichniss hat der Router eine Schwachstelle in der Login Page.
 	Bei dieser wird an die URL http://192.168.0.1 folgender String angehängt:
-	/model/__show_info.php?REQUIRE_FILE=%2Fvar%2Fetc%2Fhttpasswd
-	Das ist URL Entschlüsselt REQUIRE_FILE=/var/etc/httpasswd
+	/model/\_\_show\_info.php?REQUIRE\_FILE=%2Fvar%2Fetc%2Fhttpasswd
+	Das ist URL Entschlüsselt REQUIRE\_FILE=/var/etc/httpasswd
 
 	\begin{figure}[H]
 		\centering
@@ -807,8 +811,10 @@
 	\end{figure}
 
 	So kann anschließend der aktuelle Username so wie das Passwort des Routers ausgelesen werden.
-	Offenbar verarbeitet show_info.php den Parameter REQUIRE_FILE folgendermaßen:
-	\texttt{required(\$_GET['REQUIRED_FILE']);}
+	Offenbar verarbeitet show\_info.php den Parameter REQUIRE\_FILE folgendermaßen:
+	\begin{lstlisting}
+		required(\$_GET['REQUIRED_FILE']);
+	\end{lstlisting}
 	required() lädt beliebige Dateien aus dem Datei System, ohne Validierung oder Einschränkung.
 	Der Benutzter selbst kontrolliert direkt welche Dateien geladen werden.
 	Die Datei /var/etc/passwd enbthält für gewöhnlich Benutztername und Passowrt,
@@ -875,15 +881,15 @@
 	Mit /proc/version und /proc/cpuinfo lässt sich die Kernel Version und die Architecktur auslesen.
 	Diese Informationen können einem Angreifer dabei helfen die Richtigen Exploits sowie die Firmware-Reverse zu Engeneeren.
 	/proc/self/environ zeigt die Laufzeitumgebung. Der Webserver läuft bei diesem Router unter root was sehr kritisch ist.
-	Die Datei /var/log/messages enthält DHCP-Leases, die interne Netztwekstruktur, sowie die geräte MAC's. Dies kann nützlich sein,
+	Die Datei \/var\/log\/messages enthält DHCP-Leases, die interne Netztwekstruktur, sowie die geräte MAC's. Dies kann nützlich sein,
 	für Netztwerk-Mapping und weitere Angriffe übers LAN.
 	Die Datei /etc/hosts bestätigt lediglich den Hostname und die Interne Struktur, ist aber weiter nicht kritisch.
 	
 	Der Befehl /proc/self/cmdline zeigt folgenden Output:
-	texttt{xmldb-nwrgn23_dlwbr_dir600b-t}
+	\texttt{xmldb-nwrgn23_dlwbr_dir600b-t}
 	Das ist die CommandLine des Prozesses der die Webanfrage verarbeitet. Oft ist das ein Properitärer Dienst,
 	bei D-Link xmldb. Das ist der Konfigurations-/Datenbank Deamon des Routers.
-	nwrgn23_dlwbr_dir600b-t ist das Interne Modell bzw das Förmwaer Profil.
+	nwrgn23\_dlwbr\_dir600b-t ist das Interne Modell bzw das Förmwaer Profil.
 	Daraus lässt sich herleiten, das das Webinterface eingebettet ist ind mit einem eigenen CGI-/Binnary Handler läuft.
 	
 	Der Befehl /proc/mounts hat den Output:
@@ -975,14 +981,13 @@
 	\subsection{Übertragbarkeit der Ergebnisse}
 	\newpage
 	
-	\chapter{Literaturverzeichnis}
-	\hypertarget{[1]}{[1]} \href{http://digbib.ubka.uni-karlsruhe.de/volltexte/91999}{R. Schmidt, “Aspektorientierte Komponentensysteme zur Unterstützung weitreichender Geschäftsprozesse,” 2000, S. 10; http://digbib.ubka.uni-karlsruhe.de/volltexte/91999.}
-	\hypertarget{[2]}{[2]} \href{https://ebookcentral.proquest.com/lib/hochschule-aalen/reader.action?docID=6383015&c=UERG&ppg=184}
-	{H. Zisler, “Computer-Netzwerke : Grundlagen, Funktionsweise, Anwendung” 2022, S. 93; https://ebookcentral.proquest.com/lib/hochschule-aalen/reader.action?docID=6383015&c=UERG&ppg=184.}
-	\section*{Anlage 1}
-	\addcontentsline{toc}{section}{Anlage 1}
-	\section*{Anlage 2}
-	\addcontentsline{toc}{section}{Anlage 2}
+%	\chapter{Literaturverzeichnis}
+%	\hypertarget{[1]}{[1]} \href{http://digbib.ubka.uni-karlsruhe.de/volltexte/91999}{R. Schmidt, “Aspektorientierte Komponentensysteme zur Unterstützung weitreichender Geschäftsprozesse,” 2000, S. 10; http://digbib.ubka.uni-karlsruhe.de/volltexte/91999.}
+%%	{H. Zisler, “Computer-Netzwerke : Grundlagen, Funktionsweise, Anwendung” 2022, S. 93; https://ebookcentral.proquest.com/lib/hochschule-aalen/reader.action?docID=6383015&c=UERG&ppg=184.}
+%	\section*{Anlage 1}
+%	\addcontentsline{toc}{section}{Anlage 1}
+%	\section*{Anlage 2}
+%	\addcontentsline{toc}{section}{Anlage 2}
 	
 	
 \end{document}
