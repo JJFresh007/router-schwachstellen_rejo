@@ -537,19 +537,6 @@
       \field{year}{2021}
       \field{urldateera}{ce}
     \endentry
-    \entry{reversingwrt120nsfirmware}{misc}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{https://web.archive.org/web/20210416210329/http://www.devttys0.com/2014/02/reversing-the-wrt120n-firmware-obfuscation/}
-      \field{month}{4}
-      \field{title}{Reversing the {{WRT120N}}'s {{Firmware Obfuscation}} -- /Dev/{{ttyS0}}}
-      \field{urlday}{29}
-      \field{urlmonth}{5}
-      \field{urlyear}{2026}
-      \field{year}{2021}
-      \field{urldateera}{ce}
-    \endentry
     \entry{heffner2014}{misc}{}
       \name{author}{1}{}{%
         {{hash=61913b91f853f86042f045cee8ee97a7}{%
@@ -582,6 +569,19 @@
       \verb{file}
       \verb /home/johanna/Zotero/storage/J3MVEV5G/31758.html
       \endverb
+    \endentry
+    \entry{reversingwrt120nsfirmware}{misc}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://web.archive.org/web/20210416210329/http://www.devttys0.com/2014/02/reversing-the-wrt120n-firmware-obfuscation/}
+      \field{month}{4}
+      \field{title}{Reversing the {{WRT120N}}'s {{Firmware Obfuscation}} -- /Dev/{{ttyS0}}}
+      \field{urlday}{29}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2021}
+      \field{urldateera}{ce}
     \endentry
     \entry{fielding2022}{report}{}
       \name{author}{3}{}{%
@@ -630,6 +630,20 @@
       \verb{file}
       \verb /home/johanna/Zotero/storage/HUX9GQFP/Fielding et al. - 2022 - HTTP Semantics.pdf
       \endverb
+    \endentry
+    \entry{rapid7metasploitframework}{misc}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Metasploit Framework}
+      \field{howpublished}{Rapid7}
+      \field{month}{5}
+      \field{title}{Rapid7/Metasploit-Framework}
+      \field{urlday}{29}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{urldateera}{ce}
     \endentry
   \enddatalist
   \missing{urllibrequestextensibelibrary}

@@ -1194,7 +1194,7 @@ except KeyboardInterrupt:
 
 
 	
-	firmware von auf Router spielen -> firmware von \cite{reversingwrt120nsfirmware}
+	
 	%<----------------------hier gehts nach Beschreibung von gestern weiter
 
 	In der folgenden Abbildung \ref{fig:w_exploit} ist ein Ausschnitt 
@@ -1236,18 +1236,38 @@ except KeyboardInterrupt:
 		Änderunge im Verhalten. Das Passwort für die Website wird immer noch gefordert
 		\item Grundlegende Wirelesseinstellungen auf Default setzen: keine
 		Änderung im Verhalten.
-		\item Router Reset auf Werkseinstellungen:
+		\item Firmware upload durch die genutze Firmware von Heffner 
+		\cite{reversingwrt120nsfirmware}. Angehängt an die Ausarbeitung. 
+		Firmware-Verifizierung hat sich geändert aber keine Veränderung beim
+		Ausführen des Exploits.
+		\item MAC-Adressen des Routers im Pythenskript eingepflegt (Zeile 16).
+		Keine Änderung, auch nicht beim Ausführen des Skripts außerhalb der VM.
+		\item Router Reset auf Werkseinstellungen: keine Veränderung
 	\end{enumerate}
 	\cite{urllibrequestextensibelibrary, fielding2022, builtinexceptions}
+	Nach diesen Versuchen ist festzustellen, dass der Remote Exploit sich nicht 
+	auslösen lässt. 
+	Die Version für Metasploit wird in Kali Linux VM ausprobiert \cite{rapid7metasploitframework}
+	im Order linksys_tmunblock_admin_reset_bof.rb ist der Code zufinden. Mit dem
+	folgenden Befehl wird die Schwachstelle ausgelöst:
+\begin{lstlisting}[language=bash]
+msf auxiliary(admin/http/linksys_tmunblock_admin_reset_bof) > exploit 192.168.1.1
+\end{lstlisting}
+	Das Anmeldefenster für die Routerwebsite wird angezeigt und ohne Credentials
+	kann man sich auf der Seite einloggen. Das Passwort ist zurückgesetzt und alle
+	Geräte im WLAN haben ohne Passwort Zugriff auf die Website des Routers.
+	Da der Router sich im Zustand der Werkseintsllung befindet werden alle
+	getätigten Sicherheitsmechanismen bis einschließlich Abbschnit \ref{w_wlan_settings}
+	getätigt und nochmals versucht den Exploit über Metasploit auszuführen.
 
-	%<<-------------------hier weiter bevor Firmware upgedated wird
-	%<--------------------erst die Test von 28.05. aufschreiben
+	bootet der Router beim Ausführen?
+	funktioniert das remote script wenn man die abfragen mit drin hat wie bei
+	Metasploit?
+	funktioniert es wenn der router eine andere ip adresse hat? 
+	funktioniert es auch mit den Einstellungen wie ich sie vorher getätigt hatte?
 
-	passt die mac adresse im Skript: 90:78:41:CD:23:96
 
-
-	geht es wenn ich den router resete?
-
+	Funktioniert es vielleicht das ich was andres als passwort da eingeben?
 	kann ich eine schleife über den request machen sodass der Router
 	dauern aus und anschaltete und damit nicht mehr funktioniert?
 	geht es wenn der Router zurück gesetzt wurde?
@@ -1264,6 +1284,20 @@ except KeyboardInterrupt:
 	Nutzern dieses Browsers geändert werden, so dass Passwörter nur mit
 	aktiver Zustimmung des Nutzers gespeichert werden, auch wenn es nur
 	temporär gespeichert wird.
+
+	Im Abschnitt \emph{Verwaltung > Aktualisieren der Firmware} im Handbuch ist
+	deren Update lediglich bei Problemen empfohlen:
+	\begin{quote}
+		Aktualisieren Sie die Firmware nur dann, wenn Probleme mit dem 
+		Router auftreten oder die Firmware eine neue Funktion enthält, die Sie
+		verwenden möchten.
+		Quelle: WRT120N-EMEA\_combo\_UG.pdf
+	\end{quote}
+	Diese Aussage verleitet dazu die Updates nur zu machen wenn der 
+	Router nicht mehr eine stabile Internetverbindung zur Verfügung stellt,
+	was wiederum die Aussage von Chalhoub und Martin \cite{chalhoub2023} 
+	untermauert, dass der Router nur nochmals vom Benutzer eingestellt wird
+	wenn dieser nicht ordnungsgemäß funktioniert.
 
 	%=======================notes jf - need to be deleted later
 	% sind die Grundlagen hinreichen Tief?
