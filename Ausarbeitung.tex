@@ -43,25 +43,42 @@
 	% Hier eigene Kapitel einfügen
 	
 	\chapter*{Kurzfassung}
-	Ziel der Kurzfassung ist es, einen (eiligen) Leser zu informieren, so dass
-	dieser entscheiden kann, ob die Arbeit für ihn hilfreich ist oder nicht
-	(neudeutsch: Management Summary).                        
-	Die Kurzfassung gibt daher eine kurze Darstellung
-	\begin{itemize}
-		\item{des in der Arbeit angegangenen Problems}
-		\item{der verwendeten Methode(n)}
-		\item{des in der Arbeit erzielten Fortschritts}
-	\end{itemize}
-	
-	Dabei sollte nicht auf die Struktur der Arbeit eingegangen werden, also Kapitel
-	2 etc. denn die Kurzfassung soll ja gerade das Wichtigste der Arbeit vermitteln,
-	ohne dass diese gelesen werden muss. Eine Kapitelbezogene Darstellung sollte
-	sich in Kapitel 1 unter Vorgehen befinden.
-	
-	Länge: Maximal 1 Seite.
+	In dieser Ausarbeitung wird auf die Funktiosnweise und die Schwachstelle
+	eine Routers eingegangen. Dieser koordiniert die Kommunikation über Netzwerkgrenzen
+	hinweg und ermöchlicht auch eine Verbindung ins Internet. Neben den Ports
+	am Router, über die internetfähgige Geräte direkt an geschlossen werden 
+	können ist auch das Zurverfügungstellen eines WLAN möglich. Bleibt der 
+	Router bei der Installation auf den Werkseinstellungen birgt das einige
+	Gefahren und macht es unteranderem sehr einfach sich unbemerkt in das WLAN
+	einzuloggen. Die daraus entstehenden Sicherhetislücken werden beleutet, als
+	auch allgemeine Schwachstellen der Router. Wie eben beschrieben kann der
+	Router auch eine Verbindung ins Internet darstellen und hat dadurch eine 
+	noch größere Angriffsfläche für Angreifer. Die Ausnutzung solcher Schwachstellen,
+	derer die über offizielle Stellen wie die \emph{CVE.org} oder die \emph{NIST}
+	veröffentlich wurden werden teilweise ausgenutzt und die Auswirkungen
+	auf den Router und die Sicherheit der Geräte im Netzwerk wird eingegangen.
+	Die Hersteller Hinweise einzuhalten und bei der Konfiguration des Routers
+	umzusetzen ist sehr wichtig, was auch die Tests zeigen. Zudem sollten 
+	Updates, wenn möglich automatisch oder manuell regelmäßig, durchgeführt 
+	werden, um sicherzustellen, dass Schwachstellen auch auf dem eigenen Router
+	tatsächlich behoben sind.
+
+		%Ziel der Kurzfassung ist es, einen (eiligen) Leser zu informieren, so dass
+		%dieser entscheiden kann, ob die Arbeit für ihn hilfreich ist oder nicht
+		%(neudeutsch: Management Summary).                        
+		%Die Kurzfassung gibt daher eine kurze Darstellung
+		%\begin{itemize}
+		%	\item{des in der Arbeit angegangenen Problems}
+		%	\item{der verwendeten Methode(n)}
+		%	\item{des in der Arbeit erzielten Fortschritts}
+		%\end{itemize}
+		%Dabei sollte nicht auf die Struktur der Arbeit eingegangen werden, also Kapitel
+		%2 etc. denn die Kurzfassung soll ja gerade das Wichtigste der Arbeit vermitteln,
+		%ohne dass diese gelesen werden muss. Eine Kapitelbezogene Darstellung sollte
+		%sich in Kapitel 1 unter Vorgehen befinden.
+		%Länge: Maximal 1 Seite.
 	
 	\include{tex/frontmatter}    % Verzeichnisse, Vorbereitung Layout eigene Kapitel
-	
 	
 	%\chapter*{Abbildungsverzeichnis}
 	\listoffigures
@@ -69,35 +86,42 @@
 	%\chapter*{Tabellenverzeichnis}
 	\listoftables
 	
-	\chapter*{Abkürzungssverzeichnis}
-	\newpage
+	%\chapter*{Abkürzungssverzeichnis}
+	%\newpage
 	
 	\chapter{Einleitung}
-	Die Einleitung dient dazu, beim Leser Interesse für das Thema der Arbeit zu
-	wecken, das behandelte Problem aufzuzeigen und den zu seiner Lösung
-	eingeschlagenen Weg zu beschreiben.
-	\section{Motivation}
-	In der Motivation wird dargestellt, wieso es notwendig ist, sich mit dem in der
-	Arbeit identifizierten und behandelten Problem zu beschäftigen.
+	In dieser Ausarbeitung geht es um die Schachstellen eines Router und die 
+	Auswirkungen getätigter Sicherheitsmechanismen. Da jeder der internetfähige
+	Endgeräte benutzt, diese früher oder später mit einem Router per WLAN verbindet
+	ist es wichtig die Schwachstellen der Router zu kennen. Sind diese Probleme
+	bekannt kann der User sich und seine  Daten schützen und auch selbst den
+	Router im eigenen Heimnetz bestmöglich vor unbefugtem Zugriff über das
+	WLAN zu schützen. In den Abschnitten, die die Tests enthalten wird unter
+	anderem gezeigt, welche Auswirkungen kleine Änderungen der Sicherheitseinstellungen
+	in der Router Konfiguration haben. Zudem werden bereits bekannte Schwachstellen
+	der beiden Router getestet, als auch deren Auswirkungen dokumentiert.
+		%Die Einleitung dient dazu, beim Leser Interesse für das Thema der Arbeit zu
+		%wecken, das behandelte Problem aufzuzeigen und den zu seiner Lösung
+		%eingeschlagenen Weg zu beschreiben.
 
+	\section{Motivation}
 	Das Thema Router ist für die meisten Personen relevant, da fast jeder ein 
 	solches Gerät zu Hause hat, es täglich nutzt und damit nicht nur unproblematische
-	Dinge macht, wie bsp. Bilder von einem PC zu einem Tablet zu senden sondern auch
+	Dinge macht, wie bspw. Bilder von einem PC zu einem Tablet zu senden sondern auch
 	persönliche oder gar geheime Daten über das Internet übermittelt. Die meisten
 	Personen denken hierbei erst einmal an persönliche Daten wie die Adresse oder 
 	die Bankdaten, aber auch geheime Dokumente, die während dem Home Office versendet
 	werden, werden über den Router übertragen. Durch eine unsichere Einrichtung des
 	Router können massive Schwachstellen entstehen, die Angreifer ausnutzen können.
-	\cite{chalhoub2023}
-	%Chapter 1, p.277 -> Covid Pandemie
+	Daher ist es wichtig den Router im Heimnetzwerk so gut es geht abzusichern, 
+	die Angriffsfläche so klein wie möglich zu halten und ihn uptodate zu halten.
+	\cite{chalhoub2023, bsi} %Chapter 1, p.277 -> Covid Pandemie
+		%In der Motivation wird dargestellt, wieso es notwendig ist, sich mit dem in der
+		%Arbeit identifizierten und behandelten Problem zu beschäftigen.
 
 	\section{Problemstellung und -abgrenzung}
-	Die Problemstellung beginnt mit der Einordnung in ein thematisches Umfeld und
-	enthält sowohl die in der Arbeit angegangenen Problempunkte, als auch weitere,
-	nicht behandelte Problempunkte. Eine Negativabgrenzung verhindert, dass beim
-	Leser später nicht erfüllte Erwartungen geweckt werden.
-
-	In dieser Ausarbeitung werden primär Router für Heimnetzwerke betrachtet. 
+	In dieser Ausarbeitung werden primär Router für Heimnetzwerke und deren 
+	Schwachstellen betrachtet. 
 	Sowohl im theoretischen Teil als auch im Rahmen der praktischen Tests liegt 
 	der Fokus auf Geräten und Einsatzszenarien im privaten beziehungsweise 
 	kleineren Netzwerkumfeld. Router für große beziehungsweise unternehmensweite 
@@ -110,54 +134,71 @@
 	Dadurch soll den Leserinnen und Lesern die Möglichkeit gegeben werden,
 	fehlende Grundlagen selbstständig nachzuschlagen und sich das notwendige
 	Hintergrundwissen anzueignen.
+		%Die Problemstellung beginnt mit der Einordnung in ein thematisches Umfeld und
+		%enthält sowohl die in der Arbeit angegangenen Problempunkte, als auch weitere,
+		%nicht behandelte Problempunkte. Eine Negativabgrenzung verhindert, dass beim
+		%Leser später nicht erfüllte Erwartungen geweckt werden.	
 
 	\section{Ziel der Arbeit}
-	Mit dem Ziel der Arbeit wird der angestrebte Lösungsansatz festgelegt. An 
-	diesem Ziel wird die Arbeit gemessen.Mit dem Ziel der Arbeit wird der 
-	angestrebte Lösungsansatz festgelegt.
-
 	Ziel der Arbeit ist es dem Leser die Wichtigkeit der Umsetzung von sicheren
 	Einstellungen und der damit verbundenen Sicherheit des eigenen Netzwerks
 	zu Hause und der Kommunikation ins Internet darzulegen. Zudem soll die Arbeit
 	zeigen, dass bereits simple Änderungen der Einstellungen, die Sicherheit
 	massiv verbessern können. Hierzu werden schrittweise die Sicherheitseinstellungen
 	erhöht und jeweils ein Vorher- Nachher Vergleich gemacht, die darstellen
-	sollen welchen Einfluss die getätigten Einstellungen haben.
+	sollen welchen Einfluss die getätigten Einstellungen haben. Zudem werden
+	bereits bekannte Schwachstellen der in den Tests genutzen Routern ausgenutzt
+	werden, um hierbei zu veranschaulichen, wie wichtig es ist die Sicherheitseinstellungen
+	zu tätigen, Informationen der Hersteller zu Updates als auch deren Hinweise
+	dringend zutätigenden Einstellungen umzustetzen. Alle Schwachstellen sind 
+	durch anerkannte Organisationen veröffentlicht worden.
+		%Mit dem Ziel der Arbeit wird der angestrebte Lösungsansatz festgelegt. An 
+		%diesem Ziel wird die Arbeit gemessen.Mit dem Ziel der Arbeit wird der 
+		%angestrebte Lösungsansatz festgelegt.
 	%=======================notes jf - need to be deleted later
 	%viell. noch hinzu: Zudem soll diese Arbeit das Verständis gegenüber dem
 	%Umgang mit öffentlichen WLAN Zugängen schärfen, um im Alltag sicher auch
-	%diese sicher zu nutzen
+	%diese zu nutzen
 	%=========================================================
 	
 	\section{Vorgehen}
-	Nachdem mit Problemstellung und Ziel gewissermaßen Anfangs- und Endpunkt der
-	Arbeit beschrieben sind, wird hier der zur Erreichung des Ziels eingeschlagene
-	Weg vorgestellt. Dazu werden typischerweise die folgenden Kapitel und ihr 
-	Beitrag zur Erreichung des Ziels der Arbeit kurz beschrieben. Die folgenden 
-	Kapitel sind ein – möglicher – Aufbau, Abweichungen können durchaus notwendig
-	sein. Zur Darstellung des Vorgehens kann eine grafische Darstellung sinnvoll
-	sein, bei der die einzelnen Lösungsschritte und ihr Zusammenhang dargestellt 
-	werden. Ein Beispiel hierfür findet sich in \hyperlink{Abbildung1}{Abbildung1}.
-	
-	\newpage
-	\begin{figure}[H]
-		\centering
-		\hypertarget{Abbildung1}{}
-		\includegraphics{img/Abbildung1.png}
-		\caption{Vorgehen nach \protect \hyperlink{[1]}{[1]}}
-	\end{figure}
-	\newpage
+	Zu Beginn der Ausarbeitung werden Grundlagen zum Verständis des Themengebiets
+	geschaffen. Der Router und dessen Funktionen werden beschrieben, sodass der
+	Leser dessen Wichtigkeit versteht. Wenn dieses Fundament geschaffen ist 
+	werden die Sicherheitsmechanismen und deren Schwachstellen erläutert, diese
+	sind allgemein auf das Thema Router ausgerichtet. Nachdem sowohl der Router
+	als auch dessen Schwachstellen und Sicherheitsmechanismen erläutert wurden
+	folgen die Tests. Dafür wurden zwei Router von verschiedenen Herstellern
+	ausgewählt. Der \emph{WRT120} Wireless-N Home Router von Linksys by Cisco 
+	und der \emph{DIR-600} Wireless N 150 Home Router von D-Link. Beide Router
+	sind vom Hersteller offziell nicht mehr unterstützt 
+	\cite{linksysproductend, dlinktechnicalsupport}.
+	Wie auf der Website von \emph{CVE.org} zu sehen haben beide Router offizielle
+	Schwachstelle. Da der Router WRT120N lediglich eine hat, wird bei diesem
+	vermehrt auf mögliche Sicherheitseinstellungen auf Basis des Userguides des
+	Herstellers und deren Auswirkungen eingegangen.
+		%Nachdem mit Problemstellung und Ziel gewissermaßen Anfangs- und Endpunkt der
+		%Arbeit beschrieben sind, wird hier der zur Erreichung des Ziels eingeschlagene
+		%Weg vorgestellt. Dazu werden typischerweise die folgenden Kapitel und ihr 
+		%Beitrag zur Erreichung des Ziels der Arbeit kurz beschrieben. Die folgenden 
+		%Kapitel sind ein – möglicher – Aufbau, Abweichungen können durchaus notwendig
+		%sein. Zur Darstellung des Vorgehens kann eine grafische Darstellung sinnvoll
+		%sein, bei der die einzelnen Lösungsschritte und ihr Zusammenhang dargestellt 
+		%werden.
 	
 	\chapter{Grundlagen}
-	In diesem Kapitel werden für die weitere Arbeit wichtige Begriffe eingeführt. 
-	Dabei ist darauf zu achten, nur solche Inhalte in das Grundlagenkapitel 
-	aufzunehmen, die später auch verwendet werden (Problembezogenheit). Ebenso
-	ist auf eine ausreichend tiefe und vollständige Darstellung der Grundlagen
-	zu achten. 
-	\newline \newline
-	Hilfreich kann der Vergleich von Definitionen mit Hilfe einer Tabelle sein, 
-	wie in \hyperlink{tabelle1}{Tabelle 1} dargestellt.
-	\newline
+	In diesem Kapitel werden zu aller erst in der folgenden Tabelle wichtige Definitionen 
+	festgehalten, die im weiteren Verlauf des Kapitels wichtig sind. Es werden 
+	die Grundlagen zum Router erläutert, dessen Aufgaben im Netzwerk, die Funktionen 
+	und auch Gründe genannt, die den Router zu einem attraktiven Ziel für Angreifer machen.
+	Nachdem die Basis zum Verständis des Routers geschaffen ist folgen die 
+	Sicherheitsmechanismen über die er verfügen kann, als auch eine Beschreibung 
+	dieser.
+		%In diesem Kapitel werden für die weitere Arbeit wichtige Begriffe eingeführt. 
+		%Dabei ist darauf zu achten, nur solche Inhalte in das Grundlagenkapitel 
+		%aufzunehmen, die später auch verwendet werden (Problembezogenheit). Ebenso
+		%ist auf eine ausreichend tiefe und vollständige Darstellung der Grundlagen
+		%zu achten. 
 	\begin{table}[H]
 		\hypertarget{tab_definition}{}
 		\begin{tabularx}{\columnwidth}{|l|X|}
@@ -191,6 +232,7 @@
 			\hline
 		\end{tabularx}
 		\caption{Definitionen}
+		\label{tab:definition}
 	\end{table}
 	\section{Router Grundlagen}
 	Wie der Name erahnen lässt ist der Router innerhalb eines Netzwerks dafür
@@ -1171,9 +1213,7 @@ except urllib.error.HTTPError as e:
 		print ("Received unexpected server response:", str(e))
 except KeyboardInterrupt:
 	pass
-
 \end{lstlisting}
-	%hier script erklären
 	In der ersten Zeile wird definiert, dass es sich um ein Python Skript handelt. 
 	Nachdem die benötigten Bibliotheken eingebunden wurden, folgt in einem try-
 	except Block (Z. 6-10) der die Übergabeparameter prüft. Wird kein Parameter
@@ -1193,7 +1233,7 @@ except KeyboardInterrupt:
 	\emph{req} enhält die Beschreibung der HTTP-Anfrage als auch die rohen Daten in Byte
 	jedoch erst in Zeile 33 wir die Anfrage als HTTP-Post ausgeführt, unter Verwendung der
 	Methode \emph{urlopen}. \emph{res} enthält die Antwort des HTTP-Servers.
-	\cite{urllibrequestextensibelibrary}
+	\cite{urllibrequestextensiblelibrary}
 	In der folgenden Abbildung \ref{fig:w_exploit} ist ein Ausschnitt 
 	des Netzwerkverkehrs der VM zu sehen. 
 	\begin{figure}[H]
@@ -1272,7 +1312,8 @@ msf auxiliary(admin/http/linksys_tmunblock_admin_reset_bof) > exploit 192.168.1.
 	Die Darstellung in Wireshark wird getestet indem der  Router nochmals auf Werkseinstellungen
 	zurückgesetzt wird und der Exploit erneut ausgeführt wird. Dies Verändert die 
 	Ausgabe in Wireshark nicht. Auf die Unterschiede zwischen den 
-	beiden Programmcodes wird nachfolgend eingegagnen..
+	beiden Programmcodes wird nachfolgend eingegagnen.
+
 
 	Sollte die IP-Adresse vom Besitzer des Routers umkonfiguriert worden sein, ändert
 	das lediglich den Befehl in Metasploit. Der Angreifer überwacht das Netzwerk 
@@ -1280,10 +1321,8 @@ msf auxiliary(admin/http/linksys_tmunblock_admin_reset_bof) > exploit 192.168.1.
 	ein Pakte über das Gateway, den Router sendet. Die erhaltenen IP gibt er dann
 	anstatt der Default IP beim Ausführen ein. 
 
-	funktioniert das remote script wenn man die abfragen mit drin hat wie bei
-	Metasploit?
-
-
+	%funktioniert das remote script wenn man die abfragen mit drin hat wie bei
+	%Metasploit?
 	%schauen ob ich die Hex Adressen vom Python Skirpt in der Datei von
 	%Binwalk finde. Z.B. \x81\x54\x4A\xF0
 	%( )Metasploit erklären
