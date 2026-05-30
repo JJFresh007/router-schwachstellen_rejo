@@ -1,3 +1,29 @@
+@misc{cheng2021,
+  title = {Finding {{Taint-Style Vulnerabilities}} in {{Linux-based Embedded Firmware}} with {{SSE-based Alias Analysis}}},
+  author = {Cheng, Kai and Liu, Tao and Guan, Le and Liu, Peng and Li, Hong and Zhu, Hongsong and Sun, Limin},
+  year = 2021,
+  month = sep,
+  number = {arXiv:2109.12209},
+  eprint = {2109.12209},
+  primaryclass = {cs.CR},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2109.12209},
+  urldate = {2026-05-30},
+  abstract = {Although the importance of using static analysis to detect taint-style vulnerabilities in Linux-based embedded firmware is widely recognized, existing approaches are plagued by three major limitations. (a) Approaches based on symbolic execution may miss alias information and therefore suffer from a high false-negative rate. (b) Approaches based on VSA (value set analysis) often provide an over-approximate pointer range. As a result, many false positives could be produced. (c) Existing work for detecting taint-style vulnerability does not consider indirect call resolution, whereas indirect calls are frequently used in Internet-facing embedded devices. As a result, many false negatives could be produced.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Cryptography and Security,Computer Science - Software Engineering},
+  note = {Comment: 14 pages, 4 figures},
+  file = {/home/rebecca/Zotero/storage/I5ENWDCF/Cheng et al. - 2021 - Finding Taint-Style Vulnerabilities in Linux-based Embedded Firmware with SSE-based Alias Analysis.pdf}
+}
+
+@article{costin,
+  title = {Automated {{Dynamic Firmware Analysis}} at {{Scale}}: {{A Case Study}} on {{Embedded Web Interfaces}}},
+  author = {Costin, Andrei and Zarras, Apostolis and Bochum, Ruhr-University and Francillon, Aurelien},
+  abstract = {Embedded devices are becoming more widespread, interconnected, and web-enabled than ever. However, recent studies showed that these devices are far from being secure. Moreover, many embedded systems rely on web interfaces for user interaction or administration. Unfortunately, web security is known to be difficult, and therefore the web interfaces of embedded systems represent a considerable attack surface.},
+  langid = {english},
+  file = {/home/rebecca/Zotero/storage/RQUQYH34/Costin et al. - Automated Dynamic Firmware Analysis at Scale A Case Study on Embedded Web Interfaces.pdf}
+}
+
 @inproceedings{das2015,
   title = {Common Network Attack Types and Defense Mechanisms},
   booktitle = {2015 23nd {{Signal Processing}} and {{Communications Applications Conference}} ({{SIU}})},
@@ -40,6 +66,58 @@
   abstract = {The NAT operation described in this document extends address translation introduced in RFC 1631 and includes a new type of network address and TCP/UDP port translation. In addition, this document corrects the Checksum adjustment algorithm published in RFC 1631 and attempts to discuss NAT operation and limitations in detail. This memo provides information for the Internet community.}
 }
 
+@misc{nationalsecurityagencyghidra,
+  title = {{{NationalSecurityAgency}}/Ghidra},
+  year = 2026,
+  month = may,
+  urldate = {2026-05-30},
+  abstract = {Ghidra is a software reverse engineering (SRE) framework},
+  copyright = {Apache-2.0},
+  howpublished = {National Security Agency},
+  keywords = {disassembler,reverse-engineering,software-analysis}
+}
+
+@misc{pathtraversalowasp,
+  title = {Path {{Traversal}} \textbar{} {{OWASP Foundation}}},
+  urldate = {2026-05-30},
+  abstract = {Path Traversal on the main website for The OWASP Foundation. OWASP is a nonprofit foundation that works to improve the security of software.},
+  howpublished = {https://owasp.org/www-community/attacks/Path\_Traversal},
+  langid = {english},
+  file = {/home/rebecca/Zotero/storage/KT6RK7YG/Path_Traversal.html}
+}
+
+@misc{pathtraversalowaspa,
+  title = {Path {{Traversal}} \textbar{} {{OWASP Foundation}}},
+  urldate = {2026-05-30},
+  abstract = {Path Traversal on the main website for The OWASP Foundation. OWASP is a nonprofit foundation that works to improve the security of software.},
+  howpublished = {https://owasp.org/www-community/attacks/Path\_Traversal},
+  langid = {english},
+  file = {/home/rebecca/Zotero/storage/DKYZW4LW/Path_Traversal.html}
+}
+
+@misc{refirmlabsbinwalk,
+  title = {{{ReFirmLabs}}/Binwalk},
+  year = 2026,
+  month = may,
+  urldate = {2026-05-30},
+  abstract = {Firmware Analysis Tool},
+  copyright = {MIT},
+  howpublished = {ReFirm Labs}
+}
+
+@techreport{reschke2015,
+  type = {Request for {{Comments}}},
+  title = {The '{{Basic}}' {{HTTP Authentication Scheme}}},
+  author = {Reschke, Julian},
+  year = 2015,
+  month = sep,
+  number = {RFC 7617},
+  institution = {Internet Engineering Task Force},
+  doi = {10.17487/RFC7617},
+  urldate = {2026-05-30},
+  abstract = {This document defines the "Basic" Hypertext Transfer Protocol (HTTP) authentication scheme, which transmits credentials as user-id/ password pairs, encoded using Base64.}
+}
+
 @techreport{scarfone2009,
   title = {Guidelines on {{Firewalls}} and {{Firewall Policy}}},
   author = {Scarfone, Karen and Hoffman, Paul},
@@ -68,6 +146,22 @@
   file = {/home/rebecca/Zotero/storage/BVSFBIM4/Souppaya and Scarfone - 2012 - Guidelines for Securing Wireless Local Area Networks (WLANs).pdf}
 }
 
+@article{thomas2021,
+  title = {Cutting {{Through}} the {{Complexity}} of {{Reverse Engineering Embedded Devices}}},
+  author = {Thomas, Sam L. and Van Den Herrewegen, Jan and Vasilakis, Georgios and Chen, Zitai and Ordean, Mihai and Garcia, Flavio D.},
+  year = 2021,
+  month = jul,
+  journal = {IACR Transactions on Cryptographic Hardware and Embedded Systems},
+  pages = {360--389},
+  issn = {2569-2925},
+  doi = {10.46586/tches.v2021.i3.360-389},
+  urldate = {2026-05-30},
+  abstract = {Performing security analysis of embedded devices is a challenging task. They present many difficulties not usually found when analyzing commodity systems: undocumented peripherals, esoteric instruction sets, and limited tool support. Thus, a significant amount of reverse engineering is almost always required to analyze such devices. In this paper, we present Incision, an architecture and operating-system agnostic reverse engineering framework. Incision tackles the problem of reducing the upfront effort to analyze complex end-user devices. It combines static and dynamic analyses in a feedback loop, enabling information from each to be used in tandem to improve our overall understanding of the firmware analyzed. We use Incision to analyze a variety of devices and firmware. Our evaluation spans firmware based on three RTOSes, an automotive ECU, and a 4G/LTE baseband. We demonstrate that Incision does not introduce significant complexity to the standard reverse engineering process and requires little manual effort to use. Moreover, its analyses produce correct results with high confidence and are robust across different OSes and ISAs.},
+  copyright = {https://creativecommons.org/licenses/by/4.0/},
+  langid = {english},
+  file = {/home/rebecca/Zotero/storage/GB6XM2Y8/Thomas et al. - 2021 - Cutting Through the Complexity of Reverse Engineering Embedded Devices.pdf}
+}
+
 @techreport{tracy2007,
   title = {Guidelines on {{Securing Public Web Servers}}},
   author = {Tracy, Miles and Jansen, Wayne and Scarfone, Karen and Winograd, Theodore},
@@ -80,4 +174,41 @@
   abstract = {Web servers are often the most targeted and attacked hosts on organizations' networks. As a result, it is essential to secure Web servers and the network infrastructure that supports them. This document is intended to assist organizations in installing, configuring, and maintaining secure public Web servers. Practices described in detail include choosing Web server software and platforms, securing the underlying operating system and Web server software, deploying appropriate network protection mechanisms, and using, publicizing, and protecting information in a careful and systematic manner. The publication also provides recommendations for maintaining secure configurations through patching and upgrades, security testing, log monitoring, and backups of data and operating system files.},
   langid = {english},
   file = {/home/rebecca/Zotero/storage/3LSSLRBL/Tracy et al. - 2007 - Guidelines on Securing Public Web Servers.pdf}
+}
+
+@article{ulhaq2023,
+  title = {A Survey on {{IoT}} \& Embedded Device Firmware Security: Architecture, Extraction Techniques, and Vulnerability Analysis Frameworks},
+  shorttitle = {A Survey on {{IoT}} \& Embedded Device Firmware Security},
+  author = {Ul Haq, Shahid and Singh, Yashwant and Sharma, Amit and Gupta, Rahul and Gupta, Dipak},
+  year = 2023,
+  month = oct,
+  journal = {Discover Internet of Things},
+  volume = {3},
+  number = {1},
+  pages = {17},
+  issn = {2730-7239},
+  doi = {10.1007/s43926-023-00045-2},
+  urldate = {2026-05-30},
+  abstract = {IoT and Embedded devices grow at an exponential rate, however, without adequate security mechanisms in place. One of the key challenges in the cyber world is the security of these devices. One of the main reasons that these devices are active targets for large-scale cyber-attacks is a lack of security standards and thorough testing by manufacturers. Manufacturer-specific operating systems or firmware of various architectures and characteristics are typically included with these devices. However, due to a lack of security testing and/or late patching, the underlying firmware or operating systems are vulnerable to numerous types of vulnerabilities. Reverse engineering and in-depth research of the firmware is required to detect the vulnerabilities. In this paper, we've delved into various aspects of IoT and embedded devices. This includes a comprehensive survey on the architecture of firmware, techniques for firmware extraction, and state-of-the-art vulnerability analysis frameworks for the detection of vulnerabilities using various approaches like static, dynamic, and hybrid approaches. Furthermore, we've scrutinized the challenges of existing vulnerability analysis frameworks and proposed a novel framework to address these issues.},
+  langid = {english},
+  keywords = {Analysis,Architecture,Embedded,Extraction,Firmware,Frameworks,IoT,Vulnerability},
+  file = {/home/rebecca/Zotero/storage/Z5N2HSPM/Ul Haq et al. - 2023 - A survey on IoT & embedded device firmware security architecture, extraction techniques, and vulner.pdf}
+}
+
+@misc{wstgstableowasp,
+  title = {{{WSTG}} - {{Stable}} \textbar{} {{OWASP Foundation}}},
+  urldate = {2026-05-30},
+  abstract = {WSTG - Stable on the main website for The OWASP Foundation. OWASP is a nonprofit foundation that works to improve the security of software.},
+  howpublished = {https://owasp.org/www-project-web-security-testing-guide/stable/4-Web\_Application\_Security\_Testing/07-Input\_Validation\_Testing/11.1-Testing\_for\_Local\_File\_Inclusion},
+  langid = {english},
+  file = {/home/rebecca/Zotero/storage/KVIPMF2T/11.html}
+}
+
+@misc{wstgstableowaspa,
+  title = {{{WSTG}} - {{Stable}} \textbar{} {{OWASP Foundation}}},
+  urldate = {2026-05-30},
+  abstract = {WSTG - Stable on the main website for The OWASP Foundation. OWASP is a nonprofit foundation that works to improve the security of software.},
+  howpublished = {https://owasp.org/www-project-web-security-testing-guide/stable/4-Web\_Application\_Security\_Testing/07-Input\_Validation\_Testing/11.1-Testing\_for\_Local\_File\_Inclusion},
+  langid = {english},
+  file = {/home/rebecca/Zotero/storage/26ULSJYA/11.html}
 }

