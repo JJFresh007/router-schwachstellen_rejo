@@ -410,6 +410,7 @@
 	%Quelle(https://www.rfc-editor.org/rfc/rfc3022)%
 
 	\subsection{Paketfilterung und Stateful Firewalls}
+	\label{sec:Paketfilterung und Stateful Firewalls}
 	Eine Firewall schützt ein netztwerk vor bedrohungen, in dem sie den Datenverkehr kontrolliert.
 	- zustandbehaftete(Stateful) und zustandlose(Statless) FWs
 	- ersteres eher die Norm, wei besser
@@ -546,11 +547,6 @@
 	und für den benutzt oftmals unichtbar zu erkenen ist.
 	%---Quelle(https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-193.pdf)---%
 
-	\section{Grundlagengebiet B}
-	\subsection{Definition BA}
-	\subsection{Definition BB}
-	\newpage
-
 	\chapter{Tests D-Link DIR-600}
 	\label{sec:Tests D-Link DIR-600}
 	%-------------TEST die alle NICHT funktioniert haben---------------------%
@@ -576,10 +572,87 @@
 	Es wurden verschiedene Zugangsdaten getestet, jedoch ohne Erfolg. nach einem Factory Reset
 	durch Gedrückthalten der Reset-Taste für etwa 15 Sekunden wurden die Zugangsdaten auf die
 	Werkseinstellungen zurückgesetzt. Anschließend war ein Login mit dem Standartbenutzter
-	\tetxttt{admin} und einem leeren Passwort möglich.
+	\texttt{admin} und einem leeren Passwort möglich.
+
+	Die Bewertung der identifizierten Schwachstellen efolgt angeleht an das Common Vulnerability
+	coring System (CVSS). Dabei werden insbesondere Angriffsvektor, Komplexität, benötigte Privilegien
+	sowie die Auswirkung auf Vertraulichkeit, Integrität und Verfügbarkeit berücksichtigt.
+
+	\section{Architektur des Routers}
+	\label{sec:Architektur des Routers}
+	Der betrachtete Router ist von der Firma D-Link und gehört zu der DIR-600 Reihe.
+	Die Hardware Version ist Bx, das ist x steht für 1 oder 2 und er hat die Firmware 2.05 aus dem Jahr 2010.
+	
+	Der Router folgt einer klassischen Embedded-System-Architektur mit klar getrennten Schichten.
+	Nach dem Start wird der Bootloader geladen. Er ist dafür zuständig die Hardware zu initialissieren, 
+	und den Linux Kenerl aus dem Flash zu laden, welcher die Hardware abstrahiert.
+	Der Linux Kernel übernimmt die Prozessverwaltung, den Netztwerstack und
+	die Treibersteuerung. Das Root-Filesystem (SquashFS) auf das in chapter.. noch näher eingegangen wird, enthält
+	eine minimalistische Userspace-Umgebung auf Basis von Busybox. 
+	Das Konfigurationsdatenbanke (xmldb) ist das zentrale Element der Firmware, auf das mit dem Tool
+	xmldbc zugegriffen wird. Dort werden die sämtliche Systemparameter gespeichert und über Skripte dynamisch in
+	konkrete Systemkonfigurationen umgesetzt. Die Steuerung erfolgt über ein Webinterface, das mit PHP-Skripten
+	mit der Konfigurationsschicht interagiert. Netzwerkdienste wie DHCP, NAT und WLAN werden durch eine
+	Kombination aus Kernel-Modus und Userspace-Daemons realisisert.
+
+	Der Router nutzt iptables für Routing und NAT, hostpad für WLAN und stellt einen integrierten Webserver
+	mit HTTP und PHP zum Management bereit. Netzwerkdienste wie DHCP, DNS und PPP werden über spezialisierte Deamons und
+	Skripte gesteuert.
+
+	\section{Analyse des Netzwerkverkehrs}
+	\label{sec:Analyse des Netzwerkverkehrs}
+
+	\subsection{Werkeinstellungen}
+	\label{sec:Werkeinstellungen}
+	Vor beginn der Tests wurde der Router auf die Werkeinstellungen mithilfe des Reset-Knopfs zurückgesetzt.
+	Der Router ist mit dem Laptop über ein LAN-Kabel mit Port 1 verbunden. Der Router ist mit dem Internet verbunden.
+	Zum mittschnitt des Netzwerkverkehrs wurde das Tool Wiresharke verwendet.
+	
+	Mit dem Filter \texttt{dns} lassen sich lediglich die Pakete anzeigen die an den DNS Server geschickt werden.
+	Der klassische DNS Server nutzt UDP (Port 53) und verschlüsselt seine Inhalte nicht.
+	Die besuchten Domänen und Hintergrundinformationen sind voll Einsehbar.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/http_login_dlink.png}
+		\caption{Wireshark Filter: http}
+		\label{fig:http}
+	\end{figure}
+	Der Router nutzt HTTP, das bedeutet die Packete werden unverschlüsselt übertragen.
+	Beim Login auf die Admin Seite des Routers http://192.169.0.1 sind die Nutzer und Passwort
+	im Klartext einsehbar. Auch das ändern des Passworts und das Einstellen anderer
+	Konfigurationen konnte gemessen werden.
+	Die Web-Oberfläche inlusive der UI, Statusseite und den konfigurationen wird über HTTP geladen.
+	Ohne Transportverschlüsselung können Daten und Session-Inhalte passiv oder aktive durch eine Man-in-the-Middle Attacken
+	mittgeschnitten oder manipuliert werden.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/Passwort_telnet.png}
+		\caption{Wireshark Filter: telnet}
+		\label{fig:Telnet Passwort}
+	\end{figure}
+	Auch die Verbindung über das Telnet Protokoll wird unverschlüsselt übertragen.
+	Die Login-Daten sind klar nachvollziehbar und können leicht rekonstruiert werden. 
+	Telnet arbeitet Zeichenbasiert, daher wird jedes Zeichen als eigenes Paket oder Teil eines Streams geschickt.
+	Sitzungen können volständig rekonstruiert werden.
+
+	Das Adress Resolution Protokoll (ARP) ist ein Netzwerkprotokoll, welches zu einer Netzwerkadresse die 
+	pysische Adresse ermittelt und diese Zuordnung in der ARP-Tabelle gegenbenenfalls hinterlegt.
+	ARP ist ein Layer2 Protokoll und bietet keine Authentifizierung. Angriffe wie MAC-Spoofing oder 
+	ARP-Spoofing sind möglich. 
+
+	Dieselben Mittschnitte wurden über das WLAN ebenfalls untersucht, es wurden keine pregnanten unterschiede festgestellt.
+
+	Die Anaylyse zeigt , das mehrere zentrale Dienste ohne kryptographische Absicherung betrieben werden. Dies macht
+	Angriffe auf das Netztwerk möglich, wodurch Authentifizierungsdaten komprimitiert werden können.
+
+	\subsection{Gehärteter Router}
+	\label{sec:Gehärteter Router}
+	***In Arbeit***
 
 	\section{Firmware-Analyse}
-
+	\label{sec:Firmware-Analyse}
 	Zur Analyse der Firmware wurde das Tool \texttt{binwalk} eingesetzt:
 
 	\begin{lstlisting}
@@ -636,7 +709,8 @@
 	\end{lstlisting}
 	wurde die Förmwear extrahiert und das Dateisystem zugänglich gemacht.
 	
-	\subsection{Schwachstelle}
+	\subsection{LFI-Schwachstelle}
+	\label{sec:LFI-Schwachstelle}
 
 	In squashfs-root/www/ liegt die implementierung des Webinterface, verteilt auf eine Vielzahl von Ordner. 
 	squashfs-root/www/model/\_\_show\_info.php, ist besonders relevant.
@@ -726,34 +800,127 @@
 	\item \texttt{/var/etc/httpasswd} – enthält Zugangsdaten für das Webinterface
 	\item \texttt{/var/log/messages} – enthält Logdaten und Netzwerkaktivität
 	\item \texttt{/proc/self/cmdline} – enthält informationen zur CommandLine des Prozesses
-	\item \texttt{/proc/self/environ} – zeigt Umgebungsvariablen des Prozesses
+	\item \texttt{/proc/self/environ} – zeigt Mountpoints und die Filesystem-Struktur
 	\item \texttt{/proc/mounts} – zeigt Umgebungsvariablen des Prozesses
 	\item \texttt{/proc/version} – liefert Kernel-Informationen
 	\item \texttt{/proc/cpuinfo} – enthält Informationen zur Hardwarearchitektur
 	\item \texttt{/etc/hosts} – enthält den Hostnamen und die interne Struktur
 	\end{itemize}
-	
-	Der Befehl /proc/mounts hat den Output:
+
+	\subsection{Bewertung:}
+	\label{sec:lfi}
+
+	\begin{itemize}
+		\item \textbf{Attack Vector (AV):} Network
+		\item \textbf{Attack Complexity (AC):} Low
+		\item \textbf{Privileges Required (PR):} None
+		\item \textbf{User Interaction (UI):} None
+	\end{itemize}
+
+	\textbf{Auswirkungen:}
+	\begin{itemize}
+		\item \textbf{Confidentiality (C):} High
+		\item \textbf{Integrity (I):} Low
+		\item \textbf{Availability (A):} Low
+	\end{itemize}
+
+	\textbf{Voraussetzungen:}  
+	Zugriff auf das Webinterface des Routers (LAN/WLAN).
+
+	\textbf{Gesamtbewertung:}  
+	High, durch das extrahieren der Credentials sind weitere Angriffe auf den Router möglich.
+
+	\textbf{Begründung:}  
+	Die Schwachstelle erlaubt das Auslesen sensibler Systemdateien ohne
+	Authentifizierung, was zu einem hohen Verlust an Vertraulichkeit führt.
+	Die Ausnutzung ist trivial und erfordert keine besonderen Bedingungen.
+
+	\subsection{Telnet}
+	Teletype Networke (Telnet) ist ein Client/Server bassiertes Protokoll (Port 23), basierend auf einem zeichenbasierten austausch
+	über eine TCP Verbindung. Bei Routern dient Telnet als Remote-Management-Protokoll
+	und gibt dem Anwender eine Kommandozeile auf dem Gerät.
+	Mit folgendem Befehl ist es möglich herauszufinden ob der Router eine Telnet Schnittstelle besitzt.
 	\begin{lstlisting}
-		rootfs / rootfs rw 0 0
-		/dev/root / squashfs ro 0 0
-		none /proc proc rw 0 0
-		sysfs /sys sysfs rw 0 0
-		ramfs /var ramfs rw 0 0
+	nc -zv 192.168.0.1 23
+	Connection to 192.168.0.1 23 port [tcp/telnet] succeeded!
 	\end{lstlisting}
-	In Zeile 1 steht das initiale Root-Filesystem welches als Mount-Basis dient.
-	Zeile 2 zeigt den Ort wo die Firmwaer liegt, hier ist es SquashFS (read-only). das bedeutet, die Firmwar ist fest ins
-	Image eingebunden und lässt sich nicht zur laufzeit verändern.
-	In Zeile 3 steht das virtuelle Filesystem, welches Prozess- und Kernel Infos liefert.
-	Zeile 4 zeigt das Hardware und Kernel Interface. Es enthhält Geräteinfos und Treiberstatus, liefert allerdings wenig sicherheitskritische Informationen.
-	Zudem wird durch die Ausgabe deutlich, das /var im RAM liegt, siehe Zeile 5. Alle Daten die dort liegen, werden zur
-	Laufzeit generiert. Das erklärt wieso sich die Logdatei und die Passwörtzer auslesen lassen, da diese im /var Verzeichniss liegen.
+	Der D-Link DIR 600 besitzt eine Telnet-Schnittstelle, welche durch einen Nutzter und ein Passwort
+	geschützt sind. Unter einem Embedded Linux ist der Standartnutzer in den meisten Fällen \texttt{Alphanetworks}.
+	Dies lässt sich durch eine kurze Recherche über das Internet herausfinden. Das Standart Passwort des Routers unterscheidet sich
+	nach Modell. Um das Passwort der Telnet-Schnittstelle harauszufinden, wurden die Firmware des Routers
+	erneut analysiert.
+	\texttt{grep -r "Alphanetworks"}
+	\texttt{squashfs-root/etc/scripts/misc/telnetd\.sh: telnetd -l "/usr/sbin/login" -u Alphanetworks:\$image_sign -i \$lf &}
+	Mit dem grep Befehel wurde die Firmware nach dem Standartnutzer rekrusiv durchsucht.
+	Das Ergebniss zeigt den Nutzer und das Passowort, welches in \texttt{\$image_sign} gespeichert wird.
+	\texttt{grep -r "image_sign" squashfs-root/}
+	\texttt{squashfs-root/etc/scripts/misc/telnetd\.sh:image\_sign=`cat /etc/config/image_sign`}
+	Die Ausgabe zeigt unter anderem diese Zeile, welche den Pfad zu dem Passwort enthält.
+	\texttt{cat squashfs-root/etc/config/image\_sign}
+	\texttt{wrgn23\_dlwbr\_dir600b}
+	Der \texttt{cat-Befehl} liefert das Passwort.
+	\begin{lstlisting}
+	Trying 192.168.0.1...
+	Connected to 192.168.0.1.
+	Escape character is '^]'.
+	login: Alphanetworks
+	Password: wrgn23_dlwbr_dir600b
+	\end{lstlisting}
+	Die eingebaute Shell namens \texttt{Busybox} ist eine Custom-Shell die lediglich ein paar ausgewählte Linux-Befehle unterstützt.
+	Der Befehl \texttt{mount} zeigt folgendes:
+	\begin{lstlisting}
+	/dev/root on / type squashfs (ro)
+	none on /proc type proc (rw)
+	sysfs on /sys type sysfs (rw)
+	ramfs on /var type ramfs (rw)
+	\end{lstlisting}
+	Durch die Ausgabe wird deutlich, das es sich um eine Read-Only-Firmware mit einem Eingebetteten Linux Design handelt.
+	Lediglich der RAM ist beschreibar, jedoch sind die Daten dort nur während der Laufzeit verfügbar und verschwinden nach einem Reboot.
+	Dort werden typischerweise Logs, temporäre Dateien und Runtime-konfigurationen gespeichert.
+	/proc enthält Prozess- und Systeminformationen und /sys Kernelparameter und die Hardwareabstarktion.
+	Hier können Parameter gesetzt aber das System nicht persistent geändert werden.
+	
+	Der Nutzer und das Passwort für die Telnet-Verbidung sind hardkodiert und im System eingebettet. Sie können nicht geändert werden.
+	Auch wenn auf dem System Daten nicht persistent geändert werden können, stellt die Telnet-Schnittstelle ein
+	Risiko dar. Ein Angreifer könnte durch den befehl \texttt{reboot} eine sofortige Unterbrechung des Netztwerks
+	auslösen. Da Schreibrechte auf dem /var Verzeichniss exsistieren könnten dort viele und große Dateien erzeugt werden, um so den 
+	Speicher zu füllen und die Dienste zu destabalisieren. Dies könnte den Router erheblich verlangsamen oder zu einem 
+	reboot führen. Außerdem kann der Angreifer durch Befehle wie ping, msh, kill oder busybox Prozesse mehrfach starten und die CPU dauerhaft belasten.
+	Desweiteren können Routerkonfigurationen, die interne Netzstruktur, DNS und Gateway sowie die aktiven Clients
+	eingesehen werden, was beim sammeln von Informationen erheblich helfen kann.
 
-	\subsection{Analyse der Systemarchitektur}
+	\subsection{Bewertung:}
+	\label{sec:Bewertung-Telnet}
 
-	Ziel der Untersuchung war es die interne Funktionsweise des Routers, sowie potenzielle sicherheitsrelevamte Aspekte 
-	der implementierung nachvollziebar darzustellen.
-	Im Fokus stand die rekonstruktion der Programmstruktur mittels Reverse Engineering %nochmal erklräen
+	\begin{itemize}
+		\item \textbf{Attack Vector (AV):} Network
+		\item \textbf{Attack Complexity (AC):} Low
+		\item \textbf{Privileges Required (PR):} Low
+		\item \textbf{User Interaction (UI):} None
+	\end{itemize}
+
+	\textbf{Auswirkungen:}
+	\begin{itemize}
+		\item \textbf{Confidentiality (C):} High
+		\item \textbf{Integrity (I):} High
+		\item \textbf{Availability (A):} High
+	\end{itemize}
+
+	\textbf{Voraussetzungen:}  
+	Zugriff über Telnet (LAN/WLAN), ermitteln des Passworts.
+
+	\textbf{Gesamtbewertung:}  
+	High, es sind weitere Angriffe über die Telnet-Verbidung möglich.
+
+	\textbf{Begründung:}  
+	Die Schwachstelle erlaubt den Zugriff auf eine Remote Shell.
+	Sensible Daten könne ausgelsen werden und Befehle ausgeführt werden.
+	Die Ausnutzung ist trivial und erfordert keine besonderen Bedingungen.
+
+	\subsection{Analyse des DDNS-Systems}
+	Die Analyse des DDNS-Subsystems dient dazu, potenzielle sicherheitskritische Datenflüsse zwischen
+	Konfigurationsdatenbank, Skripten und Netzwerkkommunikation zu identifizieren.
+	Im Fokus steht die rekonstruktion der Programmstruktur mittels Reverse Engineering %nochmal erklräen
 	sowie eine anschließenden Bewertung.
 
 	Die Firmware des D-Link DIR-600 Routers zeigt eine typische Architecktur für eingebettete Linux-Systeme.
@@ -840,77 +1007,45 @@
 	\texttt{base64encode(pcVar4,sVar3,&uStack_28);}
 
 	Die Implementierung weist einige sicherheitskritischen Schwächen auf, die für ältere Embedded-Systeme typisch sind.
-	Insbesondere der Verzicht auf eine verschlüsselte Kommunikation ist kritisch. Sämtliche DDNS-Anfragen erfolgen
-	über eine ungesicherte HTTP-Verbindung, wodurch Zugangsdaten im Klartext über das Netztwerk übertragen werden können.
+	Insbesondere der Verzicht auf eine verschlüsselte Kommunikation stellt ein potenzielles Risiko dar. 
+	Sämtliche DDNS-Anfragen erfolgen über eine ungesicherte HTTP-Verbindung, wodurch Zugangsdaten im Klartext über das Netztwerk übertragen werden können.
 	Dadurch besteht ein erhebliches Risiko für Man-in-the-Middle Attacken sowie das Anbgreifen von Zugangsdaten.
 
 	Zudem werden sensible Daten im Speicher verarbeitet. Authentifizierunginformationen werden global abgelegt und mehrfach
-	in unterschiedlichen Verarbeitungsschritten verwendet. Obwohl keine klassischen Speicherfehler wie Buffer-Overflows
-	oder Format-Strings im untersuchten Codeabschnitt sichbar sind, bleibt durch due unsauberen Datenflüsse und
-	die fehlende strikte Validierung ein erhötes Sicherheitsrisiko.
+	in unterschiedlichen Verarbeitungsschritten verwendet. Auch wenn keine direkten Schwachstellen im 
+	untersuchten Codeabschnitt sichbar sind, bleibt durch die unsauberen Datenflüsse und die fehlende strikte Validierung ein erhötes Sicherheitsrisiko.
 
-	\subsection{Telnet}
-	Teletype Networke (Telnet) ist ein Client/Server bassiertes Protokoll (Port 23), basierend auf einem zeichenbasierten austausch
-	über eine TCP Verbindung. Bei Routern dient Telnet als Remote-Management-Protokoll
-	und gibt dem Anwender eine Kommandozeile auf dem Gerät.
-	Mit folgendem Befehl ist es möglich herauszufinden ob der Router eine Telnet Schnittstelle besitzt.
-	\begin{lstlisting}
-	nc -zv 192.168.0.1 23
-	Connection to 192.168.0.1 23 port [tcp/telnet] succeeded!
-	\end{lstlisting}
-	Der D-Link DIR 600 besitzt eine Telnet-Schnittstelle, welche durch einen Nutzter und ein Passwort
-	geschützt sind. Unter einem Embedded Linux ist der Standartnutzer in den meisten Fällen \texttt{Alphanetworks}.
-	Dies lässt sich durch eine kurze Recherche über das Internet herausfinden. Das Standart Passwort des Routers unterscheidet sich
-	nach Modell. Um das Passwort der Telnet-Schnittstelle harauszufinden, wurden die Firmware des Routers
-	erneut analysiert.
-	\texttt{grep -r "Alphanetworks"}
-	\texttt{squashfs-root/etc/scripts/misc/telnetd\.sh: telnetd -l "/usr/sbin/login" -u Alphanetworks:\$image_sign -i \$lf &}
-	Mit dem grep Befehel wurde die Firmware nach dem Standartnutzer rekrusiv durchsucht.
-	Das Ergebniss zeigt den Nutzer und das Passowort, welches in \texttt{\$image_sign} gespeichert wird.
-	\texttt{grep -r "image_sign" squashfs-root/}
-	\texttt{squashfs-root/etc/scripts/misc/telnetd\.sh:image\_sign=`cat /etc/config/image_sign`}
-	Die Ausgabe zeigt unter anderem diese Zeile, welche den Pfad zu dem Passwort enthält.
-	\texttt{cat squashfs-root/etc/config/image\_sign}
-	\texttt{wrgn23\_dlwbr\_dir600b}
-	Der \texttt{cat-Befehl} liefert das Passwort.
-	\begin{lstlisting}
-	Trying 192.168.0.1...
-	Connected to 192.168.0.1.
-	Escape character is '^]'.
-	login: Alphanetworks
-	Password: wrgn23_dlwbr_dir600b
-	\end{lstlisting}
-	Die eingebaute Shell namens \texttt{Busybox} ist eine Custom-Shell die lediglich ein paar ausgewählte Linux-Befehle unterstützt.
-	Der Befehl \texttt{mount} zeigt folgendes:
-	\begin{lstlisting}
-	/dev/root on / type squashfs (ro)
-	none on /proc type proc (rw)
-	sysfs on /sys type sysfs (rw)
-	ramfs on /var type ramfs (rw)
-	\end{lstlisting}
-	Durch die Ausgabe wird deutlich, das es sich um eine Read-Only-Firmware mit einem Eingebetteten Linux Design handelt.
-	Lediglich der RAM ist beschreibar, jedoch sind die Daten dort nur während der Laufzeit verfügbar und verschwinden nach einem Reboot.
-	Dort werden typischerweise Logs, temporäre Dateien und Runtime-konfigurationen gespeichert.
-	/proc enthält Prozess- und Systeminformationen und /sys Kernelparameter und die Hardwareabstarktion.
-	Hier können Parameter gesetzt aber das System nicht persistent geändert werden.
-	
-	Auch wenn auf dem System Daten nicht persistent geändert werden können, stellt die Telnet-Schnittstelle ein
-	Risiko dar. Ein Angreifer könnte durch den befehl \texttt{reboot} eine sofortige Unterbrechung des Netztwerks
-	auslösen. Da Schreibrechte auf dem /var Verzeichniss exsistieren könnten dort viele und große Dateien erzeugt werden, um so den 
-	Speicher zu füllen und die Dienste zu destabalisieren. Dies könnte den Router erheblich verlangsamen oder zu einem 
-	reboot führen. Außerdem kann der Angreifer durch Befehle wie ping, msh, kill oder busybox Prozesse mehrfach starten und die CPU dauerhaft belasten.
-	Desweiteren können Routerkonfigurationen, die interne Netzstruktur, DNS und Gatewa sowie die aktiven Clients
-	eingesehen werden, was beim sammeln von Informationen erheblich helfen kann.
+	\subsection{Bewertung:}
+	\label{sec:Bewertung-DDNS}
 
-	curl -v -u "admin:cyber" "http://192.168.0.1/model/__show_info.php?REQUIRE_FILE=/etc/config/image_sign" \
-  	-H "User-Agent: Mozilla/5.0"
+	\begin{itemize}
+		\item \textbf{Attack Vector (AV):} Network
+		\item \textbf{Attack Complexity (AC):} Low
+		\item \textbf{Privileges Required (PR):} None
+		\item \textbf{User Interaction (UI):} None
+	\end{itemize}
 
-	curl -v -u "admin:cyber" "http://192.168.0.1/model/__show_info.php?REQUIRE_FILE=/var/config.bin" \
-   -H "User-Agent: Mozilla/5.0" --output config.bin
+	\textbf{Auswirkungen:}
+	\begin{itemize}
+		\item \textbf{Confidentiality (C):} High
+		\item \textbf{Integrity (I):} Low
+		\item \textbf{Availability (A):} Low
+	\end{itemize}
 
-	strings config.bin | grep -i "image_sign\|password\|Alphanetworks"
+	\textbf{Voraussetzungen:}  
+	Zugriff auf das Netzwerk (LAN).
 
+	\textbf{Gesamtbewertung:}  
+	High, es ist möglich den Netzwerkverkehr zu verfolgen (Man-in-the-Middle Attack)
 
+	\textbf{Begründung:}  
+	Die DDNS-Kommunikation erfolgt unverschlüsseltüber HTTP, wodurch Authentifizierungdaten
+	im Klartext übertragen werden. Ein Angreifer kann diese durch einen Netztwerk-Mittschnitt
+	abfangen und für weiter Angriffe verwenden.
+	Dies ist mit geringem Aufwand möglich und erfordert keine besondere Voraussetzung.
+
+	Die fehlende Validierung der Parameter stellt ein potenzielles Risiko dar, konnte im Rahmen
+	der Analyse jedoch nicht zu einer konkreten Schwachstelle weitergeführt werden.
 
 	% --------------ToDo--------------------%
 	% Formatierung schön machen 
