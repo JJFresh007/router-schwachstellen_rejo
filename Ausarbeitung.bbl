@@ -521,6 +521,23 @@
       \verb /home/johanna/Zotero/storage/F5D73J95/7.6.html
       \endverb
     \endentry
+    \entry{metasploitpenetrationtesting}{misc}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Find security issues, verify vulnerability mitigations \& manage security assessments with Metasploit. Get the world's best penetration testing software now.}
+      \field{howpublished}{https://www.metasploit.com/}
+      \field{journaltitle}{Metasploit}
+      \field{langid}{english}
+      \field{title}{Metasploit |{} {{Penetration Testing Software}}, {{Pen Testing Security}}}
+      \field{urlday}{31}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/SEEPRLVA/www.metasploit.com.html
+      \endverb
+    \endentry
     \entry{builtinexceptions}{misc}{}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
@@ -675,6 +692,69 @@
       \field{urlyear}{2026}
       \field{year}{2026}
       \field{urldateera}{ce}
+    \endentry
+    \entry{rubydocinfomethodrex}{misc}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Documenting RubyGems, Stdlib, and GitHub Projects}
+      \field{howpublished}{https://www.rubydoc.info/gems/rex-text/0.1.2/Rex\%2FText.rand\_text\_alpha}
+      \field{shorttitle}{{{RubyDoc}}.Info}
+      \field{title}{{{RubyDoc}}.Info: {{Method}}: {{Rex}}::{{Text}}.Rand\_text\_alpha -- {{Documentation}} for Rex-Text (0.1.2) -- {{RubyDoc}}.Info}
+      \field{urlday}{31}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/YYFC78KE/RexText.html
+      \endverb
+    \endentry
+    \entry{rubydocinfomethodaddressable}{misc}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Documenting RubyGems, Stdlib, and GitHub Projects}
+      \field{howpublished}{https://www.rubydoc.info/gems/addressable/Addressable\%2FURI:normalize}
+      \field{shorttitle}{{{RubyDoc}}.Info}
+      \field{title}{{{RubyDoc}}.Info: {{Method}}: {{Addressable}}::{{URI}}\#normalize -- {{Documentation}} for Addressable (2.9.0) -- {{RubyDoc}}.Info}
+      \field{urlday}{31}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/F56HZRIN/AddressableURInormalize.html
+      \endverb
+    \endentry
+    \entry{documentationruby33}{misc}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://docs.ruby-lang.org/en/3.3/}
+      \field{title}{Documentation for {{Ruby}} 3.3}
+      \field{urlday}{31}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/QU5DFRW4/3.3.html
+      \endverb
+    \endentry
+    \entry{howhandleruby}{misc}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Master Ruby syntax for advanced Cybersecurity exploit development in Metasploit, learn module design techniques, and enhance penetration testing skills with practical coding strategies.}
+      \field{howpublished}{https://labex.io/tutorials/nmap-how-to-handle-ruby-syntax-in-metasploit-419611}
+      \field{journaltitle}{LabEx}
+      \field{langid}{english}
+      \field{title}{How to Handle {{Ruby}} Syntax in {{Metasploit}}}
+      \field{urlday}{31}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/CTZQCIWB/nmap-how-to-handle-ruby-syntax-in-metasploit-419611.html
+      \endverb
     \endentry
   \enddatalist
 \endrefsection

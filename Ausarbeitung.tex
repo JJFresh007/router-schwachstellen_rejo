@@ -1169,8 +1169,9 @@ sudo wireshark
 	\end{description}
 	Neben dem Finder der Schwachstelle sind Referenzen enthalten, die teilweise
 	Code enthalten, der die besagte Schwachstelle ausnutzt. Hierzu gibt es zwei
-	Möglichkeiten, einmal ein Bashskript und ein Programm für die Software
-	Metasploit, welche standardmäßig bei Kali Linux installiert ist.
+	Möglichkeiten, einmal ein Pythonskript und ein Programm für das Framework
+	Metasploit. Dieses wird zum Durchführen von Penetrationstests genutzt und 
+	ist standardmäßig bei Kali Linux vorinstalliert \cite{metasploitpenetrationtesting}.
 	Mit dem folgenden Python Skript wurde der Exploit getestet:
 \begin{lstlisting}[language=Python]
 #!/usr/bin/env python
@@ -1190,7 +1191,7 @@ if '://' not in url:
 
 post_data = "period=0&TM_Block_MAC=00:01:02:03:04:05&TM_Block_URL="
 post_data += "B" * 246                  # Filler
-post_data += "\x81\x54\x4A\xF0"         # $s0, address of admin password in memory
+post_data += "\x81\x54\x4A\xF0"         # $s0, addr of admin password
 post_data += "\x80\x31\xF6\x34"         # $ra
 post_data += "C" * 0x28                 # Stack filler
 post_data += "D" * 4                    # ROP 1 $s0
@@ -1216,7 +1217,7 @@ except KeyboardInterrupt:
 \end{lstlisting}
 	In der ersten Zeile wird definiert, dass es sich um ein Python Skript handelt. 
 	Nachdem die benötigten Bibliotheken eingebunden wurden, folgt in einem try-
-	except Block (Z. 6-10) der die Übergabeparameter prüft. Wird kein Parameter
+	except Block (Z. 6-10) die Überprüfung der Übergabeparameter. Wird kein Parameter
 	übergeben löst das einen IndexError aus, der dann wiederum eine Fehlermeldung
 	auf dem Konsole ausgibt und das Programm in Zeile 10 beendet \cite{builtinexceptions}.
 	Die fehlerhafte cgi Datei wird in Zeile 14 an die übergebene IP angeghängt und
@@ -1242,15 +1243,16 @@ except KeyboardInterrupt:
 		\caption{Netzwerkverkehr - HTTP-Post Exploit}
 		\label{fig:w_exploit}
 	\end{figure}
-	In der Abbildung ist unten rechts blau markiert der HTTP-Post zusehen 
-	der durch die Zeilen 16-29, 32 erzeugt und in Zeile 33 im ausgeführt wurde.
+	In dieser Abbildung ist unten rechts blau markiert der HTTP-Post zusehen 
+	der durch die Zeilen 16-29, 32 erzeugt und in Zeile 33 ausgeführt wurde.
 	Zur besseren Lesbarkeit in diesem Dokument wurden Kommentare teilweise 
 	entfernt und die Importe entsprechen nicht PEP8 wie im tatsächlichen 
 	Skript, welches dieser Ausarbeitung beigelegt ist. Da auf der genutzten 
 	Kali eine neuere Version von Python genutzt wird, entspricht das Skript 
 	nicht vollkommen dem Original von Heffner \cite{heffner2014}.
 	Um das Skript auszuführen wurde der PC mit dem Router per WLAN verbunden,
-	Wireshark gestartet, Chromium geöffnet und dann das Pythonskript ausgeführt.  
+	in der Kali VM Wireshark gestartet, Chromium geöffnet und dann das 
+	Pythonskript ausgeführt.  
 \begin{lstlisting}[language=bash]
 ./remote-exploit 192.168.1.1
 \end{lstlisting}
@@ -1259,10 +1261,10 @@ except KeyboardInterrupt:
 	Da das Skript nach dem senden des HTTP-POST nicht weiter ausgeführt wird
 	wurde das Skript weiter untersucht. 
 	Nachdem die jeweiligen Ergebnisse nacheinander mit dem print Befehl
-	ausgegeben und auf Korrektheitgeprüft wurde konnte das Problem soweit 
+	ausgegeben und auf Korrektheit geprüft wurde konnte das Problem soweit 
 	eingegrenzt werden, dass der Post korrekt zusammengesetzt und versendet
 	wird, jedoch das Booten des Routes zum Problem wird, wie in der 
-	Beschreibung von Heffner \cite{wrt120nfprintfstack}.
+	Beschreibung von Heffner \cite{wrt120nfprintfstack} erwähnt wird.
 	Die in den vorangegangenen Abschnitten gemachten Einstellungen werden
 	schrittweise wieder rückgängig gemacht, um deren Auswirkungen auf die 
 	Ausführung des Skripts zu überprüfen.
@@ -1272,18 +1274,20 @@ except KeyboardInterrupt:
 		\item Grundlegende Wirelesseinstellungen auf Default setzen: keine
 		Änderung im Verhalten.
 		\item Firmware Upload durch die genutze Firmware von Heffner 
-		\cite{reversingwrt120nsfirmware}. Angehängt an die Ausarbeitung. 
-		Firmware-Verifizierung hat sich geändert aber keine Veränderung beim
-		Ausführen des Exploits.
+		\cite{reversingwrt120nsfirmware}. Angehängt an die Ausarbeitung 
+		(FW\_WRT120N\_1.0.07.002\_US.bin). Firmware-Verifizierung hat sich 
+		geändert aber nich das Verhalten beim Ausführen des Exploits.
 		\item MAC-Adressen des Routers im Pythenskript eingepflegt (Zeile 16).
-		Keine Änderung, auch nicht beim Ausführen des Skripts außerhalb der VM.
+		Keine Veranderung
 		\item Router Reset auf Werkseinstellungen: keine Veränderung
 	\end{enumerate}
 	\cite{urllibrequestextensiblelibrary, fielding2022, builtinexceptions}
-	Nach diesen Versuchen ist festzustellen, dass der Remote Exploit sich nicht 
-	auslösen lässt. 
+	Nach diesen Versuchen ist festzustellen, dass der Remote Exploit mit dem
+	Pythonskript sich nicht auslösen lässt. 
+	\newline
 	Die Version für Metasploit wird in Kali Linux VM ausprobiert \cite{rapid7metasploitframework}
-	im Order linksys\_tmunblock\_admin\_reset\_bof.rb ist der Code zufinden. Mit dem
+	im Order linksys\_tmunblock\_admin\_reset\_bof.rb ist der Code zufinden als
+	auch im Anhgang diese Ausarbeitung (linksys\_tmunblock\_admin\_reset\_bof.rb.pdf). Mit dem
 	folgenden Befehl wird die Schwachstelle ausgelöst:
 \begin{lstlisting}[language=bash]
 msf auxiliary(admin/http/linksys_tmunblock_admin_reset_bof) > exploit 192.168.1.1
@@ -1302,18 +1306,62 @@ msf auxiliary(admin/http/linksys_tmunblock_admin_reset_bof) > exploit 192.168.1.
 	Diese Zeile wurde beim Remote Exploit mit dem Pythonskript nie ausgeführt, 
 	da die Verbindung abgebrochen war. Die übertragenen Daten, siehe unten rechts 
 	entsprechen nicht den gleichen wie im Post des Remote Exploits. Ob diese Darstellung 
-	an der jetzt wieder aktiven Verschlüsselung mit WPA2 liegt, gilt es noch zubeweisen.
+	an der jetzt wieder aktiven Verschlüsselung mit WPA2 oder dem Programm selbst 
+	liegt, gilt es noch zubeweisen.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{img/http-post_nwtraffic_metasploit.png}
-		\caption{Netzwerkverkehr - HTTP-Post Exploit in Metasploit}
+		\caption{Netzwerkverkehr - Datei: http-post\_exploit\_metasploit.pcapng}
 		\label{fig:w_metasploit}
 	\end{figure}
 	Die Darstellung in Wireshark wird getestet indem der  Router nochmals auf Werkseinstellungen
-	zurückgesetzt wird und der Exploit erneut ausgeführt wird. Dies Verändert die 
-	Ausgabe in Wireshark nicht. Auf die Unterschiede zwischen den 
-	beiden Programmcodes wird nachfolgend eingegagnen.
+	zurückgesetzt wird und der Exploit erneut ausgeführt wird. Dies verändert die 
+	Ausgabe in Wireshark nicht (siehe http-post\_exploit\_metasploit\_withoutwpa2.pcapng). 
+	Auf die Unterschiede zwischen den beiden Programmcodes wird nachfolgend 
+	mit Hilfe der Abbildung \ref{fig:w_pyvsruby} eingegangen (links:Pythonskript,
+	rechts: Ruby Code von Metasploit).
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/diff_pyscript-metsploit.pdf}
+		\caption{Python Skript vs. Ruby Programmcode in Metasploit}
+		\label{fig:w_pyvsruby}
+	\end{figure}	
+	Die Buchstaben innerhalb des Posts unterscheiden sich, da im Programm für
+	Metasploit diese mit \texttt{Rex::Text.rand\_text\_alpha} generiert wurden 
+	\cite{rubydocinfomethodrex} und nicht wie im Pythonskript mit 
+	dem gleichen Buchstaben. Mit \texttt{normalize\_uri(...)} wird der korrekte
+	Anfang der URL gebildet, wie in der Variable \emph{url} im Pythonskript
+	\cite{rubydocinfomethodaddressable}. In den blauen Ellipsen sind die Zahlen 
+	die Multipliziert werden gleich, lediglich die Darstellung ist in Hexadezimal
+	und einmal in Dezimal. Die weiteren fablichen Markierungen zeigen, dass die 
+	Adressen, cgi Pfade und weiter Parameter, die selben sind.\cite{documentationruby33, howhandleruby} 
 
+	Das restliche Programm unterscheidet sich im folgenden Code Abschnitt dadurch, 
+	dass beim Senden des HTTP-Post die Rückmeldung anders verarbeitet wird. Es
+	wird bei der Rückmeldung mit Code 500 (Z. 2) die vorher definiert Methode 
+	\emph{check\_login} in Zeile 3 ausgeführt und deren Reaktion entsprechend 
+	weiterverarbeitet. In den Zeilen 11 bis 13 wird zudem noch explizit der
+	Verbindungsfehler abgefangen.
+\begin{lstlisting}[language=Bash]
+...
+if res && (res.code == 500)
+	if check_login('admin')
+		print_good('Expected answer and the login was successful. Try to login with the user admin and a blank password')
+	else
+		print_status('Expected answer, but unknown exploit status. Try to login with the user admin and a blank password')
+	end
+else
+	print_error('Unexpected answer. Exploit attempt has failed')
+end
+rescue ::Rex::ConnectionError
+	print_error('Failed to connect to the web server')
+	return
+...
+\end{lstlisting}
+	Weshalb das der Ruby Code keinen Reboot am Router auslöst konnte nicht
+	ermittelt werden. Dieser ist der Grund dafür, dass das Pythonskript nicht
+	funktioniert \cite{wrt120nfprintfstack}. Vermutet wird anhand der Wireshark
+	Aufzeichnungen, dass es an $blablabla liegt$
 
 	Sollte die IP-Adresse vom Besitzer des Routers umkonfiguriert worden sein, ändert
 	das lediglich den Befehl in Metasploit. Der Angreifer überwacht das Netzwerk 
@@ -1327,11 +1375,6 @@ msf auxiliary(admin/http/linksys_tmunblock_admin_reset_bof) > exploit 192.168.1.
 	%Binwalk finde. Z.B. \x81\x54\x4A\xF0
 	%( )Metasploit erklären
 
-	Erkenntnisse: Chromium hat einen Passwort Cache der per Default die eingegebenen
-	Passwörter speichert und diese erst nach schließen des Fensters wieder löscht. 
-	Diese Einstellung sollte zwingend von Nutzern dieses Browsers geändert werden,
-	so dass Passwörter nur mit aktiver Zustimmung des Nutzers gespeichert werden, 
-	auch wenn es nur temporär gespeichert wird.
 
 	Im Abschnitt \emph{Verwaltung > Aktualisieren der Firmware} im Handbuch ist
 	deren Update lediglich bei Problemen empfohlen:
@@ -1350,6 +1393,8 @@ msf auxiliary(admin/http/linksys_tmunblock_admin_reset_bof) > exploit 192.168.1.
 	%=======================notes jf - need to be deleted later
 	% sind die Grundlagen hinreichen Tief?
 	% wie sollen wir die Programme und Wireshark Files abgeben?
+	% Müssen diese in der PDF der Ausarbeitung enthalten sein oder reicht es
+	% den Dateinamen zu nennen und das diese im Anhang ist?
 	% welche Zeitform beim Beschreiben der Tests?
 	%=========================================================
 	

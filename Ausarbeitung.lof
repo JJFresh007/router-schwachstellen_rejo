@@ -17,7 +17,8 @@
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Ansicht WLAN Verbindung nach Konfiguration}}{25}{figure.4.5}%
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Firmware Version - WRT120N}}{26}{figure.4.6}%
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Netzwerkverkehr - HTTP-Post Exploit}}{29}{figure.4.7}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Netzwerkverkehr - HTTP-Post Exploit in Metasploit}}{31}{figure.4.8}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Netzwerkverkehr - Datei: http-post\_exploit\_metasploit.pcapng}}{31}{figure.4.8}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Python Skript vs. Ruby Programmcode in Metasploit}}{31}{figure.4.9}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \xpginauxfilefalse 
