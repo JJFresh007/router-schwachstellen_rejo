@@ -450,7 +450,7 @@
 	Informationen über den Aufbau, Art und größe des Paketes sind im Header zu finden.
 	Dort ist festgehalten ab wann die Nutzdaten beginnen, ob das Paket aufgrund
 	seiner Größe fragmentiert wurde und auch die Lebenszeit des Paketes. Diese ist 
-	wichtig, damit das Paket nur eine definierte Zeit im Netzwerk "lebt“ und anschließend 
+	wichtig, damit das Paket nur eine definierte Zeit im Netzwerk lebt und anschließend 
 	automatisch gelöscht wird, sodass es keine unnötigen Ressourcen verbraucht.
 	Fragmentierung von Paketen ist nötig, wenn das Paket die vordefinierte maximale Größe 
 	überschreitet, dann wird das Pakete entweder vom Router oder dem Sender geteilt.
@@ -465,7 +465,7 @@
 	Möchte ein Benutzer eine Website im Internet aufrufen, gibt dieser in der
 	Regel nicht direkt die IP-Adresse des Zielservers ein, da diese meist nicht
 	bekannt ist. Stattdessen wird üblicherweise ein Domainname wie beispielsweise 
-	\eph{www.google.com} verwendet. Damit eine Verbindung aufgebaut werden kann,
+	\emph{www.google.com} verwendet. Damit eine Verbindung aufgebaut werden kann,
 	muss zunächst die zugehörige IP-Adresse ermittelt werden. Dies geschieht
 	mithilfe des Domain Name Systems (DNS). Ein DNS-Server liefert zu einem
 	Domainnamen die entsprechende IP-Adresse zurück. Anschließend wird das Paket
@@ -562,7 +562,7 @@
 
 	\section{Sicherheitsmechanismen im Router}
 	\subsection{Adressverbergung(NAT - RFC 30022)}
-	\label{sec:Adressverbergung(NAT - RFC 30022)}
+	\label{sec:NAT}
 	%--------------------------------------------------------------------------------%
 	%-----------Nochmal überarbeiten----formulierung und rechtschreibung anpassen----%
 	Networke Address Translation(NAT) ist ein Mechanismus, bei dem der Router interne 
@@ -583,7 +583,7 @@
 
 	NAT bietet eine impllizite Schutzwirkung, aber keine echte Sicherheit im klasischen Sinne.
 	Nicht angeforderte verbindungen werden blockiert, die Angriffsfläche wird reduziert und Geräte können
-	nicht direkt adressiert werden. \cite{egevang2001}
+	nicht direkt adressiert werden. \cite{egevang2001b}
 	%Quelle(https://www.rfc-editor.org/rfc/rfc3022)%
 
 	\subsection{Paketfilterung und Stateful Firewalls}
@@ -638,7 +638,7 @@
 
 	In der Praxis wird häufig eine Kombination aus beiden Ansätzen angewendet. Die Zustandslose Firewall filtert
 	den Datenverkehr vor und die Zustandsbehaftete Firewall bessert nach. Dadurch lässt sich eine Balance
-	zwischen Perfosmance und Sicherheit erreichen. \cite{scarfone2009}
+	zwischen Perfosmance und Sicherheit erreichen. \cite{scarfone2009b}
 
 	\subsection{WLAN-Verschlüsselung}
 	\label{sec:WLAN-Verschlüsselung}
@@ -692,7 +692,7 @@
 	OWE (Opportunistic Wireless Encryption)
 	OWE ermöglicht Verschlüsselung auch in offenen WLAN-Netzten ohne Passwort. Es wird automatisch ein temporärer
 	Schlüssel zwischen dem Client unde dem Access Point ausgehandelt. OWE bietet Schutz vor passivem Mithören, kann
-	aber keine Authentifizierung sicherstellen. \cite{frankel2007, souppaya2012}
+	aber keine Authentifizierung sicherstellen. \cite{frankel2007b, souppaya2012b}
 	%---Quelle(https://csrc.nist.rip/external/nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-153.pdf)---%
 
 	\subsection{Zugriffskontrolle}
@@ -734,7 +734,7 @@
 	In der Praxis ist die Zugriffskontrolle selbst oftmals weniger das Problem, sondern ihre Fehlkonfiguration.
 	Wenn beispielsweise Standartpasswörter nicht geändert werden, der Remote-Admin offen ist, unötige Ports
 	freigegeben werden oder unsichere Protokolle aktiviert sind, führt dies dazu das theoretisch vorhandene
-	Mechanismen wirkungslos sind. \cite{tracy2007, }
+	Mechanismen wirkungslos sind. \cite{tracy2007b, }
 
 	%---Quelle(https://nvlpubs.nist.gov/nistpubs/Legac019-16920:y/SP/nistspecialpublication800-41r1.pdf)---%
 	%---Quelle(https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-44ver2.pdf)---%
@@ -768,7 +768,7 @@
 	verwundbare version zurückgesetzt werden kann. Ohne diesen Schutz hätten Angreifer die Möglichkeit alte Firmware
 	mit bekannten Schwachstellen zu installieren.
 	Angriffe auf die Firmware stellen ein besonders Risiko dar, da sid unterhlab von firewall und Betriebssystem liegt 
-	und für den benutzt oftmals unichtbar zu erkenen ist. \cite{regenscheid2018b}
+	und für den benutzt oftmals unichtbar zu erkenen ist. \cite{regenscheid2018bb}
 
 	\chapter{Tests D-Link DIR-600}
 	\label{sec:Tests D-Link DIR-600}
@@ -827,7 +827,7 @@
 
 	Der Router nutzt iptables für Routing und NAT, hostapd für WLAN und stellt einen integrierten Webserver
 	mit HTTP und PHP zum Management bereit. Netzwerkdienste wie DHCP, DNS und PPP werden über spezialisierte Daemons und
-	Skripte gesteuert. \cite{hostapdieee80211, netfilteriptablesproject, dlinksupportresources}
+	Skripte gesteuert. \cite{hostapdieee80211ab, netfilteriptablesprojectb, dlinksupportresourcesb}
 
 	\section{Analyse des Netzwerkverkehrs}
 	\label{sec:Analyse des Netzwerkverkehrs}
@@ -941,7 +941,7 @@
 	\begin{lstlisting}[basicstyle=\ttfamily]
 		binwalk -e DIR600B_FW205b01.bin 
 	\end{lstlisting}
-	wurde die Förmwear extrahiert und das Dateisystem zugänglich gemacht. \cite{squashfs40filesystem}
+	wurde die Förmwear extrahiert und das Dateisystem zugänglich gemacht. \cite{squashfs40filesystemab}
 	
 	\subsection{LFI-Schwachstelle}
 	\label{sec:LFI-Schwachstelle}
@@ -1032,7 +1032,7 @@ exit
 \end{lstlisting}
 	Das Skript arbeitet die einzelnen Pfade nacheinander ab. Der Befehl curl überträgt Daten zwischen dem Rechner
 	und einem Server. Mit -H lassen sich HTTP-Header setzen. Zudem wurde das Paket $jq$ installiert, so kann die Eingabe automatisch
-	entsprechend der URL-Vorgaben formatiert werden. \cite{pathtraversalowasp, reschke2015, wstgstableowasp}
+	entsprechend der URL-Vorgaben formatiert werden. \cite{pathtraversalowaspb, reschke2015b, wstgstableowaspb}
 
 	\begin{itemize}
 	\item \texttt{/var/etc/httpasswd} – enthält Zugangsdaten für das Webinterface
@@ -1144,7 +1144,7 @@ ramfs on /var type ramfs (rw)
 	Speicher zu füllen und die Dienste zu destabilisieren. Dies könnte den Router verlangsamen oder zu einem 
 	reboot führen. Außerdem kann der Angreifer durch Befehle wie ping, msh, kill oder busybox Prozesse mehrfach starten und die CPU dauerhaft belasten.
 	Desweiteren können Routerkonfigurationen, die interne Netzstruktur, DNS und Gateway sowie die aktiven Clients
-	eingesehen werden, was die Informationsgewinnung erleichtert. \cite{nvdcve202642375,telnetprotocolspecification}
+	eingesehen werden, was die Informationsgewinnung erleichtert. \cite{nvdcve202642375ab,telnetprotocolspecificationb}
 
 	\subsection{Bewertung:}
 	\label{sec:Bewertung-Telnet}
@@ -1261,7 +1261,7 @@ snprintf(acStack_260,500,
 	Die HTTP-Requests werden manuell zusammengesetzt und direkt über eine Socket-Verbindung versendet.
 	Zusätzlich wird in den meisten Fällen eine Basis-Authentifizierung, bestehend aus Benutzername und Passwort
 	verlangt, welche Base64 codiert in den HTTP-Header integriert werden (siehe oben).
-	\texttt{base64encode(pcVar4,sVar3,&uStack_28)}
+	\texttt{base64encode(pcVar4,sVar3,&uStack\_28)}
 
 	Die Implementierung weist einige sicherheitskritische Schwächen auf, die für ältere Embedded-Systeme typisch sind.
 	Insbesondere der Verzicht auf eine verschlüsselte Kommunikation stellt ein potenzielles Risiko dar. 
@@ -1271,7 +1271,7 @@ snprintf(acStack_260,500,
 	Zudem werden sensible Daten im Speicher verarbeitet. Authentifizierungsinformationen werden global abgelegt und mehrfach
 	in unterschiedlichen Verarbeitungsschritten verwendet. Auch wenn keine direkten Schwachstellen im 
 	untersuchten Codeabschnitt sichtbar sind, bleibt durch die unsauberen Datenflüsse und die 
-	fehlende strikte Validierung ein erhöhtes Sicherheitsrisiko. \cite{thomas2021, thomas2021}
+	fehlende strikte Validierung ein erhöhtes Sicherheitsrisiko. \cite{thomas2021b}
 
 	\subsection{Bewertung:}
 	\label{sec:Bewertung-DDNS}

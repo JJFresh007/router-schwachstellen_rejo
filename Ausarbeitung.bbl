@@ -364,6 +364,459 @@
       \verb /home/johanna/Zotero/storage/3DM7MGQT/sicherheitstipps-fuer-privates-und-oeffentliches-wlan.html
       \endverb
     \endentry
+    \entry{egevang2001b}{report}{}
+      \name{author}{2}{}{%
+        {{hash=a2690a1b59eef94688e32c506d862108}{%
+           family={Egevang},
+           familyi={E\bibinitperiod},
+           given={Kjeld\bibnamedelima Borch},
+           giveni={K\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=26c22827dfe69eb0a51075f886f22ec6}{%
+           family={Srisuresh},
+           familyi={S\bibinitperiod},
+           given={Pyda},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Internet Engineering Task Force}%
+      }
+      \strng{namehash}{c9090cb16249e434961904f96489b71d}
+      \strng{fullhash}{c9090cb16249e434961904f96489b71d}
+      \strng{bibnamehash}{c9090cb16249e434961904f96489b71d}
+      \strng{authorbibnamehash}{c9090cb16249e434961904f96489b71d}
+      \strng{authornamehash}{c9090cb16249e434961904f96489b71d}
+      \strng{authorfullhash}{c9090cb16249e434961904f96489b71d}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The NAT operation described in this document extends address translation introduced in RFC 1631 and includes a new type of network address and TCP/UDP port translation. In addition, this document corrects the Checksum adjustment algorithm published in RFC 1631 and attempts to discuss NAT operation and limitations in detail. This memo provides information for the Internet community.}
+      \field{month}{1}
+      \field{number}{RFC 3022}
+      \field{title}{Traditional {{IP Network Address Translator}} ({{Traditional NAT}})}
+      \field{type}{Request for {{Comments}}}
+      \field{urlday}{25}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2001}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.17487/RFC3022
+      \endverb
+    \endentry
+    \entry{scarfone2009b}{report}{}
+      \name{author}{2}{}{%
+        {{hash=6ea98e3682d33480471e822adaacdc41}{%
+           family={Scarfone},
+           familyi={S\bibinitperiod},
+           given={Karen},
+           giveni={K\bibinitperiod}}}%
+        {{hash=20339076a46a7815881ab552eb232220}{%
+           family={Hoffman},
+           familyi={H\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {National Institute of Standards and Technology}%
+      }
+      \strng{namehash}{a83a1ac3fe9a41c7bf8c317de1c803e9}
+      \strng{fullhash}{a83a1ac3fe9a41c7bf8c317de1c803e9}
+      \strng{bibnamehash}{a83a1ac3fe9a41c7bf8c317de1c803e9}
+      \strng{authorbibnamehash}{a83a1ac3fe9a41c7bf8c317de1c803e9}
+      \strng{authornamehash}{a83a1ac3fe9a41c7bf8c317de1c803e9}
+      \strng{authorfullhash}{a83a1ac3fe9a41c7bf8c317de1c803e9}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Firewalls are devices or programs that control the flow of network traffic between networks or hosts employing differing security postures. This publication provides an overview of several types of firewall technologies and discusses their security capabilities and their relative advantages and disadvantages in detail. It also makes recommendations for establishing firewall policies and for selecting, configuring, testing, deploying, and managing firewall solutions.}
+      \field{langid}{english}
+      \field{month}{9}
+      \field{number}{NIST Special Publication (SP) 800-41 Rev. 1}
+      \field{title}{Guidelines on {{Firewalls}} and {{Firewall Policy}}}
+      \field{type}{techreport}
+      \field{urlday}{25}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2009}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.6028/NIST.SP.800-41r1
+      \endverb
+    \endentry
+    \entry{frankel2007b}{article}{}
+      \name{author}{4}{}{%
+        {{hash=a3f84947b0324e478f5c7b23e84f5f7c}{%
+           family={Frankel},
+           familyi={F\bibinitperiod},
+           given={Sheila\bibnamedelima E.},
+           giveni={S\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=95074dd8f19e6f6345b8649676e8c7d8}{%
+           family={Eydt},
+           familyi={E\bibinitperiod},
+           given={Bernard},
+           giveni={B\bibinitperiod}}}%
+        {{hash=ca5a696b7be775aa02d73e38f101bf6f}{%
+           family={Owens},
+           familyi={O\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+        {{hash=56a189ed9dc605a9f1f2e52c0dbf45a9}{%
+           family={Scarfone},
+           familyi={S\bibinitperiod},
+           given={Karen\bibnamedelima Kent},
+           giveni={K\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Sheila E. Frankel, Bernard Eydt, L Owens, Karen Kent Scarfone}%
+      }
+      \strng{namehash}{53e3429cf071ae7bf186cca599157954}
+      \strng{fullhash}{b573a863ec2686a739bdd111ae9a4d12}
+      \strng{bibnamehash}{b573a863ec2686a739bdd111ae9a4d12}
+      \strng{authorbibnamehash}{b573a863ec2686a739bdd111ae9a4d12}
+      \strng{authornamehash}{53e3429cf071ae7bf186cca599157954}
+      \strng{authorfullhash}{b573a863ec2686a739bdd111ae9a4d12}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{This report provides readers with a detailed explanation of next generation 802.11 wireless security.}
+      \field{journaltitle}{NIST}
+      \field{langid}{english}
+      \field{month}{2}
+      \field{note}{Last Modified: 2017-02-19T20:02-05:00}
+      \field{shorttitle}{Establishing {{Wireless Robust Security Networks}}}
+      \field{title}{Establishing {{Wireless Robust Security Networks}}: {{A Guide}} to {{IEEE}} 802.11i}
+      \field{urlday}{1}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{year}{2007}
+      \field{urldateera}{ce}
+    \endentry
+    \entry{souppaya2012b}{report}{}
+      \name{author}{2}{}{%
+        {{hash=ffbf3d2da7973bafe66533b2afd05546}{%
+           family={Souppaya},
+           familyi={S\bibinitperiod},
+           given={Murugiah},
+           giveni={M\bibinitperiod}}}%
+        {{hash=6ea98e3682d33480471e822adaacdc41}{%
+           family={Scarfone},
+           familyi={S\bibinitperiod},
+           given={Karen},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {National Institute of Standards and Technology}%
+      }
+      \strng{namehash}{27999c8113789b5d81354e2cbe6de0cb}
+      \strng{fullhash}{27999c8113789b5d81354e2cbe6de0cb}
+      \strng{bibnamehash}{27999c8113789b5d81354e2cbe6de0cb}
+      \strng{authorbibnamehash}{27999c8113789b5d81354e2cbe6de0cb}
+      \strng{authornamehash}{27999c8113789b5d81354e2cbe6de0cb}
+      \strng{authorfullhash}{27999c8113789b5d81354e2cbe6de0cb}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A wireless local area network (WLAN) is a group of wireless networking devices within a limited geographic area, such as an office building, that exchange data through radio communications. The security of each WLAN is heavily dependent on how well each WLAN component---including client devices, access points (AP), and wireless switches---is secured throughout the WLAN lifecycle, from initial WLAN design and deployment through ongoing maintenance and monitoring. The purpose of this publication is to help organizations improve their WLAN security by providing recommendations for WLAN security configuration and monitoring. This publication supplements other NIST publications by consolidating and strengthening their key recommendations.}
+      \field{langid}{english}
+      \field{month}{2}
+      \field{number}{NIST Special Publication (SP) 800-153}
+      \field{title}{Guidelines for {{Securing Wireless Local Area Networks}} ({{WLANs}})}
+      \field{type}{techreport}
+      \field{urlday}{25}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2012}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.6028/NIST.SP.800-153
+      \endverb
+    \endentry
+    \entry{tracy2007b}{report}{}
+      \name{author}{4}{}{%
+        {{hash=7928347a9a86dc4fe03734e05423d262}{%
+           family={Tracy},
+           familyi={T\bibinitperiod},
+           given={Miles},
+           giveni={M\bibinitperiod}}}%
+        {{hash=72d70cdf54b092e7d941c0d4c04686f9}{%
+           family={Jansen},
+           familyi={J\bibinitperiod},
+           given={Wayne},
+           giveni={W\bibinitperiod}}}%
+        {{hash=6ea98e3682d33480471e822adaacdc41}{%
+           family={Scarfone},
+           familyi={S\bibinitperiod},
+           given={Karen},
+           giveni={K\bibinitperiod}}}%
+        {{hash=3a3c5bd709678bb298ec7edbd4e5d0d2}{%
+           family={Winograd},
+           familyi={W\bibinitperiod},
+           given={Theodore},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {National Institute of Standards and Technology}%
+      }
+      \strng{namehash}{15a1e045a151c995dc353554650fe30b}
+      \strng{fullhash}{3d62e8d3ad89562a5d37c63d7741f8c6}
+      \strng{bibnamehash}{3d62e8d3ad89562a5d37c63d7741f8c6}
+      \strng{authorbibnamehash}{3d62e8d3ad89562a5d37c63d7741f8c6}
+      \strng{authornamehash}{15a1e045a151c995dc353554650fe30b}
+      \strng{authorfullhash}{3d62e8d3ad89562a5d37c63d7741f8c6}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Web servers are often the most targeted and attacked hosts on organizations' networks. As a result, it is essential to secure Web servers and the network infrastructure that supports them. This document is intended to assist organizations in installing, configuring, and maintaining secure public Web servers. Practices described in detail include choosing Web server software and platforms, securing the underlying operating system and Web server software, deploying appropriate network protection mechanisms, and using, publicizing, and protecting information in a careful and systematic manner. The publication also provides recommendations for maintaining secure configurations through patching and upgrades, security testing, log monitoring, and backups of data and operating system files.}
+      \field{langid}{english}
+      \field{month}{10}
+      \field{number}{NIST Special Publication (SP) 800-44 Version 2}
+      \field{title}{Guidelines on {{Securing Public Web Servers}}}
+      \field{type}{techreport}
+      \field{urlday}{25}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2007}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.6028/NIST.SP.800-44ver2
+      \endverb
+    \endentry
+    \entry{regenscheid2018bb}{report}{}
+      \name{author}{1}{}{%
+        {{hash=fc1c79990dad532ac20cbeca8479e546}{%
+           family={Regenscheid},
+           familyi={R\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {National Institute of Standards and Technology}%
+      }
+      \list{location}{1}{%
+        {Gaithersburg, MD}%
+      }
+      \strng{namehash}{fc1c79990dad532ac20cbeca8479e546}
+      \strng{fullhash}{fc1c79990dad532ac20cbeca8479e546}
+      \strng{bibnamehash}{fc1c79990dad532ac20cbeca8479e546}
+      \strng{authorbibnamehash}{fc1c79990dad532ac20cbeca8479e546}
+      \strng{authornamehash}{fc1c79990dad532ac20cbeca8479e546}
+      \strng{authorfullhash}{fc1c79990dad532ac20cbeca8479e546}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This document provides technical guidelines and recommendations supporting resiliency of platform firmware and data against potentially destructive attacks. The platform is a collection of fundamental hardware and firmware components needed to boot and operate a system. A successful attack on platform firmware could render a system inoperable, perhaps permanently, or requiring reprogramming by the original manufacturer, resulting in significant disruptions to users. The technical guidelines in this document promote resiliency in the platform by describing security mechanisms for protecting the platform against unauthorized changes, detecting unauthorized changes that occur, and recovering from attacks rapidly and securely. Implementers, including Original Equipment Manufacturers (OEMs) and component/device suppliers, can use these guidelines to build stronger security mechanisms into platforms. System administrators, security professionals, and users can use this document to guide procurement strategies and priorities for future systems.}
+      \field{langid}{english}
+      \field{month}{5}
+      \field{number}{NIST SP 800-193}
+      \field{title}{Platform Firmware Resiliency Guidelines}
+      \field{type}{techreport}
+      \field{urlday}{1}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{year}{2018}
+      \field{urldateera}{ce}
+      \field{pages}{NIST SP 800\bibrangedash 193}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.6028/NIST.SP.800-193
+      \endverb
+    \endentry
+    \entry{hostapdieee80211ab}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{title}{Hostapd: {{IEEE}} 802.11 {{AP}}, {{IEEE}} 802.{{1X}}/{{WPA}}/{{WPA2}}/{{WPA3}}/{{EAP}}/{{RADIUS Authenticator}}}
+      \field{urlday}{1}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+    \endentry
+    \entry{netfilteriptablesprojectb}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{title}{Netfilter/Iptables Project Homepage - {{Documentation}} about the Netfilter/Iptables Project}
+      \field{urlday}{31}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+    \endentry
+    \entry{dlinksupportresourcesb}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{title}{D-{{Link Support Resources}}}
+      \field{urlday}{31}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+    \endentry
+    \entry{squashfs40filesystemab}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{title}{Squashfs 4.0 {{Filesystem}} --- {{The Linux Kernel}} Documentation}
+      \field{urlday}{1}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+    \endentry
+    \entry{pathtraversalowaspb}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Path Traversal on the main website for The OWASP Foundation. OWASP is a nonprofit foundation that works to improve the security of software.}
+      \field{langid}{english}
+      \field{title}{Path {{Traversal}} |{} {{OWASP Foundation}}}
+      \field{urlday}{30}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+    \endentry
+    \entry{reschke2015b}{report}{}
+      \name{author}{1}{}{%
+        {{hash=c07b881ce18f1c139ec16860aa2c8dad}{%
+           family={Reschke},
+           familyi={R\bibinitperiod},
+           given={Julian},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Internet Engineering Task Force}%
+      }
+      \strng{namehash}{c07b881ce18f1c139ec16860aa2c8dad}
+      \strng{fullhash}{c07b881ce18f1c139ec16860aa2c8dad}
+      \strng{bibnamehash}{c07b881ce18f1c139ec16860aa2c8dad}
+      \strng{authorbibnamehash}{c07b881ce18f1c139ec16860aa2c8dad}
+      \strng{authornamehash}{c07b881ce18f1c139ec16860aa2c8dad}
+      \strng{authorfullhash}{c07b881ce18f1c139ec16860aa2c8dad}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This document defines the "Basic" Hypertext Transfer Protocol (HTTP) authentication scheme, which transmits credentials as user-id/ password pairs, encoded using Base64.}
+      \field{month}{9}
+      \field{number}{RFC 7617}
+      \field{title}{The '{{Basic}}' {{HTTP Authentication Scheme}}}
+      \field{type}{Request for {{Comments}}}
+      \field{urlday}{30}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2015}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.17487/RFC7617
+      \endverb
+    \endentry
+    \entry{wstgstableowaspb}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{abstract}{WSTG - Stable on the main website for The OWASP Foundation. OWASP is a nonprofit foundation that works to improve the security of software.}
+      \field{langid}{english}
+      \field{title}{{{WSTG}} - {{Stable}} |{} {{OWASP Foundation}}}
+      \field{urlday}{30}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+    \endentry
+    \entry{nvdcve202642375ab}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{title}{{{NVD}} - {{CVE-2026-42375}}}
+      \field{urlday}{1}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+    \endentry
+    \entry{telnetprotocolspecificationb}{report}{}
+      \list{institution}{1}{%
+        {Internet Engineering Task Force}%
+      }
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This is the specification of the Telnet protocol used for remote terminal access in the ARPA Internet. The purpose of the TELNET Protocol is to provide a fairly general, bi-directional, eight-bit byte oriented communications facility. Its primary goal is to allow a standard method of interfacing terminal devices and terminal-oriented processes to each other. It is envisioned that the protocol may also be used for terminal-terminal communication ("linking") and process-process communication (distributed computation). This RFC specifies a standard for the ARPA Internet community. Hosts on the ARPA Internet are expected to adopt and implement this standard. Obsoletes NIC 18639.}
+      \field{month}{5}
+      \field{number}{RFC 854}
+      \field{title}{Telnet {{Protocol Specification}}}
+      \field{type}{Request for {{Comments}}}
+      \field{urlday}{31}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{1983}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.17487/RFC0854
+      \endverb
+    \endentry
+    \entry{thomas2021b}{article}{}
+      \name{author}{6}{}{%
+        {{hash=1424b7da5eae27e9be8aaa034b733443}{%
+           family={Thomas},
+           familyi={T\bibinitperiod},
+           given={Sam\bibnamedelima L.},
+           giveni={S\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=872f73009374e2d30bcd5b327b09331e}{%
+           family={Van\bibnamedelimb Den\bibnamedelima Herrewegen},
+           familyi={V\bibinitperiod\bibinitdelim D\bibinitperiod\bibinitdelim H\bibinitperiod},
+           given={Jan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=1135d9917dbbcf13cfb0fdf4508e824f}{%
+           family={Vasilakis},
+           familyi={V\bibinitperiod},
+           given={Georgios},
+           giveni={G\bibinitperiod}}}%
+        {{hash=20e1473106d583f6bcb6929560367f49}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Zitai},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=ff554663c13de2bd812a15f9843cb641}{%
+           family={Ordean},
+           familyi={O\bibinitperiod},
+           given={Mihai},
+           giveni={M\bibinitperiod}}}%
+        {{hash=e6c475973ccc82696e053454b305d5b2}{%
+           family={Garcia},
+           familyi={G\bibinitperiod},
+           given={Flavio\bibnamedelima D.},
+           giveni={F\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{f6163d576771984867d609c266c88e79}
+      \strng{fullhash}{3085567b2244bddb9845922b13e526c8}
+      \strng{bibnamehash}{3085567b2244bddb9845922b13e526c8}
+      \strng{authorbibnamehash}{3085567b2244bddb9845922b13e526c8}
+      \strng{authornamehash}{f6163d576771984867d609c266c88e79}
+      \strng{authorfullhash}{3085567b2244bddb9845922b13e526c8}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Performing security analysis of embedded devices is a challenging task. They present many difficulties not usually found when analyzing commodity systems: undocumented peripherals, esoteric instruction sets, and limited tool support. Thus, a significant amount of reverse engineering is almost always required to analyze such devices. In this paper, we present Incision, an architecture and operating-system agnostic reverse engineering framework. Incision tackles the problem of reducing the upfront effort to analyze complex end-user devices. It combines static and dynamic analyses in a feedback loop, enabling information from each to be used in tandem to improve our overall understanding of the firmware analyzed. We use Incision to analyze a variety of devices and firmware. Our evaluation spans firmware based on three RTOSes, an automotive ECU, and a 4G/LTE baseband. We demonstrate that Incision does not introduce significant complexity to the standard reverse engineering process and requires little manual effort to use. Moreover, its analyses produce correct results with high confidence and are robust across different OSes and ISAs.}
+      \field{issn}{2569-2925}
+      \field{journaltitle}{TCHES}
+      \field{langid}{english}
+      \field{month}{7}
+      \field{title}{Cutting {{Through}} the {{Complexity}} of {{Reverse Engineering Embedded Devices}}}
+      \field{urlday}{30}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \field{pages}{360\bibrangedash 389}
+      \range{pages}{30}
+      \verb{doi}
+      \verb 10.46586/tches.v2021.i3.360-389
+      \endverb
+    \endentry
     \entry{vomdorp2022}{article}{}
       \name{author}{2}{}{%
         {{hash=98ef6eb94e972b7b0b97ea0dd04b0217}{%
@@ -383,8 +836,8 @@
       \strng{authorbibnamehash}{8b040496e752f97487040c025e4f89b8}
       \strng{authornamehash}{8b040496e752f97487040c025e4f89b8}
       \strng{authorfullhash}{8b040496e752f97487040c025e4f89b8}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Fraunhofer}
@@ -392,8 +845,8 @@
       \field{year}{2022}
     \endentry
     \entry{capturesetupwlanwireshark}{misc}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{howpublished}{https://wiki.wireshark.org/CaptureSetup/WLAN}
       \field{title}{{{CaptureSetup}}/{{WLAN}} - {{Wireshark Wiki}}}
@@ -406,8 +859,8 @@
       \endverb
     \endentry
     \entry{ipwhois142251150119}{misc}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{abstract}{WHOIS data for IP 142.251.150.119: owner, ISP, ASN, CIDR, abuse contact. Free lookup with live data from ARIN, RIPE, APNIC, LACNIC, AFRINIC.}
       \field{howpublished}{https://whoisfreaks.com/tools/ip-whois/lookup/142.251.150.119}
@@ -423,8 +876,8 @@
       \endverb
     \endentry
     \entry{cverecordcve2014125122}{misc}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{howpublished}{https://www.cve.org/CVERecord?id=CVE-2014-125122}
       \field{title}{{{CVE Record}}: {{CVE-2014-125122}}}
@@ -437,8 +890,8 @@
       \endverb
     \endentry
     \entry{cwecwe121stackbased}{misc}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{howpublished}{https://cwe.mitre.org/data/definitions/121.html}
       \field{title}{{{CWE}} - {{CWE-121}}: {{Stack-based Buffer Overflow}} (4.20)}
@@ -470,8 +923,8 @@
       \strng{authorbibnamehash}{0b5e8d0bc0fbb0f67d1710ae7daa409a}
       \strng{authornamehash}{0b5e8d0bc0fbb0f67d1710ae7daa409a}
       \strng{authorfullhash}{0b5e8d0bc0fbb0f67d1710ae7daa409a}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{isbn}{978-3-662-60910-1 978-3-662-60911-8}
@@ -488,8 +941,8 @@
       \endverb
     \endentry
     \entry{httpmethodsget}{misc}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{abstract}{W3Schools offers free online tutorials, references and exercises in all the major languages of the web. Covering popular subjects like HTML, CSS, JavaScript, Python, SQL, Java, and many, many more.}
       \field{howpublished}{https://www.w3schools.com/tags/ref\_httpmethods.asp}
@@ -504,8 +957,8 @@
       \endverb
     \endentry
     \entry{ibm}{misc}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{abstract}{The Common Gateway Interface (CGI) specification was introduced to enable and standardize the interface between Web servers and external programs. The CGI is a relatively simple, platform and language independent, industry-standard interface for Web application development. Programs that implement the CGI standard are commonly called CGI programs.}
       \field{howpublished}{https://www.ibm.com/docs/en/i/7.6.0?topic=functionality-cgi}
@@ -522,8 +975,8 @@
       \endverb
     \endentry
     \entry{metasploitpenetrationtesting}{misc}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{abstract}{Find security issues, verify vulnerability mitigations \& manage security assessments with Metasploit. Get the world's best penetration testing software now.}
       \field{howpublished}{https://www.metasploit.com/}
@@ -539,8 +992,8 @@
       \endverb
     \endentry
     \entry{builtinexceptions}{misc}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{abstract}{In Python, all exceptions must be instances of a class that derives from BaseException. In a try statement with an except clause that mentions a particular class, that clause also handles any excep...}
       \field{howpublished}{https://docs.python.org/3/library/exceptions.html}
@@ -556,8 +1009,8 @@
       \endverb
     \endentry
     \entry{wrt120nfprintfstack}{misc}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{howpublished}{https://web.archive.org/web/20210424073058/http://www.devttys0.com/2014/02/wrt120n-fprintf-stack-overflow/}
       \field{month}{4}
@@ -569,8 +1022,8 @@
       \field{urldateera}{ce}
     \endentry
     \entry{urllibrequestextensiblelibrary}{misc}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{abstract}{Source code: Lib/urllib/request.py The urllib.request module defines functions and classes which help in opening URLs (mostly HTTP) in a complex world --- basic and digest authentication, redirection...}
       \field{howpublished}{https://docs.python.org/3/library/urllib.request.html}
@@ -599,8 +1052,8 @@
       \strng{authorbibnamehash}{61913b91f853f86042f045cee8ee97a7}
       \strng{authornamehash}{61913b91f853f86042f045cee8ee97a7}
       \strng{authorfullhash}{61913b91f853f86042f045cee8ee97a7}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{WRT120N 1.0.0.7 - Remote Stack Overflow. CVE-103521 . remote exploit for Hardware platform}
@@ -619,8 +1072,8 @@
       \endverb
     \endentry
     \entry{reversingwrt120nsfirmware}{misc}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{howpublished}{https://web.archive.org/web/20210416210329/http://www.devttys0.com/2014/02/reversing-the-wrt120n-firmware-obfuscation/}
       \field{month}{4}
@@ -658,8 +1111,8 @@
       \strng{authorbibnamehash}{71f5c2585c576fd9af736848fe11bc35}
       \strng{authornamehash}{71f5c2585c576fd9af736848fe11bc35}
       \strng{authorfullhash}{71f5c2585c576fd9af736848fe11bc35}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The Hypertext Transfer Protocol (HTTP) is a stateless application-level protocol for distributed, collaborative, hypertext information systems. This document describes the overall architecture of HTTP, establishes common terminology, and defines aspects of the protocol that are shared by all versions. In this definition are core protocol elements, extensibility mechanisms, and the "http" and "https" Uniform Resource Identifier (URI) schemes. This document updates RFC 3864 and obsoletes RFCs 2818, 7231, 7232, 7233, 7235, 7538, 7615, 7694, and portions of 7230.}
@@ -680,8 +1133,8 @@
       \endverb
     \endentry
     \entry{rapid7metasploitframework}{misc}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{abstract}{Metasploit Framework}
       \field{howpublished}{Rapid7}
@@ -694,8 +1147,8 @@
       \field{urldateera}{ce}
     \endentry
     \entry{rubydocinfomethodrex}{misc}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Documenting RubyGems, Stdlib, and GitHub Projects}
       \field{howpublished}{https://www.rubydoc.info/gems/rex-text/0.1.2/Rex\%2FText.rand\_text\_alpha}
@@ -710,8 +1163,8 @@
       \endverb
     \endentry
     \entry{rubydocinfomethodaddressable}{misc}{}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Documenting RubyGems, Stdlib, and GitHub Projects}
       \field{howpublished}{https://www.rubydoc.info/gems/addressable/Addressable\%2FURI:normalize}
@@ -726,8 +1179,8 @@
       \endverb
     \endentry
     \entry{documentationruby33}{misc}{}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labeltitlesource}{title}
       \field{howpublished}{https://docs.ruby-lang.org/en/3.3/}
       \field{title}{Documentation for {{Ruby}} 3.3}
@@ -740,8 +1193,8 @@
       \endverb
     \endentry
     \entry{howhandleruby}{misc}{}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labeltitlesource}{title}
       \field{abstract}{Master Ruby syntax for advanced Cybersecurity exploit development in Metasploit, learn module design techniques, and enhance penetration testing skills with practical coding strategies.}
       \field{howpublished}{https://labex.io/tutorials/nmap-how-to-handle-ruby-syntax-in-metasploit-419611}
