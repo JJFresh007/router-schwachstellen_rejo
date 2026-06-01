@@ -411,39 +411,57 @@
 
 	\subsection{Paketfilterung und Stateful Firewalls}
 	\label{sec:Paketfilterung und Stateful Firewalls}
-	Eine Firewall schützt ein netztwerk vor bedrohungen, in dem sie den Datenverkehr kontrolliert.
-	- zustandbehaftete(Stateful) und zustandlose(Statless) FWs
-	- ersteres eher die Norm, wei besser
-	Statless:
-	- älter
-	- verlässt dich auf Zugriffskontrolliste beim Filtern
-	- entscheidung auf grundlage von Paket infos
-	- speichern keine infos über status oder kontext der verbindung
-	- überprüft Quell- und Ziel-IP-Adresse, Portnummer und den verkehrstyp im Header
-	- Filterung nur so gut wie vom Benutzer definierte -> müssen gescheit verwaltet werden
-	- weniger ressourcen und schneller -> gut bei hohem Datenverkehr
-	- wird heute vorallem dazu verwendet die last der staful firewall zu verringern
-	- bekannte IP-Adressen blocken, geographische Regionen
-	- ist nur so gut wie der Netzwerkadmin (Benutzerfehler)
-	Stateles Firewalls gehören zu den älteren Modellen und werden heute nur noch unter bestimmten
-	vorraussetzungen verwendet. Sie verwenden eine Zugriffskontrolliste beim filtern und treffen 
-	entscheidungen auf grundlage von Paket Informationen. Allerdings speichert eine Stateful Firewall
-	nicht den Status oder den Kontet der Verbindung Sie überprüft die Quell und Ziel-IP-Adresse
-	die Portnummer und den Verkehrstyp im Header. Die Filterung des Pakete funktioniert nur so gut,
-	wie sie konfiguriert wurde, und hängt somit fast vollständig von dem Netzwerkadministrator selbst ab.
-	Vorteilhaft ist ihr geringer ressourcen Verbaruch und ihre Fähigkeit Daten schnell zu verarbeit,
-	was vorallem bei hohem Datenverkehr wichtig ist. Heutzutage wird sie vorallem verwendet um 
-	die Last der Stateful Firewall zu verringern.
+	Eine Firewall ist ein zentrales Sicherheitselement in Netzwerken und Schützt diese vor 
+	unerlaubten Zugriffen und Bedrohungen, in dem sie den Datenverkehr überwacht.
+	Die Firewall filtert den Verkehr anhand von definierten Filtern, wobei dort die entschieden wird,
+	welche Datenpackete erlaubt oder blockiert werden.
+	Grundsätzlich wird zwischen zustandbehaftete(Stateful) und zustandlose(Statless) Firewalls entschieden,
+	wobei letztere den heutigen Standart darstellt.
+	
+	Zustandslose Firewalls (Stateless Firewalls)
+	Zustandslose Firewalls gehören zu den älteren Modellen. Si verlassen sich bei der
+	filterung der Daten auf eine Zugriffskontrolliste.
+	Die entscheidung in welche Kategorie ein Packet fällt wird aufgund der mitgelieferten
+	Informationen getroffen. Die Firewall speichert keine Informationen über den Satus oder den Kontext der
+	Verbindung. Die Filterung basiert auf der überprüfung der Access Controle List (ACL). Dabei werden Informationen
+	aus dem Packet-Header ausgewertet insbesondere:
+	\begin{itemize}
+		\item{Quell-IP-Adresse}
+		\item{Ziel-IP-Adresse}
+		\item{Portnummern}
+		\item{verwendetes Protokoll (z. B. TCP oder UDP)}
+	\end{itemize}
+	Da keine Zustandsinformationen gespeichert werden, kann die Firewall nicht erkenen ob ein Packet zu einer bestehenden
+	Verbindung gehört. Jede entscheidung wird also isoliert getroffen.
+	Der große Vorteil des Ansatz liegt im geringen Ressourcenverbrauch und der hohen Verarbeitungsgeschwindigkeit.
+	Daher werden sie in einer Umgebung mit sehr hohem Datenaufkommen eingesetzt und vorgeschatet, um einfache
+	Filteraufgaben zu übernehmen.
+	Allerdings hängt die Sicherheit stark von der Qualität der Konfiguration ab. Fehler in den Regeln können 
+	dazu führen, das unerwünschter Datenverkehr zugelassen wird.
 
-	Stateful:
-	- überwachen Datenpackete und den Kontext ders Datenverkehrs
-	- verstehen den kontext von NW verbindungen
-	- dynamische Paketflterung
-	- Quell und Ziel IP Erfassung
-	- können Bewegung von Daten im ganzen Netztwerk überwachen
-	- durch Zustandstabelle -> entscheidung daruf basierend in der Zukunft
-	- sind anfällig für DDoS und Man in the Middle, wenn Code nicht auf neustem Stand
-	- auflistung der Eigenschaften
+	Zustandsbehaftete Firewalls (Stateful Firewalls)
+	Die Zustandsbehaftete Firewall ist heute die am Häufigsten eingesetzte Firewall-Technologie.
+	Sie überwacht die Datenpackete und den Kontext des Datenverkehrs.
+	Hierzu wird eine sogennante Zustandstabelle (State Table) gewührt, welche die aktiven Verbindungen speichert.
+	Diese enthält Informationen wie:
+	\begin{itemize}
+		\item{Quell-IP-Adresse}
+		\item{Ziel-IP-Adresse}
+		\item{Portnummern}
+		\item{Verbindungsstatus (z. B. aufgebaut, etabliert, beendet)}
+	\end{itemize}
+	Basierden auf diesen Informationen entscheiden die Firewall über die eingehenden Packete.
+	Dadurch ist eine dynamische Packetfilterung möglich.
+	Ein wesntlicher Vorteil ist die deutlich höhere Sicherheit, da nur solche Packete zugelassen werden, 
+	die Teil einer legitimen Verbindung sind. 
+	Allerdings ist der Ressourcenverbrauch deutlich höher als bei Zustandslose Firewalls.
+	Verbidungszustände müssen stetig neu gespeichert und verglichen werden.
+	Auch hier sind schlecht konfigurierte Firewalls anfäälig für Attacken wie beispielsweise
+	Denial-of-Service (DDoS) oder Man-in-the-Middle-Angriffe.
+
+	In der Praxis wird häufig eine Kombination aus beiden Ansätzen angewendet. Die Zustandslose Firewall filtert
+	den Datenverkehr vor und die Zustandsbehaftete Firewall bessert nach. Dadurch lässt sich eine Balance
+	zwischen Perfosmance und Sicherheit erreichen.
 
 	\subsection{WLAN-Verschlüsselung}
 	\label{sec:WLAN-Verschlüsselung}
