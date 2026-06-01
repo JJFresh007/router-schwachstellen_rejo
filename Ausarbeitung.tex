@@ -406,7 +406,7 @@
 
 	NAT bietet eine impllizite Schutzwirkung, aber keine echte Sicherheit im klasischen Sinne.
 	Nicht angeforderte verbindungen werden blockiert, die Angriffsfläche wird reduziert und Geräte können
-	nicht direkt adressiert werden. 
+	nicht direkt adressiert werden. \cite{egevang2001}
 	%Quelle(https://www.rfc-editor.org/rfc/rfc3022)%
 
 	\subsection{Paketfilterung und Stateful Firewalls}
@@ -461,7 +461,7 @@
 
 	In der Praxis wird häufig eine Kombination aus beiden Ansätzen angewendet. Die Zustandslose Firewall filtert
 	den Datenverkehr vor und die Zustandsbehaftete Firewall bessert nach. Dadurch lässt sich eine Balance
-	zwischen Perfosmance und Sicherheit erreichen.
+	zwischen Perfosmance und Sicherheit erreichen. \cite{scarfone2009}
 
 	\subsection{WLAN-Verschlüsselung}
 	\label{sec:WLAN-Verschlüsselung}
@@ -515,7 +515,7 @@
 	OWE (Opportunistic Wireless Encryption)
 	OWE ermöglicht Verschlüsselung auch in offenen WLAN-Netzten ohne Passwort. Es wird automatisch ein temporärer
 	Schlüssel zwischen dem Client unde dem Access Point ausgehandelt. OWE bietet Schutz vor passivem Mithören, kann
-	aber keine Authentifizierung sicherstellen.
+	aber keine Authentifizierung sicherstellen. \cite{frankel2007, souppaya2012}
 	%---Quelle(https://csrc.nist.rip/external/nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-153.pdf)---%
 
 	\subsection{Zugriffskontrolle}
@@ -557,9 +557,9 @@
 	In der Praxis ist die Zugriffskontrolle selbst oftmals weniger das Problem, sondern ihre Fehlkonfiguration.
 	Wenn beispielsweise Standartpasswörter nicht geändert werden, der Remote-Admin offen ist, unötige Ports
 	freigegeben werden oder unsichere Protokolle aktiviert sind, führt dies dazu das theoretisch vorhandene
-	Mechanismen wirkungslos sind.
+	Mechanismen wirkungslos sind. \cite{tracy2007, }
 
-	%---Quelle(https://nvlpubs.nist.gov/nistpubs/Legac019-16920: y/SP/nistspecialpublication800-41r1.pdf)---%
+	%---Quelle(https://nvlpubs.nist.gov/nistpubs/Legac019-16920:y/SP/nistspecialpublication800-41r1.pdf)---%
 	%---Quelle(https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-44ver2.pdf)---%
 	
 	\subsection{Firmware Integrität}
@@ -644,7 +644,7 @@
 
 	Der Router nutzt iptables für Routing und NAT, hostapd für WLAN und stellt einen integrierten Webserver
 	mit HTTP und PHP zum Management bereit. Netzwerkdienste wie DHCP, DNS und PPP werden über spezialisierte Daemons und
-	Skripte gesteuert.
+	Skripte gesteuert. \cite{hostapdieee80211, netfilteriptablesproject, dlinksupportresources}
 
 	\section{Analyse des Netzwerkverkehrs}
 	\label{sec:Analyse des Netzwerkverkehrs}
@@ -702,7 +702,7 @@
 	\label{sec:Firmware-Analyse}
 	Zur Analyse der Firmware wurde das Tool \texttt{binwalk} eingesetzt:
 
-	\begin{lstlisting}
+	\begin{lstlisting}[basicstyle=\ttfamily]
 	binwalk DIR600B_FW205b01.bin 
 	
 	DECIMAL       HEXADECIMAL     DESCRIPTION
@@ -751,10 +751,10 @@
 
 	SquashFS ist ein komprimiertes, schreibgeschütztes Linux Dateisystem der version 3.0.
 	Durch Ausführen von:
-	\begin{lstlisting}
+	\begin{lstlisting}[basicstyle=\ttfamily]
 		binwalk -e DIR600B_FW205b01.bin 
 	\end{lstlisting}
-	wurde die Förmwear extrahiert und das Dateisystem zugänglich gemacht.
+	wurde die Förmwear extrahiert und das Dateisystem zugänglich gemacht. \cite{squashfs40filesystem}
 	
 	\subsection{LFI-Schwachstelle}
 	\label{sec:LFI-Schwachstelle}
@@ -766,7 +766,7 @@
 	Die Datei fungiert als generischer Content-Renderer für das Webinterface. 
 	Sie ermöglicht unter anderem das dynamische Einbinden von Dateien.
 	Der relevante Codeabschnitt lautet:
-	\begin{lstlisting}
+	\begin{lstlisting}[language=PHP]
 	if($REQUIRE_FILE!="")
 	{
 		require($LOCALE_PATH."/".$REQUIRE_FILE);
@@ -794,7 +794,7 @@
 
 	Automatisierte Analyse
 	Ein automatisiertes Testskript wurde verwendet um verschiedene Dateisysteme abzurufen.
-	\begin{lstlisting}
+	\begin{lstlisting}[language=bash]
 	#!/bin/bash
 
 	if [ $# -ne 1 ]; then
@@ -844,7 +844,7 @@
 	\end{lstlisting}
 	Das Skript arbeitet die einzelnen Pfade nacheinander ab. Der Befehl curl überträgt Daten zwischen dem Rechner
 	und einem Server. Mit -H lassen sich HTTP-Header setzen. Zudem wurde das Paket $jq$ installiert, so kann die Eingabe automatisch
-	entsprechend der URL-Vorgaben formatiert werden.
+	entsprechend der URL-Vorgaben formatiert werden. \cite{pathtraversalowasp, reschke2015, wstgstableowasp}
 
 	\begin{itemize}
 	\item \texttt{/var/etc/httpasswd} – enthält Zugangsdaten für das Webinterface
@@ -924,7 +924,7 @@
 	Nach erfolgreicher Anmeldung erhält der Benutzer Zugriff auf eine Shell-Umgebung, die durch \texttt{Busybox}, 
 	bereitstellt wird. BusyBox ist eine Sammlung von Unix-Werkzeugen, die unter anderem eine Shell bereitstellen. 
 	Der Befehl \texttt{mount} zeigt folgendes:
-	\begin{lstlisting}
+	\begin{lstlisting}[basicstyle=\ttfamily]
 	/dev/root on / type squashfs (ro)
 	none on /proc type proc (rw)
 	sysfs on /sys type sysfs (rw)
@@ -943,7 +943,7 @@
 	Speicher zu füllen und die Dienste zu destabilisieren. Dies könnte den Router verlangsamen oder zu einem 
 	reboot führen. Außerdem kann der Angreifer durch Befehle wie ping, msh, kill oder busybox Prozesse mehrfach starten und die CPU dauerhaft belasten.
 	Desweiteren können Routerkonfigurationen, die interne Netzstruktur, DNS und Gateway sowie die aktiven Clients
-	eingesehen werden, was die Informationsgewinnung erleichtert.
+	eingesehen werden, was die Informationsgewinnung erleichtert. \cite{nvdcve202642375,telnetprotocolspecification}
 
 	\subsection{Bewertung:}
 	\label{sec:Bewertung-Telnet}
@@ -971,7 +971,7 @@
 	\textbf{Begründung:}  
 	Die Schwachstelle erlaubt den Zugriff auf eine Remote Shell.
 	Sensible Daten könne ausgelsen werden und Befehle ausgeführt werden.
-	Die Ausnutzung ist trivial und erfordert keine besonderen Bedingungen.
+	Die Ausnutzung ist trivial und erfordert keine besonderen Bedingungen. 
 
 	\subsection{Analyse des DDNS-Systems}
 	Die Analyse des DDNS-Subsystems dient dazu, potenzielle sicherheitskritische Datenflüsse zwischen
@@ -983,7 +983,7 @@
 	Konfigurationsdaten werden über den Dienst \texttt{xmldbc} verwaltet, eine XML-Datenbank.
 	Das Dynamic Domain Name System auch DDNS genannt, ist hier nicht als externe Bibliothek implementiert, sondern als separates Binärprogramm.
 	Die DDNS-Funktionalität wird über dynamisch generierte Shell-Skripte gestartet.
-	\begin{lstlisting}
+	\begin{lstlisting}[language=PHP]
 		# dyndns.sh
 		rgdb -A $TROOT/misc/dyndns_run.php -V generate_start=$START > /var/run/dyndns.sh
 		sh /var/run/dyndns.sh > /dev/console
@@ -993,7 +993,7 @@
 	gestartet wird.
 	
 	Die eigentliche Befehlslogik wird dabei dynamisch erzeugt:
-	\begin{lstlisting}
+	\begin{lstlisting}[language=PHP]
 	if ($USER!="" && $PASS!="")
 	{
 		echo "echo Start dyndns #".$provider."... > /dev/console\n";
@@ -1014,7 +1014,7 @@
 
 	Die Analyse des Binärprogramms \texttt{/usr/bin/dyndns} wurde mithilfe von Ghidra genauer analysiert 
 	Es zeigt, dass die Kommandozeilenargumente direkt verarbeitet werden:
-	\begin{lstlisting}
+	\begin{lstlisting}[language=c]
 	case 0x6e:  // -n
 		pcRam1000027c = optarg;   // hostname
 	case 0x70:  // -p
@@ -1031,7 +1031,7 @@
 
 	Nach der Konfigurationsphase folgt die Netzwerklogik.
 	Das Programm arbeitet mit zustandbasierter Logik über \texttt{select()}:
-	\begin{lstlisting}
+	\begin{lstlisting}[language=c]
 	iVar2 = select(uVar7 + 1,
 			(fd_set *)local_288,
 			(fd_set *)__writefds,
@@ -1049,7 +1049,7 @@
 	Die Auswahl des DDNS-Anbieters bestimmt dabei den Aufbau der HTTP-Anfrage. 
 	Die Firmware unterstützt mehrere Anbieter beispielsweise DynDNS, No-IP, wobei jeder Anbieter ein spezifisches Anfrageformat verwendet. 
 	Beispiel DynDNS.org
-	\begin{lstlisting}
+	\begin{lstlisting}[language=c]
 	snprintf(acStack_260,500,
 		"GET /nic/update?&hostname=%s&ip=%s HTTP/1.0\r\n
 			Authorization: Basic %s\r\n
