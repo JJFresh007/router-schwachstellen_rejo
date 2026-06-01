@@ -19,7 +19,352 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global}
-    \entry{egevang2001}{report}{}
+    \entry{chalhoub2023}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=a537cabb41acee03e1ca4c64e2f6a927}{%
+           family={Chalhoub},
+           familyi={C\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod}}}%
+        {{hash=0f8b44db96f0051ceb98a264428f2aff}{%
+           family={Martin},
+           familyi={M\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Copenhagen Denmark}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{e5be30a7acefc4efe39f9ba263bd1a91}
+      \strng{fullhash}{e5be30a7acefc4efe39f9ba263bd1a91}
+      \strng{bibnamehash}{e5be30a7acefc4efe39f9ba263bd1a91}
+      \strng{authorbibnamehash}{e5be30a7acefc4efe39f9ba263bd1a91}
+      \strng{authornamehash}{e5be30a7acefc4efe39f9ba263bd1a91}
+      \strng{authorfullhash}{e5be30a7acefc4efe39f9ba263bd1a91}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{booktitle}{Proceedings of the 2023 {{European Symposium}} on {{Usable Security}}}
+      \field{isbn}{979-8-4007-0814-5}
+      \field{langid}{english}
+      \field{month}{10}
+      \field{shorttitle}{But Is It Exploitable?}
+      \field{title}{But Is It Exploitable? {{Exploring}} How {{Router Vendors Manage}} and {{Patch Security Vulnerabilities}} in {{Consumer-Grade Routers}}}
+      \field{urlday}{21}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \field{pages}{277\bibrangedash 295}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1145/3617072.3617110
+      \endverb
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/QPNHYR7G/Chalhoub and Martin - 2023 - But is it exploitable Exploring how Router Vendors Manage and Patch Security Vulnerabilities in Con.pdf
+      \endverb
+    \endentry
+    \entry{bsi}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=44ea1b356dcd7bfe0ece54601fb6bcec}{%
+           family={BSI},
+           familyi={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \strng{fullhash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \strng{bibnamehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \strng{authorbibnamehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \strng{authornamehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \strng{authorfullhash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Welche Aufgabe hat ein Router? Wie sichere ich meinen Router wirksam ab? Adil Aden erklärt die wichtigsten Dinge, die man über Router wissen muss.}
+      \field{howpublished}{https://www.bsi.bund.de/SharedDocs/Videos/DE/BSI/VerbraucherInnen/statementvideo-routersicherheit.html?nn=132646}
+      \field{journaltitle}{Bundesamt für Sicherheit in der Informationstechnik}
+      \field{langid}{ngerman}
+      \field{shorttitle}{{BSI-Experte erklärt}}
+      \field{title}{{BSI-Experte erklärt: Alles Wichtige rund um den Router}}
+      \field{urlday}{21}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+    \endentry
+    \entry{linksysproductend}{misc}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Experience fast, reliable, secure and easy to use WiFi when you level up with connectivity solutions made for home, business, and enterprise from Linksys.}
+      \field{howpublished}{https://www.linksys.com/pages/linksys-product-end-of-life}
+      \field{journaltitle}{Linksys}
+      \field{langid}{english}
+      \field{title}{Linksys {{Product End}} of {{Life}}}
+      \field{urlday}{26}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/KTALRCNX/linksys-product-end-of-life.html
+      \endverb
+    \endentry
+    \entry{dlinktechnicalsupport}{misc}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://supportannouncement.us.dlink.com/security/publication.aspx?name=SAP10408}
+      \field{title}{D-{{Link Technical Support}}}
+      \field{urlday}{30}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/CH79BKN3/publication.html
+      \endverb
+    \endentry
+    \entry{zisler2022}{book}{}
+      \name{author}{1}{}{%
+        {{hash=ebaa2525f3b3aa3b4c9ec0374e031f67}{%
+           family={Zisler},
+           familyi={Z\bibinitperiod},
+           given={Harald},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Bonn}%
+      }
+      \list{publisher}{1}{%
+        {Rheinwerk Verlag}%
+      }
+      \strng{namehash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
+      \strng{fullhash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
+      \strng{bibnamehash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
+      \strng{authorbibnamehash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
+      \strng{authornamehash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
+      \strng{authorfullhash}{ebaa2525f3b3aa3b4c9ec0374e031f67}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{edition}{7., aktualisierte Auflage}
+      \field{isbn}{978-3-8362-8950-4}
+      \field{langid}{german}
+      \field{series}{{Rheinwerk Computing}}
+      \field{shorttitle}{{Computer-Netzwerke}}
+      \field{title}{{Computer-Netzwerke: Grundlagen, Funktionsweisen, Anwendung}}
+      \field{year}{2022}
+    \endentry
+    \entry{baun2025}{book}{}
+      \name{author}{1}{}{%
+        {{hash=c8362ec3de9dbb4de64fee2d8b9cfe70}{%
+           family={Baun},
+           familyi={B\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Wiesbaden}%
+      }
+      \list{publisher}{1}{%
+        {Springer Fachmedien Wiesbaden}%
+      }
+      \strng{namehash}{c8362ec3de9dbb4de64fee2d8b9cfe70}
+      \strng{fullhash}{c8362ec3de9dbb4de64fee2d8b9cfe70}
+      \strng{bibnamehash}{c8362ec3de9dbb4de64fee2d8b9cfe70}
+      \strng{authorbibnamehash}{c8362ec3de9dbb4de64fee2d8b9cfe70}
+      \strng{authornamehash}{c8362ec3de9dbb4de64fee2d8b9cfe70}
+      \strng{authorfullhash}{c8362ec3de9dbb4de64fee2d8b9cfe70}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{isbn}{978-3-658-48604-4 978-3-658-48605-1}
+      \field{langid}{ngerman}
+      \field{series}{{IT kompakt}}
+      \field{shorttitle}{{Computernetze kompakt}}
+      \field{title}{{Computernetze kompakt: Eine praxisorientierte Einführung für Studium und Beruf}}
+      \field{urlday}{21}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.1007/978-3-658-48605-1
+      \endverb
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/ZKRBFTG4/Baun - 2025 - Computernetze kompakt Eine praxisorientierte Einführung für Studium und Beruf.pdf
+      \endverb
+    \endentry
+    \entry{mandl2019}{incollection}{}
+      \name{author}{1}{}{%
+        {{hash=73dc89dd47d5782f97fff283749ded14}{%
+           family={Mandl},
+           familyi={M\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=73dc89dd47d5782f97fff283749ded14}{%
+           family={Mandl},
+           familyi={M\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Wiesbaden}%
+      }
+      \list{publisher}{1}{%
+        {Springer Fachmedien}%
+      }
+      \strng{namehash}{73dc89dd47d5782f97fff283749ded14}
+      \strng{fullhash}{73dc89dd47d5782f97fff283749ded14}
+      \strng{bibnamehash}{73dc89dd47d5782f97fff283749ded14}
+      \strng{authorbibnamehash}{73dc89dd47d5782f97fff283749ded14}
+      \strng{authornamehash}{73dc89dd47d5782f97fff283749ded14}
+      \strng{authorfullhash}{73dc89dd47d5782f97fff283749ded14}
+      \strng{editorbibnamehash}{73dc89dd47d5782f97fff283749ded14}
+      \strng{editornamehash}{73dc89dd47d5782f97fff283749ded14}
+      \strng{editorfullhash}{73dc89dd47d5782f97fff283749ded14}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Für die Wegewahl werden im Internet verschiedene Verfahren eingesetzt und man muss prinzipiell zwischen der Wegewahl innerhalb autonomer Systeme (Intra-AS-Routing) und der Wegewahl im globalen Internet, also zwischen den autonomen Systemen (Inter-AS-Routing), unterscheiden. Jedes autonome System kann intern eigene Routing-Algorithmen verwenden, die in IPv4-Routern ablaufen. Jeder IPv4-Router verwaltet neben der protokollabhängigen Routing-Tabelle auch eine Forwarding-Tabelle, die der Entscheidung für eine Weiterleitung dient. Es gibt ein Regelwerk, nach dem die Forwarding-Tabelle in Routern durchsucht wird.}
+      \field{booktitle}{{Internet Internals: Vermittlungsschicht, Aufbau und Protokolle}}
+      \field{isbn}{978-3-658-23536-9}
+      \field{langid}{ngerman}
+      \field{title}{{Routing und Forwarding}}
+      \field{urlday}{23}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \field{pages}{71\bibrangedash 104}
+      \range{pages}{34}
+      \verb{doi}
+      \verb 10.1007/978-3-658-23536-9_5
+      \endverb
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/SXWL6G7F/Mandl - 2019 - Routing und Forwarding.pdf
+      \endverb
+    \endentry
+    \entry{schwarz2021}{article}{}
+      \name{author}{9}{}{%
+        {{hash=3662566dd587bc459588c274bb283dd5}{%
+           family={Schwarz},
+           familyi={S\bibinitperiod},
+           given={Franziska},
+           giveni={F\bibinitperiod}}}%
+        {{hash=00d0cd8739b90e48d5cfcc4dd755a728}{%
+           family={Schwarz},
+           familyi={S\bibinitperiod},
+           given={Klaus},
+           giveni={K\bibinitperiod}}}%
+        {{hash=73c13916f166886243fd3641ebe3f2d9}{%
+           family={Fuchs},
+           familyi={F\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=38ab76b3116c29f31bf05bd56fbbdfa4}{%
+           family={Creutzburg},
+           familyi={C\bibinitperiod},
+           given={Reiner},
+           giveni={R\bibinitperiod}}}%
+        {{hash=9360a1c302f0f7a91cec0c894b3d1bc8}{%
+           family={Akopian},
+           familyi={A\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=00d0cd8739b90e48d5cfcc4dd755a728}{%
+           family={Schwarz},
+           familyi={S\bibinitperiod},
+           given={Klaus},
+           giveni={K\bibinitperiod}}}%
+        {{hash=73c13916f166886243fd3641ebe3f2d9}{%
+           family={Fuchs},
+           familyi={F\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=38ab76b3116c29f31bf05bd56fbbdfa4}{%
+           family={Creutzburg},
+           familyi={C\bibinitperiod},
+           given={Reiner},
+           giveni={R\bibinitperiod}}}%
+        {{hash=9360a1c302f0f7a91cec0c894b3d1bc8}{%
+           family={Akopian},
+           familyi={A\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Society for Imaging Science and Technology}%
+      }
+      \strng{namehash}{c7825ed3fec0b5966c016fa4fc80c184}
+      \strng{fullhash}{246a330077366af807b4120d528fe797}
+      \strng{bibnamehash}{c7825ed3fec0b5966c016fa4fc80c184}
+      \strng{authorbibnamehash}{c7825ed3fec0b5966c016fa4fc80c184}
+      \strng{authornamehash}{c7825ed3fec0b5966c016fa4fc80c184}
+      \strng{authorfullhash}{246a330077366af807b4120d528fe797}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{TP-Link Technologies Co, Ltd. is a Chinese manufacturer of networking products and has a 42\% share of the consumer WLAN market, making it the market leader. The company sells about 150 million devices per year. Many people worldwide use the Internet every day and are connected to the Internet with their computers. In the world of smart homes, even coffee machines, refrigerators, smart sockets, and light bulbs have found their way to the Internet, not to mention the many smartphones, which are, of course, also connected to the Internet. Since many different dangers come from a heater or printer and the many other smart devices directly connected to the Internet, there is a safe haven: the local area network. To connect to the Internet, one needs a modem, which is built into a router in many cases. Routers route network packets back and forth between several computer networks. They are used to connect to the Internet, and they are the bridge between the home network and the Internet in almost every household connected to the Internet. Because of their nature as a bridge between local and global networks, they are also the largest attack vector. [19] This paper examines how up-to-date the firmware of standard home network routers is and how secure the firmware is. In order to obtain a representative result, the examined routers were selected according to fixed rules. Each router had to be a product of the manufacturer TP-Link, the routers had to be in the low-budged range (less than 20 Euro) and be available from Amazon. Also, two different types of investigations were identified for the selected devices. Firstly, the devices were examined in the form of physically existing hardware, and secondly, an attempt was made to access the firmware via the manufacturer\&\#x2019;s website. It was found that even the fixing of current vulnerabilities and recently released update files are no guarantee that older vulnerabilities have been fixed. Secrets such as private keys and certificates are hard-coded in the firmware and can be extracted from update files. Moreover, devices are deliberately built to make it impossible to install the latest alternative firmware.}
+      \field{issn}{2470-1173}
+      \field{journaltitle}{Electronic Imaging}
+      \field{langid}{english}
+      \field{month}{6}
+      \field{title}{Firmware {{Vulnerability Analysis}} of {{Widely Used Low-Budget TP-Link Routers}}}
+      \field{urlday}{24}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{volume}{33}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \field{pages}{1\bibrangedash 11}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.2352/ISSN.2470-1173.2021.3.MOBMU-135
+      \endverb
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/VW9SA56L/Schwarz et al. - 2021 - Firmware Vulnerability Analysis of Widely Used Low-Budget TP-Link Routers.pdf
+      \endverb
+    \endentry
+    \entry{bsia}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=44ea1b356dcd7bfe0ece54601fb6bcec}{%
+           family={BSI},
+           familyi={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \strng{fullhash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \strng{bibnamehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \strng{authorbibnamehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \strng{authornamehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \strng{authorfullhash}{44ea1b356dcd7bfe0ece54601fb6bcec}
+      \field{extraname}{2}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Cyber-Sicherheitsempfehlungen/Router-WLAN-VPN/Sicherheitstipps-fuer-privates-und-oeffentliches-WLAN/sicherheitstipps-fuer-privates-und-oeffentliches-wlan.html?nn=131138}
+      \field{journaltitle}{Bundesamt für Sicherheit in der Informationstechnik}
+      \field{langid}{ngerman}
+      \field{title}{{Sicherheitstipps im privaten und öffentlichen WLAN}}
+      \field{urlday}{21}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/3DM7MGQT/sicherheitstipps-fuer-privates-und-oeffentliches-wlan.html
+      \endverb
+    \endentry
+    \entry{egevang2001b}{report}{}
       \name{author}{2}{}{%
         {{hash=a2690a1b59eef94688e32c506d862108}{%
            family={Egevang},
@@ -41,8 +386,8 @@
       \strng{authorbibnamehash}{c9090cb16249e434961904f96489b71d}
       \strng{authornamehash}{c9090cb16249e434961904f96489b71d}
       \strng{authorfullhash}{c9090cb16249e434961904f96489b71d}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The NAT operation described in this document extends address translation introduced in RFC 1631 and includes a new type of network address and TCP/UDP port translation. In addition, this document corrects the Checksum adjustment algorithm published in RFC 1631 and attempts to discuss NAT operation and limitations in detail. This memo provides information for the Internet community.}
@@ -58,11 +403,8 @@
       \verb{doi}
       \verb 10.17487/RFC3022
       \endverb
-      \verb{file}
-      \verb /home/rebecca/Zotero/storage/24MALFNU/Egevang and Srisuresh - 2001 - Traditional IP Network Address Translator (Traditional NAT).pdf
-      \endverb
     \endentry
-    \entry{scarfone2009}{report}{}
+    \entry{scarfone2009b}{report}{}
       \name{author}{2}{}{%
         {{hash=6ea98e3682d33480471e822adaacdc41}{%
            family={Scarfone},
@@ -102,11 +444,8 @@
       \verb{doi}
       \verb 10.6028/NIST.SP.800-41r1
       \endverb
-      \verb{file}
-      \verb /home/rebecca/Zotero/storage/DX244MXH/Scarfone and Hoffman - 2009 - Guidelines on Firewalls and Firewall Policy.pdf
-      \endverb
     \endentry
-    \entry{frankel2007}{article}{}
+    \entry{frankel2007b}{article}{}
       \name{author}{4}{}{%
         {{hash=a3f84947b0324e478f5c7b23e84f5f7c}{%
            family={Frankel},
@@ -138,15 +477,15 @@
       \strng{authorbibnamehash}{b573a863ec2686a739bdd111ae9a4d12}
       \strng{authornamehash}{53e3429cf071ae7bf186cca599157954}
       \strng{authorfullhash}{b573a863ec2686a739bdd111ae9a4d12}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{This report provides readers with a detailed explanation of next generation 802.11 wireless security.}
-      \field{annotation}{Last Modified: 2017-02-19T20:02-05:00}
       \field{journaltitle}{NIST}
       \field{langid}{english}
       \field{month}{2}
+      \field{note}{Last Modified: 2017-02-19T20:02-05:00}
       \field{shorttitle}{Establishing {{Wireless Robust Security Networks}}}
       \field{title}{Establishing {{Wireless Robust Security Networks}}: {{A Guide}} to {{IEEE}} 802.11i}
       \field{urlday}{1}
@@ -154,11 +493,8 @@
       \field{urlyear}{2026}
       \field{year}{2007}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/rebecca/Zotero/storage/9TKNL7E5/Frankel et al. - 2007 - Establishing Wireless Robust Security Networks A Guide to IEEE 802.11i.pdf
-      \endverb
     \endentry
-    \entry{souppaya2012}{report}{}
+    \entry{souppaya2012b}{report}{}
       \name{author}{2}{}{%
         {{hash=ffbf3d2da7973bafe66533b2afd05546}{%
            family={Souppaya},
@@ -180,8 +516,8 @@
       \strng{authorbibnamehash}{27999c8113789b5d81354e2cbe6de0cb}
       \strng{authornamehash}{27999c8113789b5d81354e2cbe6de0cb}
       \strng{authorfullhash}{27999c8113789b5d81354e2cbe6de0cb}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{A wireless local area network (WLAN) is a group of wireless networking devices within a limited geographic area, such as an office building, that exchange data through radio communications. The security of each WLAN is heavily dependent on how well each WLAN component---including client devices, access points (AP), and wireless switches---is secured throughout the WLAN lifecycle, from initial WLAN design and deployment through ongoing maintenance and monitoring. The purpose of this publication is to help organizations improve their WLAN security by providing recommendations for WLAN security configuration and monitoring. This publication supplements other NIST publications by consolidating and strengthening their key recommendations.}
@@ -198,11 +534,8 @@
       \verb{doi}
       \verb 10.6028/NIST.SP.800-153
       \endverb
-      \verb{file}
-      \verb /home/rebecca/Zotero/storage/BVSFBIM4/Souppaya and Scarfone - 2012 - Guidelines for Securing Wireless Local Area Networks (WLANs).pdf
-      \endverb
     \endentry
-    \entry{tracy2007}{report}{}
+    \entry{tracy2007b}{report}{}
       \name{author}{4}{}{%
         {{hash=7928347a9a86dc4fe03734e05423d262}{%
            family={Tracy},
@@ -234,8 +567,8 @@
       \strng{authorbibnamehash}{3d62e8d3ad89562a5d37c63d7741f8c6}
       \strng{authornamehash}{15a1e045a151c995dc353554650fe30b}
       \strng{authorfullhash}{3d62e8d3ad89562a5d37c63d7741f8c6}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Web servers are often the most targeted and attacked hosts on organizations' networks. As a result, it is essential to secure Web servers and the network infrastructure that supports them. This document is intended to assist organizations in installing, configuring, and maintaining secure public Web servers. Practices described in detail include choosing Web server software and platforms, securing the underlying operating system and Web server software, deploying appropriate network protection mechanisms, and using, publicizing, and protecting information in a careful and systematic manner. The publication also provides recommendations for maintaining secure configurations through patching and upgrades, security testing, log monitoring, and backups of data and operating system files.}
@@ -252,11 +585,8 @@
       \verb{doi}
       \verb 10.6028/NIST.SP.800-44ver2
       \endverb
-      \verb{file}
-      \verb /home/rebecca/Zotero/storage/3LSSLRBL/Tracy et al. - 2007 - Guidelines on Securing Public Web Servers.pdf
-      \endverb
     \endentry
-    \entry{regenscheid2018b}{report}{}
+    \entry{regenscheid2018bb}{report}{}
       \name{author}{1}{}{%
         {{hash=fc1c79990dad532ac20cbeca8479e546}{%
            family={Regenscheid},
@@ -276,8 +606,8 @@
       \strng{authorbibnamehash}{fc1c79990dad532ac20cbeca8479e546}
       \strng{authornamehash}{fc1c79990dad532ac20cbeca8479e546}
       \strng{authorfullhash}{fc1c79990dad532ac20cbeca8479e546}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{This document provides technical guidelines and recommendations supporting resiliency of platform firmware and data against potentially destructive attacks. The platform is a collection of fundamental hardware and firmware components needed to boot and operate a system. A successful attack on platform firmware could render a system inoperable, perhaps permanently, or requiring reprogramming by the original manufacturer, resulting in significant disruptions to users. The technical guidelines in this document promote resiliency in the platform by describing security mechanisms for protecting the platform against unauthorized changes, detecting unauthorized changes that occur, and recovering from attacks rapidly and securely. Implementers, including Original Equipment Manufacturers (OEMs) and component/device suppliers, can use these guidelines to build stronger security mechanisms into platforms. System administrators, security professionals, and users can use this document to guide procurement strategies and priorities for future systems.}
@@ -296,83 +626,60 @@
       \verb{doi}
       \verb 10.6028/NIST.SP.800-193
       \endverb
-      \verb{file}
-      \verb /home/rebecca/Zotero/storage/PPDFCRBG/Regenscheid - 2018 - Platform firmware resiliency guidelines.pdf
-      \endverb
     \endentry
-    \entry{hostapdieee80211}{misc}{}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+    \entry{hostapdieee80211ab}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labeltitlesource}{title}
-      \field{howpublished}{https://w1.fi/hostapd/?utm\_source=chatgpt.com}
       \field{title}{Hostapd: {{IEEE}} 802.11 {{AP}}, {{IEEE}} 802.{{1X}}/{{WPA}}/{{WPA2}}/{{WPA3}}/{{EAP}}/{{RADIUS Authenticator}}}
-      \field{urlday}{31}
-      \field{urlmonth}{5}
+      \field{urlday}{1}
+      \field{urlmonth}{6}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/rebecca/Zotero/storage/KRCY3B6R/hostapd.html
-      \endverb
     \endentry
-    \entry{netfilteriptablesproject}{misc}{}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+    \entry{netfilteriptablesprojectb}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labeltitlesource}{title}
-      \field{howpublished}{https://www.netfilter.org/documentation/?utm\_source=chatgpt.com}
       \field{title}{Netfilter/Iptables Project Homepage - {{Documentation}} about the Netfilter/Iptables Project}
       \field{urlday}{31}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/rebecca/Zotero/storage/NDZH49SA/documentation.html
-      \endverb
     \endentry
-    \entry{dlinksupportresources}{misc}{}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+    \entry{dlinksupportresourcesb}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labeltitlesource}{title}
-      \field{howpublished}{http://support.dlink.com.au/download/download.aspx?product=DIR-600}
       \field{title}{D-{{Link Support Resources}}}
       \field{urlday}{31}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/rebecca/Zotero/storage/PG4CR3DL/download.html
-      \endverb
     \endentry
-    \entry{squashfs40filesystem}{misc}{}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+    \entry{squashfs40filesystemab}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labeltitlesource}{title}
-      \field{howpublished}{https://www.kernel.org/doc/html/latest/filesystems/squashfs.html?utm\_source=chatgpt.com}
       \field{title}{Squashfs 4.0 {{Filesystem}} --- {{The Linux Kernel}} Documentation}
-      \field{urlday}{31}
-      \field{urlmonth}{5}
+      \field{urlday}{1}
+      \field{urlmonth}{6}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/rebecca/Zotero/storage/S8DNI33T/squashfs.html
-      \endverb
     \endentry
-    \entry{pathtraversalowasp}{misc}{}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+    \entry{pathtraversalowaspb}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labeltitlesource}{title}
       \field{abstract}{Path Traversal on the main website for The OWASP Foundation. OWASP is a nonprofit foundation that works to improve the security of software.}
-      \field{howpublished}{https://owasp.org/www-community/attacks/Path\_Traversal}
       \field{langid}{english}
       \field{title}{Path {{Traversal}} |{} {{OWASP Foundation}}}
       \field{urlday}{30}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/rebecca/Zotero/storage/KT6RK7YG/Path_Traversal.html
-      \endverb
     \endentry
-    \entry{reschke2015}{report}{}
+    \entry{reschke2015b}{report}{}
       \name{author}{1}{}{%
         {{hash=c07b881ce18f1c139ec16860aa2c8dad}{%
            family={Reschke},
@@ -389,8 +696,8 @@
       \strng{authorbibnamehash}{c07b881ce18f1c139ec16860aa2c8dad}
       \strng{authornamehash}{c07b881ce18f1c139ec16860aa2c8dad}
       \strng{authorfullhash}{c07b881ce18f1c139ec16860aa2c8dad}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{This document defines the "Basic" Hypertext Transfer Protocol (HTTP) authentication scheme, which transmits credentials as user-id/ password pairs, encoded using Base64.}
@@ -406,46 +713,35 @@
       \verb{doi}
       \verb 10.17487/RFC7617
       \endverb
-      \verb{file}
-      \verb /home/rebecca/Zotero/storage/36ZCJESD/Reschke - 2015 - The 'Basic' HTTP Authentication Scheme.pdf
-      \endverb
     \endentry
-    \entry{wstgstableowasp}{misc}{}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+    \entry{wstgstableowaspb}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labeltitlesource}{title}
       \field{abstract}{WSTG - Stable on the main website for The OWASP Foundation. OWASP is a nonprofit foundation that works to improve the security of software.}
-      \field{howpublished}{https://owasp.org/www-project-web-security-testing-guide/stable/4-Web\_Application\_Security\_Testing/07-Input\_Validation\_Testing/11.1-Testing\_for\_Local\_File\_Inclusion}
       \field{langid}{english}
       \field{title}{{{WSTG}} - {{Stable}} |{} {{OWASP Foundation}}}
       \field{urlday}{30}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/rebecca/Zotero/storage/KVIPMF2T/11.html
-      \endverb
     \endentry
-    \entry{nvdcve202642375}{misc}{}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+    \entry{nvdcve202642375ab}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labeltitlesource}{title}
-      \field{howpublished}{https://nvd.nist.gov/vuln/detail/CVE-2026-42375?utm\_source=chatgpt.com}
       \field{title}{{{NVD}} - {{CVE-2026-42375}}}
-      \field{urlday}{31}
-      \field{urlmonth}{5}
+      \field{urlday}{1}
+      \field{urlmonth}{6}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/rebecca/Zotero/storage/VAIT6QV3/CVE-2026-42375.html
-      \endverb
     \endentry
-    \entry{telnetprotocolspecification}{report}{}
+    \entry{telnetprotocolspecificationb}{report}{}
       \list{institution}{1}{%
         {Internet Engineering Task Force}%
       }
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labeltitlesource}{title}
       \field{abstract}{This is the specification of the Telnet protocol used for remote terminal access in the ARPA Internet. The purpose of the TELNET Protocol is to provide a fairly general, bi-directional, eight-bit byte oriented communications facility. Its primary goal is to allow a standard method of interfacing terminal devices and terminal-oriented processes to each other. It is envisioned that the protocol may also be used for terminal-terminal communication ("linking") and process-process communication (distributed computation). This RFC specifies a standard for the ARPA Internet community. Hosts on the ARPA Internet are expected to adopt and implement this standard. Obsoletes NIC 18639.}
       \field{month}{5}
@@ -460,11 +756,8 @@
       \verb{doi}
       \verb 10.17487/RFC0854
       \endverb
-      \verb{file}
-      \verb /home/rebecca/Zotero/storage/892LW63B/1983 - Telnet Protocol Specification.pdf
-      \endverb
     \endentry
-    \entry{thomas2021}{article}{}
+    \entry{thomas2021b}{article}{}
       \name{author}{6}{}{%
         {{hash=1424b7da5eae27e9be8aaa034b733443}{%
            family={Thomas},
@@ -503,13 +796,13 @@
       \strng{authorbibnamehash}{3085567b2244bddb9845922b13e526c8}
       \strng{authornamehash}{f6163d576771984867d609c266c88e79}
       \strng{authorfullhash}{3085567b2244bddb9845922b13e526c8}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Performing security analysis of embedded devices is a challenging task. They present many difficulties not usually found when analyzing commodity systems: undocumented peripherals, esoteric instruction sets, and limited tool support. Thus, a significant amount of reverse engineering is almost always required to analyze such devices. In this paper, we present Incision, an architecture and operating-system agnostic reverse engineering framework. Incision tackles the problem of reducing the upfront effort to analyze complex end-user devices. It combines static and dynamic analyses in a feedback loop, enabling information from each to be used in tandem to improve our overall understanding of the firmware analyzed. We use Incision to analyze a variety of devices and firmware. Our evaluation spans firmware based on three RTOSes, an automotive ECU, and a 4G/LTE baseband. We demonstrate that Incision does not introduce significant complexity to the standard reverse engineering process and requires little manual effort to use. Moreover, its analyses produce correct results with high confidence and are robust across different OSes and ISAs.}
       \field{issn}{2569-2925}
-      \field{journaltitle}{IACR Transactions on Cryptographic Hardware and Embedded Systems}
+      \field{journaltitle}{TCHES}
       \field{langid}{english}
       \field{month}{7}
       \field{title}{Cutting {{Through}} the {{Complexity}} of {{Reverse Engineering Embedded Devices}}}
@@ -523,8 +816,397 @@
       \verb{doi}
       \verb 10.46586/tches.v2021.i3.360-389
       \endverb
+    \endentry
+    \entry{vomdorp2022}{article}{}
+      \name{author}{2}{}{%
+        {{hash=98ef6eb94e972b7b0b97ea0dd04b0217}{%
+           family={{vom Dorp}},
+           familyi={v\bibinitperiod},
+           given={Johannes},
+           giveni={J\bibinitperiod}}}%
+        {{hash=06ba38bfcacc8237a4282a49366e37a2}{%
+           family={Helmke},
+           familyi={H\bibinitperiod},
+           given={René},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{8b040496e752f97487040c025e4f89b8}
+      \strng{fullhash}{8b040496e752f97487040c025e4f89b8}
+      \strng{bibnamehash}{8b040496e752f97487040c025e4f89b8}
+      \strng{authorbibnamehash}{8b040496e752f97487040c025e4f89b8}
+      \strng{authornamehash}{8b040496e752f97487040c025e4f89b8}
+      \strng{authorfullhash}{8b040496e752f97487040c025e4f89b8}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Fraunhofer}
+      \field{title}{Home Router Security Report 2022}
+      \field{year}{2022}
+    \endentry
+    \entry{capturesetupwlanwireshark}{misc}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://wiki.wireshark.org/CaptureSetup/WLAN}
+      \field{title}{{{CaptureSetup}}/{{WLAN}} - {{Wireshark Wiki}}}
+      \field{urlday}{26}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
       \verb{file}
-      \verb /home/rebecca/Zotero/storage/GB6XM2Y8/Thomas et al. - 2021 - Cutting Through the Complexity of Reverse Engineering Embedded Devices.pdf
+      \verb /home/johanna/Zotero/storage/RA4UNK92/WLAN.html
+      \endverb
+    \endentry
+    \entry{ipwhois142251150119}{misc}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{WHOIS data for IP 142.251.150.119: owner, ISP, ASN, CIDR, abuse contact. Free lookup with live data from ARIN, RIPE, APNIC, LACNIC, AFRINIC.}
+      \field{howpublished}{https://whoisfreaks.com/tools/ip-whois/lookup/142.251.150.119}
+      \field{journaltitle}{WhoisFreaks}
+      \field{langid}{english}
+      \field{title}{{{IP WHOIS}} for 142.251.150.119 |{} {{Owner}}, {{ISP}} \& {{ASN}} for {{Any IP}}}
+      \field{urlday}{26}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/24PYIGLQ/142.251.150.html
+      \endverb
+    \endentry
+    \entry{cverecordcve2014125122}{misc}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://www.cve.org/CVERecord?id=CVE-2014-125122}
+      \field{title}{{{CVE Record}}: {{CVE-2014-125122}}}
+      \field{urlday}{28}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/GD37HZPL/CVERecord.html
+      \endverb
+    \endentry
+    \entry{cwecwe121stackbased}{misc}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://cwe.mitre.org/data/definitions/121.html}
+      \field{title}{{{CWE}} - {{CWE-121}}: {{Stack-based Buffer Overflow}} (4.20)}
+      \field{urlday}{28}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/RR3B8R58/121.html
+      \endverb
+    \endentry
+    \entry{porath2020}{book}{}
+      \name{author}{1}{}{%
+        {{hash=0b5e8d0bc0fbb0f67d1710ae7daa409a}{%
+           family={Porath},
+           familyi={P\bibinitperiod},
+           given={Ron},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin, Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{0b5e8d0bc0fbb0f67d1710ae7daa409a}
+      \strng{fullhash}{0b5e8d0bc0fbb0f67d1710ae7daa409a}
+      \strng{bibnamehash}{0b5e8d0bc0fbb0f67d1710ae7daa409a}
+      \strng{authorbibnamehash}{0b5e8d0bc0fbb0f67d1710ae7daa409a}
+      \strng{authornamehash}{0b5e8d0bc0fbb0f67d1710ae7daa409a}
+      \strng{authorfullhash}{0b5e8d0bc0fbb0f67d1710ae7daa409a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{isbn}{978-3-662-60910-1 978-3-662-60911-8}
+      \field{langid}{ngerman}
+      \field{shorttitle}{{Internet, Cyber- und IT-Sicherheit von A-Z}}
+      \field{title}{{Internet, Cyber- und IT-Sicherheit von A-Z: Aktuelle Begriffe kurz und einfach erklärt -- Für Beruf, Studium und Privatleben}}
+      \field{urlday}{28}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2020}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.1007/978-3-662-60911-8
+      \endverb
+    \endentry
+    \entry{httpmethodsget}{misc}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{W3Schools offers free online tutorials, references and exercises in all the major languages of the web. Covering popular subjects like HTML, CSS, JavaScript, Python, SQL, Java, and many, many more.}
+      \field{howpublished}{https://www.w3schools.com/tags/ref\_httpmethods.asp}
+      \field{langid}{american}
+      \field{title}{{{HTTP Methods GET}} vs {{POST}}}
+      \field{urlday}{28}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/SYSF7RMZ/ref_httpmethods.html
+      \endverb
+    \endentry
+    \entry{ibm}{misc}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The Common Gateway Interface (CGI) specification was introduced to enable and standardize the interface between Web servers and external programs. The CGI is a relatively simple, platform and language independent, industry-standard interface for Web application development. Programs that implement the CGI standard are commonly called CGI programs.}
+      \field{howpublished}{https://www.ibm.com/docs/en/i/7.6.0?topic=functionality-cgi}
+      \field{langid}{american}
+      \field{month}{9}
+      \field{title}{{{IBM}} i}
+      \field{urlday}{28}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/F5D73J95/7.6.html
+      \endverb
+    \endentry
+    \entry{metasploitpenetrationtesting}{misc}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Find security issues, verify vulnerability mitigations \& manage security assessments with Metasploit. Get the world's best penetration testing software now.}
+      \field{howpublished}{https://www.metasploit.com/}
+      \field{journaltitle}{Metasploit}
+      \field{langid}{english}
+      \field{title}{Metasploit |{} {{Penetration Testing Software}}, {{Pen Testing Security}}}
+      \field{urlday}{31}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/SEEPRLVA/www.metasploit.com.html
+      \endverb
+    \endentry
+    \entry{builtinexceptions}{misc}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In Python, all exceptions must be instances of a class that derives from BaseException. In a try statement with an except clause that mentions a particular class, that clause also handles any excep...}
+      \field{howpublished}{https://docs.python.org/3/library/exceptions.html}
+      \field{journaltitle}{Python documentation}
+      \field{langid}{english}
+      \field{title}{Built-in {{Exceptions}}}
+      \field{urlday}{29}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/EYH2IQNS/exceptions.html
+      \endverb
+    \endentry
+    \entry{wrt120nfprintfstack}{misc}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://web.archive.org/web/20210424073058/http://www.devttys0.com/2014/02/wrt120n-fprintf-stack-overflow/}
+      \field{month}{4}
+      \field{title}{{{WRT120N}} Fprintf {{Stack Overflow}} -- /Dev/{{ttyS0}}}
+      \field{urlday}{21}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+    \endentry
+    \entry{urllibrequestextensiblelibrary}{misc}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Source code: Lib/urllib/request.py The urllib.request module defines functions and classes which help in opening URLs (mostly HTTP) in a complex world --- basic and digest authentication, redirection...}
+      \field{howpublished}{https://docs.python.org/3/library/urllib.request.html}
+      \field{journaltitle}{Python documentation}
+      \field{langid}{english}
+      \field{title}{Urllib.Request --- {{Extensible}} Library for Opening {{URLs}}}
+      \field{urlday}{29}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/VBUY8SNG/urllib.request.html
+      \endverb
+    \endentry
+    \entry{heffner2014}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=61913b91f853f86042f045cee8ee97a7}{%
+           family={Heffner},
+           familyi={H\bibinitperiod},
+           given={Craig},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{61913b91f853f86042f045cee8ee97a7}
+      \strng{fullhash}{61913b91f853f86042f045cee8ee97a7}
+      \strng{bibnamehash}{61913b91f853f86042f045cee8ee97a7}
+      \strng{authorbibnamehash}{61913b91f853f86042f045cee8ee97a7}
+      \strng{authornamehash}{61913b91f853f86042f045cee8ee97a7}
+      \strng{authorfullhash}{61913b91f853f86042f045cee8ee97a7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{WRT120N 1.0.0.7 - Remote Stack Overflow. CVE-103521 . remote exploit for Hardware platform}
+      \field{howpublished}{https://www.exploit-db.com/exploits/31758}
+      \field{journaltitle}{Exploit Database}
+      \field{langid}{english}
+      \field{month}{2}
+      \field{title}{{{WRT120N}} 1.0.0.7 - {{Remote Stack Overflow}}}
+      \field{urlday}{28}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2014}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/J3MVEV5G/31758.html
+      \endverb
+    \endentry
+    \entry{reversingwrt120nsfirmware}{misc}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://web.archive.org/web/20210416210329/http://www.devttys0.com/2014/02/reversing-the-wrt120n-firmware-obfuscation/}
+      \field{month}{4}
+      \field{title}{Reversing the {{WRT120N}}'s {{Firmware Obfuscation}} -- /Dev/{{ttyS0}}}
+      \field{urlday}{29}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+    \endentry
+    \entry{fielding2022}{report}{}
+      \name{author}{3}{}{%
+        {{hash=489e3655cdca151facfb40953b9759f8}{%
+           family={Fielding},
+           familyi={F\bibinitperiod},
+           given={Roy\bibnamedelima T.},
+           giveni={R\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=7d1635d30c3304a4da18074b0201f6b0}{%
+           family={Nottingham},
+           familyi={N\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+        {{hash=c07b881ce18f1c139ec16860aa2c8dad}{%
+           family={Reschke},
+           familyi={R\bibinitperiod},
+           given={Julian},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Internet Engineering Task Force}%
+      }
+      \strng{namehash}{71f5c2585c576fd9af736848fe11bc35}
+      \strng{fullhash}{71f5c2585c576fd9af736848fe11bc35}
+      \strng{bibnamehash}{71f5c2585c576fd9af736848fe11bc35}
+      \strng{authorbibnamehash}{71f5c2585c576fd9af736848fe11bc35}
+      \strng{authornamehash}{71f5c2585c576fd9af736848fe11bc35}
+      \strng{authorfullhash}{71f5c2585c576fd9af736848fe11bc35}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The Hypertext Transfer Protocol (HTTP) is a stateless application-level protocol for distributed, collaborative, hypertext information systems. This document describes the overall architecture of HTTP, establishes common terminology, and defines aspects of the protocol that are shared by all versions. In this definition are core protocol elements, extensibility mechanisms, and the "http" and "https" Uniform Resource Identifier (URI) schemes. This document updates RFC 3864 and obsoletes RFCs 2818, 7231, 7232, 7233, 7235, 7538, 7615, 7694, and portions of 7230.}
+      \field{month}{6}
+      \field{number}{RFC 9110}
+      \field{title}{{{HTTP Semantics}}}
+      \field{type}{Request for {{Comments}}}
+      \field{urlday}{29}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.17487/RFC9110
+      \endverb
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/HUX9GQFP/Fielding et al. - 2022 - HTTP Semantics.pdf
+      \endverb
+    \endentry
+    \entry{rapid7metasploitframework}{misc}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Metasploit Framework}
+      \field{howpublished}{Rapid7}
+      \field{month}{5}
+      \field{title}{Rapid7/Metasploit-Framework}
+      \field{urlday}{29}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{urldateera}{ce}
+    \endentry
+    \entry{rubydocinfomethodrex}{misc}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Documenting RubyGems, Stdlib, and GitHub Projects}
+      \field{howpublished}{https://www.rubydoc.info/gems/rex-text/0.1.2/Rex\%2FText.rand\_text\_alpha}
+      \field{shorttitle}{{{RubyDoc}}.Info}
+      \field{title}{{{RubyDoc}}.Info: {{Method}}: {{Rex}}::{{Text}}.Rand\_text\_alpha -- {{Documentation}} for Rex-Text (0.1.2) -- {{RubyDoc}}.Info}
+      \field{urlday}{31}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/YYFC78KE/RexText.html
+      \endverb
+    \endentry
+    \entry{rubydocinfomethodaddressable}{misc}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Documenting RubyGems, Stdlib, and GitHub Projects}
+      \field{howpublished}{https://www.rubydoc.info/gems/addressable/Addressable\%2FURI:normalize}
+      \field{shorttitle}{{{RubyDoc}}.Info}
+      \field{title}{{{RubyDoc}}.Info: {{Method}}: {{Addressable}}::{{URI}}\#normalize -- {{Documentation}} for Addressable (2.9.0) -- {{RubyDoc}}.Info}
+      \field{urlday}{31}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/F56HZRIN/AddressableURInormalize.html
+      \endverb
+    \endentry
+    \entry{documentationruby33}{misc}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://docs.ruby-lang.org/en/3.3/}
+      \field{title}{Documentation for {{Ruby}} 3.3}
+      \field{urlday}{31}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/QU5DFRW4/3.3.html
+      \endverb
+    \endentry
+    \entry{howhandleruby}{misc}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Master Ruby syntax for advanced Cybersecurity exploit development in Metasploit, learn module design techniques, and enhance penetration testing skills with practical coding strategies.}
+      \field{howpublished}{https://labex.io/tutorials/nmap-how-to-handle-ruby-syntax-in-metasploit-419611}
+      \field{journaltitle}{LabEx}
+      \field{langid}{english}
+      \field{title}{How to Handle {{Ruby}} Syntax in {{Metasploit}}}
+      \field{urlday}{31}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/johanna/Zotero/storage/CTZQCIWB/nmap-how-to-handle-ruby-syntax-in-metasploit-419611.html
       \endverb
     \endentry
   \enddatalist
