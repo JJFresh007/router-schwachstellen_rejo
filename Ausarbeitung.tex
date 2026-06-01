@@ -447,28 +447,57 @@
 
 	\subsection{WLAN-Verschlüsselung}
 	\label{sec:WLAN-Verschlüsselung}
-	Bei der WLAN-verschlüsselung wird die Funkkommunikation zwischen dem Endgerät und dem 
-	Access-Point abgesichert.
-	- basiert auf IEEE-blabla und IEE blavla (für WPA3)
-	- jedes Gerät in Reichweite kann den Datenverkehr mithören
-	- durch verschlüsselung wird das verhindert
-	Für WPA2 muss eine Verschlüsselung durch AES-CCMP (Counter Mode with CBC\_MAC Protokoll) gegeben sein.
-	CCMP ist ein Sicherheitsstandart gemäß IEEE 802.1. Hierbei werden verschiedene kryptographische
-	Algorithmen verwendet, CCMP ist der Mechnismus zur Integritätssicherung, verschlüsselung und Authentifizierung 
-	Das Verfahren Nutzt einen 128 Bit langen Schlüssel in kombination mit einem 48 Bit langem Initialisierungsvektor,
-	Das Verfahren basiert auf Advanced Encryption Standart (AES).
-	- AES sorgt für starke symmetrische Verschlüsselung
-	- CCMP = Verschlüsselung und Integritätsprüfung
-	- Daten sind dann gegen Lesen und Manipulation geschützt
-	- Sitzungsschlüssel aushandeln (Genau beschreibung hier noch machen!!!!)
-	- Schwachstellen: schwache Passwörter, KRACK-Angriffe (wtf?), Schlüssel wiederverwenden
+	Bei der WLAN-Verschlüsselung wird die Funkkommunikation zwischen dem Endgerät und dem 
+	Access-Point abgesichert. Dies basiert auf IEEE-802.11-Familie, insbesondere Erweiterungen wie
+	IEEE 802.11i (für WPA2) und neuere Spezifikationen für WPA3. Ist der Datenverkehr unverschlüsselt, 
+	kann jedes Gerät in Reichweite den Datenverkehr mithören.
 
+	WPA2
+	Für WPA2 muss eine Verschlüsselung durch AES-CCMP (Counter Mode with CBC\_MAC Protokoll) gegeben sein.
+	CCMP ist ein Sicherheitsmechanismus, der auf Advanced Encryption Standart (AES) basiert und sowohl
+	Vertraulichkeit als auch Integrität und Authentizität der Daten sicherstellt.
+	Das Verfahren verknüpft zwei AES Modi. Beim Counter Mode (CTR) ist für die
+	Verschlüsselung des Klartextes verantwortlich, der CBC-MAC (Cipher Block Chaining Message Authentication Code)
+	sorgt für die Integrität in dem er einen Authentifizierungswert berechnet. Dieser stellt sicher,
+	das die Daten nicht unbemerkt manipuliert werden können. Bevor die eigentliche übertragung der Daten
+	beginnt, wird ein Sitzungsschlüssel ausgehandelt.
+	\begin{itemize}
+		\item{Beide Seiten besitzen einen Pre-Shared Key (PSK)}
+		\item{Daraus wird der Pairwise Master Key (PMK) berechnet}
+		\item{Im 4-Way Handshake werden Zufallszahlen ausgetauscht}
+		\item{Daraus wird der Pairwise Transit Key (PTK) berechnet}
+		\item{Der PTK ist in Teilschlüssel für die Verschlüsselung, Integrität und Nachrichtenvalidierung aufgeteilt}
+	\end{itemize}
+	WPA2 wird heute weittestgehend durch WPA3 ersetzt, da es einige Schwachstellen aufweist.
+	Schwache Passwörter ermöglichen Offline-Brute-Force Angiffe. Angreifer können den Wiederholten Handshake ausnutzen
+	(KRACK-Angriff). Das wiederverwenden von Zufallszahlen kann die icherheit kompromittieren.
+	
 	WPA3:
-	-Weiterentwicklung von WPA2
-	- kein Sitzungsschlüssel sondern WPA3 SAE(Dragonfly Handshake) -> (noch beschreiben!!!)
-	- Foward Security = selbst bei passwort entschlüsselung können daten nicht etschlüsselt werden
-	- OWE (Opportunistic Wireless Encryption)
-	-  -> offene WLANs sind auch verschlüsselt auch ohne PW 
+	WPA3 ist die Weiterentwicklung von WPA2. Bei dem verfahren werden keine Sitzungsschlüssel mehr verwendet,
+	sondern SAE(Dragonfly Handshake).
+	Der Personal-Mode ist für den Privatgebrauch konzipiert. Alle Nutzer verwenden einen Pre-Shared Key (PSK)
+	also das gleiche Passwort um das Netztwerk nutzen zu können. Der "Enterprise-Modus" wurde für Unternehmen
+	entwickelt. Er ermöglicht die individuelle Authentifizierung, durch den Benutzer. Dieser meldet sich mit dem 
+	individuellen Benutzernamen und Passwort am netztwerk an.
+	SAE (Dragonfly Handshake) bildet die Grundlage für einen sicheren Austausch der Sitzungsschlüssel zwischen
+	dem Access Point und dem WLAN-Client. Im Gegensatz zu WPA2 wird bei WPA3 das "Shared Secret". also das Geheimniss
+	nicht über den Funkkanal übertragen sondern nur das Ergebnis einer Berechnung. Zudem stellt SAE sicher,
+	dass ein Angreifer selbst wenn er das Passwort kenne sollte, keine im voraus aufgezeichneten Datenpackete
+	nachträglich entschlüsseln kann. Das nennt sich Perfek Forward Secrecy.
+	\begin{itemize}
+		\item{Die Parteien starten mit einem Passwort}
+		\item{Beide Seiten berechnen einen Punkt auf einer elliptischen Kurve, basierend auf dem Passwort}
+		\item{Es werden nur abgeleitete Werte über den Netzwerkverkehr ausgetauscht}
+		\item{Im 4-Way Handshake werden Zufallszahlen ausgetauscht}
+		\item{Das gemeinsame Geheimnis wird berechnet, ohne dass das Passwort selbst übertragen wird}
+	\end{itemize}
+	Dieses Vorgehen bietet Schutz gegen OffOffline-Brute-Force Angiffen. Zudem werden eine sensiblen Informationen
+	übertragen und durch das PFS können selbst bei bekanntmachung der Schlüssel, die vergangenen Sitzungen nicht entschlüsselt werden.
+
+	OWE (Opportunistic Wireless Encryption)
+	OWE ermöglicht Verschlüsselung auch in offenen WLAN-Netzten ohne Passwort. Es wird automatisch ein temporärer
+	Schlüssel zwischen dem Client unde dem Access Point ausgehandelt. OWE bietet Schutz vor passivem Mithören, kann
+	aber keine Authentifizierung sicherstellen.
 	%---Quelle(https://csrc.nist.rip/external/nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-153.pdf)---%
 
 	\subsection{Zugriffskontrolle}
@@ -712,12 +741,13 @@
 	\subsection{LFI-Schwachstelle}
 	\label{sec:LFI-Schwachstelle}
 
-	In \texttt{squashfs-root/www/} liegt die Implementierung des Webinterface, verteilt auf eine Vielzahl von Ordner. 
-	\texttt{squashfs-root/www/model/\_\_show\_info.php} ist insbesondere relevant.
-	Die Datei ist ein generischer Content-Renderer für das Webinterface. 
-	Sie kann zum einen Standartanzeigen machen und
-	Dynamische Includes machen. 
-	Sie enthält folgenden Code:
+	Im Rahmen der Firmware-Analyse wurde im Verzeichniss \texttt{squashfs-root/www/} 
+	die Implementierung des Webinterface untersucht. Dabei konnte in der Datei 
+	\texttt{squashfs-root/www/model/\_\_show\_info.php} eine sicherheitsrelevante Schwachstelle
+	identifiziert werden.
+	Die Datei fungiert als generischer Content-Renderer für das Webinterface. 
+	Sie ermöglicht unter anderem das dynamische Einbinden von Dateien.
+	Der relevante Codeabschnitt lautet:
 	\begin{lstlisting}
 	if($REQUIRE_FILE!="")
 	{
@@ -738,10 +768,13 @@
 		\caption{Seite nach Exploit}
 		\label{fig: Hallo}
 	\end{figure}
+
+	Auswirkung
 	Die Datei /var/etc/httpasswd enthält für den aktuellen Benutzername und das Passwort,
 	welche wiederum oft nur schwach gehasht oder wie in diesem Fall im Klartext in der Datei gespeichert wird.
 	Dies ermöglicht die Umgehung der Authentifizierung.
 
+	Automatisierte Analyse
 	Ein automatisiertes Testskript wurde verwendet um verschiedene Dateisysteme abzurufen.
 	\begin{lstlisting}
 	#!/bin/bash
@@ -795,7 +828,6 @@
 	und einem Server. Mit -H lassen sich HTTP-Header setzen. Zudem wurde das Paket $jq$ installiert, so kann die Eingabe automatisch
 	entsprechend der URL-Vorgaben formatiert werden.
 
-	
 	\begin{itemize}
 	\item \texttt{/var/etc/httpasswd} – enthält Zugangsdaten für das Webinterface
 	\item \texttt{/var/log/messages} – enthält Logdaten und Netzwerkaktivität
@@ -836,6 +868,7 @@
 	Die Ausnutzung ist trivial und erfordert keine besonderen Bedingungen.
 
 	\subsection{Telnet}
+	Im Rahmen der Analyse wurde überprüft, ob der Router eine Telnet-Schnittstelle für Remote-Zugriffe bereitstellt.
 	Teletype Network (Telnet) ist ein Client/Server basiertes Protokoll (Port 23).
 	Der Austausch erfolgt über eine TCP Verbindung. Bei Routern dient Telnet als Remote-Management-Protokoll
 	und gibt dem Benutzer eine Kommandozeile auf dem Gerät.
@@ -844,6 +877,8 @@
 	nc -zv 192.168.0.1 23
 	Connection to 192.168.0.1 23 port [tcp/telnet] succeeded!
 	\end{lstlisting}
+	
+	Technische Analyse
 	Der D-Link DIR 600 besitzt eine Telnet-Schnittstelle, welche durch einen Nutzter und ein Passwort
 	geschützt sind. Unter einem Embedded Linux ist der Standardnutzer in diesem Fall \texttt{Alphanetworks}.
 	Dies lässt sich durch eine kurze Recherche über das Internet herausfinden. Das Standardpasswort des Routers unterscheidet sich
@@ -866,7 +901,10 @@
 	login: Alphanetworks
 	Password: wrgn23_dlwbr_dir600b
 	\end{lstlisting}
-	Die eingebaute Shell namens \texttt{Busybox} ist eine Custom-Shell die lediglich ein paar ausgewählte Linux-Befehle unterstützt.
+	Eine erfolgreiche Anmeldung bestätigt die Gültigkeit dieser Zugangsdaten.
+	
+	Nach erfolgreicher Anmeldung erhält der Benutzer Zugriff auf eine Shell-Umgebung, die durch \texttt{Busybox}, 
+	bereitstellt wird. BusyBox ist eine Sammlung von Unix-Werkzeugen, die unter anderem eine Shell bereitstellen. 
 	Der Befehl \texttt{mount} zeigt folgendes:
 	\begin{lstlisting}
 	/dev/root on / type squashfs (ro)
