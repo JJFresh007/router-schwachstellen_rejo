@@ -420,7 +420,7 @@
 	- entscheidung auf grundlage von Paket infos
 	- speichern keine infos über status oder kontext der verbindung
 	- überprüft Quell- und Ziel-IP-Adresse, Portnummer und den verkehrstyp im Header
-	- Filterung nur so gut wie vom nutzer definierte -> müssen gescheit verwaltet werden
+	- Filterung nur so gut wie vom Benutzer definierte -> müssen gescheit verwaltet werden
 	- weniger ressourcen und schneller -> gut bei hohem Datenverkehr
 	- wird heute vorallem dazu verwendet die last der staful firewall zu verringern
 	- bekannte IP-Adressen blocken, geographische Regionen
@@ -552,8 +552,8 @@
 	%-------------TEST die alle NICHT funktioniert haben---------------------%
 	Ziel der Untersuchung war es, potenzielle Sicherheitslücken zu identifizieren und zu testen.
 	Die Analyse wurde unter Kali Linux durchgeführt, wobei der Router sowohl über Ethernet als auch
-	über das Wireless Lokal Area Networke (WLAN) verbunden war.
-	Die IP Adresse des Gerätes (192.168.0.1) wurde mittels \texttt{ping} sowie \texttt{ip route}
+	über das Wireless Local Area Network (WLAN) verbunden war.
+	Die IP-Adresse des Gerätes (192.168.0.1) wurde mittels \texttt{ping} sowie \texttt{ip route}
 	verifiziert.
 	
 	Grundtest:
@@ -563,54 +563,54 @@
 			\hline
 			Pingen des Routers & ping 192.168.0.1 & Router wurde erreicht \\
 			\hline
-			Zugriff auf die Admin Seite & Firefox (http://192.168.0.1) & Login Seite wurde geladen, aber Credentials schlugen fehl \\
+			Zugriff auf die Admin Seite & Firefox (http://192.168.0.1) & Login Seite wurde geladen, aber Authentifizierungsdaten schlugen fehl \\
 			\hline
 		\end{tabularx}
 		\caption{Testtabelle}
 	\end{table}
 
-	Es wurden verschiedene Zugangsdaten getestet, jedoch ohne Erfolg. nach einem Factory Reset
-	durch Gedrückthalten der Reset-Taste für etwa 15 Sekunden wurden die Zugangsdaten auf die
-	Werkseinstellungen zurückgesetzt. Anschließend war ein Login mit dem Standartbenutzter
+	Es wurden verschiedene Zugangsdaten getestet, jedoch ohne Erfolg. Nach einem Factory Reset
+	durch das Gedrückthalten der Reset-Taste für etwa 15 Sekunden wurden die Zugangsdaten auf die
+	Werkseinstellungen zurückgesetzt. Anschließend war ein Login mit dem Standardbenutzer
 	\texttt{admin} und einem leeren Passwort möglich.
 
-	Die Bewertung der identifizierten Schwachstellen efolgt angeleht an das Common Vulnerability
-	coring System (CVSS). Dabei werden insbesondere Angriffsvektor, Komplexität, benötigte Privilegien
+	Die Bewertung der identifizierten Schwachstellen erfolgt angelehnt an das Common Vulnerability
+	Scoring System (CVSS). Dabei werden insbesondere Angriffsvektor, Komplexität, benötigte Privilegien
 	sowie die Auswirkung auf Vertraulichkeit, Integrität und Verfügbarkeit berücksichtigt.
 
 	\section{Architektur des Routers}
 	\label{sec:Architektur des Routers}
 	Der betrachtete Router ist von der Firma D-Link und gehört zu der DIR-600 Reihe.
-	Die Hardware Version ist Bx, das ist x steht für 1 oder 2 und er hat die Firmware 2.05 aus dem Jahr 2010.
+	Die Hardware Version ist Bx, wobei x für 1 oder 2 steht.
 	
 	Der Router folgt einer klassischen Embedded-System-Architektur mit klar getrennten Schichten.
-	Nach dem Start wird der Bootloader geladen. Er ist dafür zuständig die Hardware zu initialissieren, 
+	Nach dem Start wird der Bootloader geladen. Er ist dafür zuständig die Hardware zu initialisieren, 
 	und den Linux Kenerl aus dem Flash zu laden, welcher die Hardware abstrahiert.
-	Der Linux Kernel übernimmt die Prozessverwaltung, den Netztwerstack und
-	die Treibersteuerung. Das Root-Filesystem (SquashFS) auf das in chapter.. noch näher eingegangen wird, enthält
+	Der Linux Kernel übernimmt die Prozessverwaltung, den Netzwerk-Stack und
+	die Treibersteuerung. Das Root-Filesystem (SquashFS) auf das in Kapitel X noch näher eingegangen wird, enthält
 	eine minimalistische Userspace-Umgebung auf Basis von Busybox. 
-	Das Konfigurationsdatenbanke (xmldb) ist das zentrale Element der Firmware, auf das mit dem Tool
-	xmldbc zugegriffen wird. Dort werden die sämtliche Systemparameter gespeichert und über Skripte dynamisch in
+	Das Konfigurationsdatenbank (xmldb) ist das zentrale Element der Firmware, auf das mit dem Tool
+	xmldbc zugegriffen wird. Dort werden in der sämtliche Systemparameter gespeichert und über Skripte dynamisch in
 	konkrete Systemkonfigurationen umgesetzt. Die Steuerung erfolgt über ein Webinterface, das mit PHP-Skripten
 	mit der Konfigurationsschicht interagiert. Netzwerkdienste wie DHCP, NAT und WLAN werden durch eine
-	Kombination aus Kernel-Modus und Userspace-Daemons realisisert.
+	Kombination aus Kernel-Modus und Userspace-Daemons realisiert.
 
-	Der Router nutzt iptables für Routing und NAT, hostpad für WLAN und stellt einen integrierten Webserver
-	mit HTTP und PHP zum Management bereit. Netzwerkdienste wie DHCP, DNS und PPP werden über spezialisierte Deamons und
+	Der Router nutzt iptables für Routing und NAT, hostapd für WLAN und stellt einen integrierten Webserver
+	mit HTTP und PHP zum Management bereit. Netzwerkdienste wie DHCP, DNS und PPP werden über spezialisierte Daemons und
 	Skripte gesteuert.
 
 	\section{Analyse des Netzwerkverkehrs}
 	\label{sec:Analyse des Netzwerkverkehrs}
 
-	\subsection{Werkeinstellungen}
-	\label{sec:Werkeinstellungen}
-	Vor beginn der Tests wurde der Router auf die Werkeinstellungen mithilfe des Reset-Knopfs zurückgesetzt.
+	\subsection{Werkseinstellungen}
+	\label{sec:Werkseinstellungen}
+	Vor Beginn der Tests wurde der Router auf die Werkeinstellungen mithilfe des Reset-Knopfs zurückgesetzt.
 	Der Router ist mit dem Laptop über ein LAN-Kabel mit Port 1 verbunden. Der Router ist mit dem Internet verbunden.
-	Zum mittschnitt des Netzwerkverkehrs wurde das Tool Wiresharke verwendet.
+	Zum Mittschnitt des Netzwerkverkehrs wurde das Tool Wireshark verwendet.
 	
-	Mit dem Filter \texttt{dns} lassen sich lediglich die Pakete anzeigen die an den DNS Server geschickt werden.
+	Mit dem Filter \texttt{dns} lassen sich lediglich die Pakete anzeigen die an den DNS-Server gesendet werden.
 	Der klassische DNS Server nutzt UDP (Port 53) und verschlüsselt seine Inhalte nicht.
-	Die besuchten Domänen und Hintergrundinformationen sind voll Einsehbar.
+	Die besuchten Domänen und Hintergrundinformationen sind voll einsehbar.
 
 	\begin{figure}[H]
 		\centering
@@ -618,12 +618,12 @@
 		\caption{Wireshark Filter: http}
 		\label{fig:http}
 	\end{figure}
-	Der Router nutzt HTTP, das bedeutet die Packete werden unverschlüsselt übertragen.
-	Beim Login auf die Admin Seite des Routers http://192.169.0.1 sind die Nutzer und Passwort
-	im Klartext einsehbar. Auch das ändern des Passworts und das Einstellen anderer
-	Konfigurationen konnte gemessen werden.
-	Die Web-Oberfläche inlusive der UI, Statusseite und den konfigurationen wird über HTTP geladen.
-	Ohne Transportverschlüsselung können Daten und Session-Inhalte passiv oder aktive durch eine Man-in-the-Middle Attacken
+	Der Router nutzt HTTP, das bedeutet die Pakete werden unverschlüsselt übertragen.
+	Beim Login auf die Admin Seite des Routers http://192.168.0.1 sind die Benutzer und Passwort
+	im Klartext einsehbar. Auch das Ändern des Passworts und das Einstellen anderer
+	Konfigurationen konnte im Netzwerkmitschnitt beobachtet werden.
+	Die Web-Oberfläche inklusive der UI, Statusseite und den Konfigurationen wird über HTTP geladen.
+	Ohne Transportverschlüsselung können Daten und Session-Inhalte passiv oder aktiv durch Man-in-the-Middle-Angriffe
 	mittgeschnitten oder manipuliert werden.
 
 	\begin{figure}[H]
@@ -633,19 +633,19 @@
 		\label{fig:Telnet Passwort}
 	\end{figure}
 	Auch die Verbindung über das Telnet Protokoll wird unverschlüsselt übertragen.
-	Die Login-Daten sind klar nachvollziehbar und können leicht rekonstruiert werden. 
-	Telnet arbeitet Zeichenbasiert, daher wird jedes Zeichen als eigenes Paket oder Teil eines Streams geschickt.
-	Sitzungen können volständig rekonstruiert werden.
+	Die Authentifizierungsdaten sind klar nachvollziehbar und können leicht rekonstruiert werden. 
+	Telnet arbeitet zeichenbasiert, daher wird jedes Zeichen als eigenes Paket oder Teil eines Streams geschickt.
+	Sitzungen können vollständig rekonstruiert werden.
 
-	Das Adress Resolution Protokoll (ARP) ist ein Netzwerkprotokoll, welches zu einer Netzwerkadresse die 
-	pysische Adresse ermittelt und diese Zuordnung in der ARP-Tabelle gegenbenenfalls hinterlegt.
-	ARP ist ein Layer2 Protokoll und bietet keine Authentifizierung. Angriffe wie MAC-Spoofing oder 
+	Das Address Resolution Protocol (ARP) ist ein Netzwerkprotokoll, welches zu einer Netzwerkadresse die 
+	physische Adresse ermittelt und diese Zuordnung in der ARP-Tabelle gegebenenfalls hinterlegt.
+	ARP ist ein Layer 2 Protokoll und bietet keine Authentifizierung. Angriffe wie MAC-Spoofing oder 
 	ARP-Spoofing sind möglich. 
 
-	Dieselben Mittschnitte wurden über das WLAN ebenfalls untersucht, es wurden keine pregnanten unterschiede festgestellt.
+	Dieselben Mittschnitte wurden über das WLAN ebenfalls untersucht, es wurden keine prägnanten Unterschiede festgestellt.
 
-	Die Anaylyse zeigt , das mehrere zentrale Dienste ohne kryptographische Absicherung betrieben werden. Dies macht
-	Angriffe auf das Netztwerk möglich, wodurch Authentifizierungsdaten komprimitiert werden können.
+	Die Analyse zeigt, das mehrere zentrale Dienste ohne kryptographische Absicherung betrieben werden. Dies macht
+	Angriffe auf das Netzwerk möglich, wodurch Authentifizierungsdaten kompromittiert werden können.
 
 	\subsection{Gehärteter Router}
 	\label{sec:Gehärteter Router}
@@ -671,8 +671,8 @@
 	917600        0xE0060        Squashfs filesystem
 	\end{lstlisting}
 	
-	Der uImage Header enhält unter anderem Informationen zur CPU (MSI), zur Ladeadresse im RAM sowie zum Einstiegspunkt
-	des Kernels. Das verwendete Linux-System basiert auf einem Kerne der Version 2.6x, was auf ein
+	Der uImage Header enthält unter anderem Informationen zur CPU (MIPS), zur Ladeadresse im RAM sowie zum Einstiegspunkt
+	des Kernels. Das verwendete Linux-System basiert auf einem Kernel der Version 2.6.x, was auf ein
 	veraltetes System hindeutet.
 
 	\begin{table}[h]
@@ -696,13 +696,13 @@
 		\caption{Inside The uImage}
 	\end{table}
 	
-	In LZMA compressed data steht der eigentliche Kernel Code, komprimiert LZMA.
-	dictionary size: 32MB bestimmt das Kompressionsfenster und ist typisch für Embedded Linux Kernel.
+	In LZMA compressed data steht der eigentliche Kernel Code, komprimiert mit LZMA.
+	Dictionary size: 32MB bestimmt das Kompressionsfenster und ist typisch für Embedded Linux Kernel.
 	uncompressed size ~ 2.9MB ist die reale Kernelgröße nach dem Entpacken.
 
-	PackImg section delimiter tag Das ist ein marker für den Begin einer weiteren Firmware-Section. 
+	PackImg section delimiter tag Das ist ein marker für den Beginn einer weiteren Firmware-Section. 
 
-	SquashFS ist ein komprimiertes, nur lesbares Linux Dateisystem der version 3.0.
+	SquashFS ist ein komprimiertes, schreibgeschütztes Linux Dateisystem der version 3.0.
 	Durch Ausführen von:
 	\begin{lstlisting}
 		binwalk -e DIR600B_FW205b01.bin 
@@ -712,25 +712,25 @@
 	\subsection{LFI-Schwachstelle}
 	\label{sec:LFI-Schwachstelle}
 
-	In squashfs-root/www/ liegt die implementierung des Webinterface, verteilt auf eine Vielzahl von Ordner. 
-	squashfs-root/www/model/\_\_show\_info.php, ist besonders relevant.
+	In \texttt{squashfs-root/www/} liegt die Implementierung des Webinterface, verteilt auf eine Vielzahl von Ordner. 
+	\texttt{squashfs-root/www/model/\_\_show\_info.php} ist insbesondere relevant.
 	Die Datei ist ein generischer Content-Renderer für das Webinterface. 
 	Sie kann zum einen Standartanzeigen machen und
 	Dynamische Includes machen. 
 	Sie enthält folgenden Code:
 	\begin{lstlisting}
-		if($REQUIRE_FILE!="")
-		{
-			require($LOCALE_PATH."/".$REQUIRE_FILE);
-		}
+	if($REQUIRE_FILE!="")
+	{
+		require($LOCALE_PATH."/".$REQUIRE_FILE);
+	}
 	\end{lstlisting}
 
-	Hierbei wird der Parameter \texttt{REQUIRE_FILE} ohne Validierung in einen Dateipfand eingebunden
-	und anschließend mittels \texttt{require()} eingebunden. Da dieser parameter direkt durch den
-	Nutzer kontrolliert werden kann, entsteht eine Local File Inclusion (LFI)-Schwachstelle.
-	Durch das verwenden von Directory Traversal Sequenzen, also der unautorisierte Zugriff auf Dateien 
-	mittels Pfadangaben in der Url, können unteranderem sensible Daten eingesehen werden.
-	Beispielsweise folgende anfrage: \texttt{/www/locale/en\_US/ + ../../../../var/etc/httpasswd}.
+	Hierbei wird der Parameter \texttt{REQUIRE_FILE} ohne Validierung in einen Dateipfad eingebunden
+	und anschließend mittels \texttt{require()} eingebunden. Da dieser Parameter direkt durch den
+	Benutzer kontrolliert werden kann, entsteht eine Local File Inclusion (LFI)-Schwachstelle.
+	Durch das Verwenden von Directory Traversal Sequenzen, also der unautorisierte Zugriff auf Dateien 
+	mittels Pfadangaben in der URL, können unter anderem sensible Daten eingesehen werden.
+	Beispielsweise folgende Anfrage: \texttt{/www/locale/en\_US/ + ../../../../var/etc/httpasswd}.
 	PHP löst das dann zu /var/etc/httpasswd auf, die Datei wird eingebunden und der Inhalt auf der Webseite sichtbar.
 	\begin{figure}[H]
 		\centering
@@ -738,11 +738,11 @@
 		\caption{Seite nach Exploit}
 		\label{fig: Hallo}
 	\end{figure}
-	Die Datei /var/etc/httpasswd ennthält für den aktuellen Benutztername und das Passowrt,
+	Die Datei /var/etc/httpasswd enthält für den aktuellen Benutzername und das Passwort,
 	welche wiederum oft nur schwach gehasht oder wie in diesem Fall im Klartext in der Datei gespeichert wird.
 	Dies ermöglicht die Umgehung der Authentifizierung.
 
-	Ein automatisisertes Testskript wurde verwendet um verschiedene Dateisysteme abzurufen.
+	Ein automatisiertes Testskript wurde verwendet um verschiedene Dateisysteme abzurufen.
 	\begin{lstlisting}
 	#!/bin/bash
 
@@ -792,7 +792,7 @@
 	exit
 	\end{lstlisting}
 	Das Skript arbeitet die einzelnen Pfade nacheinander ab. Der Befehl curl überträgt Daten zwischen dem Rechner
-	und einem Server. Mit -H lassen sich HTTP-Header setzten. Zudem wurde das Paket jp installiert, so kann die Eingabe automatisch
+	und einem Server. Mit -H lassen sich HTTP-Header setzen. Zudem wurde das Paket $jq$ installiert, so kann die Eingabe automatisch
 	entsprechend der URL-Vorgaben formatiert werden.
 
 	
@@ -800,8 +800,8 @@
 	\item \texttt{/var/etc/httpasswd} – enthält Zugangsdaten für das Webinterface
 	\item \texttt{/var/log/messages} – enthält Logdaten und Netzwerkaktivität
 	\item \texttt{/proc/self/cmdline} – enthält informationen zur CommandLine des Prozesses
-	\item \texttt{/proc/self/environ} – zeigt Mountpoints und die Filesystem-Struktur
-	\item \texttt{/proc/mounts} – zeigt Umgebungsvariablen des Prozesses
+	\item \texttt{/proc/self/environ} – zeigt Umgebungsvariablen des Prozesses 
+	\item \texttt{/proc/mounts} –zeigt Mountpoints und die Filesystem-Struktur
 	\item \texttt{/proc/version} – liefert Kernel-Informationen
 	\item \texttt{/proc/cpuinfo} – enthält Informationen zur Hardwarearchitektur
 	\item \texttt{/etc/hosts} – enthält den Hostnamen und die interne Struktur
@@ -828,7 +828,7 @@
 	Zugriff auf das Webinterface des Routers (LAN/WLAN).
 
 	\textbf{Gesamtbewertung:}  
-	High, durch das extrahieren der Credentials sind weitere Angriffe auf den Router möglich.
+	High, durch das extrahieren der Authentifizierungsdaten sind weitere Angriffe auf den Router möglich.
 
 	\textbf{Begründung:}  
 	Die Schwachstelle erlaubt das Auslesen sensibler Systemdateien ohne
@@ -836,23 +836,23 @@
 	Die Ausnutzung ist trivial und erfordert keine besonderen Bedingungen.
 
 	\subsection{Telnet}
-	Teletype Networke (Telnet) ist ein Client/Server bassiertes Protokoll (Port 23), basierend auf einem zeichenbasierten austausch
-	über eine TCP Verbindung. Bei Routern dient Telnet als Remote-Management-Protokoll
-	und gibt dem Anwender eine Kommandozeile auf dem Gerät.
+	Teletype Network (Telnet) ist ein Client/Server basiertes Protokoll (Port 23).
+	Der Austausch erfolgt über eine TCP Verbindung. Bei Routern dient Telnet als Remote-Management-Protokoll
+	und gibt dem Benutzer eine Kommandozeile auf dem Gerät.
 	Mit folgendem Befehl ist es möglich herauszufinden ob der Router eine Telnet Schnittstelle besitzt.
 	\begin{lstlisting}
 	nc -zv 192.168.0.1 23
 	Connection to 192.168.0.1 23 port [tcp/telnet] succeeded!
 	\end{lstlisting}
 	Der D-Link DIR 600 besitzt eine Telnet-Schnittstelle, welche durch einen Nutzter und ein Passwort
-	geschützt sind. Unter einem Embedded Linux ist der Standartnutzer in den meisten Fällen \texttt{Alphanetworks}.
-	Dies lässt sich durch eine kurze Recherche über das Internet herausfinden. Das Standart Passwort des Routers unterscheidet sich
-	nach Modell. Um das Passwort der Telnet-Schnittstelle harauszufinden, wurden die Firmware des Routers
+	geschützt sind. Unter einem Embedded Linux ist der Standardnutzer in diesem Fall \texttt{Alphanetworks}.
+	Dies lässt sich durch eine kurze Recherche über das Internet herausfinden. Das Standardpasswort des Routers unterscheidet sich
+	nach Modell. Um das Passwort der Telnet-Schnittstelle herauszufinden, wurden die Firmware des Routers
 	erneut analysiert.
 	\texttt{grep -r "Alphanetworks"}
 	\texttt{squashfs-root/etc/scripts/misc/telnetd\.sh: telnetd -l "/usr/sbin/login" -u Alphanetworks:\$image_sign -i \$lf &}
-	Mit dem grep Befehel wurde die Firmware nach dem Standartnutzer rekrusiv durchsucht.
-	Das Ergebniss zeigt den Nutzer und das Passowort, welches in \texttt{\$image_sign} gespeichert wird.
+	Mit dem grep Befehl wurde die Firmware nach dem Standartnutzer rekursiv durchsucht.
+	Das Ergebnis zeigt den Benutzer und das Passwort, welches in \texttt{\$image_sign} gespeichert wird.
 	\texttt{grep -r "image_sign" squashfs-root/}
 	\texttt{squashfs-root/etc/scripts/misc/telnetd\.sh:image\_sign=`cat /etc/config/image_sign`}
 	Die Ausgabe zeigt unter anderem diese Zeile, welche den Pfad zu dem Passwort enthält.
@@ -875,19 +875,19 @@
 	ramfs on /var type ramfs (rw)
 	\end{lstlisting}
 	Durch die Ausgabe wird deutlich, das es sich um eine Read-Only-Firmware mit einem Eingebetteten Linux Design handelt.
-	Lediglich der RAM ist beschreibar, jedoch sind die Daten dort nur während der Laufzeit verfügbar und verschwinden nach einem Reboot.
-	Dort werden typischerweise Logs, temporäre Dateien und Runtime-konfigurationen gespeichert.
-	/proc enthält Prozess- und Systeminformationen und /sys Kernelparameter und die Hardwareabstarktion.
+	Lediglich der RAM ist beschreibbar, jedoch sind die Daten dort nur während der Laufzeit verfügbar und verschwinden nach einem Reboot.
+	Dort werden typischerweise Logs, temporäre Dateien und Runtime-Konfigurationen gespeichert.
+	/proc enthält Prozess- und Systeminformationen und /sys Kernelparameter und die Hardwareabstraktion.
 	Hier können Parameter gesetzt aber das System nicht persistent geändert werden.
 	
-	Der Nutzer und das Passwort für die Telnet-Verbidung sind hardkodiert und im System eingebettet. Sie können nicht geändert werden.
+	Der Benutzer und das Passwort für die Telnet-Verbindung sind hardkodiert und im System eingebettet. Sie können nicht geändert werden.
 	Auch wenn auf dem System Daten nicht persistent geändert werden können, stellt die Telnet-Schnittstelle ein
-	Risiko dar. Ein Angreifer könnte durch den befehl \texttt{reboot} eine sofortige Unterbrechung des Netztwerks
-	auslösen. Da Schreibrechte auf dem /var Verzeichniss exsistieren könnten dort viele und große Dateien erzeugt werden, um so den 
-	Speicher zu füllen und die Dienste zu destabalisieren. Dies könnte den Router erheblich verlangsamen oder zu einem 
+	Risiko dar. Ein Angreifer könnte durch den Befehl \texttt{reboot} eine sofortige Unterbrechung des Netzwerks
+	auslösen. Da Schreibrechte auf dem /var Verzeichnis existieren könnten dort viele und große Dateien erzeugt werden, um so den 
+	Speicher zu füllen und die Dienste zu destabilisieren. Dies könnte den Router verlangsamen oder zu einem 
 	reboot führen. Außerdem kann der Angreifer durch Befehle wie ping, msh, kill oder busybox Prozesse mehrfach starten und die CPU dauerhaft belasten.
 	Desweiteren können Routerkonfigurationen, die interne Netzstruktur, DNS und Gateway sowie die aktiven Clients
-	eingesehen werden, was beim sammeln von Informationen erheblich helfen kann.
+	eingesehen werden, was die Informationsgewinnung erleichtert.
 
 	\subsection{Bewertung:}
 	\label{sec:Bewertung-Telnet}
@@ -920,12 +920,12 @@
 	\subsection{Analyse des DDNS-Systems}
 	Die Analyse des DDNS-Subsystems dient dazu, potenzielle sicherheitskritische Datenflüsse zwischen
 	Konfigurationsdatenbank, Skripten und Netzwerkkommunikation zu identifizieren.
-	Im Fokus steht die rekonstruktion der Programmstruktur mittels Reverse Engineering %nochmal erklräen
-	sowie eine anschließenden Bewertung.
+	Im Fokus steht die Rekonstruktion der Programmstruktur mittels Reverse Engineering %nochmal erklräen
+	sowie eine anschließende Bewertung.
 
-	Die Firmware des D-Link DIR-600 Routers zeigt eine typische Architecktur für eingebettete Linux-Systeme.
-	Konfigurationsdaaten werden über den Dienst \texttt{xmldbc} verwaltet, eine XML-Datenbank.
-	Das Dynamic Domain Name System auch DDNS gennant, ist hier nicht als externe Bibliothek implementiert, sondern als seperates Binärprogramm.
+	Die Firmware des D-Link DIR-600 Routers zeigt eine typische Architektur für eingebettete Linux-Systeme.
+	Konfigurationsdaten werden über den Dienst \texttt{xmldbc} verwaltet, eine XML-Datenbank.
+	Das Dynamic Domain Name System auch DDNS genannt, ist hier nicht als externe Bibliothek implementiert, sondern als separates Binärprogramm.
 	Die DDNS-Funktionalität wird über dynamisch generierte Shell-Skripte gestartet.
 	\begin{lstlisting}
 		# dyndns.sh
@@ -951,13 +951,13 @@
 	}
 	\end{lstlisting}
 	Hierbei wird zur Laufzeit ein Systembefehl generiert und ausgeführt.
-	Auffällig ist, das sämtliche Parameter, einschließlich Benutzername, Passwort, Hostname und IP-Adresse,
+	Es zeigt sich, dass sämtliche Parameter, einschließlich Benutzername, Passwort, Hostname und IP-Adresse,
 	direkt aus der Konfigurationsdatenbank übernommen werden. Eine zusätzliche Validierung
 	dieser Eingabe findet nicht statt. Dies stellt einen kritischen Punkt dar, da es sich dabei
-	um potenziell manipulierte Daten handel könnte.
+	um potenziell manipulierte Daten handelt könnte.
 
-	Die Analyse des Binärprogramms \texttt{/usr/bin/dyndns} wurde mithilfe von Ghira genauer analysiert 
-	Es zeigt das die Kommandozeilenargumente direkt verarbeitet werden:
+	Die Analyse des Binärprogramms \texttt{/usr/bin/dyndns} wurde mithilfe von Ghidra genauer analysiert 
+	Es zeigt, dass die Kommandozeilenargumente direkt verarbeitet werden:
 	\begin{lstlisting}
 	case 0x6e:  // -n
 		pcRam1000027c = optarg;   // hostname
@@ -973,7 +973,7 @@
 	verwendet wird. Hierfür wird eine intern Tabelle verwendet, welche Service-Namen numerische Identifikation zuordnet.
 	Falls die Parameter ungültig oder unvollständig führt dies zum Programm abbruch.
 
-	Nach der Konfigurationsphase folt die Netzwerklogik.
+	Nach der Konfigurationsphase folgt die Netzwerklogik.
 	Das Programm arbeitet mit zustandbasierter Logik über \texttt{select()}:
 	\begin{lstlisting}
 	iVar2 = select(uVar7 + 1,
@@ -990,8 +990,8 @@
 	Dabei werden klassische BSD-Socket-Funktioenen wie \texttt{socket()} und \texttt{connect()},
 	um eine Verbindung zu den jeweiligen DDNS-Servern herzustellen.
 	
-	Die Auswahl des DDNS-Anbieter bestimmt dabei den Aufbau der HTTP-Anfrage. 
-	Die Firmware unterstützt mehrere Anbieter(z.B. DynDNS, No-IP, usw), wobei jeder Anbieter ein spezifisches Anfrageformat verwendet. 
+	Die Auswahl des DDNS-Anbieters bestimmt dabei den Aufbau der HTTP-Anfrage. 
+	Die Firmware unterstützt mehrere Anbieter beispielsweise DynDNS, No-IP, wobei jeder Anbieter ein spezifisches Anfrageformat verwendet. 
 	Beispiel DynDNS.org
 	\begin{lstlisting}
 	snprintf(acStack_260,500,
@@ -1001,19 +1001,19 @@
 			Host: %s\r\n\r\n",
 			uRam1000027c,puVar2,uVar1,DAT_10000294,DAT_10000278);
 	\end{lstlisting}
-	Die HTTP-Requests werden manuell zusammengestezt und direkt über eine Socket-Verbindung versendet.
-	Zusätzlich wird in den meisten Fällen eine Basis-Authentifizierung, bestehend aus Username und Passwort
-	verlangt, welche Base64 Codiert in den HTTP-Header integriert werden (siehe oben).
+	Die HTTP-Requests werden manuell zusammengesetzt und direkt über eine Socket-Verbindung versendet.
+	Zusätzlich wird in den meisten Fällen eine Basis-Authentifizierung, bestehend aus Benutzername und Passwort
+	verlangt, welche Base64 codiert in den HTTP-Header integriert werden (siehe oben).
 	\texttt{base64encode(pcVar4,sVar3,&uStack_28);}
 
-	Die Implementierung weist einige sicherheitskritischen Schwächen auf, die für ältere Embedded-Systeme typisch sind.
+	Die Implementierung weist einige sicherheitskritische Schwächen auf, die für ältere Embedded-Systeme typisch sind.
 	Insbesondere der Verzicht auf eine verschlüsselte Kommunikation stellt ein potenzielles Risiko dar. 
-	Sämtliche DDNS-Anfragen erfolgen über eine ungesicherte HTTP-Verbindung, wodurch Zugangsdaten im Klartext über das Netztwerk übertragen werden können.
-	Dadurch besteht ein erhebliches Risiko für Man-in-the-Middle Attacken sowie das Anbgreifen von Zugangsdaten.
+	Sämtliche DDNS-Anfragen erfolgen über eine ungesicherte HTTP-Verbindung, wodurch Zugangsdaten im Klartext über das Netzwerk übertragen werden können.
+	Dadurch besteht ein erhebliches Risiko für Man-in-the-Middle Attacken sowie das Abgreifen von Zugangsdaten.
 
-	Zudem werden sensible Daten im Speicher verarbeitet. Authentifizierunginformationen werden global abgelegt und mehrfach
+	Zudem werden sensible Daten im Speicher verarbeitet. Authentifizierungsinformationen werden global abgelegt und mehrfach
 	in unterschiedlichen Verarbeitungsschritten verwendet. Auch wenn keine direkten Schwachstellen im 
-	untersuchten Codeabschnitt sichbar sind, bleibt durch die unsauberen Datenflüsse und die fehlende strikte Validierung ein erhötes Sicherheitsrisiko.
+	untersuchten Codeabschnitt sichtbar sind, bleibt durch die unsauberen Datenflüsse und die fehlende strikte Validierung ein erhöhtes Sicherheitsrisiko.
 
 	\subsection{Bewertung:}
 	\label{sec:Bewertung-DDNS}
@@ -1040,7 +1040,7 @@
 
 	\textbf{Begründung:}  
 	Die DDNS-Kommunikation erfolgt unverschlüsseltüber HTTP, wodurch Authentifizierungdaten
-	im Klartext übertragen werden. Ein Angreifer kann diese durch einen Netztwerk-Mittschnitt
+	im Klartext übertragen werden. Ein Angreifer kann diese durch einen Netzwerk-Mittschnitt
 	abfangen und für weiter Angriffe verwenden.
 	Dies ist mit geringem Aufwand möglich und erfordert keine besondere Voraussetzung.
 
