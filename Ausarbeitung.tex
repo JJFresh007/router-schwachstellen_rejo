@@ -239,7 +239,7 @@
 	Wie der Name erahnen lässt ist der Router innerhalb eines Netzwerks dafür
 	zuständig Nachrichten von einer verbundenen Quelle zum Ziel zu leiten.
 	Der Router kümmert sich darum, dass der optimale Weg von der Quelle zum Ziel 
-	gefunden wird. Welcher Pfad gewählt wird hängt unteranderem von den Protokollen
+	gefunden wird. Welcher Pfad gewählt wird hängt unter anderem von den Protokollen
 	und der Konfiguration ab, es kann der schnellste Weg genutzt werden oder
 	auch eine definierte Route über verschiedene Punkte. Es gibt zwei Arten
 	des Routing, dynamisches und statisches Routing. Auf diese wird in Abschnitt
@@ -251,9 +251,9 @@
 	Diese können nicht über Layer 3 Netzwerkgrenzen, also in ein anderes 
 	IP-Netzwerk mit anderem Adressbereich, als dem Quellnetzwerk kommunizieren. 
 	Switches der Schicht 3 können über Netzwerkgrenzen hinweg Pakete versenden 
-	und Kombinierend ie Funktion von Switch und Router. Der Hauptunterschied 
+	und kombinieren die Funktion von Switch und Router. Der Hauptunterschied 
 	zwischen Switches und Routern ist, dass der Router nicht nur über Netzwerkgrenzen 
-	hinweg Pakete leiten kann sonder, dass er aus dem LAN auch in das Internet, 
+	hinweg Pakete leiten kann, sondern dass er aus dem LAN auch in das Internet, 
 	Pakete versenden kann. Auch der Router ist ein Gerät der Schicht
 	3 im ISO/OSI-Modell und vermittelt daher die Pakete anhand der IP-Adressen.
 	\cite{zisler2022, baun2025}
@@ -261,24 +261,24 @@
 	
 	\subsection{Netzwerksegmente und IPv4}
 	\label{sec:nwsegment_ipv4}
-	Die Segmentierung eines Netzwerk ist dann sinnvoll, wenn es
+	Die Segmentierung eines Netzwerkes ist dann sinnvoll, wenn es
 	sich um eine große Infrastruktur, wie die eines Unternehmen handelt. Die 
 	Subnetze besitzen einen logischen Adressraum, der abhängig sein sollte 
 	von der Anzahl an Geräten, die in diesem Netzwerk sein sollen. 
 	Um zu verstehen, wie eine Segmentierung funktioniert, muss zuerst der Aufbau
-	der IP-Adresse verstanden werden, wobei IP für Internet Protocol steht. 
+	der IP-Adresse verstanden werden, wobei IP für \emph{Internet Protocol} steht. 
 	In dieser Ausarbeitung wird nur mit
 	IPv4 Adressen gearbeitet, weshalb nicht näher auf die IPv6 Adressen 
 	eingegangen wird. Eine IPv4 Adresse besteht aus 4 Teilen, die durch einen 
-	Punkt von einander getrennt sind. Jeder Teil beinhaltet eine Zahl zwischen 0
+	Punkt voneinander getrennt sind. Jeder Teil beinhaltet eine Zahl zwischen 0
 	und 255, daraus ergibt sich eine Größe von 32 Bit, was wiederum 4Byte 
 	entspricht. Um in einem Subnetz kommunizieren zu können haben alle
 	sich darin befindenden Geräte in ihrer IP-Adresse den gleichen Netzanteil.
-	Das exakte Geräte innerhalb des Subnetz ist im Hostanteil der IP-Adresse zu
+	Das eindeutige Geräte innerhalb des Subnetz ist im Hostanteil der IP-Adresse zu
 	finden. Diese muss zwingend einzigartig im jeweiligen Subnetz sein, da es
 	sonst zu Konflikten kommt. Der Hostanteil nimmt entsprechend der Größe des 
 	Subnetzes mehr oder weniger Bits der IP-Adresse ein. Die Größe des Anteils 
-	kategorisiert das Netz in die Klassen A bis C siehe folgende Abbildung 
+	kategorisiert das Netz in die Klassen A bis C siehe folgende Abbildung
 	\ref{fig:nwclasses}.
 	\begin{figure}[H]
 		\centering
@@ -288,27 +288,27 @@
 		\label{fig:nwclasses}
 	\end{figure}
 	Ob sich Quelle und Ziel im gleichen Subnetz befinden, wird von der Subnetzmaske
-	bestimmt. Mit Hilfe dieser wird die IP-Adresse des Senders
-	logisch UND verknüpt. Das gleiche wird mit der Ziel-IP-Adresse gemacht. Kommt bei
+	bestimmt. Mithilfe dieser wird die IP-Adresse des Senders
+	logisch UND verknüpft. Das Gleiche wird mit der Ziel-IP-Adresse gemacht. Kommt bei
 	beiden Rechnungen das gleiche Ergebnis heraus, sind die Teilnehmer im gleichen
-	Subnetz und können somit über Layer 2, also mit Hilfe vom MAC-Adressen, die Frames
+	Subnetz und können somit über Layer 2, also mithilfe vom MAC-Adressen, die Frames
 	austauschen. Wird ein Paket innerhalb des gleichen IP-Subnetz versendet, wird mit der MAC-Adresse
-	gearbeitet. Der Sender hat eine sogenannte ARP Tabelle (Adress Resolution Protocol)
+	gearbeitet. Der Sender hat eine sogenannte ARP Tabelle (Address Resolution Protocol)
 	in der die MAC-Adressen der Geräte, an die der Sender bereits ein Frame gesendet hat, enthalten
 	sind. Es sind die IP-Adressen und die dazugehörige MAC-Adresse enthalten. Diese
-	Informationen werden dann in der Tabelle gespeichert, nach einer konfigurierte
+	Informationen werden dann in der Tabelle gespeichert, nach einer konfigurierten
 	Zeit gelöscht und müssen dann bei erneutem Senden an den Empfänger wieder 
-	angefragt und gespeichert werden. Um die MAC-Adresse des Empfängers zu ermitteln
+	angefragt und gespeichert werden. Um die MAC-Adresse des Empfängers zu ermitteln,
 	sendet der Sender eine ARP-Anfrage in das lokale IP-Netz. Diese Anfrage wird an alle 
-	Geräte im Netz gesendet, der sogenannte Broadcast. Das Gerät welches die
-	gesuchte IP-Adresse hat antwortet mit seiner MAC-Adresse. Der Sender erhält die
+	Geräte im Netz gesendet, der sogenannte Broadcast. Das Gerät, welches die
+	gesuchte IP-Adresse hat, antwortet mit seiner MAC-Adresse. Der Sender erhält die
 	Adresse und sendet dann den Frame an die MAC-Adresse innerhalb des lokalen
 	Netzwerks. 
-	Befinden sich die Geräte nicht im gleichen Subnetzt, ist das Ergebnis der 
+	Befinden sich die Geräte nicht im gleichen Subnetz, ist das Ergebnis der 
 	Berechnung mit der Subnetzmaske verschieden und es muss über Layer 3, mit 
 	dem Router das Paket versendet werden. Dafür wird das Paket 
 	an die IP-Adresse des Routers gesendet, auch bekannt als Gateway. Die Routing-
-	Tabelle im Router wird für die Kommunikation genutzt, um heraus zufinden über welchen 
+	Tabelle im Router wird für die Kommunikation genutzt, um herauszufinden über welchen 
 	Port der Router das Paket weitergeleitet werden muss. Da der Router ein Layer 3 Gerät ist, 
 	muss er die IP-Adresse des Zielgerätes kennen, um das Paket in das richtige 
 	Netzwerk zu leiten. Die Tabelle beinhaltet alle Netzwerke, die über ein 
@@ -330,13 +330,13 @@
 
 	\subsubsection{Private und öffentliche Adressen}
 	\label{sec:priv_pub_adr}
-	Die Einführung von IPv6 wurde unteranderem wegen der aufkommenden Adressknappheit
-	umgesetzt. Fast jede Person hat mehrer Endgeräte, die entweder im lokalen Netz
+	Die Einführung von IPv6 wurde unter anderem wegen der aufkommenden Adressknappheit
+	umgesetzt. Fast jede Person hat mehrere Endgeräte, die entweder im lokalen Netz
 	oder auch ins Internet kommunizieren können. Das führt dazu, dass die Anzahl
 	an Adressen der Art IPv4 knapp werden. Ansätze wie die Netzwerksegmentierung,
 	das oben beschriebene Subnetting, wirken diese Knappheit entgegen aber dies 
 	reicht lange noch nicht aus. Damit es während der Kommunikation ins Internet keine
-	Probleme gibt, weil eine lokales Endgerät die gleiche IP-Adresse hat wie zum
+	Probleme gibt, weil ein lokales Endgerät die gleiche IP-Adresse hat wie zum
 	Beispiel der Server von Google, wurden mit RFC 1918 die Adressbereiche für 
 	private IP-Adressen definiert. Dafür wurden ein Teil der IPv4 Adressen für den 
 	privaten Gebrauch reserviert. Geräte in privaten Haushalten nutzen daher
@@ -346,14 +346,14 @@
 	Die öffentliche IP-Adresse ist die Adresse, die vom ISP zugewiesen wird. Der
 	Router übersetzt die private IP-Adresse für die Kommunikation ins Internet
 	durch die öffentliche IP-Adresse. Für diese Umwandlung kommt das NAT (Network
-	Adress Translation) zum Einsatz. Auf NAT und dessen genaue Funktionsweise wird
+	Address Translation) zum Einsatz. Auf NAT und dessen genaue Funktionsweise wird
 	in Abschnitt \ref{sec:NAT} eingegangen.
 	\cite{zisler2022, baun2025}
 	%Computernetze kompakt pp. 149-150
 
 	\subsection{Aufbau und Verbindungsarten}
 	\label{sec:build_connect}
-	Die Beschreibung des Aufbau eines Routers wird in dieser Ausarbeitung auf
+	Die Beschreibung des Aufbaus eines Routers wird in dieser Ausarbeitung auf
 	die Komponenten beschränkt, die die beiden Router haben, die für die Tests
 	verwendet werden. Es handelt sich dabei um folgende Geräte, die für den
 	Gebrauch im eigenen Zuhause geeignet sind:
@@ -361,11 +361,11 @@
 		\item[WRT120] Wireless-N Home Router, Hersteller: Linksys by Cisco
 		\item[DIR-600] Wireless N 150 Home Router, Hersteller: D-Link
 	\end{description}
-	Es wird vorallem auf die Anschlüsse eingegangen und die Möglichkeiten 
+	Es wird vor allem auf die Anschlüsse eingegangen und die Möglichkeiten 
 	die Verbindung zum Internet herzustellen. Etwaige interne Hardwarekomponenten
 	werden nur beschrieben, wenn diese eine mögliche Schwachstelle darstellen,
 	die von außerhalb von einem Angreifer ausgenutzt werden kann.
-	An der Rückseite der Router befinden sich die Ports, Resetbutton zum 
+	An der Rückseite der Router befinden sich die Ports, Reset-Button zum 
 	zurücksetzen auf Werkseinstellungen, Internet-Port als auch der Anschluss
 	für die Stromversorgung.
 	Beide Router werden über den Internet Port mit einem Ethernet Kabel an das 
@@ -374,7 +374,7 @@
 	Router verbunden. Weitere Geräte können per WLAN mit den Routern verbunden
 	werden. Dabei stellt die Verbindung über WLAN die größte Schwachstelle dar,
 	da man für diesen Zugang nicht physisch Zugriff zum Router benötigt. Daher
-	ist es sehr wichtig die Standardpasswörter als auch den Namen des Router
+	ist es sehr wichtig die Standardpasswörter als auch den Namen des Routers
 	bei der Ersteinrichtung zu ändern. In der folgenden Abbildung \ref{fig:wrt120n-ports} 
 	ist die Rückseite des WSR120N von Linksys zu sehen.
 	\begin{figure}[H]
@@ -383,9 +383,9 @@
 		\caption{WRT120N Anschlüsse hinten, Quelle: WRT120N-EMEA\_combo\_UG.pdf}
 		\label{fig:wrt120n-ports}
 	\end{figure}
-	Wurde das WLAN mit Hilfe der Anleitung eingerichtet sind die Router nicht
-	nur sichtbar als WLAN Provider sondern können nach erfolgreicher Verbindung
-	auch eine stabile Internet Verbindung bieten, siehe WRT120N-EMEA\_combo\_UG.pdf,
+	Wurde das WLAN mithilfe der Anleitung eingerichtet sind die Router nicht
+	nur sichtbar als WLAN Provider, sondern können nach erfolgreicher Verbindung
+	auch eine stabile Internetverbindung bieten, siehe WRT120N-EMEA\_combo\_UG.pdf,
 	dir\_600\_c1\_datasheet\_03\_ww.pdf
 
 	\subsection{Routing Arten und Protokolle}
@@ -394,7 +394,7 @@
 	übliches Einsatzgebiet.
 	\begin{description}
 		\item[Statisches Routing]
-		Die Route werden fest definiert und die Pakete werden immer auf dem selben 
+		Die Route werden fest definiert und die Pakete werden immer auf demselben 
 		Weg versendet. 
 		\begin{itemize}
 			\item Vorteile: Kein Austausch über die Pfade mit anderen Routern
@@ -422,8 +422,8 @@
 	automatische Berechnung alternativer Routen. Welche Informationen ausgetauscht
 	werden hängt vom jeweiligen Protokoll ab. Diese Protokolle werden nur beim 
 	dynamischen Routing eingesetzt, da dort die Wege mit den übermittelten Informationen
-	automatisch angepasst werden. Im weiteren werden in aller Kürze die zwei Typen von
-	Protokollen aufgezählt als auch jeweils ein speziellen Typen:
+	automatisch angepasst werden. Im Weiteren werden in aller Kürze die zwei Typen von
+	Protokollen aufgezählt als auch jeweils einen speziellen Typen:
 	\begin{description}
 		\item[Distanzvektorprotokolle] arbeitet auf Grundlage des Bellman-Ford 
 		Algorithmus. Beispiel: RIP (Routing Information Protocol) 
@@ -446,20 +446,20 @@
 	\end{figure}
 	Wie in der Abbildung \ref{fig:ipv4-packet} zu sehen besteht ein Paket aus einem 
 	Header, Quell-Adresse gefolgt von der Ziel-Adresse - diese gehören standardmäßig
-	zum Header, werden hier aber zur Veranschaulichung extra aufgeführt- und den 
+	zum Header, werden hier aber zur Veranschaulichung extra aufgeführt - und den 
 	Nutzdaten. 
-	Informationen über den Aufbau, Art und größe des Paketes sind im Header zu finden.
-	Dort ist festgehalten ab wann die Nutzdaten beginnen, ob das Paket aufgrund
+	Informationen über den Aufbau, Art und Größe des Paketes sind im Header zu finden.
+	Dort ist festgehalten, ab wann die Nutzdaten beginnen, ob das Paket aufgrund
 	seiner Größe fragmentiert wurde und auch die Lebenszeit des Paketes. Diese ist 
 	wichtig, damit das Paket nur eine definierte Zeit im Netzwerk lebt und anschließend 
 	automatisch gelöscht wird, sodass es keine unnötigen Ressourcen verbraucht.
 	Fragmentierung von Paketen ist nötig, wenn das Paket die vordefinierte maximale Größe 
-	überschreitet, dann wird das Pakete entweder vom Router oder dem Sender geteilt.
-	Jedes Fragement wird als einzelnes Paket versendet, mit dem Unterschied das es 
-	im Header die Information enthält, an welche Stelle das Fragement im unfragmentierten
+	überschreitet, dann wird das Paket entweder vom Router oder dem Sender geteilt.
+	Jedes Fragment wird als einzelnes Paket versendet, mit dem Unterschied das es 
+	im Header die Information enthält, an welche Stelle das Fragment im unfragmentierten
 	Paket gehört. Kommt ein Paket bei einem Router an und müsste fragmentiert werden,
 	um in das Zielnetz weitergeleitet zu werden, kann es sein das diese verworfen
-	wird, da eine Flag im Paket ausdrücklich das Fragmentieren diese Pakets verbietet.
+	wird, da eine Flag im Paket ausdrücklich das Fragmentieren dieses Pakets verbietet.
 	Pakete von IPv4 haben auch eine Prüfsumme inkludiert, welche aber zur Verbesserung
 	der Datenübertragungsgeschwindigkeit nicht von Router überprüft wird. 
 	\newline
@@ -486,12 +486,12 @@
 
 	\subsection{Router als attraktives Ziel für Angreifer}
 	\label{sec:attractiv_target}
-	Die oben genannten Funktionen des Router machen deutlich das dieser auch
+	Die oben genannten Funktionen des Routers machen deutlich das dieser auch
 	über das Internet als Angriffsziel genutzt werden kann. Zudem ist ein Router
 	attraktiv, da man keinen physischen Zugang zum Gerät braucht, um in ein 
-	privates Netz zu kommen. Der Router als Ziel hat vorallem in der Covid 
+	privates Netz zu kommen. Der Router als Ziel hat vor allem in der Covid 
 	Pandemie 2020 an Attraktivität stark zugenommen, da seit dieser Zeit mehr im 
-	Home Office gearbeitet wird und Betriebsinterna, geheime Dokumente oder
+	Home-Office gearbeitet wird und Betriebsinterna, geheime Dokumente oder
 	auch der Nachrichtenaustausch über den Router zu Hause geleitet werden
 	\cite[S.277]{chalhoub2023}.
 	\begin{quote}
@@ -501,38 +501,38 @@
 	\end{quote}
 	In den meisten Haushalten ist ein Router Bestandteil und sehr oft sind 
 	die Besitzer technisch nicht versiert genug oder sie interessieren sich 
-	nicht für die Sicherheit ihres Routers, es reicht völlig aus wenn sie 
+	nicht für die Sicherheit ihres Routers, es reicht völlig aus, wenn sie 
 	ihn anschließen, dieser funktioniert und ab dann wird am Router selbst
 	nichts mehr gemacht. Ein Router Hersteller erwähnte, dass die meisten User zum 
 	Einrichten des Routers nicht einmal die dafür vorgesehene Website 
 	aufsuchen \cite[S.285, Kapitel 4.4.3]{chalhoub2023}. 
-	Dieses Vorgehen sorgt dafür das Standard Credentials als Anmeldedaten 
+	Dieses Vorgehen sorgt dafür, dass Standard Credentials als Anmeldedaten 
 	bestehen bleiben und es für Angreifer einfach ist Zugang zum WLAN zu erhalten.
-	Desweiteren ergab die Studie von Chalhoub und Martin \cite{chalhoub2023}
-	das die Router Hersteller viele Probleme haben, welche die Routersicherheit
+	Des Weiteren ergab die Studie von Chalhoub und Martin \cite{chalhoub2023}
+	das die Router Hersteller viele Probleme haben, welche die Router-Sicherheit
 	stark ins Negative beeinflussen. Es folgen einige Punkte:
 	\begin{itemize}
 		\item{Herstellung durch Dritte, die nach Auslieferung aufgrund
-		fehlernder Verträge nicht weiteren Support für die Geräte leisten}
+		fehlender Verträge nicht weiteren Support für die Geräte leisten}
 		\item{Firmware Updates werden trotz Bekanntmachung und Anleitung
 		nicht von den Besitzern ausgeführt}
 		\item{Router werden weiterhin benutzt, trotz EOL (End of Life), 
-		Schwachstellen oder EOS(End of Support). Nach drei bis fünf Jahren
+		Schwachstellen oder EOS (End of Support). Nach drei bis fünf Jahren
 		werden keine Updates mehr gemacht und auch sonst kein weiterer Support 
 		angeboten.}
 	\end{itemize}
 	Zudem wird erwähnt, dass bekannte Schwachstellen teilweise
-	nicht gepatched werden, da die Hersteller entweder zeitlich nicht die 
+	nicht gepatcht werden, da die Hersteller entweder zeitlich nicht die 
 	Kapazität haben erstellte Patches ausreichend zu testen oder aber auch 
 	weil die Priorisierung von Schwachstellen nicht standardisiert ist und jeder
-	Hersteller eine ander Taktik anwendet. Die Schachstellen werden teilweise
-	nach der aktuellen Gefahrenlage priorisiert, das heißt gibt es eine 
-	Schachstelle die oft ausgenutzt wird, hat diese einen größeren Einfluss
+	Hersteller eine andere Taktik anwendet. Die Schwachstellen werden teilweise
+	nach der aktuellen Gefahrenlage priorisiert, das bedeutet gibt es eine 
+	Schwachstelle, die oft ausgenutzt wird, hat diese einen größeren Einfluss
 	auf den User und wird daher höher eingestuft als vielleicht eine Zero-Day
 	Schwachstelle, die von der CVE schwerwiegender eingestuft wird aber nicht
-	oft ausgenutzt wird. Hierbei ist \emph{nicht oft}, relativ zu sehen, da diese
+	oft ausgenutzt. Hierbei ist \emph{nicht oft}, relativ zu sehen, da diese
 	Schwachstellen seltener ausgenutzt werden als die Priorisierten.
-	Andere Hersteller nutzen Datenmodelle oder Matizen zur Priorisierung.
+	Andere Hersteller nutzen Datenmodelle oder Matrizen zur Priorisierung.
 	\newline
 	Zum Standardpasswort des Routers gibt es meist auch einen Standardnamen, 
 	weshalb es zwingend erforderlich ist diesen zu Beginn der Einrichtung 
@@ -553,10 +553,10 @@
 		verwenden möchten.
 		Quelle: WRT120N-EMEA\_combo\_UG.pdf
 	\end{quote}
-	Diese Aussage verleitet dazu die Updates nur zu machen wenn der 
+	Diese Aussage verleitet dazu die Updates nur zu machen, wenn der 
 	Router nicht mehr eine stabile Internetverbindung zur Verfügung stellt,
 	was wiederum die Aussage von Chalhoub und Martin \cite{chalhoub2023} 
-	untermauert, dass der Router nur nochmals vom Benutzer eingestellt wird
+	untermauert, dass der Router nur nochmals vom Benutzer eingestellt wird,
 	wenn dieser nicht ordnungsgemäß funktioniert.
 
 
@@ -1365,19 +1365,19 @@ snprintf(acStack_260,500,
 		\end{tabularx}
 		\caption{WRT120N Testumgebung 1}
 	\end{table}
-	Nachdem der Router per Ehternet Kabel von Port 1 (nicht der Internetport)
-	an den Laptop angeschlossen war, sollten zuerst der aktuelle Stand des Router 
+	Nachdem der Router per Ethernet Kabel von Port 1 (nicht der Internetport)
+	an den Laptop angeschlossen war, sollten zuerst der aktuelle Stand des Routers 
 	geprüft werden. Bereits beim Verbinden von Port 1 wurde eine Unstimmigkeit mit 
 	dem Userguide deutlich, da statt der LED für 
 	Port 1, die für Port 4 aufleuchtete. Durch das Testen der restlichen Port wurde 
-	klar, das die LED's nicht mit dem tatsächlich verbundnen Port übereinstimmen. 
+	klar, das die LEDs nicht mit dem tatsächlich verbundenen Port übereinstimmen. 
 	Die IP-Adresse für die Browseranwendung lautet \emph{192.168.1.1} und ist im
-	Userguid zufinden, ebenso die Default Credentials.
+	Userguide zu finden, ebenso die Default Credentials.
 	Für die erste Anmeldung wurde der Standardbrowser von Kali Linux genutzt -
 	Mozilla Firefox. Der Zugriff über Mozilla ist nicht möglich, da eine Anmeldung
 	dauerhaft fehlschlägt.
-	Der Browser Chromium wurde als nächstes genutzt unter welchem die Anmeldung 
-	erfolgreich war. Zugriff auf das browserbasiert Dienstprogramm ist lediglich
+	Der Browser Chromium wurde als nächstes genutzt, unter welchem die Anmeldung 
+	erfolgreich war. Zugriff auf das browserbasierte Dienstprogramm ist lediglich
 	über die Browser Chromium (Linux) oder Edge (Windows) möglich. Die 
 	Webanwendung entsprach nicht dem Handbuch, siehe Abbildung \ref{fig:wrong_site_01}.
 	\begin{figure}[H]
@@ -1386,12 +1386,12 @@ snprintf(acStack_260,500,
 		\caption{Hauptseite der Website}
 		\label{fig:wrong_site_01}
 	\end{figure}
-	Um die Erreichbarkeit des Routers zutesten wurde dieser angepingt, was wiederum
+	Um die Erreichbarkeit des Routers zu testen wurde dieser angepingt, was wiederum
 	erfolgreich war und die bestehende Verbindung bestätigte.	
-	Da der aktuelle Stand nicht der des Default Zustandes war, sollte dieser
-	durch das Betätigen des Resetbuttons wiederhergestellt werden. Der Resetbutton
+	Da der aktuelle Stand nicht der des Default-Zustandes war, sollte dieser
+	durch das Betätigen des Reset-Buttons wiederhergestellt werden. Der Reset-Button
 	wurde entsprechend der Anleitung betätigt und nach erneutem Anmelden erreichte
-	der Browser die selbe Seite. Dieser Vorgang wurde ebenfalls in der VM auf Basis
+	der Browser dieselbe Seite. Dieser Vorgang wurde ebenfalls in der VM auf Basis
 	von Windows10 22h2 versucht und ist ebenfalls fehlgeschlagen.
 	Wie in Abbildung \ref{fig:wrong_site_02} bot die Website ebenfalls einen 
 	Reboot Button, der ebenfalls getestet wurde. Nach der Meldung \emph{Processing 
@@ -1404,17 +1404,17 @@ snprintf(acStack_260,500,
 		\label{fig:wrong_site_02}
 	\end{figure}
 	Aufgrund der Artikel \cite{chalhoub2023, vomdorp2022, schwarz2021} 
-	war eine veraltete Firmwareversion nicht abwägig daher wurde über 
+	war eine veraltete Firmwareversion nicht abwegig daher wurde über 
 	die Website \emph{archive.org} eine Firmware Version 1.0.05 heruntergeladen und diese
-	über das Feld "Browse" ausgewählt. Die Meldung \emph{File to big}. wurde ausgegeben.
+	über das Feld "Browse" ausgewählt. Die Meldung \emph{File to big} wurde ausgegeben.
 	Diese Abfolge von Test wurde ebenfalls in der Windows10 VM durchgeführt und hatte
-	die selben negativen Ergebnisse.
-	Da der Zustand des Routers unverändert blieb wurde mehrfach versucht über
-	den Reset Button das Gerät auf Werkseinstellungen zurück zusetzten, was jedoch
-	nicht den erwartete Effekt hatte. Ebenfalls wurde der Router stromlos geschalten,
+	dieselben negativen Ergebnisse.
+	Da der Zustand des Routers unverändert blieb, wurde mehrfach versucht über
+	den Reset-Button das Gerät auf Werkseinstellungen zurück zusetzten, was jedoch
+	nicht den erwarteten Effekt hatte. Ebenfalls wurde der Router stromlos geschaltet,
 	um diesen typischen Test durchzuführen, welche ebenfalls erfolglos blieb.
 	Die Nutzung des Routers wurde am folgenden Tag erneut aufgenommen. Über die 
-	zugewiesene IP-Adresse konnte anschließend die Weboberfläche von Linksys erreicht
+	zugewiesene IP-Adresse konnte anschließend die Web-Oberfläche von Linksys erreicht
 	werden. Weshalb der Zugriff zuvor nicht funktioniert hatte, konnte nicht eindeutig
 	festgestellt werden. Allerdings leuchteten nun die entsprechenden LEDs beim 
 	Verbinden mit dem Port korrekt auf, ebenso war die WLAN-Anzeige aktiv und der 
@@ -1422,8 +1422,8 @@ snprintf(acStack_260,500,
 	\newline
 	Schlussfolgerung: Der Router ist erreichbar und auf den Standardeinstellungen. Da der 
 	Router speziell für diese Tests verwendet wird, wird vermutet, dass vorherige 
-	Nutzer entsprechende Umkonfigurationen vorgenommen hatten, um den Zugriff auf 
-	die Weboberfläche zu ermöglichen.
+	Nutzer entsprechende Konfigurationen vorgenommen haben, um den Zugriff auf 
+	die Web-Oberfläche zu ermöglichen.
 	%---
 	%ToDo: Firmware muss mit abgegeben werden
 	%---
@@ -1449,7 +1449,7 @@ snprintf(acStack_260,500,
 			Kabel & 1x Ethernet-Kable (Cat 5) \\
 			\hline
 			Netzwerkaufbau & Router(Port1) via Ethernet Kabel direkt mit dem Laptop
-			verbunden, Router(Internet Port) via Ethernet Kabel mit dem Internet 
+			verbunden, Router (Internet Port) via Ethernet Kabel mit dem Internet 
 			verbunden\\
 			\hline
 			IP-Adresse & 192.168.1.1 \\
@@ -1458,9 +1458,9 @@ snprintf(acStack_260,500,
 		\caption{WRT120N Testumgebung 3}
 		\label{tab:tab_03}
 	\end{table}
-	Getätigte Einstellungen mit Hilfe des Userguides:
+	Getätigte Einstellungen mitilfe des Userguides:
 	\begin{enumerate}
-		\item Neues Routerpasswort angelegt \emph{wrtcentoventin}
+		\item Neues Router Passwort angelegt \emph{wrtcentoventin}
 		\item Internetverbindungstyp: DHCP
 		\item Lokale IP: 192.168.1.1
 		\item DHCP-Server: Aktiviert
@@ -1468,10 +1468,10 @@ snprintf(acStack_260,500,
 	Die Einstellungen für Wireless, sind per Default deaktiviert, weshalb es kein
 	Passwort für den Zugang zum WLAN gibt. Unter dem Reiter \emph{Wireless} können die
 	Einstellungen eingesehen werden. Nachdem der Router via Ethernetkabel mit
-	dem Internet verbunden ist leuchtet die LED. Der Router ist sichtbar und hat
+	dem Internet verbunden ist, leuchtet die LED. Der Router ist sichtbar und hat
 	eine aktive Verbindung ins Internet. Der Laptop wird per WLAN mit dem Router 
-	verbunden. Wird \emph{www.google.com} aufgerufen flackert die Internet LED, 
-	welche Netzwerkaktivität auf dem Internetport symbolisiert. 
+	verbunden. Wird \emph{www.google.com} aufgerufen flackert die Internet-LED, 
+	welche Netzwerkaktivität auf dem Internet Port symbolisiert. 
 	IP-Adresse der VM mittels \texttt{ip addr} ermittelt und Broadcast mithilfe 
 	\texttt{ping 10.2.255 -b} ausgeführt. Dieser schlägt fehl, da sich außer
 	der VM niemand in diesem Subnetz befindet. Ohne weiter Einstellungen wie 
@@ -1485,10 +1485,10 @@ snprintf(acStack_260,500,
 \begin{lstlisting}[language=bash]
 sudo wireshark
 \end{lstlisting}
-	Im Terminal kann mit \texttt{iwconfig} kann die WLAN Netzwerkschnittstellen
+	Im Terminal kann mit \texttt{iwconfig} kann die WLAN-Netzwerkschnittstellen
 	abgefragt werden. Die Bezeichnungen in der ersten Spalte sind in Wireshark
 	ebenfalls aufgelistet und nach Anwahl des WLAN Adapters wird der 
-	Netzwerkverkehr im WLAN des Router mitgeschnitten. Um das erfolgreiche
+	Netzwerkverkehr im WLAN des Routers mitgeschnitten. Um das erfolgreiche
 	Sniffen des Kanals zu zeigen wurde zusätzlich zum Laptop ebenfalls ein 
 	Smartphone  mit dem WLAN verbunden.
 	\begin{figure}[H]
@@ -1498,31 +1498,31 @@ sudo wireshark
 		\label{fig:nwtraff_pc_t3}
 	\end{figure}
 	Abbildung \ref{fig:nwtraff_pc_t3} zeigt einen gefilterten Ausschnitt der
-	Kommunikation des Laptops. Man kann im Info Feld sehen, dass die Seite
+	Kommunikation des Laptops. Man kann im Info-Feld sehen, dass die Seite
 	hackthebox aufgerufen wurde. Weitere Informationen können aus den IP-Adressen 
-	gewonnen werden, da durch die Eingabe der Adressen in Websiten wie 
+	gewonnen werden, da durch die Eingabe der Adressen auf Websites wie 
 	\emph{WhoIsFreaks} \cite{ipwhois142251150119} teilweise ermittelt
-	werden kann wessen Server diese IP-Adresse hat. In der genannten Quelle
+	werden kann, wessen Server diese IP-Adresse hat. In der genannten Quelle
 	handelt es sich um einen Google Server, der die IP 142.251.150.119 hat. 
 	Die IP des Laptops im WLAN wurde vor der Aufzeichnung über das Terminal 
 	mit \texttt{ip addr} in Erfahrung gebracht und innerhalb der Aufzeichnung
 	von Wireshark dann explizit nach dieser IP gesucht. Das gleiche Verfahren
-	wurde für das Smartphone angewandt, dessen IP-Adresse in den WLAN 
+	wurde für das Smartphone angewandt, dessen IP-Adresse in den WLAN-
 	Einstellungen zu finden ist. Die Abbildung \ref{fig:nwtraff_iphone_t3}
-	zeigt den Teil der Kommunikation der mitgeschnitten wurde.
+	zeigt den Teil der Kommunikation, der mitgeschnitten wurde.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{img/nwtraffic_iphone_t3.png}
 		\caption{Netzwerkverkehr Iphone Test3}
 		\label{fig:nwtraff_iphone_t3}
 	\end{figure}
-	Da das genutzte Smartphone (Iphone 13Mini) selbst noch Sicherheitsmechanismen
+	Da das genutzte Smartphone (IPhone 13Mini) selbst noch Sicherheitsmechanismen
 	hat, kann nicht alles akkurat erfasst werden. Dies wird jedoch einen 
 	versierten Angreifer nicht aufhalten, aus den gewonnen Informationen
 	Nutzen zu ziehen.
 	\newline
-	Schlussfolgerung: Der Zutritt zum WLAN ist aufgund des fehlenden Passworts 
-	einfach und kann dazuführen, dass der Netzwerkverker aufgenommen und
+	Schlussfolgerung: Der Zutritt zum WLAN ist aufgrund des fehlenden Passworts 
+	einfach und kann dazuführen, dass der Netzwerkverkehr aufgenommen und
 	ausgewertet wird. 
 	%---
 	%hier noch Bilder von der IP des Iphone und der des PC
@@ -1534,13 +1534,13 @@ sudo wireshark
 	Einstellungen des WLAN.
 	Testumgebung siehe Tabelle \ref{tab:tab_03}.
 	\newline
-	Zur Konfiguration der WLAN Einstellugen wurde der PC mit dem WLAN verbunden
+	Zur Konfiguration der WLAN-Einstellungen wurde der PC mit dem WLAN verbunden
 	und dann die gegebene IP 192.168.1.1 eingegeben, um auf die Website des
-	Routers zugelangegn. Es besteht zu diesem Zeitpunkt keine Verbindung zum Internet.
-	Da der Router die Möglichkeit hat mit Wi-Fi Protected Setup konfigutiert zu
+	Routers zu gelangen. Es besteht zu diesem Zeitpunkt keine Verbindung zum Internet.
+	Da der Router die Möglichkeit hat mit Wi-Fi Protected Setup konfiguriert zu
 	werden, werden die dafür nötigen Schritte unter Beachtung des Handbuchs 
 	umgesetzt. Nach mehrfachem Versuch wurde der Router manuell eingerichtet,
-	da jegliche Test mit Wi-Fi Protect in einem Verbindungsfehler endeten.
+	da jegliche Tests mit Wi-Fi Protect in einem Verbindungsfehler endeten.
 	Getätigte Einstellungen unter Verwendung des Userguides:
 	\begin{enumerate}
 		\item Netzwerkmodus: Wireless-N Only
@@ -1551,7 +1551,7 @@ sudo wireshark
 	\end{enumerate}
 	Eine wichtige Maßnahme ist das Deaktivieren des Netzwerkmodus, wenn alle Geräte
 	sich per Ethernet Kabel mit dem Router verbinden. Dann ist der Router nicht
-	als WLAN sichtbar und es wird dieser Angriffsvektor ausgeschlossen. Allgmein
+	als WLAN sichtbar und es wird dieser Angriffsvektor ausgeschlossen. Allgemein
 	sollten Dienste deaktiviert werden, die nicht genutzt werden, da dies die
 	Angriffsfläche verringert \cite{bsi}. Mit der Einstellung des Netzwerkmodus
 	werden ältere Geräte, die nicht den IEEE 802.11n unterstützen ausgeschlossen,
@@ -1559,11 +1559,11 @@ sudo wireshark
 	welche IEEE Wireless-Standards unterstützt werden. Wireless-N steht für
 	Geräte die IEEE 802.11n und aktuellere unterstützen. Eine Übersicht ist hier
 	\cite[S.54]{baun2025} zu finden. Wie im Abschnitt \ref{sec:attractiv_target} 
-	erwähnt, wird der Standardname des Router geändert, um daraus keine Schlüsse
+	erwähnt, wird der Standardname des Routers geändert, um daraus keine Schlüsse
 	auf den genutzten Router zu ziehen. Die SSID-Übertragung wurde auf den
-	Standardeintellungen belassen, der Router keinen sprechenden Namen mehr hat.
-	Per Default ist die Wireless-Sicherheit deaktiviert, diese wird auf WPA2-
-	Personal gesetzt, da diese das sicherste Verfahren der angebotenen Möglichkeiten
+	Standardeinstellungen belassen, der Router keinen sprechenden Namen mehr hat.
+	Per Default ist die Wireless-Sicherheit deaktiviert, diese wird auf WPA2-Personal
+	gesetzt, da diese das sicherste Verfahren der angebotenen Möglichkeiten
 	ist und es keine RADIUS Server im Netz gibt \cite[S.64]{baun2025}.
 	\begin{enumerate}
 		\item Verschlüsselung: AES
@@ -1571,19 +1571,19 @@ sudo wireshark
 		\item Schlüsselerneuerung: 3600 Sekunden
 	\end{enumerate}
 	Nachdem die genannten Einstellungen getätigt sind, ist an der Darstellung
-	der WLAN Verbindung zu sehen, dass sie verschlüsselt ist, siehe Abbildung
+	der WLAN-Verbindung zu sehen, dass sie verschlüsselt ist, siehe Abbildung
 	\ref{fig:nw_visibility_r2d2} und beim Versuch sich zu verbinden wird nach 
 	dem vorher definierten Passphrase als Kennwort gefragt.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.3\textwidth]{img/visibility_r2d2.png}
-		\caption{Ansicht WLAN Verbindung nach Konfiguration}
+		\caption{Ansicht WLAN-Verbindung nach Konfiguration}
 		\label{fig:nw_visibility_r2d2}
 	\end{figure}
-	Um eine weiter Sicherheitsstufe hinzuzufügen können unter \emph{Wireless MAC-Filter}
-	MAC-Adressen definiert werden, denen der Zugriff auf das WLAN elaubt oder 
+	Um eine weitere Sicherheitsstufe hinzuzufügen können unter \emph{Wireless MAC-Filter}
+	MAC-Adressen definiert werden, denen der Zugriff auf das WLAN erlaubt oder 
 	verweigert wird. Die MAC-Adresse des PCs wird explizit erlaubt für das WLAN.
-	Die Verbindung zum Internet über das Ethernet Kabel und den Internetport wurde
+	Die Verbindung zum Internet über das Ethernet Kabel und den Internet Port wurde
 	wieder hergestellt für die nachfolgenden Tests.
 	\begin{description}
 		\item[Zugriff mit Passwort] Der zuvor in die Liste der erlaubten MAC-Adressen
@@ -1595,42 +1595,42 @@ sudo wireshark
 		nachdem die Wireless-MAC-Filter Liste umgestellt wurde, dass diese
 		Liste nur die darin definierten Adressen verweigert, wird die Verbindung
 		unter Kenntnis des Passworts erlaubt. Steht eine MAC-Adresse auf der
-		Verweigern Liste wird die Verbindung mit der gleichen Fehlermeldung
+		Verweigern-Liste, wird die Verbindung mit der gleichen Fehlermeldung
 		wie bereits erwähnt abgebrochen.
-		\item[Zugriff ohne Passwort] Dies ist unabhänging von der Liste nicht
-		möglich, es seiden man versucht mit Bruteforce oder einem anderen 
+		\item[Zugriff ohne Passwort] Dies ist unabhängig von der Liste nicht
+		möglich, es seiden man versucht mit Brute-Force oder einem anderen 
 		Angriff das Passwort zu knacken.
 	\end{description}
 	Der Wireless-LAN-Filter wurde der Einfachheit halber so konfiguriert, dass
 	die Liste ausschließlich Geräte enthält, denen der Zugriff verweigert wird.
-	Dadurch lassen sich die weiteren Tests einfacher durchführen, ohne fortlaufend 
-	Änderungen an den Routereinstellungen vornehmen zu müssen.
-	Desweitern wurde getestet, ob sich beim Aufzeichnen des Netzwerkverkers mit
-	Wireshark eine Veränderung zeigt. Der PC, der sich im besagten WLAN befindet
+	Dadurch lassen sich die weiteren Tests einfacher durchführen, ohne fortlaufende 
+	Änderungen an den Router-Einstellungen vornehmen zu müssen.
+	Des weitern wurde getestet, ob sich beim Aufzeichnen des Netzwerkverkehrs mit
+	Wireshark eine Veränderung zeigt. Der PC, der sich im besagten WLAN befindet,
 	konnte die gleichen Vorgänge mitschneiden wie in Abschnitt \ref{w_basic_settings}.
 	Wie im Abschnitt %<-----------------------$\ref{label Abschnitt MAC-Adressen Verschleierung}$ erläutert
 	können MAC-Adressen von einem Gerät aus verschleiert werden. Das erschwert 
-	es die Funktion der MAC-Adress Filterung. Die MAC-Adresse kann teilweise
+	es die Funktion der MAC-Adress-Filterung. Die MAC-Adresse kann teilweise
 	für bestimmte Netzwerke unverschleiert angezeigt werden, dies muss dann aber
 	auf dem Gerät für das bestimmte WLAN eingestellt sein.
 	\newline
 	Schlussfolgerung: Die Sicherheitseinstellungen für das WLAN sollten zwingend gemacht
-	werden, da sie den Zugriff stark einschränken und es den potentiellen 
+	werden, da sie den Zugriff stark einschränken und es den potenziellen
 	Angreifern deutlich erschweren sich selbst direkt mit dem WLAN zu verbinden.
 	Gerade im Heimnetzwerk bietet es sich an, den Wireless-MAC-Filter zu 
-	nutzen und nur den eigenen Geräte, deren MAC-Adressen man kennt den Zugriff
+	nutzen und nur den eigenen Geräten, deren MAC-Adressen man kennt den Zugriff
 	ins WLAN zu erlauben.
 
 
 	\section{Schwachstelle CVE-2014-125122}
 	\label{w_cve}
-	Ziel: Schwachstelle und deren Auswirkungen verstehen. Mit Hilfe des Tools
+	Ziel: Schwachstelle und deren Auswirkungen verstehen. Mithilfe des Tools
 	\emph{Metasploit} oder einem Pythonskript die Schwachstelle auslösen.
 	\newline
 	In der Datenbank \emph{CVE.org} ist eine Schwachstelle zu diesem Typ Router	
 	aufgelistet. Da der Router sowohl EOL als auch seit Juli 2022 EOS ist 
-	\cite{linksysproductend} und die Schachstelle am 31.07.2025 
-	veröffentlich wurde, ist diese vom Hersteller nicht mehr behoben worden.
+	\cite{linksysproductend} und die Schwachstelle am 31.07.2025 
+	veröffentlicht wurde, ist diese vom Hersteller nicht mehr behoben worden.
 	Im Bericht der CVE ist zudem die betroffenen Firmwareversion festgehalten,
 	welche der aktuellen Firmwareversion 1.0.07 des Routers entspricht, 
 	siehe Abbildung \ref{fig:firmware_version_wrt120n}
@@ -1641,12 +1641,12 @@ sudo wireshark
 		\label{fig:firmware_version_wrt120n}
 	\end{figure}
 	Für diese Schwachstelle muss sich der Angreifer im WLAN des Routers befinden,
-	dass heißt die erste Hürde, das WLAN Passwort muss von im geknackt werden,
-	sofer es nicht das Default Passwort ist, welches einfach zu erfahren ist.
+	das heißt die erste Hürde, das WLAN Passwort muss von im geknackt werden,
+	sofern es nicht das Default Passwort ist, welches einfach zu erfahren ist.
 	In der Datei \emph{tmUnblock.cgi} befindet sich die Schwachstelle, welche
 	einen Stack-Overflow auslösen kann und damit kurzzeitig das Adminpasswort
 	des Routers zurücksetzt, sodass ein Angreifer sich zur Website des Routers 
-	Zugriff verschaffen kann. Dafür muss ein zulanger TM\_Block\_URL Parameter
+	Zugriff verschaffen kann. Dafür muss ein zu langer TM\_Block\_URL Parameter
 	per HTTP Post-Anfrage an den Router gesendet werden.
 	\cite{cverecordcve2014125122, cwecwe121stackbased} 
 	\begin{description}
@@ -1656,12 +1656,12 @@ sudo wireshark
 		den Server zu übermitteln. Diese Daten können unterschiedliche Inhalte 
 		umfassen, beispielsweise Dokumente, Bilder oder Authentifizierungsinformationen 
 		im Rahmen einer Anmeldung auf einer Website. Im Body der HTTP-Anfrage befinden
-		sich die Daten, die dem Server zur Weiterverabreitung zur Verfügung gestellt 
+		sich die Daten, die dem Server zur Weiterverarbeitung zur Verfügung gestellt 
 		werden.	\cite{porath2020, httpmethodsget}
 		\item[.cgi File] Common Gateway Interface ist eine standardisierte Schnittstelle
 		zwischen einem Webserver und externen Programmen. CGI wird in Verbindung 
 		mit HTTP genutzt und ermöglicht es dem Webserver die externen Programme
-		auszuführen.Eine \emph{.cgi} Datei bezeichnet in diesem Kontext 
+		auszuführen. Eine \emph{.cgi} Datei bezeichnet in diesem Kontext 
 		typischerweise ein ausführbares Skript oder Programm, das über die 
 		CGI-Schnittstelle vom Webserver gestartet werden kann.\cite{ibm}
 	\end{description}
@@ -1717,22 +1717,22 @@ except KeyboardInterrupt:
 	Nachdem die benötigten Bibliotheken eingebunden wurden, folgt in einem try-
 	except Block (Z. 6-10) die Überprüfung der Übergabeparameter. Wird kein Parameter
 	übergeben löst das einen IndexError aus, der dann wiederum eine Fehlermeldung
-	auf dem Konsole ausgibt und das Programm in Zeile 10 beendet \cite{builtinexceptions}.
-	Die fehlerhafte cgi Datei wird in Zeile 14 an die übergebene IP angeghängt und
-	in den folgenden zwei Zeilen wird sicher gestellt, dass die URL mit 
+	auf der Konsole ausgibt und das Programm in Zeile 10 beendet \cite{builtinexceptions}.
+	Die fehlerhafte cgi Datei wird in Zeile 14 an die übergebene IP angehängt und
+	in den folgenden zwei Zeilen wird sichergestellt, dass die URL mit 
 	\emph{http://} beginnt. Der Rest der URL wird in den Zeilen 16-29 gebildet und
 	zu einem String \texttt{post\_data} zusammengefasst. 
-	Für diesen Explot wurde der Stack analysiert und die entsprechenden Stellen im 
-	Speicher hardcodiert in den String geschrieben, siehe Kommentare \cite{wrt120nfprintfstack}.
+	Für diesen Exploit wurde der Stack analysiert und die entsprechenden Stellen im 
+	Speicher hartcodiert in den String geschrieben, siehe Kommentare \cite{wrt120nfprintfstack}.
 	Im try-Block in Zeile 31 bis 32 wird der eigentliche HTTP-Post 
 	zusammengesetzt und abgesendet. Die Request Methode in Zeile 32
-	erwartet als erstes eine Parameter vom Typ String, der eine korrekt kodierte URL 
+	erwartet als Erstes einen Parameter vom Typ String, der eine korrekt kodierte URL 
 	enthält. Der zweite Parameter enthält die zu übertragenden Daten. Mithilfe von 
 	encode("utf-8") wird der String in UTF-8-kodierte Bytes umgewandelt. Die Variable 
-	\emph{req} enhält die Beschreibung der HTTP-Anfrage als auch die rohen Daten in Byte
+	\emph{req} enthält die Beschreibung der HTTP-Anfrage als auch die rohen Daten in Byte
 	jedoch erst in Zeile 33 wir die Anfrage als HTTP-Post ausgeführt, unter Verwendung der
 	Methode \emph{urlopen}. \emph{res} enthält die Antwort des HTTP-Servers. Der 
-	folgedne except-Block fängt die Rückmeldung des HTTP-Server ab oder einen Abbruch
+	folgende except-Block fängt die Rückmeldung des HTTP-Servers ab oder einen Abbruch
 	durch eine Tastatureingabe.
 	\cite{urllibrequestextensiblelibrary}
 	In der folgenden Abbildung \ref{fig:w_exploit} ist ein Ausschnitt 
@@ -1814,7 +1814,7 @@ msf auxiliary(admin/http/linksys_tmunblock_admin_reset_bof) > exploit 192.168.1.
 		\caption{Netzwerkverkehr - Datei: http-post\_exploit\_metasploit.pcapng}
 		\label{fig:w_metasploit}
 	\end{figure}
-	Die Darstellung in Wireshark wird getestet indem der  Router nochmals auf Werkseinstellungen
+	Die Darstellung in Wireshark wird getestet indem der Router nochmals auf Werkseinstellungen
 	zurückgesetzt wird und der Exploit erneut ausgeführt wird. Dies verändert die 
 	Ausgabe in Wireshark nicht (siehe http-post\_exploit\_metasploit\_withoutwpa2.pcapng). 
 	Auf die Unterschiede zwischen den beiden Programmcodes wird nachfolgend 
