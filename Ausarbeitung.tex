@@ -43,20 +43,21 @@
 	% Hier eigene Kapitel einfügen
 	
 	\chapter*{Kurzfassung}
-	In dieser Ausarbeitung wird auf die Funktiosnweise und die Schwachstelle
-	eine Routers eingegangen. Dieser koordiniert die Kommunikation über Netzwerkgrenzen
-	hinweg und ermöchlicht auch eine Verbindung ins Internet. Neben den Ports
-	am Router, über die internetfähgige Geräte direkt an geschlossen werden 
+	In dieser Ausarbeitung wird auf die Funktionsweise und die Schwachstellen
+	eines Routers eingegangen. Dieser koordiniert die Kommunikation über Netzwerkgrenzen
+	hinweg und ermöglicht auch eine Verbindung ins Internet. Neben den Ports
+	am Router, über die internetfähige Geräte direkt angeschlossen werden 
 	können ist auch das Zurverfügungstellen eines WLAN möglich. Bleibt der 
 	Router bei der Installation auf den Werkseinstellungen birgt das einige
-	Gefahren und macht es unteranderem sehr einfach sich unbemerkt in das WLAN
-	einzuloggen. Die daraus entstehenden Sicherhetislücken werden beleutet, als
+	Gefahren und macht es unter anderem sehr einfach sich unbemerkt in das WLAN
+	einzuloggen. Die daraus entstehenden Sicherheitslücken werden beleuchtet, als
 	auch allgemeine Schwachstellen der Router. Wie eben beschrieben kann der
 	Router auch eine Verbindung ins Internet darstellen und hat dadurch eine 
-	noch größere Angriffsfläche für Angreifer. Die Ausnutzung solcher Schwachstellen,
-	derer die über offizielle Stellen wie die \emph{CVE.org} oder die \emph{NIST}
-	veröffentlich wurden werden teilweise ausgenutzt und die Auswirkungen
-	auf den Router und die Sicherheit der Geräte im Netzwerk wird eingegangen.
+	noch größere Angriffsfläche für Angreifer. Schwachstellen, die über 
+	offizielle Stellen wie die \emph{CVE.org} oder das \emph{NIST} veröffentlicht 
+	wurden, werden in dieser Ausarbeitung teilweise praktisch ausgenutzt. Dabei 
+	werden die Auswirkungen dieser Schwachstellen auf den Router sowie auf 
+	die Sicherheit der im Netzwerk befindlichen Geräte untersucht.
 	Die Hersteller Hinweise einzuhalten und bei der Konfiguration des Routers
 	umzusetzen ist sehr wichtig, was auch die Tests zeigen. Zudem sollten 
 	Updates, wenn möglich automatisch oder manuell regelmäßig, durchgeführt 
@@ -90,11 +91,11 @@
 	%\newpage
 	
 	\chapter{Einleitung}
-	In dieser Ausarbeitung geht es um die Schachstellen eines Router und die 
-	Auswirkungen getätigter Sicherheitsmechanismen. Da jeder der internetfähige
-	Endgeräte benutzt, diese früher oder später mit einem Router per WLAN verbindet
+	In dieser Ausarbeitung geht es um die Schwachstellen von Routern und die 
+	Auswirkungen getätigter Sicherheitsmechanismen. Da jeder, der internetfähige
+	Endgeräte benutzt, diese früher oder später mit einem Router per WLAN verbindet,
 	ist es wichtig die Schwachstellen der Router zu kennen. Sind diese Probleme
-	bekannt kann der User sich und seine  Daten schützen und auch selbst den
+	bekannt, kann der User sich und seine  Daten schützen und auch selbst den
 	Router im eigenen Heimnetz bestmöglich vor unbefugtem Zugriff über das
 	WLAN zu schützen. In den Abschnitten, die die Tests enthalten wird unter
 	anderem gezeigt, welche Auswirkungen kleine Änderungen der Sicherheitseinstellungen
@@ -107,14 +108,14 @@
 	\section{Motivation}
 	Das Thema Router ist für die meisten Personen relevant, da fast jeder ein 
 	solches Gerät zu Hause hat, es täglich nutzt und damit nicht nur unproblematische
-	Dinge macht, wie bspw. Bilder von einem PC zu einem Tablet zu senden sondern auch
+	Dinge macht, wie bspw. Bilder von einem PC zu einem Tablet zu senden, sondern auch
 	persönliche oder gar geheime Daten über das Internet übermittelt. Die meisten
 	Personen denken hierbei erst einmal an persönliche Daten wie die Adresse oder 
-	die Bankdaten, aber auch geheime Dokumente, die während dem Home Office versendet
+	die Bankdaten, aber auch geheime Dokumente, die während dem Home-Office versendet
 	werden, werden über den Router übertragen. Durch eine unsichere Einrichtung des
-	Router können massive Schwachstellen entstehen, die Angreifer ausnutzen können.
-	Daher ist es wichtig den Router im Heimnetzwerk so gut es geht abzusichern, 
-	die Angriffsfläche so klein wie möglich zu halten und ihn uptodate zu halten.
+	Routers können massive Schwachstellen entstehen, die Angreifer ausnutzen können.
+	Daher ist es wichtig den Router im Heimnetzwerk so gut wie möglich abzusichern, 
+	die Angriffsfläche so klein wie möglich zu halten und ihn up-to-date zu halten.
 	\cite{chalhoub2023, bsi} %Chapter 1, p.277 -> Covid Pandemie
 		%In der Motivation wird dargestellt, wieso es notwendig ist, sich mit dem in der
 		%Arbeit identifizierten und behandelten Problem zu beschäftigen.
@@ -145,12 +146,12 @@
 	zu Hause und der Kommunikation ins Internet darzulegen. Zudem soll die Arbeit
 	zeigen, dass bereits simple Änderungen der Einstellungen, die Sicherheit
 	massiv verbessern können. Hierzu werden schrittweise die Sicherheitseinstellungen
-	erhöht und jeweils ein Vorher- Nachher Vergleich gemacht, die darstellen
+	erhöht und jeweils ein Vorher-Nachher-Vergleich gemacht, die darstellen
 	sollen welchen Einfluss die getätigten Einstellungen haben. Zudem werden
-	bereits bekannte Schwachstellen der in den Tests genutzen Routern ausgenutzt
-	werden, um hierbei zu veranschaulichen, wie wichtig es ist die Sicherheitseinstellungen
+	bereits bekannte Schwachstellen, der in den Tests genutzten Router ausgenutzt, 
+	um hierbei zu veranschaulichen, wie wichtig es ist die Sicherheitseinstellungen
 	zu tätigen, Informationen der Hersteller zu Updates als auch deren Hinweise
-	dringend zutätigenden Einstellungen umzustetzen. Alle Schwachstellen sind 
+	dringend zu tätigender Einstellungen umzusetzen. Alle Schwachstellen sind 
 	durch anerkannte Organisationen veröffentlicht worden.
 		%Mit dem Ziel der Arbeit wird der angestrebte Lösungsansatz festgelegt. An 
 		%diesem Ziel wird die Arbeit gemessen.Mit dem Ziel der Arbeit wird der 
@@ -162,20 +163,20 @@
 	%=========================================================
 	
 	\section{Vorgehen}
-	Zu Beginn der Ausarbeitung werden Grundlagen zum Verständis des Themengebiets
+	Zu Beginn der Ausarbeitung werden Grundlagen zum Verständnis des Themengebiets
 	geschaffen. Der Router und dessen Funktionen werden beschrieben, sodass der
-	Leser dessen Wichtigkeit versteht. Wenn dieses Fundament geschaffen ist 
+	Leser dessen Wichtigkeit versteht. Wenn dieses Fundament geschaffen ist,
 	werden die Sicherheitsmechanismen und deren Schwachstellen erläutert, diese
 	sind allgemein auf das Thema Router ausgerichtet. Nachdem sowohl der Router
 	als auch dessen Schwachstellen und Sicherheitsmechanismen erläutert wurden
 	folgen die Tests. Dafür wurden zwei Router von verschiedenen Herstellern
 	ausgewählt. Der \emph{WRT120} Wireless-N Home Router von Linksys by Cisco 
 	und der \emph{DIR-600} Wireless N 150 Home Router von D-Link. Beide Router
-	sind vom Hersteller offziell nicht mehr unterstützt 
+	sind vom Hersteller offiziell nicht mehr unterstützt 
 	\cite{linksysproductend, dlinktechnicalsupport}.
-	Wie auf der Website von \emph{CVE.org} zu sehen haben beide Router offizielle
-	Schwachstelle. Da der Router WRT120N lediglich eine hat, wird bei diesem
-	vermehrt auf mögliche Sicherheitseinstellungen auf Basis des Userguides des
+	Wie auf der Website von \emph{CVE.org} zu sehen haben beide Router Schwachstellen. 
+	Da der Router WRT120N lediglich eine hat, wird bei diesem
+	vermehrt auf mögliche Sicherheitseinstellungen auf Basis des Handbuchs des
 	Herstellers und deren Auswirkungen eingegangen.
 		%Nachdem mit Problemstellung und Ziel gewissermaßen Anfangs- und Endpunkt der
 		%Arbeit beschrieben sind, wird hier der zur Erreichung des Ziels eingeschlagene
@@ -191,8 +192,8 @@
 	festgehalten, die im weiteren Verlauf des Kapitels wichtig sind. Es werden 
 	die Grundlagen zum Router erläutert, dessen Aufgaben im Netzwerk, die Funktionen 
 	und auch Gründe genannt, die den Router zu einem attraktiven Ziel für Angreifer machen.
-	Nachdem die Basis zum Verständis des Routers geschaffen ist folgen die 
-	Sicherheitsmechanismen über die er verfügen kann, als auch eine Beschreibung 
+	Nachdem die Basis zum Verständnis des Routers geschaffen ist, folgen die 
+	Sicherheitsmechanismen, über die er verfügen kann, als auch eine Beschreibung 
 	dieser.
 		%In diesem Kapitel werden für die weitere Arbeit wichtige Begriffe eingeführt. 
 		%Dabei ist darauf zu achten, nur solche Inhalte in das Grundlagenkapitel 
