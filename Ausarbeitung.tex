@@ -1598,7 +1598,7 @@ sudo wireshark
 		Verweigern-Liste, wird die Verbindung mit der gleichen Fehlermeldung
 		wie bereits erwähnt abgebrochen.
 		\item[Zugriff ohne Passwort] Dies ist unabhängig von der Liste nicht
-		möglich, es seiden man versucht mit Brute-Force oder einem anderen 
+		möglich, es seiden man versucht mit Bruteforce oder einem anderen 
 		Angriff das Passwort zu knacken.
 	\end{description}
 	Der Wireless-LAN-Filter wurde der Einfachheit halber so konfiguriert, dass
@@ -1624,8 +1624,9 @@ sudo wireshark
 
 	\section{Schwachstelle CVE-2014-125122}
 	\label{w_cve}
-	Ziel: Schwachstelle und deren Auswirkungen verstehen. Mithilfe des Tools
-	\emph{Metasploit} oder einem Pythonskript die Schwachstelle auslösen.
+	Ziel: Schwachstelle \cite{cverecordcve2014125122} und deren Auswirkungen verstehen. 
+	Mithilfe des Tools \emph{Metasploit} oder einem Pythonskript die Schwachstelle 
+	auslösen.
 	\newline
 	In der Datenbank \emph{CVE.org} ist eine Schwachstelle zu diesem Typ Router	
 	aufgelistet. Da der Router sowohl EOL als auch seit Juli 2022 EOS ist 
@@ -1743,10 +1744,10 @@ except KeyboardInterrupt:
 		\caption{Netzwerkverkehr - HTTP-Post Exploit}
 		\label{fig:w_exploit}
 	\end{figure}
-	In dieser Abbildung ist unten rechts blau markiert der HTTP-Post zusehen 
+	In dieser Abbildung ist unten rechts blau markiert der HTTP-Post zusehen,
 	der durch die Zeilen 16-29, 32 erzeugt und in Zeile 33 ausgeführt wurde.
 	Zur besseren Lesbarkeit in diesem Dokument wurden Kommentare teilweise 
-	entfernt und die Importe entsprechen nicht PEP8 wie im tatsächlichen 
+	entfernt und die Importe entsprechen nicht PEP8, wie im tatsächlichen 
 	Skript, welches dieser Ausarbeitung beigelegt ist. Da auf der genutzten 
 	Kali eine neuere Version von Python genutzt wird, entspricht das Skript 
 	nicht vollkommen dem Original von Heffner \cite{heffner2014}.
@@ -1761,7 +1762,7 @@ except KeyboardInterrupt:
 	Da das Skript nach dem senden des HTTP-POST nicht weiter ausgeführt wird
 	wurde das Skript weiter untersucht. 
 	Nachdem die jeweiligen Ergebnisse nacheinander mit dem print Befehl
-	ausgegeben und auf Korrektheit geprüft wurde konnte das Problem soweit 
+	ausgegeben und auf Korrektheit geprüft wurden, konnte das Problem soweit 
 	eingegrenzt werden, dass der Post korrekt zusammengesetzt und versendet
 	wird, jedoch das Booten des Routes zum Problem wird, wie in der 
 	Beschreibung von Heffner \cite{wrt120nfprintfstack} erwähnt wird.
@@ -1770,7 +1771,7 @@ except KeyboardInterrupt:
 	Ausführung des Skripts zu überprüfen.
 	\begin{enumerate}
 		\item Wireless Sicherheit \emph{Sicherheitsmodus} deaktivieren: keine 
-		Änderunge im Verhalten. Das Passwort für die Website wird immer noch gefordert
+		Änderung im Verhalten. Das Passwort für die Website wird immer noch gefordert
 		\item Grundlegende Wirelesseinstellungen auf Default setzen: keine
 		Änderung im Verhalten.
 		\item Firmware Upload durch die genutze Firmware von Heffner 
@@ -1778,7 +1779,7 @@ except KeyboardInterrupt:
 		(FW\_WRT120N\_1.0.07.002\_US.bin). Firmware-Verifizierung hat sich 
 		geändert aber nich das Verhalten beim Ausführen des Exploits.
 		\item MAC-Adressen des Routers im Pythenskript eingepflegt (Zeile 16).
-		Keine Veranderung
+		keine Veränderung
 		\item Router Reset auf Werkseinstellungen: keine Veränderung
 	\end{enumerate}
 	\cite{urllibrequestextensiblelibrary, fielding2022, builtinexceptions}
@@ -1798,7 +1799,7 @@ msf auxiliary(admin/http/linksys_tmunblock_admin_reset_bof) > exploit 192.168.1.
 	Da der Router sich im Zustand der Werkseintsllung befindet werden alle
 	getätigten Sicherheitsmechanismen bis einschließlich Abbschnit \ref{w_wlan_settings}
 	getätigt und nochmals versucht den Exploit über Metasploit auszuführen. 
-	Der Exploit funktioniert wie gehabt
+	Der Exploit funktioniert wie gehabt.
 	Zudem ist aufgefallen, dass der Router keinen Reboot macht und dadurch nicht
 	die Verbindung abbricht. In der folgenden Abbildung \ref{fig:w_metasploit} sieht 
 	man den Ausschnitt von Wireshark, indem der HTTP-Post ausgeführt wird. Man sieht 
@@ -1877,31 +1878,75 @@ rescue ::Rex::ConnectionError
 	Schlussfolgerung: Die Schwachstelle lässt sich erfolgreich mit der Software Metasploit
 	ausführen und ermöglich einem sich im WLAN Netzwerk befindenden Angreifer, den
 	Zugriff auf alle Einstellungen des Routers. Auch erweiterte Einstellungen der
-	Sicherheitskonfiguration machen den Angriff möglichl. Daher ist als Nutzer
+	Sicherheitskonfiguration machen den Angriff möglich. Daher ist als Nutzer
 	wichtig im eigenen WLAN nur Geräte zuzulassen, deren MAC-Adressen bekannt sind
 	damit wird dem Angreifer direkt der Zugang zum WLAN verweigert und diese
 	Schwachstelle kann nicht ausgenutzt werden.
-	%=======================notes jf - need to be deleted later
-	% sind die Grundlagen hinreichen Tief?
-	% wie sollen wir die Programme und Wireshark Files abgeben?
-	% Müssen diese in der PDF der Ausarbeitung enthalten sein oder reicht es
-	% den Dateinamen zu nennen und das diese im Anhang ist?
-	% welche Zeitform beim Beschreiben der Tests?
-	%=========================================================
 	
 	\chapter{Evaluierung}
-	Aufgabe des Kapitels Evaluierung ist es, aufzuzeigen in wie weit die Ziele der
-	Arbeit erreicht wurden. Es sollen also die erreichten Arbeitsergebnisse mit den
-	Zielen verglichen werden. Ergebnis der Evaluierung kann auch sein, das bestimmte
-	Ziele nicht erreicht werden konnten, wobei die Ursachen hierfür auch außerhalb
-	des Verantwortungsbereichs des Autors liegen können.
+	Ziel dieser Arbeit war es, Schwachstellen der beiden Router zu analysieren, 
+	deren Ausnutzung praktisch nachzuweisen und die daraus resultierenden 
+	Auswirkungen auf die Sicherheit der Geräte zu bewerten. Darüber hinaus sollte 
+	die Bedeutung einer sicheren Routerkonfiguration sowie aktueller Sicherheitsupdates
+	verdeutlicht werden.
+	Im Rahmen der Ausarbeitung konnten bei beiden analysierten Routern bekannte 
+	Schwachstellen erfolgreich ausgenutzt und die daraus entstehenden Sicherheitsrisiken 
+	dargestellt werden. Nicht alle dokumentierten Schwachstellen konnten jedoch 
+	reproduziert werden. Dies lag zum einen daran, dass die erforderlichen Firmwareversionen 
+	aufgrund des Status des Router (EOL und EOS) nicht verfügbar waren, und zum anderen 
+	daran, dass die nötige Recherche, um die Schwachstellen auszunutzen den zeitlichen 
+	Rahmen dieser Ausarbeitung überschitten hätte. Die Ergebnisse der einzelnen Tests 
+	wurden jeweils unmittelbar nach der Durchführung ausgewertet und hinsichtlich 
+	ihrer Auswirkungen auf die Sicherheit analysiert. Im Folgenden werden die 
+	wichtigsten Erkenntnisse der kritischen Schwachstellen zusammenfassend bewertet.
+
+	% ------Welche Schwachstelle war kritischer?
+	WRT120N Schwachstelle, da diese Zugang zu allen Einstellungen des Routers hatte
+	und somit auch die Einstellungen dementsprechen anpassen kann, dass die
+	Geräte des eigentlichen Nutzers nicht mehr sich mit dem WLAN verbinden
+	können. Lediglich ein manueller Reset des Routers über den Reset-Button
+	durch geführt vom Besitzer kann diese Einstellungen rückgängig machen.
+	% ------Welche war einfacher auszunutzen?
+	Nach langem Ausprobieren des Pythonskripts, welches sich nicht erfolgreich
+	ausführen lies, war das Ausführen der Schwachstelle über das Programm
+	Metasploit sehr einfach. Daraus lässt sich ableiten, dass ein Angreifer
+	mit entsprechenden Tools, einfach bekannte Schwachstellen ausnutzen kann.
+	% ------Welche Schutzmaßnahmen sind realistisch?
+	Bei der Schwachstelle des WRT120N \cite{cverecordcve2014125122} muss der
+	Angreifer sich im WLAN des Routers befinden, dies könnte durch die 
+	Konfiguration einer Liste erlaubter MAC-Adressen erschwert werden, in
+	der sich lediglich die bekannten MAC-Adressen des Router Besitzers 
+	befinden. Wie im Test \ref{w_wlan_settings} beschrieben, haben MAC-Adressen, 
+	die sich nicht auf dieser Liste befinden keine Möglichkeit ein Passwort für
+	den Zugang in WLAN einzugeben. Damit wird auch die Möglichkeit des
+	Einsatz eines Passwortknackers ausgeschlossen. Sollte diese Liste nicht
+	genutzt werden, sollte zwingend ein starkes Passwort gewählt werden.
+	Unabhängig vom dieser Schwachstelle ist diese Maßnahme von hoher Bedeutung.
+	% ------Welche Rolle spielte der EOL-/EOS-Status?
+
+	% ------Würde der Hersteller die Schwachstelle heute noch beheben?
+
+	% 
+	%=======================notes jf - need to be deleted later
+	% Wie lang muss die Evaluierung sein?
+	%=========================================================
+
+
+		% Aufgabe des Kapitels Evaluierung ist es, aufzuzeigen in wie weit die Ziele der
+		% Arbeit erreicht wurden. Es sollen also die erreichten Arbeitsergebnisse mit den
+		% Zielen verglichen werden. Ergebnis der Evaluierung kann auch sein, das bestimmte
+		% Ziele nicht erreicht werden konnten, wobei die Ursachen hierfür auch außerhalb
+		% des Verantwortungsbereichs des Autors liegen können.
+
 	\newpage
 	
 	\chapter{Zusammenfassung und Ausblick}
 	\section{Erreichte Ergebnisse}
-	Die Zusammenfassung dient dazu, die wesentlichen Ergebnisse der Arbeit und vor
-	allem die entwickelte Problemlösung und den erreichten Fortschritt darzustellen.
-	(Sie haben Ihr Ziel er-reicht und dies nachgewiesen).
+
+
+		% Die Zusammenfassung dient dazu, die wesentlichen Ergebnisse der Arbeit und vor
+		% allem die entwickelte Problemlösung und den erreichten Fortschritt darzustellen.
+		% (Sie haben Ihr Ziel er-reicht und dies nachgewiesen).
 
 	%=======================notes jf - need to be deleted later
 	% ich wusste nicht worein damit, vielleicht nachher in Tipps
