@@ -795,39 +795,56 @@
 	vollständigem Ausfall des Systems führen kann. In einigen Fällen lassen sich sensible Informationen
 	wie Zugangs- oder Systemdaten aus dem Speicher auslesen, welche wiederum für weitere Angriff verwendet werden können.
 
-	Eine weitere Schwachstelle ist der Integer Overflow. Das passiert wenn die Logik davon ausgeht, das das erwartete
-	Ergebniss immer kleiner ist als der Original Wert. Das ist die folge, wenn zu einem Integer Wert eine Zahl hinzugezählt
-	wird, die dann in einem Ergebniss resultiert, welches größer ist als der vorhande Speicherplatz.
-	Das führt zu einem Speicherlüberlauf und führt zu einem sehr kleinen oder einem negativen Ergebniss.
-	Diese Schwachastlle kann von Angreifern genutzt werden um das Proddukt zu unvorhersehbarem Verhlsten oder
-	zum Abstürzen zu bringen. Wenn das Ergebniss für Speicher Allokation usw verwendet wird.
-	In manchen Fällen kann ein Integer Overflow einen Buffer Overflow auslösen was wiederum die bereits
-	aufgeführten Risiken mit sich bringt. Falls der Overflow in einer Index Variable für einer Schleife ausgeführt wird
-	könnte diese Schleife zur falschen Zeit terminiert werden also entwerder zu früh, zu spät oder 
-	überhaupt nicht. Zu viele Schleifen Interationen können dazu führen, das zu viel Speicher Ressourcen 
-	verwendet werden was wiederum zum bruch des Sytems oder anderern Dos Attacken führen kann.
+	Eine weitere relevante Schwachstelle ist der Integer Overflow. 
+	Dieser tritt auf, wenn arithmetische Operationen Werte erzeugen, die auserhalb des darstellbaren Wertebereichs eines
+	Datentyps liegen.
+	Der Speicherlüberlauf führt zu einem sehr kleinen oder einem negativen Ergebniss.
+	Diese Schwachstelle kann sicherheitskritische Auswirkungen haben, 
+	insbesondere wenn die betroffenen Werte für Speicherallokation genutzt, Schleifenbedingungen oder Indexberechnungen verwendet werden. 
+	Diese Fehler können gneutzt werden un unvorhersehbares Systemverhalten zu provozieren oder gezielte Abstürze herbeizuführen.
+	In bestimmten Fällen kann ein Integer Overflow einen Buffer Overflow auslösen, etwa wenn fehlerhafte 
+	Größenberechnungen für Speicherpuffer verwendet werden.
+	Dies führt zu den oben aufgeführten Risiken. 
+	Falls der Overflow in einer Index Variable für einer Schleife ausgeführt wird
+	könnte diese Schleife zur falschen Zeit, also entwerder zu früh, zu spät oder 
+	gar nicht terminiert werden. Zu viele Schleifen Interationen können dazu führen, das zu viel Speicher Ressourcen 
+	verwendet werden was wiederum zum Bruch des Sytems führt oder anderere Denial-of-Service-Attacken begünstigt.
 
 	\subsection{Authentifizierungs- und Zugriffsfehler}
 	Authentication Bypass, Hardcoded Credentials, Schwache Passwlörzer, Privilage Excalation
 	Zu den Authentifizierungs- und Zugriffsfehler, gehört jede Art der Schwachstelle die es einem 
-	Angreifer möglich macht Authentifizierung zu Umgehen. Eine möglichkeit ist der Authentikation Bypass.
-	Authentifizierung beschreibt den Prozessed des Verifizieren der digitalen Identität.
-	Die Umgehung der Authentifizierung ist möglich indem die URL Parameter manipuliert werden oder die
-	Session gefälscht wird. Die Schwachstellen die soche Angriffsvektoren möglich machen, können an 
-	einer vielzahl von Stellen im Software Entwicklungzyklus auftreten. 
-	Schwachstellen in der Designphase, wie beispielsweise den falschen Aplikationsabschintt schützen oder
-	kein verschlüsseltes protokoll für das Übertragen von Credentials zu nutzten.
-	In der Entwicklungsphase sind fehler wie die falsche implementation der Vaidierungs Funktionalität,
-	oder das nicht beachten gewisser Sicherheitsvorkehringen von Programmiersprachen.
-	In der Softwarebereitstellungsphase können Probleme während dem Aufsetzten der Applikation zu Lücken füheren,
-	die durch unwissen und fehlenden technischen Kentnissen und einer fehlenden Dokumentation entstehen.
-	Um die Authentifizierung einer Webapplikation zu Umgehen, bei Routern das Login auf die Admin Seite,
-	können verschiedene Techniken angewendet werden. In manchen Fällen kann die URL so modifiziert werden,
-	das durch setzten eines Parameters die Authentifizierung koplett umgangen wird oder die Zugangsdaten
-	ausgegeben werden. Bei Wiederkehrendet Sessions können Sessions Keys vorhergesagt werden, falls 
-	die generierung deterministisch nachvollziehbar ist.
-	Auch SQL Injektions ...
-	PHP Loose Comparison
+	Angreifer ermöglicht Sicherheitsmechnismen zur Identitätsprüfung oder Zugriffskontrolle
+	zu umgehen.
+	
+	Eine zentraler Angriffstyp ist der Authentikation Bypass.
+	Authentifizierung bezeichnet den Prozesses der Verifikation einer digitalen Identität, typischerweise durch
+	Benutzername und Passwort. Bei Umgehung der Authentifizierung bekommt der Angreifer Zugriff auf das System
+	ohne sich vorher Authentifizieren zu müssen.
+	Dies ist beispielsweise möglich indem die URL Parameter manipuliert werden oder die
+	Session gefälscht wird. 
+	Die Ursachen die soche Angriffsvektoren ermöglichen, können entlang des gesamten Software Entwicklungzyklus auftreten. 
+	In der Entwurfsphase entstehen sie etwa durch unzureichende definierte Zugriffskontrollen oder
+	die Verwendung  unsicherer Protokoll für das Übertragen der Zugangsdaten.
+	In der Implementierungsphase sind häufig fehlerhafte Vaidierungsmechanismen
+	oder unsichere Pogrammierspraktiken verantwortlich.
+	Während der Bereitstellung können Fehlkonfigurationen, unzureichende Dokumentation oder mangelnde 
+	Fachkenntnisse dazu führen, dass Sicherheitsmechanismen nicht korrekt aktiviert oder umgesetzt werden.
+	
+	Mit der manipulation von HTTP-Parameter kann die Authentifizierung vollständig Umgangen werden, etwa wenn
+	serverseitige Prüfungen fehlen oder fehlerhaft implementiert wurden. Ebenso unsicher sind Session-Managemnet-
+	Menchanismen, die Session-IDs nicht ausreichned zufällig generieren. Den dann können Angreifer IDs
+	vorhersagen und eine gültige Sitzung übernehmen.
+
+	Eine weitere Schwachstelle sind Passwörter die hartkodiert oder schlecht gewählt sind.
+	Hardcoded Credentials beschreibt das feste hinterlegen der Zugangsdaten im Code. Angreifer können diese
+	dann einfach aus dem Quellcode herauslesen oder über andere Schwachstellen an sie gelangen.
+	Schlecht gewählte Passwörter, lassen sich wiederum durch automatissierte Angriffe oder in manchen Fällen
+	durch schlichtes raten herausfinden. 
+	
+	Ergänzend spielen auch klassische Web-Schwachtellen eine Rolle. Beispielsweise können SQL-Injections
+	genutzt werden, um Authentifizierungsmechanismen zu umgehen, idem Datenbankabfagen manipuliert werden.
+	Ebenso können sprachspezifische Besonderheiten wie PHP Loose Comparison dazu führen, dass Vergleiche
+	zwischen Werten als gültig interpretiert werden und dadurch Sicherheitsprüfungen fehlschlagen.
 
 	\subsection{Eingabevalidierungsfehler}
 	Command Injection, OS Command Injection, Web Interface Injection
