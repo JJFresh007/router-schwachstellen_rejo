@@ -779,9 +779,57 @@
 	Es werden verschiedene Angriffsarten und anderweitiger Missbrauch der Router beschrieben, 
 	sowie aktuelle Beispiele für unsichere router und deren Auswirkunge.
 	\subsection{Speicherfehler}
+	Buffer Overflow, Integer Overflow, Memry Corruption
+	Speicherfehler sind solche, die den Speicher kompromitieren aufgrund von Fehlern in  der Implementierung.
+	Einer de bekanntesten Speicherfehler ist der Buffer Overflow. Hierbei werden Operatione auf einem Speicher Buffer
+	ausgeführt, allerdings liest oder schreibt das Produkt außerhalb des vorgesehenen 
+	Speicherbereichs. Der dadurch angesprochene Speicherbereich könnte zu anderen variablen, datenstrukturen oder
+	internen Programmen gelinkt sein, wodurch es möglich wird auf interne Strukturen des Routers
+	zuzugreifen. An Angreifer kann diese Schwachstelle nutzten um unauthorisierten Code oder Anweisungen auszuführen
+	oder Speicher zu modifizieren. Desweitern kann es zur Korruption von relevantem Speicher kommen was zu 
+	einem möglichen korrupieren des Routers führt. Außerdem könnte des Angreifer zugang zu empfindlichen Daten bekommen,
+	die system oder nutzer Informationen enthalten, die der Nutzer dann für weitere Angriffe verwenden kann.
+
+	Eine weitere Schwachstelle ist der Integer Overflow. Das passiert wenn die Logik davon ausgeht, das das erwartete
+	Ergebniss immer kleiner ist als der Original Wert. Das ist die folge, wenn zu einem Integer Wert eine Zahl hinzugezählt
+	wird, die dann in einem Ergebniss resultiert, welches größer ist als der vorhande Speicherplatz.
+	Das führt zu einem Speicherlüberlauf und führt zu einem sehr kleinen oder einem negativen Ergebniss.
+	Diese Schwachastlle kann von Angreifern genutzt werden um das Proddukt zu unvorhersehbarem Verhlsten oder
+	zum Abstürzen zu bringen. Wenn das Ergebniss für Speicher Allokation usw verwendet wird.
+	In manchen Fällen kann ein Integer Overflow einen Buffer Overflow auslösen was wiederum die bereits
+	aufgeführten Risiken mit sich bringt. Falls der Overflow in einer Index Variable für einer Schleife ausgeführt wird
+	könnte diese Schleife zur falschen Zeit terminiert werden also entwerder zu früh, zu spät oder 
+	überhaupt nicht. Zu viele Schleifen Interationen können dazu führen, das zu viel Speicher Ressourcen 
+	verwendet werden was wiederum zum bruch des Sytems oder anderern Dos Attacken führen kann.
+
 	\subsection{Authentifizierungs- und Zugriffsfehler}
+	Authentication Bypass, Hardcoded Credentials, Schwache Passwlörzer, Privilage Excalation
+	Zu den Authentifizierungs- und Zugriffsfehler, gehört jede Art der Schwachstelle die es einem 
+	Angreifer möglich macht Authentifizierung zu Umgehen. Eine möglichkeit ist der Authentikation Bypass.
+	Authentifizierung beschreibt den Prozessed des Verifizieren der digitalen Identität.
+	Die Umgehung der Authentifizierung ist möglich indem die URL Parameter manipuliert werden oder die
+	Session gefälscht wird. Die Schwachstellen die soche Angriffsvektoren möglich machen, können an 
+	einer vielzahl von Stellen im Software Entwicklungzyklus auftreten. 
+	Schwachstellen in der Designphase, wie beispielsweise den falschen Aplikationsabschintt schützen oder
+	kein verschlüsseltes protokoll für das Übertragen von Credentials zu nutzten.
+	In der Entwicklungsphase sind fehler wie die falsche implementation der Vaidierungs Funktionalität,
+	oder das nicht beachten gewisser Sicherheitsvorkehringen von Programmiersprachen.
+	In der Softwarebereitstellungsphase können Probleme während dem Aufsetzten der Applikation zu Lücken füheren,
+	die durch unwissen und fehlenden technischen Kentnissen und einer fehlenden Dokumentation entstehen.
+	Um die Authentifizierung einer Webapplikation zu Umgehen, bei Routern das Login auf die Admin Seite,
+	können verschiedene Techniken angewendet werden. In manchen Fällen kann die URL so modifiziert werden,
+	das durch setzten eines Parameters die Authentifizierung koplett umgangen wird oder die Zugangsdaten
+	ausgegeben werden. Bei Wiederkehrendet Sessions können Sessions Keys vorhergesagt werden, falls 
+	die generierung deterministisch nachvollziehbar ist.
+	Auch SQL Injektions ...
+	PHP Loose Comparison
+
 	\subsection{Eingabevalidierungsfehler}
+	Command Injection, OS Command Injection, Web Interface Injection
+	Unter Eingabevalididerungsfehlern versteht man fehler 
+
 	\subsection{Unsichere Firmware-Architektur}	
+	Unsichere Updates, Veraltet bibs.Drittanbieter Komponentenb, Fehlende Patches
 
 
 	\chapter{Tests D-Link DIR-600}
