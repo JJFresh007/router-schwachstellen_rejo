@@ -780,15 +780,20 @@
 	sowie aktuelle Beispiele für unsichere router und deren Auswirkunge.
 	\subsection{Speicherfehler}
 	Buffer Overflow, Integer Overflow, Memry Corruption
-	Speicherfehler sind solche, die den Speicher kompromitieren aufgrund von Fehlern in  der Implementierung.
-	Einer de bekanntesten Speicherfehler ist der Buffer Overflow. Hierbei werden Operatione auf einem Speicher Buffer
-	ausgeführt, allerdings liest oder schreibt das Produkt außerhalb des vorgesehenen 
-	Speicherbereichs. Der dadurch angesprochene Speicherbereich könnte zu anderen variablen, datenstrukturen oder
-	internen Programmen gelinkt sein, wodurch es möglich wird auf interne Strukturen des Routers
-	zuzugreifen. An Angreifer kann diese Schwachstelle nutzten um unauthorisierten Code oder Anweisungen auszuführen
-	oder Speicher zu modifizieren. Desweitern kann es zur Korruption von relevantem Speicher kommen was zu 
-	einem möglichen korrupieren des Routers führt. Außerdem könnte des Angreifer zugang zu empfindlichen Daten bekommen,
-	die system oder nutzer Informationen enthalten, die der Nutzer dann für weitere Angriffe verwenden kann.
+	Speicherfehler bezeichenn Schwachstellen, die durch falsche Implementierung entstehen und 
+	den Speicher Kompromitieren. Sie sind bilden häufig die Grundlage für weiterführende Angriffe und bieten dem
+	Angreifer einen Einstieg in das System.
+
+	Einer der bekanntesten Speicherfehler ist der Buffer Overflow. Dabei werden Operatione auf einem Speicherpuffer
+	durchgeführt, wobei Daten über die vorgesehene Speichergrenze hinaus gelesen und geschrieben werden. 
+	Der dadurch angesprochene angrenzende Speicherbereich kann andere Variablen, Datenstrukturen oder
+	internen Programmen verlinken, wodurch es möglich wird auf diese interne Strukturen des Routers
+	zuzugreifen oder diese zu manipulieren. In der Praxis kann ein BufferOverflow dazu genutzten werden, 
+	um beliebigen Code auszuführen, Programmabläufe zu verändern oder sicherheitsrelevamte Daten zu überchreiben.
+	Darüber hinaus kann es zur Korruption von relevantem Speicher kommen was zu 
+	einem möglichen Korrupieren kritischer Speicherbereiche führen, was folglich zu destabilisierung oder sogar 
+	vollständigem Ausfall des Systems führen kann. In einigen Fällen lassen sich sensible Informationen
+	wie Zugangs- oder Systemdaten aus dem Speicher auslesen, welche wiederum für weitere Angriff verwendet werden können.
 
 	Eine weitere Schwachstelle ist der Integer Overflow. Das passiert wenn die Logik davon ausgeht, das das erwartete
 	Ergebniss immer kleiner ist als der Original Wert. Das ist die folge, wenn zu einem Integer Wert eine Zahl hinzugezählt
@@ -826,11 +831,17 @@
 
 	\subsection{Eingabevalidierungsfehler}
 	Command Injection, OS Command Injection, Web Interface Injection
-	Unter Eingabevalididerungsfehlern versteht man fehler 
+	Unter Eingabevalididerungsfehlern versteht man fehler die ...
+	Wenn das Produkt externen Input von Auswertet und verdentet, diesen aber vor dem Benutzten nicht 
+	neutralissiert oder unschädlich macht können Kommandos modifiziert werden.
+	Beispielsweise kann ein Angreifer dann am Ende des inputs einen anderes Kommando anhängen welches
+	Intern weiterverarbeitet und ausgeführt wird, was ihm Priviliegien gibt die er eigentlich nicht
+	haben sollte. 
 
 	\subsection{Unsichere Firmware-Architektur}	
 	Unsichere Updates, Veraltet bibs.Drittanbieter Komponentenb, Fehlende Patches
-
+	Die Firmware ist das grundgerüst des Routers, wird sie kompromitiert hat der Angreifer zugriff auf das gesamte System.
+	Der 
 
 	\chapter{Tests D-Link DIR-600}
 	\label{sec:Tests D-Link DIR-600}
