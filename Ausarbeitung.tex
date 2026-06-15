@@ -842,18 +842,26 @@
 	durch schlichtes raten herausfinden. 
 	
 	Ergänzend spielen auch klassische Web-Schwachtellen eine Rolle. Beispielsweise können SQL-Injections
-	genutzt werden, um Authentifizierungsmechanismen zu umgehen, idem Datenbankabfagen manipuliert werden.
+	genutzt werden, um Authentifizierungsmechanismen zu umgehen, indem Datenbankabfagen manipuliert werden.
 	Ebenso können sprachspezifische Besonderheiten wie PHP Loose Comparison dazu führen, dass Vergleiche
 	zwischen Werten als gültig interpretiert werden und dadurch Sicherheitsprüfungen fehlschlagen.
 
 	\subsection{Eingabevalidierungsfehler}
 	Command Injection, OS Command Injection, Web Interface Injection
-	Unter Eingabevalididerungsfehlern versteht man fehler die ...
-	Wenn das Produkt externen Input von Auswertet und verdentet, diesen aber vor dem Benutzten nicht 
-	neutralissiert oder unschädlich macht können Kommandos modifiziert werden.
-	Beispielsweise kann ein Angreifer dann am Ende des inputs einen anderes Kommando anhängen welches
-	Intern weiterverarbeitet und ausgeführt wird, was ihm Priviliegien gibt die er eigentlich nicht
-	haben sollte. 
+	Eingabevalididerungsfehler sind Fehler in dem Valisierungsmechanismus eines Systems. 
+	Das System erhält externe Eingaben, prüft, filtert oder bereinigt diese aber nicht ausreichend.
+	Insbesondere wenn ein System Benutzereingaben übernimmt, ohne deren Struktur oder Kontext angemessen
+	zu validideren, hat das folgen für die sicherheit des Systems.
+
+	Comand Injection ist eine besonders kritische Ausprägung dieser Fehlerklasse.
+	Dabei gelingt es einem Angreifer Kommandos so zu modifizieren, das zusätzliche Befehle in einen 
+	bestehenden Ausführungskontext einzuschleusen. Eingaben werden dabei meistend direkt in Systemaufrufe
+	oder Shell-Kommandos integriert werden, ohne zuvor ausreichend neutralisisert zu werden.
+	Einem legitimer Eingabewert wird ein weiters Kommando angehängt, welcher anschließend vom System interpretiert
+	und ausgefühert wird. Damit können unter Umständen Authentifizierungdaten ausgegeben werden.
+
+	Neben der Ausführung von beliebigen Code können Angreifer ihre Privilegien Erweitern, 
+	vertrauliche Daten auslesen oder die 
 
 	\subsection{Unsichere Firmware-Architektur}	
 	Unsichere Updates, Veraltet bibs.Drittanbieter Komponentenb, Fehlende Patches
@@ -925,9 +933,55 @@
 	\subsection{Werkseinstellungen}
 	\label{sec:Werkseinstellungen}
 	Vor Beginn der Tests wurde der Router auf die Werkeinstellungen mithilfe des Reset-Knopfs zurückgesetzt.
+	Im folgenden wird beschrieben welche Einstellungen des Router von Werk aus hat und was dies für
+	die Sicherheit des Routers bedeutet.
+	Zu beginn sind Standart Benutzer und Passwort gesetzt. Auch die IP Adresse ist auf ihren Standart gesetzt,
+	192.168.0.1. Es gibt keine Zgriffkontrolle um das WLAN zu bertreten, was wiederum bedeutet
+	das jeder Zugiff auf das Netztwerk hat.
+
+	\subsection{Gehärteter Router}
+	\label{sec:Gehärteter Router}
+	***In Arbeit***
+	Nach der initialen Analyse der Werkseinstellungen wurde der Router durch gezielte Sicherheitskonfigurationen gehärtet, 
+	um unautorisierten Zugriff zu verhindern und die Angriffsfläche zu reduzieren.
+
+	Zunächst wurden die WLAN-Sicherheit auf WPA/WPA2 mit AES verschlüsselung und PSK
+	eingestellt und ein Passwort gesetzt. Dies hat zur folge, das eine Authentifizierung
+	nötig ist bevor ein Gerätz Zugriff auf das Netzwerk erhält.
+	Dadurch werden unkontrollierte Zugriffe auf das WLAN erschwert. Aktive und Passive Angriffe auf das 
+	LAN werden minimiert.
+	Zusätzlich wurde die Standart-IP-Adresse des Routers im lokalen Netzwerk angepasst. Diese Maßnahme dient weniger
+	der eigentlichen Sicherheit, sondern reduziert automatisierte Standarttangriffe, auf die Administrationsoberfläche.
+
+	Eine weitere Schutzmaßnahme stellt die MAC-Adressfilterung dar.
+	Dabei wird eine Liste mit MAC-Adressen im Router hinterlegt. Nur Geräte, deren MAC-Adresse, mit der
+	Liste übereinstimmen erlangen Zugriff auf das Netzwerk. In der Praxis ist diese Methode jedoch nur
+	bedingt zuverlässig, da sich MAC-Adressen fälschen lassen. Zudem können moderne Betriebssysteme 
+	MAC-Adressen an ein Gerät zufällig vergeben, wodurch die Verwaltung unpraktisch werden kann.
+
+	Ergänzend wurden Firewall Regelungen betrachtet, mit denen der Zugriff auf bestimmte IP-Adressen 
+	und Dienste gesteuert werden kann. Datenverkehr zwischen Netzwerken kann gezielt gesteuert und unerwünschte
+	Verbindungen blockiert werden.
+
+	Desweiteren unterstützt der Router statisches Routing und Port Forwarding.
+	Diese Funktionen ermöglichen die gezielte Weiterleitung von Netzwerkverkehr an interne Geräte und
+	werden typischerweise für spezielle Dienste oder Serveranwendungen genutzt.
+	Allerdings stellen sie bei Fehlkonfiguration ein Sicherheitsrisiko dar, da interne Systeme nach außen
+	exponiert werden.
+
+	Der Router bietet außerdem die Möglichkeit Remote Administration zu aktivieren. Diese Funkltion ermöglicht
+	Zugriff auf die Administrationsoberfläche von außerhalb des Netztwerks über die Öffentliche IP-Adresse.
+	Standartmäßig ist dieser Zugriff sehr offenb konfiguriert (alle IP-Adressen 0.0.0.0), wodurch 
+	die Oberfläche im Grunde weltweit erreichbar ist. Aus diesem Grund sollte Remote Administration entweder
+	deaktiviert oder auf eine definierte IP-Adresse beschränkt werden.
+
+	HTTPS-Unterstützung für die Verwaltungsoberfläche ist bei diesem Modell/Firmwarestand nicht verfügbar, 
+	wodurch die Kommunikation mit der Weboberfläche unverschlüsselt erfolgt und somit potenziell mitgelesen 
+	oder manipuliert werden kann.
+	
+	\subsection{Mitschnitt}
 	Der Router ist mit dem Laptop über ein LAN-Kabel mit Port 1 verbunden. Der Router ist mit dem Internet verbunden.
 	Zum Mittschnitt des Netzwerkverkehrs wurde das Tool Wireshark verwendet.
-	
 	Mit dem Filter \texttt{dns} lassen sich lediglich die Pakete anzeigen die an den DNS-Server gesendet werden.
 	Der klassische DNS Server nutzt UDP (Port 53) und verschlüsselt seine Inhalte nicht.
 	Die besuchten Domänen und Hintergrundinformationen sind voll einsehbar.
@@ -966,10 +1020,6 @@
 
 	Die Analyse zeigt, das mehrere zentrale Dienste ohne kryptographische Absicherung betrieben werden. Dies macht
 	Angriffe auf das Netzwerk möglich, wodurch Authentifizierungsdaten kompromittiert werden können.
-
-	\subsection{Gehärteter Router}
-	\label{sec:Gehärteter Router}
-	***In Arbeit***
 
 	\section{Firmware-Analyse}
 	\label{sec:Firmware-Analyse}
