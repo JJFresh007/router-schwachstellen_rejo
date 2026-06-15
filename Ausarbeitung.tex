@@ -935,9 +935,34 @@
 	Vor Beginn der Tests wurde der Router auf die Werkeinstellungen mithilfe des Reset-Knopfs zurückgesetzt.
 	Im folgenden wird beschrieben welche Einstellungen des Router von Werk aus hat und was dies für
 	die Sicherheit des Routers bedeutet.
-	Zu beginn sind Standart Benutzer und Passwort gesetzt. Auch die IP Adresse ist auf ihren Standart gesetzt,
-	192.168.0.1. Es gibt keine Zgriffkontrolle um das WLAN zu bertreten, was wiederum bedeutet
-	das jeder Zugiff auf das Netztwerk hat.
+	
+	Im Werkzusatnd ist das Gerät so konfiguriert das eine einfache Inbetriebnahme ermöglicht wird.
+	Hierbei werden Sicherheitsaspekte nur rudimentär berücksichtigt. 
+	Die Administrationsoberfläche ist über die standartisierte lokale IP-Adresse 192.168.0.1 erreichbar.
+	Für den Zugriff auf die Weboberfläche sind standart Zugangsdaten hinterlegt, welche sowohl auf dem Router
+	selbst als auch in der Bedinungsanlleitung und im Internet offen hinterlegt sind.
+	Falls das Passwort nach dem ersten Login nicht geändert wird, stellt dies ein ehebliches Sicherheitsrisiko dar,
+	da ein Angreifer leicht Zugriff zu der Oberfläche bekommt. Der Nutzer wird nicht dazu aufgefordert sein Passwort
+	zu ändern und es gibt keine beschränkung bei der Wahl des Passworts, es können also auch kurze oder einfältige
+	Passwörter gewählt werden, die durch eine Brute Force Attack leicht zu komprimieren sind.
+
+	Auch die Netzwerkkonfiguration ist im Auslieferungszustand sehr offen gestaltet. Der Router vergibt 
+	Standartmäßig Adressen mit DHCP im privaten Adressbereich und stellt grundlegende Routing-Funktionalitäten zwischen
+	lokalem Netz un Internet bereit. Besonders kritisch sind die Standardkonfiguration des WLAN-Bereichs. In der usprünglichen Konfiguration ist
+	die Verschlüssel ausgestellt. Zumindest wird auf der Seite darufhingewiesen, das diese Einstellung nicht
+	empfolen wird. Unauthorisierter Zugriff auf das Netzwerk wird nicht unterbunden, das bedeutet jedes Gerät
+	in Reichweite des Netzwerk kann sich mit diesem Verbinden.MAC-Adressenfilterung, Firewall-Regelungen und Zugriffsbeschränkungen
+	sind deaktiviert oder nicht konfiguriert.
+	Dadurch wird die Netzwerkinfrastruktur im Auslieferungszustand offen gehalten, dies erleichtert die 
+	Inbetriebnahme des Gerätes für den Nutzer.
+
+	Die Kommunikation mit dem Webinterface erfolgt standardmäßig unverschlüsselt über HTTP, 
+	Daten werrden können potenziell ausgelesen und mitgeschnitten werden.
+
+	Insgesamt zeigt die Analyse der Werkeinstellungen, dass der Router primär auf einfache Inbetriebnahme
+	und Kompatibilität ausgelegt ist, während Sicherheitsmechanismen nur minimal vorhanden sind.
+	Ohne nachträgliche Konfiguration entsteht dadurch ein Angriffsvektor sowohl auf Netzwerk- als auch auf
+	Administrationsebene.
 
 	\subsection{Gehärteter Router}
 	\label{sec:Gehärteter Router}
@@ -977,7 +1002,7 @@
 
 	HTTPS-Unterstützung für die Verwaltungsoberfläche ist bei diesem Modell/Firmwarestand nicht verfügbar, 
 	wodurch die Kommunikation mit der Weboberfläche unverschlüsselt erfolgt und somit potenziell mitgelesen 
-	oder manipuliert werden kann.
+	oder manipuliert werden kann, selbst wenn der Router gehärtet wurde.
 	
 	\subsection{Mitschnitt}
 	Der Router ist mit dem Laptop über ein LAN-Kabel mit Port 1 verbunden. Der Router ist mit dem Internet verbunden.
