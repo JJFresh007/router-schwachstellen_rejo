@@ -956,8 +956,8 @@
 	mit HTTP und PHP zum Management bereit. Netzwerkdienste wie DHCP, DNS und PPP werden über spezialisierte Daemons und
 	Skripte gesteuert. \cite{hostapdieee80211ab, netfilteriptablesprojectb, dlinksupportresourcesb}
 
-	\section{Analyse des Netzwerkverkehrs}
-	\label{sec:Analyse des Netzwerkverkehrs}
+	\section{Analyse des Routers}
+	\label{sec:Analyse des Routers}
 
 	\subsection{Werkseinstellungen}
 	\label{sec:Werkseinstellungen}
@@ -1004,8 +1004,20 @@
 	nötig ist bevor ein Gerätz Zugriff auf das Netzwerk erhält.
 	Dadurch werden unkontrollierte Zugriffe auf das WLAN erschwert. Aktive und Passive Angriffe auf das 
 	LAN werden minimiert.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/WPA_WPA2.png}
+		\caption{WPA/WPA2 Einstellugen}
+		\label{fig:http}
+	\end{figure}
 	Zusätzlich wurde die Standart-IP-Adresse des Routers im lokalen Netzwerk angepasst. Diese Maßnahme dient weniger
 	der eigentlichen Sicherheit, sondern reduziert automatisierte Standarttangriffe, auf die Administrationsoberfläche.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/IP-Adresse ändern.png}
+		\caption{IP-Adresse ändern}
+		\label{fig:http}
+	\end{figure}	
 
 	Eine weitere Schutzmaßnahme stellt die MAC-Adressfilterung dar.
 	Dabei wird eine Liste mit MAC-Adressen im Router hinterlegt. Nur Geräte, deren MAC-Adresse, mit der
@@ -1016,6 +1028,12 @@
 	Ergänzend wurden Firewall Regelungen betrachtet, mit denen der Zugriff auf bestimmte IP-Adressen 
 	und Dienste gesteuert werden kann. Datenverkehr zwischen Netzwerken kann gezielt gesteuert und unerwünschte
 	Verbindungen blockiert werden.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/Firewall_Test.png}
+		\caption{Firewall}
+		\label{fig:http}
+	\end{figure}	
 
 	Desweiteren unterstützt der Router statisches Routing und Port Forwarding.
 	Diese Funktionen ermöglichen die gezielte Weiterleitung von Netzwerkverkehr an interne Geräte und
@@ -1028,12 +1046,20 @@
 	Standartmäßig ist dieser Zugriff sehr offenb konfiguriert (alle IP-Adressen 0.0.0.0), wodurch 
 	die Oberfläche im Grunde weltweit erreichbar ist. Aus diesem Grund sollte Remote Administration entweder
 	deaktiviert oder auf eine definierte IP-Adresse beschränkt werden.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/administration.png}
+		\caption{Remote Administration}
+		\label{fig:http}
+	\end{figure}	
 
 	HTTPS-Unterstützung für die Verwaltungsoberfläche ist bei diesem Modell/Firmwarestand nicht verfügbar, 
 	wodurch die Kommunikation mit der Weboberfläche unverschlüsselt erfolgt und somit potenziell mitgelesen 
 	oder manipuliert werden kann, selbst wenn der Router gehärtet wurde.
 	
-	\subsection{Mitschnitt}
+	\subsection{Analyse des Netzwerkverkehrs}
+	\label{sec:Analyse des Netzwerkverkehrs}
+
 	Der Router ist mit dem Laptop über ein LAN-Kabel mit Port 1 verbunden. Der Router ist mit dem Internet verbunden.
 	Zum Mittschnitt des Netzwerkverkehrs wurde das Tool Wireshark verwendet.
 	Mit dem Filter \texttt{dns} lassen sich lediglich die Pakete anzeigen die an den DNS-Server gesendet werden.
