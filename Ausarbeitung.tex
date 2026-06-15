@@ -855,18 +855,47 @@
 
 	Comand Injection ist eine besonders kritische Ausprägung dieser Fehlerklasse.
 	Dabei gelingt es einem Angreifer Kommandos so zu modifizieren, das zusätzliche Befehle in einen 
-	bestehenden Ausführungskontext einzuschleusen. Eingaben werden dabei meistend direkt in Systemaufrufe
+	bestehenden Ausführungskontext einzuschleusen. Eingaben werden dabei meistens direkt in Systemaufrufe
 	oder Shell-Kommandos integriert werden, ohne zuvor ausreichend neutralisisert zu werden.
 	Einem legitimer Eingabewert wird ein weiters Kommando angehängt, welcher anschließend vom System interpretiert
 	und ausgefühert wird. Damit können unter Umständen Authentifizierungdaten ausgegeben werden.
-
 	Neben der Ausführung von beliebigen Code können Angreifer ihre Privilegien Erweitern, 
-	vertrauliche Daten auslesen oder die 
+	vertrauliche Daten auslesen oder die vollständige Kontrolle über das Gerät erlangen.
+	Gerade ber Routern kann dies weitreichende Folgen haben, da diese die Schnittstelle zum Netzwerkdarstellt.
+	Bei einer kompromitierung können Angriffe auf das gesamte Netzwerk ausgebreitett werden.
+
+	Bei Routern treten diese Art der Angriffe insbesondere im zusammenhang mit der Administrationsoberflächen
+	auf. Diese Web Interface Injections enstehen, wenn HTTP-Parameter oder Formulareingaben serverseitig
+	verarbeitet werden.
 
 	\subsection{Unsichere Firmware-Architektur}	
 	Unsichere Updates, Veraltet bibs.Drittanbieter Komponentenb, Fehlende Patches
 	Die Firmware ist das grundgerüst des Routers, wird sie kompromitiert hat der Angreifer zugriff auf das gesamte System.
-	Der 
+	Eine unichere Firmware Architektur basiert weiniger auf einzelnen Programmierfehlern, sondern vielmehr
+	aus struktuellen Problemen in der System-Architektur sowie im gesamten Lebenszyklus der Firmware.
+	Fehlende Update-Mechanismen, die Wiederverwendung veralteter Softwarekomponenten sowie unzureichnedes
+	Patchmanagment sind zentrale Risikofaktoren.
+
+	Ein wesentlicher Aspekt sind unsichere Firmware Updates. Einige Router implementieren Update-Mechnismen nicht
+	ausreichend abgesichert. Diese sollten durch eine kryptographische Signatur, Identitätsprüfung und
+	sichere Übertragungsprotokolle geschützt werden. Ist dies nicht der Fall, besteht das Risiko das dass
+	Gerät mit manipulierter Software geupdatet wird.
+
+	Ein weiteres Problem ist das verwenden veralteter oder nicht gewarteter Softwarebibliotheken.
+	Die Firmware auf den Routern basiert oftmals auf veralteten Linux-Kernel-Versionen und
+	Open-Source-Komponenten, die bekannte Schwachstellen enthalten. Wird der Software dritter nicht regelmäßig
+	aktualisiert und ist veraltet beleiben bereits entdeckte Sicherheitslücken erhalten und können 
+	von Angreifern ausgenutzt werden. Auch fehlende oder verzögert durchgeführte Sicherheitsupdates
+	stellen einen Angriffsvektor dar. Viele Router besitzten keine automatisiserte Update-Mechnismen oder
+	keine langfristige Herstellerunterstützung. Auch das führt dazu das bereits bekannte Schwachstellen
+	weiter auf dem Gerät exsistieren.
+
+	Zusätzlich spielt die mangelnde Kontrolle über Drittanbieter-Komponenten eine entscheidente Rolle.
+	Firmware wird oftmals aus mehreren externen Modulen zusammengesetzt, deren Sicherheitsniveu heterogen ist.
+	Werden diese Komponenten und Schnittstellen nicht regeklmäßig geprüft können sich Schwachstellen in das 
+	gesamte System einschleußen. Diese Risiken stehen zwar nicht im direkten Einflussbereich des 
+	Router-Hersteller, trotzdem ist es dessen Aufgabe die Schnitstellen ausreichnd zu testen und abzusichern
+	um eine sichere Architektur gewährleisten ztu können.
 
 	\chapter{Tests D-Link DIR-600}
 	\label{sec:Tests D-Link DIR-600}
