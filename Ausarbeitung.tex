@@ -1316,6 +1316,7 @@ snprintf(acStack_260,500,
 	% --------------------------------------%
 
 	\chapter{Tests Linksys WRT120N}
+	\label{sec:tests_wrt120n}
 	In diesem Kapitel werden die durchgeführten Tests des Linksys WRT120N dokumentiert.
 	Alle Testumgebungen basieren auf dem Einsatz dieses Routers. Ziel der Untersuchungen
 	ist es, schrittweise verschiedene Sicherheitskonfigurationen zu analysieren und
@@ -1343,7 +1344,7 @@ snprintf(acStack_260,500,
 	% da dort auch beschrieben wird wie das "normale" user handhaben
 	%=========================================================
 	\section{Erster Versuch des Verbindungsaufbaus}
-	\label{w_failed_test}
+	\label{sec:w_failed_test}
 	Ziel: Router Webinterface erreichen und Standardeinstellungen prüfen
 	\begin{table}[H]
 		\hypertarget{tab_w_01}{}
@@ -1900,18 +1901,40 @@ rescue ::Rex::ConnectionError
 	ihrer Auswirkungen auf die Sicherheit analysiert. Im Folgenden werden die 
 	wichtigsten Erkenntnisse der kritischen Schwachstellen zusammenfassend bewertet.
 
-	% ------Welche Schwachstelle war kritischer?
-	WRT120N Schwachstelle, da diese Zugang zu allen Einstellungen des Routers hatte
-	und somit auch die Einstellungen dementsprechen anpassen kann, dass die
+	Am kritischten Einzuschätzten ist beim DIR-600 Router von D-Link die LFI-Schwachstelle, da sie 
+	einem Angreifer Zugriff auf sensible Daten, insbesonder der Benutzername und das 
+	Passwort gibt und dadurch die Zugriffskontrolle der Webapplikation des Routers nutzlos wird.
+	Dies hat zur Folge das Einstellungen analysiert und manipuliert werden können.
+	Selbst ein Reset oder das Ändern des Passworts hat keine Auswirkung auf die 
+	Schwachstelle selbst. Durch wiederholen der Attacke kann der Angreifer sich erneut 
+	Zugriff zu dem Gerät verschaffen.
+	Nutzerendgeräte können sich somit nicht mehr sicher mit ihrem Netzwerk verbinden.
+	Durch eine kurze Recherche im Internet kann die Schwachstelle gefunden werden.
+	Da es sich nur um die Manipulation der URL handelt, ist die Durchführung 
+	des Angriffs trivial und kann selbst von Laien durchgeführt werden.
+	Um die Schwachstelle des Routers auzunutzen, muss der Angreifer Zugang zu der
+	Webapplikation erhalten. Der Zugriff auf die Seite ist unter Werkseinstellungen 
+	auf das WLAN beschränkt. Sollte allerdings Remote Administration aktiviert und offen
+	sein, ist es zudem möglich von außen auf die Applikation zuzugreifen.
+	Empfelenswert ist es daher, Remote Administration komplett zu deaktivieren oder
+	zumindest den Zugriff auf ein ausgewähltes Endgerät zu beschränken.
+	Desweiteren sollte der Zugriff zu dem WLAN durch eine Zugriffskontrolle
+	geschützt werden. Dies kann verhindern, das unauthorisierte Geräte eine
+	Verbindung mit dem WLAN herstellen können.
+	Sollte der Angreifer durch Umgehen der Sicherheitsvorkehrungen Zugiff zu dem
+	Netzwerk erhalten, kann er die Schwachstelle unaufhaltsam ausnutzen.
+	
+	Die Schwachstelle des WRT120N von Linksys, welche einen Stack-Overflow auslöst ist ebenfalls
+	als sehr kritisch einzuschätzen, da diese Zugang zu allen Einstellungen des Routers hatte
+	und somit auch die Einstellungen dementsprechen manipulieren kann, dass die
 	Geräte des eigentlichen Nutzers nicht mehr sich mit dem WLAN verbinden
-	können. Lediglich ein manueller Reset des Routers über den Reset-Button
-	durch geführt vom Besitzer kann diese Einstellungen rückgängig machen.
-	% ------Welche war einfacher auszunutzen?
+	können. Lediglich ein manueller Reset des Routers, durchgeführt von einem 
+	Nutzer, der physischen Zugriff auf den Router hat, kann diese kompromittierten
+	Einstellungen rückgängig machen.
 	Nach langem Ausprobieren des Pythonskripts, welches sich nicht erfolgreich
 	ausführen lies, war das Ausführen der Schwachstelle über das Programm
 	Metasploit sehr einfach. Daraus lässt sich ableiten, dass ein Angreifer
 	mit entsprechenden Tools, einfach bekannte Schwachstellen ausnutzen kann.
-	% ------Welche Schutzmaßnahmen sind realistisch?
 	Bei der Schwachstelle des WRT120N \cite{cverecordcve2014125122} muss der
 	Angreifer sich im WLAN des Routers befinden, dies könnte durch die 
 	Konfiguration einer Liste erlaubter MAC-Adressen erschwert werden, in
@@ -1921,16 +1944,26 @@ rescue ::Rex::ConnectionError
 	den Zugang in WLAN einzugeben. Damit wird auch die Möglichkeit des
 	Einsatz eines Passwortknackers ausgeschlossen. Sollte diese Liste nicht
 	genutzt werden, sollte zwingend ein starkes Passwort gewählt werden.
-	Unabhängig vom dieser Schwachstelle ist diese Maßnahme von hoher Bedeutung.
-	% ------Welche Rolle spielte der EOL-/EOS-Status?
-
-	% ------Würde der Hersteller die Schwachstelle heute noch beheben?
+	Unabhängig von dieser Schwachstelle ist diese Maßnahme von hoher Bedeutung.
 
 	% 
 	%=======================notes jf - need to be deleted later
-	% Wie lang muss die Evaluierung sein?
-	%=========================================================
+	% Wie lang muss die Evaluierung sein? 
 
+	% Quellen bitte noch nicht beachten, aber ist das wörtlich zitierte korrekt
+	% eingerückt?
+
+	% Routfile System: Ist der aktuelle Stand ausreichen oder sollte weiter 
+	% auf den Inhalt eingegangen werden?
+
+	% Ist die Evaluierung und Zusammenfassung inhaltich in Ordnung, also erfüllt
+	% es das Ziel die, die Kapitel haben sollen? 
+
+	% Zotero Abgabe: Sollen die PDFs auch über Canvas abgegeben werden als Anhang
+	% wie die Capture Dateien und Programme?
+
+	% Müssen wir die Kali Linux abgeben? Es wurde lediglich der Adapter angepasst
+	%=========================================================
 
 		% Aufgabe des Kapitels Evaluierung ist es, aufzuzeigen in wie weit die Ziele der
 		% Arbeit erreicht wurden. Es sollen also die erreichten Arbeitsergebnisse mit den
@@ -1941,40 +1974,60 @@ rescue ::Rex::ConnectionError
 	\newpage
 	
 	\chapter{Zusammenfassung und Ausblick}
-	\section{Erreichte Ergebnisse}
-
+	\section{Zusammenfassung der erreichten Ergebnisse}
+	Zu Beginn der Ausarbeitung wurden die nötigten Grundlagen für Router erläutert, um
+	die folgenden Kapitel nachvollziehen zu können. Die typischen Schwachstellen und
+	damit verbundenen Mechanismen wurden beschrieben als auch im Bereich der Tests
+	teilweise praktisch umgesetzt. Nach jedem durchgeführten Test erfolgte eine 
+	Bewertung des Ergebnisses sowohl hinsichtlich des Schweregrades als auch der 
+	Auswirkungen auf die Nutzer des WLANs. Die Untersuchungen zeigten, dass Router 
+	Schwachstellen mit den geeigneten
+	Tools und hinreichendem Wissen ausgenutzt werden könnne, sodass dadurch die
+	Sicherheit der Daten der Nutzer des WLANs gefährdet sind. 
+	Da die Nutzung eines Routers daheim für die meisten Personen unabdingbar ist,
+	sollten gerade deshalb die Anweisungen der Routerhersteller umgesetzt werden. 
+	Dies stellt sich auf aber nicht immer als umsetzbar herraus, da viele User
+	nicht die technischen Kenntnisse haben diese Anweisungen umzusetzen \cite{chalhoub2023}.
+	Um Angriffe wie in Abschnitt \ref{sec:tests_wrt120n}, \ref{sec:Tests D-Link DIR-600}
+	zu vermeiden oder bei einem sehr versierten Angreifer zu verzögern, sollten die 
+	bereits mehrfach empfohlenen Einstellungen getätigt werden:
+	\begin{itemize}
+		\item Standardname des Routers ändern
+		\item Standard Credentials in sichere Credentials ändern
+		\item Sicherheitseinstellung aktivieren
+		\item Wenn möglich, Zugriff auf WLAN abhängig von der MAC-Adresse zugelassen
+		\item Automatische Update Funktion aktivieren
+	\end{itemize}
+	\cite{bsi, bsib, chalhoub2023, schwarz2021}
 
 		% Die Zusammenfassung dient dazu, die wesentlichen Ergebnisse der Arbeit und vor
 		% allem die entwickelte Problemlösung und den erreichten Fortschritt darzustellen.
 		% (Sie haben Ihr Ziel er-reicht und dies nachgewiesen).
 
-	%=======================notes jf - need to be deleted later
-	% ich wusste nicht worein damit, vielleicht nachher in Tipps
-	% oder an was man selbst denken soll für eine sichere
-	% Nutzung von Routern daheim
-	%=========================================================
-	Die Nutzung eines Routers daheim ist für die meisten Personen unabdingbar
-	und gerades deshalb sollten die Anweisungen der Routerhersteller umgesetzt
-	werden. Dies stellt sich auf als nicht immer umsetzbar raus, da viele User
-	nicht die technischen Kenntnisse haben diese Anweisungen umzusetzen $To-Do:Quelle hier$.
-	Um Angriffe wie in Abschnitt $ToDo:so und so$ zu vermeiden können als erster
-	Schritt die Punkte 1 bis 4 aus der Handbuch von WRT120N umgesetzt werden.
-	Die folgenden Tests zeigen, dass das einfache Eindringen in System mit
-	diesen Handgriffen bereits verhindert wurde $ToDo: hier Tests für ins WLAN
-	kommen mit Standardpw und so weiter$
-	\cite{chalhoub2023}
-	%---But is it exploitable Chapter 4.4, pp. 284-285
-	%User Guide in differente languages, downloaded: 16.05.2026
-	%https://downloads.linksys.com/downloads/userguide/1224697214905/WRT120N-EMEA_combo_UG.pdf
 
 	\section{Ausblick}
-	Im Ausblick werden Ideen für die Weiterentwicklung der erstellten Lösung
-	aufgezeigt. Der Aus-blick sollte daher zeigen, dass die Ergebnisse der Arbeit
-	nicht nur für die in der Arbeit identifi-zierten Problemstellungen verwendbar
-	sind, sondern darüber hinaus erweitert sowie auf andere Probleme übertragen
-	werden können.
-	\subsection{Erweiterbarkeit der Ergebnisse}
-	\subsection{Übertragbarkeit der Ergebnisse}
+	Die Ausarbeitung hat viel Potezial um erweitert zu werden. Dazu zählen vorallem 
+	die Schwachstellen des Routers D-600 für den es weitere Schwachstellen für ältere
+	Firmwareversionen gibt als auch Untersuchungen der Hardware angelehnt an das Paper 
+	von Schwarz et al. \cite{schwarz2021}.
+	Das Fraunhofer Institut gibt ebenfalls einen Einblick, wie diese Ergebnisse
+	erweitert werden können \cite{vomdorp2022}. Der Bericht zeigt, dass es viele
+	weiter Möglichkeiten gibt die Bestandteile des Routers zu untersuchen, dazu 
+	gehören der genutzte Kernel, dessen Betriebssystem und viele weiter Angriffspunkte,
+	die im Bericht beschrieben werden. Für derlei Tests ist neben der nötigen Recherche auch 
+	weiteres Werkzeugt nötig, um interne Schnittstellen wie UART auslesen zu können
+	\cite{schwarz2021, vomdorp2022}. 
+	Bei beiden untersuchten Routern gibt es keine Begrenzung für falsche Passworteingaben,
+	daher wäre hier eine Bruteforce Attacke oder allgemein verschieden Attacken, um die 
+	Passwörter zu knacken denkbar.
+
+		% Im Ausblick werden Ideen für die Weiterentwicklung der erstellten Lösung
+		% aufgezeigt. Der Aus-blick sollte daher zeigen, dass die Ergebnisse der Arbeit
+		% nicht nur für die in der Arbeit identifi-zierten Problemstellungen verwendbar
+		% sind, sondern darüber hinaus erweitert sowie auf andere Probleme übertragen
+		% werden können.
+	%\subsection{Erweiterbarkeit der Ergebnisse}
+	%\subsection{Übertragbarkeit der Ergebnisse}
 	\newpage
 	
 	%\chapter{Literaturverzeichnis}

@@ -1,18 +1,18 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'Ausarbeitung.blg'
-[201] biber:340> INFO - === Mon Jun  1, 2026, 19:35:09
-[237] Biber.pm:419> INFO - Reading 'Ausarbeitung.bcf'
-[351] Biber.pm:979> INFO - Found 45 citekeys in bib section 0
-[366] Biber.pm:4419> INFO - Processing section 0
-[380] Biber.pm:4610> INFO - Looking for bibtex file 'Literatur.bib' for section 0
-[389] bibtex.pm:1713> INFO - LaTeX decoding ...
-[514] bibtex.pm:1519> INFO - Found BibTeX data source 'Literatur.bib'
-[788] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
-[788] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[788] Biber.pm:4239> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'de-DE'
-[788] Biber.pm:4245> INFO - No sort tailoring available for locale 'de-DE'
-[815] bbl.pm:660> INFO - Writing 'Ausarbeitung.bbl' with encoding 'UTF-8'
-[832] bbl.pm:763> INFO - Output to Ausarbeitung.bbl
-[833] Biber.pm:131> WARN - ISBN '978-3-658-48604-4 978-3-658-48605-1' in entry 'baun2025' is invalid - run biber with '--validate_datamodel' for details.
-[833] Biber.pm:131> WARN - ISBN '978-3-662-60910-1 978-3-662-60911-8' in entry 'porath2020' is invalid - run biber with '--validate_datamodel' for details.
-[833] Biber.pm:133> INFO - WARNINGS: 2
+[69] biber:340> INFO - === Tue Jun 16, 2026, 12:19:27
+[86] Biber.pm:419> INFO - Reading 'Ausarbeitung.bcf'
+[142] Biber.pm:979> INFO - Found 46 citekeys in bib section 0
+[153] Biber.pm:4419> INFO - Processing section 0
+[164] Biber.pm:4610> INFO - Looking for bibtex file 'Literatur.bib' for section 0
+[277] bibtex.pm:1713> INFO - LaTeX decoding ...
+[369] bibtex.pm:1519> INFO - Found BibTeX data source 'Literatur.bib'
+[521] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[521] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[521] Biber.pm:4239> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'de-DE'
+[521] Biber.pm:4245> INFO - No sort tailoring available for locale 'de-DE'
+[538] bbl.pm:660> INFO - Writing 'Ausarbeitung.bbl' with encoding 'UTF-8'
+[552] bbl.pm:763> INFO - Output to Ausarbeitung.bbl
+[552] Biber.pm:131> WARN - ISBN '978-3-658-48604-4 978-3-658-48605-1' in entry 'baun2025' is invalid - run biber with '--validate_datamodel' for details.
+[552] Biber.pm:131> WARN - ISBN '978-3-662-60910-1 978-3-662-60911-8' in entry 'porath2020' is invalid - run biber with '--validate_datamodel' for details.
+[552] Biber.pm:133> INFO - WARNINGS: 2
