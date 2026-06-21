@@ -807,7 +807,8 @@
 	Falls der Overflow in einer Indexvariable für einer Schleife ausgeführt wird,
 	könnte diese Schleife zur falschen Zeit, also entweder zu früh, zu spät oder 
 	gar nicht terminiert werden. Zu viele Schleifen Iterationen können dazu führen, das zu viel Speicher Ressourcen 
-	verwendet werden, was wiederum zum Bruch des Systems führt oder andere Denial-of-Service-Attacken begünstigt.
+	verwendet werden, was wiederum zum Bruch des Systems führt oder andere Denial-of-Service-Attacken begünstigt. 
+	\cite{cwecwe190integer, cwecwe119improper, smashingstackfun}
 
 	\subsection{Authentifizierungs- und Zugriffsfehler}
 	Zu den Authentifizierungs- und Zugriffsfehler, gehört jede Art der Schwachstelle die es einem 
@@ -843,6 +844,7 @@
 	genutzt werden, um Authentifizierungsmechanismen zu umgehen, indem Datenbankabfragen manipuliert werden.
 	Ebenso können sprachspezifische Besonderheiten wie PHP Loose Comparison dazu führen, dass Vergleiche
 	zwischen Werten als gültig interpretiert werden und dadurch Sicherheitsprüfungen fehlschlagen.
+	\cite{sessionmanagementowasp, cwecwe798use, cwecwe521weak, cwecwe89improper, bakhshi2024}
 
 	\subsection{Eingabevalidierungsfehler}
 	Eingabevalididerungsfehler sind Fehler in dem Valisierungsmechanismus eines Systems. 
@@ -863,7 +865,7 @@
 
 	Bei Routern treten diese Art der Angriffe, insbesondere im Zusammenhang mit der Administrationsoberflächen
 	auf. Diese Web-Interface-Injections entstehen, wenn HTTP-Parameter oder Formulareingaben serverseitig
-	verarbeitet werden.
+	verarbeitet werden. \cite{cwecwe77improper, cwecwe20improper}
 
 	\subsection{Unsichere Firmware-Architektur}	
 	Die Firmware ist das Grundgerüst des Routers, wird sie kompromittiert hat der Angreifer Zugriff auf das gesamte System.
@@ -891,7 +893,7 @@
 	Werden diese Komponenten und Schnittstellen nicht regelmäßig geprüft können sich Schwachstellen in das 
 	gesamte System einschleusen. Diese Risiken stehen zwar nicht im direkten Einflussbereich des 
 	Router-Herstellers, trotzdem ist es dessen Aufgabe die Schnittstellen ausreichend zu testen und abzusichern
-	um eine sichere Architektur gewährleisten zu können.
+	um eine sichere Architektur gewährleisten zu können. \cite{bakhshi2024, qasem2024}
 
 	\chapter{Tests D-Link DIR-600}
 	\label{sec:Tests D-Link DIR-600}
@@ -1149,7 +1151,7 @@
 	Dictionary size: 32MB bestimmt das Kompressionsfenster und ist typisch für Embedded Linux Kernel.
 	uncompressed size 2.9MB ist die reale Kernelgröße nach dem Entpacken.
 
-	PackImg section delimiter tag Das ist ein marker für den Beginn einer weiteren Firmware-Section. 
+	PackImg section delimiter tag Das ist ein Marker für den Beginn einer weiteren Firmware-Sektion. 
 
 	SquashFS ist ein komprimiertes, schreibgeschütztes Linux Dateisystem der version 3.0.
 	Durch Ausführen von:
@@ -1247,7 +1249,7 @@ exit
 \end{lstlisting}
 	Das Skript arbeitet die einzelnen Pfade nacheinander ab. Der Befehl curl überträgt Daten zwischen dem Rechner
 	und einem Server. Mit -H lassen sich HTTP-Header setzen. Zudem wurde das Paket $jq$ installiert, so kann die Eingabe automatisch
-	entsprechend der URL-Vorgaben formatiert werden. \cite{pathtraversalowaspb, reschke2015b, wstgstableowaspb}
+	entsprechend der URL-Vorgaben formatiert werden. \cite{pathtraversalowaspb, reschke2015b, wstgstableowaspb, wstgstableowaspa}
 
 	\begin{itemize}
 	\item \texttt{/var/etc/httpasswd} – enthält Zugangsdaten für das Webinterface
