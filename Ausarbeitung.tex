@@ -97,7 +97,7 @@
 	ist es wichtig die Schwachstellen der Router zu kennen. Sind diese Probleme
 	bekannt, kann der User sich und seine  Daten schützen und auch selbst den
 	Router im eigenen Heimnetz bestmöglich vor unbefugtem Zugriff über das
-	WLAN zu schützen. In den Abschnitten, die die Tests enthalten wird unter
+	WLAN schützen. In den Abschnitten, die die Tests enthalten wird unter
 	anderem gezeigt, welche Auswirkungen kleine Änderungen der Sicherheitseinstellungen
 	in der Router Konfiguration haben. Zudem werden bereits bekannte Schwachstellen
 	der beiden Router getestet, als auch deren Auswirkungen dokumentiert.
@@ -106,9 +106,9 @@
 		%eingeschlagenen Weg zu beschreiben.
 
 	\section{Motivation}
-	Das Thema Router ist für die meisten Personen relevant, da fast jeder ein 
+	Das Thema Router ist für viele Personen relevant, da fast jeder ein 
 	solches Gerät zu Hause hat, es täglich nutzt und damit nicht nur unproblematische
-	Dinge macht, wie bspw. Bilder von einem PC zu einem Tablet zu senden, sondern auch
+	Dinge macht, wie beispielsweise Bilder von einem PC zu einem Tablet zu senden, sondern auch
 	persönliche oder gar geheime Daten über das Internet übermittelt. Die meisten
 	Personen denken hierbei erst einmal an persönliche Daten wie die Adresse oder 
 	die Bankdaten, aber auch geheime Dokumente, die während dem Home-Office versendet
@@ -189,7 +189,7 @@
 	
 	\chapter{Grundlagen}
 	In diesem Kapitel werden zu aller erst in der folgenden Tabelle wichtige Definitionen 
-	festgehalten, die im weiteren Verlauf des Kapitels wichtig sind. Es werden 
+	festgehalten, die im weiteren Verlauf wichtig sind. Es werden 
 	die Grundlagen zum Router erläutert, dessen Aufgaben im Netzwerk, die Funktionen 
 	und auch Gründe genannt, die den Router zu einem attraktiven Ziel für Angreifer machen.
 	Nachdem die Basis zum Verständnis des Routers geschaffen ist, folgen die 
@@ -205,7 +205,7 @@
 		\begin{tabularx}{\columnwidth}{|l|X|}
 			\hline
 			Endgerät & Internetfähige Geräte, die an einem Router angeschlossen sein können. 
-			Dazu zählen Laptops, Desktop PCs, Server, Drucker, Smartphone, etc.\\ %---muss das rein?
+			Dazu zählen Laptops, Desktop PCs, Server, Drucker, Smartphone, etc.\\ 
 			\hline
 			Schicht / Layer & Schicht im ISO/OSI Referenzmodell, welches die Übertragung
 			von Daten vom Kabel bis hin zur Darstellung auf dem Endgerät beschreibt. 
@@ -222,14 +222,13 @@
 			in der Bezeichnung, sondern auch in der jeweiligen Schicht und den
 			enthaltenen Steuerinformationen.\\
 			\hline
-			Protokolle & Richtlinien zu einem Vorgehen, das kann die Art und Weiße sein,
+			Protokolle & Richtlinien zu einem Vorgehen, das kann die Art und Weise sein,
 			wie Pakete übermittelt werden oder auch welchen Weg ein Paket innerhalb eines
 			Netzwerkes nutzen soll.\\
 			\hline
-			Routing Table & Diese Tabelle besitzt jedes Gerät im Netzwerk. Sie enthält 
-			die Routen zu anderen Geräten im Netz sowie die Standardroute über das Gateway,
-			also den Router, an den Pakete weitergeleitet werden, die in ein anderes 
-			Netzwerk müssen.\\
+			Routing-Table & Diese enthält die Routen zu anderen Geräten im Netz sowie 
+			die Standardroute über das Gateway, also den Router, an den Pakete 
+			weitergeleitet werden, die in ein anderes Netzwerk müssen.\\
 			\hline
 		\end{tabularx}
 		\caption{Definitionen}
@@ -242,7 +241,7 @@
 	gefunden wird. Welcher Pfad gewählt wird hängt unter anderem von den Protokollen
 	und der Konfiguration ab, es kann der schnellste Weg genutzt werden oder
 	auch eine definierte Route über verschiedene Punkte. Es gibt zwei Arten
-	des Routing, dynamisches und statisches Routing. Auf diese wird in Abschnitt
+	des Routing, dynamisches und statisches Routing. Auf diese wird im Abschnitt
 	\ref{sec:Routing-Arten} weiter eingegangen.
 	Wichtig zu Beachten ist der Unterschied zwischen Router und Switch. Beide
 	Geräte sind für die Weiterleitung der Pakete an das richtige Ziel zuständig.
@@ -270,11 +269,11 @@
 	In dieser Ausarbeitung wird nur mit
 	IPv4 Adressen gearbeitet, weshalb nicht näher auf die IPv6 Adressen 
 	eingegangen wird. Eine IPv4 Adresse besteht aus 4 Teilen, die durch einen 
-	Punkt voneinander getrennt sind. Jeder Teil beinhaltet eine Zahl zwischen 0
+	Punkt voneinander getrennt sind (Dotted-decimal Notation). Jeder Teil beinhaltet eine Zahl zwischen 0
 	und 255, daraus ergibt sich eine Größe von 32 Bit, was wiederum 4Byte 
 	entspricht. Um in einem Subnetz kommunizieren zu können haben alle
 	sich darin befindenden Geräte in ihrer IP-Adresse den gleichen Netzanteil.
-	Das eindeutige Geräte innerhalb des Subnetz ist im Hostanteil der IP-Adresse zu
+	Das eindeutige Gerät innerhalb des Subnetz ist im Hostanteil der IP-Adresse zu
 	finden. Diese muss zwingend einzigartig im jeweiligen Subnetz sein, da es
 	sonst zu Konflikten kommt. Der Hostanteil nimmt entsprechend der Größe des 
 	Subnetzes mehr oder weniger Bits der IP-Adresse ein. Die Größe des Anteils 
@@ -292,7 +291,8 @@
 	logisch UND verknüpft. Das Gleiche wird mit der Ziel-IP-Adresse gemacht. Kommt bei
 	beiden Rechnungen das gleiche Ergebnis heraus, sind die Teilnehmer im gleichen
 	Subnetz und können somit über Layer 2, also mithilfe vom MAC-Adressen, die Frames
-	austauschen. Wird ein Paket innerhalb des gleichen IP-Subnetz versendet, wird mit der MAC-Adresse
+	austauschen. 
+	Wird ein Paket innerhalb des gleichen IP-Subnetz versendet, wird mit der MAC-Adresse
 	gearbeitet. Der Sender hat eine sogenannte ARP Tabelle (Address Resolution Protocol)
 	in der die MAC-Adressen der Geräte, an die der Sender bereits ein Frame gesendet hat, enthalten
 	sind. Es sind die IP-Adressen und die dazugehörige MAC-Adresse enthalten. Diese
@@ -337,7 +337,7 @@
 	das oben beschriebene Subnetting, wirken diese Knappheit entgegen aber dies 
 	reicht lange noch nicht aus. Damit es während der Kommunikation ins Internet keine
 	Probleme gibt, weil ein lokales Endgerät die gleiche IP-Adresse hat wie zum
-	Beispiel der Server von Google, wurden mit RFC 1918 die Adressbereiche für 
+	Beispiel ein Server von Google, wurden mit RFC 1918 die Adressbereiche für 
 	private IP-Adressen definiert. Dafür wurden ein Teil der IPv4 Adressen für den 
 	privaten Gebrauch reserviert. Geräte in privaten Haushalten nutzen daher
 	häufig den Netzbereich 192.168.0.0/16. Das bedeutet, dass innerhalb eines 
@@ -364,7 +364,7 @@
 	Es wird vor allem auf die Anschlüsse eingegangen und die Möglichkeiten 
 	die Verbindung zum Internet herzustellen. Etwaige interne Hardwarekomponenten
 	werden nur beschrieben, wenn diese eine mögliche Schwachstelle darstellen,
-	die von außerhalb von einem Angreifer ausgenutzt werden kann.
+	die in den folgenden Tests ausgenutzt wird.
 	An der Rückseite der Router befinden sich die Ports, Reset-Button zum 
 	zurücksetzen auf Werkseinstellungen, Internet-Port als auch der Anschluss
 	für die Stromversorgung.
@@ -373,10 +373,10 @@
 	Über die 4 weiteren Ports werden Geräte im lokalen Netz direkt mit dem 
 	Router verbunden. Weitere Geräte können per WLAN mit den Routern verbunden
 	werden. Dabei stellt die Verbindung über WLAN die größte Schwachstelle dar,
-	da man für diesen Zugang nicht physisch Zugriff zum Router benötigt. Daher
-	ist es sehr wichtig die Standardpasswörter als auch den Namen des Routers
+	da man für diesen Zugang keinen physischen Zugriff zum Router benötigt. Daher
+	ist es sehr wichtig die Standardcredentials - Passwort und Benutzer - als auch den Namen des Routers
 	bei der Ersteinrichtung zu ändern. In der folgenden Abbildung \ref{fig:wrt120n-ports} 
-	ist die Rückseite des WSR120N von Linksys zu sehen.
+	ist die Rückseite des WRT120N von Linksys zu sehen.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.75\textwidth]{img/wrt120n_ports-benutzerhandbuch_s1.png}
@@ -385,7 +385,7 @@
 	\end{figure}
 	Wurde das WLAN mithilfe der Anleitung eingerichtet sind die Router nicht
 	nur sichtbar als WLAN Provider, sondern können nach erfolgreicher Verbindung
-	auch eine stabile Internetverbindung bieten, siehe den beiden Handbüchern im
+	auch eine stabile Internetverbindung bieten, nachzulesen in den beiden Handbüchern im
 	Anhang.
 
 	\subsection{Routing Arten und Protokolle}
@@ -397,9 +397,9 @@
 		Die Route werden fest definiert und die Pakete werden immer auf demselben 
 		Weg versendet. 
 		\begin{itemize}
-			\item Vorteile: Kein Austausch über die Pfade mit anderen Routern
+			\item Vorteil: Kein Austausch über die Pfade mit anderen Routern
 			notwendig, was wiederum zu weniger Datenverkehr führt. 
-			\item Nachteile: Ist eine Route gestört, gibt es keine Alternative. 
+			\item Nachteil: Ist eine Route gestört, gibt es keine Alternative. 
 			Bei Änderungen oder Störungen muss der Administrator manuell eine andere
 			Route festlegen.
 			\item Einsatzgebiet: Kleine Unternehmensnetze \cite[S.72]{mandl2019}
@@ -409,9 +409,9 @@
 		Routing Tabelle. Die Pakete können daher auf verschiedenen Routen versendet
 		werden.
 		\begin{itemize}
-			\item Vorteile: Auch bei Netzwerkstörungen werden Pakete weitergeleitet.
+			\item Vorteil: Auch bei Netzwerkstörungen werden Pakete weitergeleitet.
 			Bei einer ausgefallenen Route muss kein Administrator eingreifen.
-			\item Nachteile: Austausch mit anderen Routern notwendig, um die Routing
+			\item Nachteil: Austausch mit anderen Routern notwendig, um die Routing
 			Tabelle aktuell zu halten, dadurch entsteht mehr Datenverkehr.
 			\item Einsatzgebiet: Große Unternehmensnetze 
 		\end{itemize}
@@ -434,7 +434,7 @@
 	wird im Folgenden nicht näher eingegangen.
 	\cite{zisler2022, baun2025, mandl2019}
 
-	\subsection{Kommunikation von LAN in WAN}
+	\subsection{Kommunikation aus dem LAN in das Internet}
 	\label{sec:lan_wan}
 	Im folgenden Abschnitt wird erläutert, wie ein Router Datenpakete aus einem
 	lokalen Netzwerk (LAN) in das Internet weiterleitet.
@@ -451,7 +451,7 @@
 	Informationen über den Aufbau, Art und Größe des Paketes sind im Header zu finden.
 	Dort ist festgehalten, ab wann die Nutzdaten beginnen, ob das Paket aufgrund
 	seiner Größe fragmentiert wurde und auch die Lebenszeit des Paketes. Diese ist 
-	wichtig, damit das Paket nur eine definierte Zeit im Netzwerk lebt und anschließend 
+	wichtig, damit das Paket nur eine definierte Zeit im Netzwerk vorhanden ist und anschließend 
 	automatisch gelöscht wird, sodass es keine unnötigen Ressourcen verbraucht.
 	Fragmentierung von Paketen ist nötig, wenn das Paket die vordefinierte maximale Größe 
 	überschreitet, dann wird das Paket entweder vom Router oder dem Sender geteilt.
@@ -493,7 +493,7 @@
 	Pandemie 2020 an Attraktivität stark zugenommen, da seit dieser Zeit mehr im 
 	Home-Office gearbeitet wird und Betriebsinterna, geheime Dokumente oder
 	auch der Nachrichtenaustausch über den Router zu Hause geleitet werden
-	\cite[S.277]{chalhoub2023}.
+	\cite{chalhoub2023, schwarz2021}.
 	\begin{quote}
 		Aufgrund ihrer Funktion als Brücke zwischen lokalen und globalen 
 		Netzwerken stellen sie zudem den größten Angriffsvektor dar.
@@ -501,7 +501,7 @@
 	\end{quote}
 	In den meisten Haushalten ist ein Router Bestandteil und sehr oft sind 
 	die Besitzer technisch nicht versiert genug oder sie interessieren sich 
-	nicht für die Sicherheit ihres Routers, es reicht völlig aus, wenn sie 
+	nicht für die Sicherheit ihres Routers. Es reicht völlig aus, wenn sie 
 	ihn anschließen, dieser funktioniert und ab dann wird am Router selbst
 	nichts mehr gemacht. Ein Router Hersteller erwähnte, dass die meisten User zum 
 	Einrichten des Routers nicht einmal die dafür vorgesehene Website 
@@ -529,12 +529,12 @@
 	nach der aktuellen Gefahrenlage priorisiert, das bedeutet gibt es eine 
 	Schwachstelle, die oft ausgenutzt wird, hat diese einen größeren Einfluss
 	auf den User und wird daher höher eingestuft als vielleicht eine Zero-Day
-	Schwachstelle, die von der CVE schwerwiegender eingestuft wird aber nicht
-	oft ausgenutzt. Hierbei ist \emph{nicht oft}, relativ zu sehen, da diese
+	Schwachstelle, die von der CVE oder NIST schwerwiegender eingestuft aber nicht
+	oft ausgenutzt wird. Hierbei ist \emph{nicht oft}, relativ zu sehen, da diese
 	Schwachstellen seltener ausgenutzt werden als die Priorisierten.
 	Andere Hersteller nutzen Datenmodelle oder Matrizen zur Priorisierung.
 	\newline
-	Zum Standardpasswort des Routers gibt es meist auch einen Standardnamen, 
+	Zum Standardpasswort und -benutzer des Routers gibt es meist auch einen Standardnamen, 
 	weshalb es zwingend erforderlich ist diesen zu Beginn der Einrichtung 
 	ebenfalls zu ändern. Durch diese Änderung lässt sich von außerhalb nicht
 	bestimmen, um welchen Typen von Router es sich handelt. Dadurch kann 
@@ -545,8 +545,8 @@
 	Als Nutzer ist es ebenfalls wichtig zu wissen, dass ein Update 
 	der Firmware nicht zwingend bedeutet, dass ältere Schwachstellen auch 
 	beseitigt wurden.\cite{chalhoub2023, schwarz2021, bsia}
-	Im Abschnitt \emph{Verwaltung > Aktualisieren der Firmware} im Handbuch ist
-	deren Update lediglich bei Problemen empfohlen:
+	Im Abschnitt \emph{Verwaltung > Aktualisieren der Firmware} im Handbuch des 
+	WRT120N ist	deren Update lediglich bei Problemen empfohlen:
 	\begin{quote}
 		Aktualisieren Sie die Firmware nur dann, wenn Probleme mit dem 
 		Router auftreten oder die Firmware eine neue Funktion enthält, die Sie
@@ -1962,10 +1962,16 @@ rescue ::Rex::ConnectionError
 	% Zotero Abgabe: Sollen die PDFs auch über Canvas abgegeben werden als Anhang
 	% wie die Capture Dateien und Programme?
 
+	% PDFs nur abgeben von Websiten, die besucht wurden und nicht von Paper und
+	% Fachbüchern?
+
 	% PDFs der beiden Handbücher sind nur direkt erhältlich und nicht mehr über
 	% die Hersteller Seite, daher sind sie im Anhang. Ist das in Ordnung?
 
 	% Müssen wir die Kali Linux abgeben? Es wurde lediglich der Adapter angepasst
+
+	% Vor der Abgabe der Ausabeitung unterscheiben wir beide hinteinander die
+	% Eidesstatliche Erklärung und geben die Pdf dann ab?
 	%=========================================================
 
 		% Aufgabe des Kapitels Evaluierung ist es, aufzuzeigen in wie weit die Ziele der
