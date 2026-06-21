@@ -566,41 +566,41 @@
 	%--------------------------------------------------------------------------------%
 	%-----------Nochmal überarbeiten----formulierung und rechtschreibung anpassen----%
 	Networke Address Translation(NAT) ist ein Mechanismus, bei dem der Router interne 
-	IP-Adressen eines lokalen Netztwerks (LAN) in eine öffentliche IP-Adresse übersetzt.
-	Es gibt welweit ungefähr 4 Millarden public IPv4 Adressen, sie sind durch ihre Architektur begrenzt.
+	IP-Adressen eines lokalen Netzwerks (LAN) in eine öffentliche IP-Adresse übersetzt.
+	Es gibt weltweit ungefähr 4 Milliarden public IPv4 Adressen, sie sind durch ihre Architektur begrenzt.
 	Private Adressen werden lediglich innerhalb eines lokalen Netzwerks genutzt.
-	Haushalte oder Frimen haben alle eine private IP Adresse mit der sie mit dem Router verbunden sind.
-	Der Router wiederum hat eine public IP Adresse, und hat somit zugriff auf das Internet.
-	Über den Router können so alle Geräte auf das Internet zugreifen.
-	NAT übersetzet also ein Satzt von IP AdrAessen zu einem anderen Satz an IP-Adressen.
-	Es übersetzet also von Privat zu Public aber auch andersherum
+	Haushalte und Firmen haben alle eine private IP-Adresse über die sie mit dem Router verbunden sind.
+	Der Router ist die Schnittstelle zwischen den Geräten des Netzwerks und dem Internet.
+	Er hat eine public IP-Adresse, die ihm Zugang zum Internet gibt. Alle Geräte innerhalb des
+	Netzwerks teilen sich nach außen die public IP-Adresse des Routers.
+	NAT übersetz also einen Satz von IP-Adressen zu einem anderen Satz an IP-Adressen.
 
-	NAT selbst ist nicht offiziel ein Sicherheitsmechanismen, kann aber also solcher intepretiert werden
-	Den Aufgrund der übersetetzung mehrerer lokaler IP-Adressen zu eine publizierten kann von
-	außen nicht festgestellt werden, wie das betrachetet Netztwerk intern aufgebaut ist
-	oder wie viele sich in ihm befinden. Zudem ist keine direkte verbindung von außerhalb mit
-	den Geräten möglich solange dies nicht explizit erlaubt wird.
+	NAT selbst ist nicht offiziell ein Sicherheitsmechanismus, kann aber also solcher interpretiert werden.
+	Aufgrund der Übersetzung mehrerer lokaler IP-Adressen zu einer publizierten kann von
+	außen nicht festgestellt werden, wie das betrachtete Netzwerk intern aufgebaut ist
+	oder wie viele Geräte zu dem Netzwerk gehören. Zudem ist keine direkte Verbindung von außerhalb mit
+	den Geräten möglich, solange dies nicht explizit erlaubt wird.
 
-	NAT bietet eine impllizite Schutzwirkung, aber keine echte Sicherheit im klasischen Sinne.
-	Nicht angeforderte verbindungen werden blockiert, die Angriffsfläche wird reduziert und Geräte können
+	NAT bietet eine implizite Schutzwirkung, aber keine echte Sicherheit im klassischen Sinne.
+	Nicht angeforderte Verbindungen werden blockiert, die Angriffsfläche wird reduziert und Geräte können
 	nicht direkt adressiert werden. \cite{egevang2001b}
 	%Quelle(https://www.rfc-editor.org/rfc/rfc3022)%
 
 	\subsection{Paketfilterung und Stateful Firewalls}
 	\label{sec:Paketfilterung und Stateful Firewalls}
-	Eine Firewall ist ein zentrales Sicherheitselement in Netzwerken und Schützt diese vor 
+	Die Firewall ist das zentrale Sicherheitselement in Netzwerken und schützt diese vor 
 	unerlaubten Zugriffen und Bedrohungen, in dem sie den Datenverkehr überwacht.
-	Die Firewall filtert den Verkehr anhand von definierten Filtern, wobei dort die entschieden wird,
-	welche Datenpackete erlaubt oder blockiert werden.
-	Grundsätzlich wird zwischen zustandbehaftete(Stateful) und zustandlose(Statless) Firewalls entschieden,
-	wobei letztere den heutigen Standart darstellt.
+	Die Firewall filtert den Verkehr anhand von vordefinierten Regeln.
+	Es wird entschieden welche Datenpakete erlaubt oder blockiert werden.
+	Grundsätzlich wird zwischen zustandbehafteten(Stateful) und zustandlosen(Statless) Firewalls entschieden.
+	Letztere sind heutzutage der Standard, zustandsbehaftete Firewalls wirken unterstützend.
 	
 	Zustandslose Firewalls (Stateless Firewalls)
-	Zustandslose Firewalls gehören zu den älteren Modellen. Si verlassen sich bei der
-	filterung der Daten auf eine Zugriffskontrolliste.
-	Die entscheidung in welche Kategorie ein Packet fällt wird aufgund der mitgelieferten
-	Informationen getroffen. Die Firewall speichert keine Informationen über den Satus oder den Kontext der
-	Verbindung. Die Filterung basiert auf der überprüfung der Access Controle List (ACL). Dabei werden Informationen
+	Zustandslose Firewalls gehören zu den älteren Modellen. Sie verlassen sich bei der
+	Filterung der Daten auf eine Zugriffskontrollliste.
+	Die Entscheidung in welche Kategorie ein Paket fällt, wird Aufgrund der mitgelieferten
+	Informationen getroffen. Die Firewall speichert keine Informationen über den Status oder den Kontext der
+	Verbindung. Die Filterung basiert auf der Überprüfung der Access Controle List (ACL). Dabei werden Informationen
 	aus dem Packet-Header ausgewertet insbesondere:
 	\begin{itemize}
 		\item{Quell-IP-Adresse}
@@ -608,18 +608,18 @@
 		\item{Portnummern}
 		\item{verwendetes Protokoll (z. B. TCP oder UDP)}
 	\end{itemize}
-	Da keine Zustandsinformationen gespeichert werden, kann die Firewall nicht erkenen ob ein Packet zu einer bestehenden
-	Verbindung gehört. Jede entscheidung wird also isoliert getroffen.
-	Der große Vorteil des Ansatz liegt im geringen Ressourcenverbrauch und der hohen Verarbeitungsgeschwindigkeit.
-	Daher werden sie in einer Umgebung mit sehr hohem Datenaufkommen eingesetzt und vorgeschatet, um einfache
+	Da keine Zustandsinformationen gespeichert werden, kann die Firewall nicht erkennen, ob ein Paket zu einer bestehenden
+	Verbindung gehört. Jede Entscheidung wird also isoliert getroffen.
+	Der große Vorteil des Ansatzes liegt im geringen Ressourcenverbrauch und der hohen Verarbeitungsgeschwindigkeit.
+	Daher werden sie vornehmlich in einer Umgebung mit sehr hohem Datenaufkommen eingesetzt, um einfache
 	Filteraufgaben zu übernehmen.
 	Allerdings hängt die Sicherheit stark von der Qualität der Konfiguration ab. Fehler in den Regeln können 
-	dazu führen, das unerwünschter Datenverkehr zugelassen wird.
+	dazu führen, dass unerwünschter Datenverkehr zugelassen wird.
 
 	Zustandsbehaftete Firewalls (Stateful Firewalls)
-	Die Zustandsbehaftete Firewall ist heute die am Häufigsten eingesetzte Firewall-Technologie.
-	Sie überwacht die Datenpackete und den Kontext des Datenverkehrs.
-	Hierzu wird eine sogennante Zustandstabelle (State Table) gewührt, welche die aktiven Verbindungen speichert.
+	Die zustandsbehaftete Firewall ist heute die am häufigsten eingesetzte Firewall-Technologie.
+	Sie überwacht sowohl die Datenpakete, als auch den Kontext des Datenverkehrs.
+	Hierzu wird eine sogenannte Zustandstabelle (State Table) geführt, welche die aktiven Verbindungen speichert.
 	Diese enthält Informationen wie:
 	\begin{itemize}
 		\item{Quell-IP-Adresse}
@@ -627,18 +627,18 @@
 		\item{Portnummern}
 		\item{Verbindungsstatus (z. B. aufgebaut, etabliert, beendet)}
 	\end{itemize}
-	Basierden auf diesen Informationen entscheiden die Firewall über die eingehenden Packete.
-	Dadurch ist eine dynamische Packetfilterung möglich.
-	Ein wesntlicher Vorteil ist die deutlich höhere Sicherheit, da nur solche Packete zugelassen werden, 
+	Basiserd auf diesen Informationen entscheiden die Firewall über die eingehenden Pakete.
+	Dadurch ist eine dynamische Paketfilterung möglich.
+	Ein wesentlicher Vorteil ist die deutlich höhere Sicherheit, da nur Pakete zugelassen werden, 
 	die Teil einer legitimen Verbindung sind. 
 	Allerdings ist der Ressourcenverbrauch deutlich höher als bei Zustandslose Firewalls.
-	Verbidungszustände müssen stetig neu gespeichert und verglichen werden.
-	Auch hier sind schlecht konfigurierte Firewalls anfäälig für Attacken wie beispielsweise
+	Verbindungszustände müssen stetig neu gespeichert und verglichen werden.
+	Auch hier sind schlecht konfigurierte Firewalls anfällig für Attacken wie beispielsweise
 	Denial-of-Service (DDoS) oder Man-in-the-Middle-Angriffe.
 
 	In der Praxis wird häufig eine Kombination aus beiden Ansätzen angewendet. Die Zustandslose Firewall filtert
 	den Datenverkehr vor und die Zustandsbehaftete Firewall bessert nach. Dadurch lässt sich eine Balance
-	zwischen Perfosmance und Sicherheit erreichen. \cite{scarfone2009b}
+	zwischen Performance und Sicherheit erreichen. \cite{scarfone2009b}
 
 	\subsection{WLAN-Verschlüsselung}
 	\label{sec:WLAN-Verschlüsselung}
@@ -649,12 +649,12 @@
 
 	WPA2
 	Für WPA2 muss eine Verschlüsselung durch AES-CCMP (Counter Mode with CBC\_MAC Protokoll) gegeben sein.
-	CCMP ist ein Sicherheitsmechanismus, der auf Advanced Encryption Standart (AES) basiert und sowohl
+	CCMP ist ein Sicherheitsmechanismus, der auf Advanced Encryption Standard (AES) basiert und sowohl
 	Vertraulichkeit als auch Integrität und Authentizität der Daten sicherstellt.
 	Das Verfahren verknüpft zwei AES Modi. Beim Counter Mode (CTR) ist für die
 	Verschlüsselung des Klartextes verantwortlich, der CBC-MAC (Cipher Block Chaining Message Authentication Code)
 	sorgt für die Integrität in dem er einen Authentifizierungswert berechnet. Dieser stellt sicher,
-	das die Daten nicht unbemerkt manipuliert werden können. Bevor die eigentliche übertragung der Daten
+	dass die Daten nicht unbemerkt manipuliert werden können. Bevor die eigentliche Übertragung der Daten
 	beginnt, wird ein Sitzungsschlüssel ausgehandelt.
 	\begin{itemize}
 		\item{Beide Seiten besitzen einen Pre-Shared Key (PSK)}
@@ -663,22 +663,22 @@
 		\item{Daraus wird der Pairwise Transit Key (PTK) berechnet}
 		\item{Der PTK ist in Teilschlüssel für die Verschlüsselung, Integrität und Nachrichtenvalidierung aufgeteilt}
 	\end{itemize}
-	WPA2 wird heute weittestgehend durch WPA3 ersetzt, da es einige Schwachstellen aufweist.
+	WPA2 wird heute weitestgehend durch WPA3 ersetzt, da es einige Schwachstellen aufweist.
 	Schwache Passwörter ermöglichen Offline-Brute-Force Angiffe. Angreifer können den Wiederholten Handshake ausnutzen
-	(KRACK-Angriff). Das wiederverwenden von Zufallszahlen kann die icherheit kompromittieren.
+	(KRACK-Angriff). Das Wiederverwenden von Zufallszahlen kann die Sicherheit kompromittieren.
 	
 	WPA3:
-	WPA3 ist die Weiterentwicklung von WPA2. Bei dem verfahren werden keine Sitzungsschlüssel mehr verwendet,
+	WPA3 ist die Weiterentwicklung von WPA2. Bei dem Verfahren werden keine Sitzungsschlüssel mehr verwendet,
 	sondern SAE(Dragonfly Handshake).
 	Der Personal-Mode ist für den Privatgebrauch konzipiert. Alle Nutzer verwenden einen Pre-Shared Key (PSK)
-	also das gleiche Passwort um das Netztwerk nutzen zu können. Der "Enterprise-Modus" wurde für Unternehmen
+	also das gleiche Passwort um das Netzwerk nutzen zu können. Der "Enterprise-Modus" wurde für Unternehmen
 	entwickelt. Er ermöglicht die individuelle Authentifizierung, durch den Benutzer. Dieser meldet sich mit dem 
-	individuellen Benutzernamen und Passwort am netztwerk an.
+	individuellen Benutzernamen und Passwort am Netzwerk an.
 	SAE (Dragonfly Handshake) bildet die Grundlage für einen sicheren Austausch der Sitzungsschlüssel zwischen
-	dem Access Point und dem WLAN-Client. Im Gegensatz zu WPA2 wird bei WPA3 das "Shared Secret". also das Geheimniss
-	nicht über den Funkkanal übertragen sondern nur das Ergebnis einer Berechnung. Zudem stellt SAE sicher,
-	dass ein Angreifer selbst wenn er das Passwort kenne sollte, keine im voraus aufgezeichneten Datenpackete
-	nachträglich entschlüsseln kann. Das nennt sich Perfek Forward Secrecy.
+	dem Access Point und dem WLAN-Client. Im Gegensatz zu WPA2 wird bei WPA3 das "Shared Secret", also das Geheimnis
+	nicht über den Funkkanal übertragen, sondern nur das Ergebnis einer Berechnung. Zudem stellt SAE sicher,
+	dass ein Angreifer, selbst wenn er das Passwort kennen sollte, keine im Voraus aufgezeichneten Datenpakete
+	nachträglich entschlüsseln kann. Das nennt sich Perfect Forward Secrecy.
 	\begin{itemize}
 		\item{Die Parteien starten mit einem Passwort}
 		\item{Beide Seiten berechnen einen Punkt auf einer elliptischen Kurve, basierend auf dem Passwort}
@@ -686,53 +686,53 @@
 		\item{Im 4-Way Handshake werden Zufallszahlen ausgetauscht}
 		\item{Das gemeinsame Geheimnis wird berechnet, ohne dass das Passwort selbst übertragen wird}
 	\end{itemize}
-	Dieses Vorgehen bietet Schutz gegen OffOffline-Brute-Force Angiffen. Zudem werden eine sensiblen Informationen
-	übertragen und durch das PFS können selbst bei bekanntmachung der Schlüssel, die vergangenen Sitzungen nicht entschlüsselt werden.
+	Dieses Vorgehen bietet Schutz gegen Offline-Brute-Force Angriffen. Zudem werden keine sensiblen Informationen
+	übertragen und durch das PFS können selbst bei Bekanntmachung der Schlüssel, die vergangenen Sitzungen nicht entschlüsselt werden.
 
 	OWE (Opportunistic Wireless Encryption)
 	OWE ermöglicht Verschlüsselung auch in offenen WLAN-Netzten ohne Passwort. Es wird automatisch ein temporärer
-	Schlüssel zwischen dem Client unde dem Access Point ausgehandelt. OWE bietet Schutz vor passivem Mithören, kann
+	Schlüssel zwischen dem Client und dem Access Point ausgehandelt. OWE bietet Schutz vor passivem Mithören, kann
 	aber keine Authentifizierung sicherstellen. \cite{frankel2007b, souppaya2012b}
 	%---Quelle(https://csrc.nist.rip/external/nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-153.pdf)---%
 
 	\subsection{Zugriffskontrolle}
 	\label{sec:Zugriffskontrolle}
-	Da der Router einen zentralen Bestandteil der Netzwerkinfrastruktur darstellt, muss der administrative
-	Zugriff besonders geschütz werden.
-	Zur absicherung des administrativen Zugriffs werden Authentifizierungsmechanismen eingesetzt.
-	Üblicherweise erfolgt dies über einen Benutztername und ein Passwort. 
+	Der Router ist ein zentraler Bestandteil der Netzwerkinfrastruktur, daher muss der administrative
+	Zugriff besonders geschützt werden.
+	Zur Absicherung des administrativen Zugriffs werden Authentifizierungsmechanismen eingesetzt.
+	Üblicherweise erfolgt dies über einen Benutzernamen und ein Passwort. 
 	Moderne Router unterstützten zusätzlich eine Mehrfaktorauthentifizierung sowie rollenbasierte Accounts, 
-	also die Aufteilung in Admin sowie eingeschränkte Nutzter.
-	Besonders wichtig ist es, ein starkes Passwort zu nutzten, sowie die Standartzugangsdaten zu ändern.
+	also die Aufteilung in Admin sowie eingeschränkte Nutzer.
+	Besonders wichtig ist es, ein starkes Passwort zu nutzten, sowie die Standardzugangsdaten zu ändern.
 	
 	Darüber hinaus sollte der Zugriff auf vertrauenswürdige Netzwerke beschränkt werden
 	Häufig wird der Zugriff ausschließlich aus dem Lokal Area Networke (LAN) erlaubt. 
-	Der Remote Administrator wird entweder deaktiviert oder stark eingeschränkt werden. 
-	Dies reduziert die Angriffsfläche erheblich, da das Webinterface nicht öffentlich Erreichbar ist.
+	Der Remote Administrator wird entweder deaktiviert oder stark eingeschränkt. 
+	Dies reduziert die Angriffsfläche erheblich, da das Webinterface nicht öffentlich erreichbar ist.
 
-	Desweiteren sollten unsichere Verwaltungsprotokolle wie HTTP und Telnet deaktiviert werden,
-	da diese Daten unverschlüsselt übertragen. Stattdessen sollten HTTPS und SSH verwendet werden.
+	Des Weiteren sollten unsichere Verwaltungsprotokolle wie HTTP und Telnet deaktiviert werden,
+	da diese Protokolle Daten unverschlüsselt übertragen. Stattdessen sollten HTTPS und SSH verwendet werden.
 
-	Neben dem administrativen Zugriff spielt auch die Zugriffskontrolle im Netzwerkverkehr eine bedeutente Rolle.
+	Neben dem administrativen Zugriff spielt auch die Zugriffskontrolle im Netzwerkverkehr eine bedeutende Rolle.
 	Router und Firewall kontrollieren hierbei welcher Netzwerkverkehr erlaubt oder blockiert wird.
-	Die zentrale Sicherheitskomponente ist die Stateful Firewall. 
-	Diese überwacht aktive Verbindungen und erlaubt nur etablierte oder explizit erlaubte Packete
-	und blockiert unerwünschte eingehende Packete. Außerdem kann sie eigene Regeln definieren.
+	Die zentrale Sicherheitskomponente ist die Stateful Firewall \ref{sec:Paketfilterung und Stateful Firewalls}. 
+	Diese überwacht aktive Verbindungen und erlaubt nur etablierte oder explizit erlaubte Pakete
+	und blockiert unerwünschte eingehende Pakete. Außerdem kann sie eigene Regeln definieren.
 
 	Die Access Controle Lists (ACLs) wird vorallem in Modernen und professionellen Routern genutzt.
-	Mit ihr kann granular definiert werden welche IP-Adressen kommunizieren dürfen, welche protokolle erlaubt sind
+	Mit ihr kann granular definiert werden welche IP-Adressen kommunizieren dürfen, welche Protokolle erlaubt sind
 	und welche Ports genutzt werden dürfen.
-	Dadurch kann der Netztwerkverkehr gezielt kontrolliert und eingeschränkt werden.
+	Dadurch kann der Netzwerkverkehr gezielt kontrolliert und eingeschränkt werden.
 
-	Eine weitere Zugriffskontrolle bietet die Netztwerksegmentierung. Moderne Router ermöglichen die Einrichtung 
-	seperater Netztbereiche beispielsweise durch das anlegen eines Gastnetzwerks und VLANs. 
-	Dadurch können Geräte sowie Benutztergruppen voneinander getrennt werden, wodurch die Ausbreitung eines Angriffs beschränkt wird.
+	Eine weitere Zugriffskontrolle bietet die Netzwerksegmentierung. Moderne Router ermöglichen die Einrichtung 
+	separate Netzbereiche beispielsweise durch das Anlegen eines Gastnetzwerks und VLANs. 
+	Dadurch können Geräte sowie Benutzergruppen voneinander getrennt werden, wodurch die Ausbreitung eines Angriffs beschränkt wird.
 	Zusätzlich können Router als VPNB-Endpunkte fungieren. 
 	Der Zugriff erfolgt dann über einen verschlüsselten und authentifizierten Tunnel,
-	wodurch der Zugriff auf den Router aus externen Netztwerken abgesichert ist. 
+	wodurch der Zugriff auf den Router aus externen Netzwerken abgesichert ist. 
 
 	In der Praxis ist die Zugriffskontrolle selbst oftmals weniger das Problem, sondern ihre Fehlkonfiguration.
-	Wenn beispielsweise Standartpasswörter nicht geändert werden, der Remote-Admin offen ist, unötige Ports
+	Wenn beispielsweise Standardpasswörter nicht geändert werden, der Remote-Admin offen ist, unnötige Ports
 	freigegeben werden oder unsichere Protokolle aktiviert sind, führt dies dazu das theoretisch vorhandene
 	Mechanismen wirkungslos sind. \cite{tracy2007b, }
 
@@ -743,12 +743,12 @@
 	\label{sec:Firmware Integrität}
 	Die Firmware Integrität beschreibt die Eigenschaft eines Routers, sicherzustellen, dass die auf dem
 	Gerät laufende Firmware unverändert, authentisch und vertrauenswürdig ist. Dies ist ein zentraler
-	Sicherheitsmechanismus, da die Firmware ein kritischer bestandteil der Gesamtarchitektur ist.
-	Die Firmware ist das eingebette Betriebssystem des Routers. 
-	Eine Kompromittierung der Firmware erlaubt es Angreifern vollständige kontrolle über das
-	gesamte Gerät zu erlangen, einschließlich der Manipulation der Netztwerkverkehrs, der Umgehung
+	Sicherheitsmechanismus, da die Firmware ein kritischer Bestandteil der Gesamtarchitektur ist.
+	Die Firmware ist das eingebettete Betriebssystem des Routers. 
+	Eine Kompromittierung der Firmware erlaubt es Angreifern vollständige Kontrolle über das
+	gesamte Gerät zu erlangen, einschließlich der Manipulation der Netzwerkverkehrs, der Umgehung
  	von Sicherheitsmechanismen wie der Firewall sowie der Etablierung persistenter Schadsoftware.
-	Zur sicherstellung der Integrität wird in der Regel eine kryptographische Signaturprüfung eingesetzt.
+	Zur Sicherstellung der Integrität wird in der Regel eine kryptografische Signaturprüfung eingesetzt.
 	Der Hersteller des Routers signiert jedes Firware-Update.
 	Ablauf:
 	\begin{itemize}
@@ -756,146 +756,142 @@
 		\item{Firmware wird kryptographisch signiert (Private Key)}
 		\item{Router prüft beim Update die Signatur (Publlic Key im Gerät)}
 	\end{itemize}
-	Falls das Update ungültig ist wird es abgelehnt.
+	Falls das Update ungültig ist, wird es abgelehnt.
 	Ein weiterer Sicherheitsmechanismus ist der Secure Boot der den Router während des Startvorgangs schützt.
 	Beim Booten wird zuerst ein Bootlader geladen. Dieser prüft dann die Signatur der Firmware und startet sie nur dann,
-	wenn die prüfung positiv ausfählt. Andersnfalls lässt sich das Gerät nicht starten oder geht in den
+	wenn die Prüfung positiv ausfällt. Andernfalls lässt sich das Gerät nicht starten oder geht in den
 	Recovery-Modus. Dies stellt sicher, das keine dauerhaft kompromittierte Firmware geladen wird.
-	Der Trusted Secure Boot bietet eine Erweiterung des Secure Boot. Jede Stufe des Boot Prozess prüft die nächste,
-	also die Hardare den Bootloade, der Bootloader das Kernel und das kernel die Systemdienste.
-	Ziel dabei ist es eine durchgängige kryptographische Vertrauenskette zu bilden.
-	Zudem verfügt der Rooter über einen Rollback Schutz, welcher verhindet da die Firmware auf eine ältere,
-	verwundbare version zurückgesetzt werden kann. Ohne diesen Schutz hätten Angreifer die Möglichkeit alte Firmware
+	Der Trusted Secure Boot bietet eine Erweiterung des Secure Boot. Jede Stufe des Boot-Prozess prüft die nächste,
+	also die Hardware den Bootloader, der Bootloader das Kernel und das Kernel die Systemdienste.
+	Ziel dabei ist es eine durchgängige kryptografische Vertrauenskette zu bilden.
+	Zudem verfügt der Router über einen Rollbackschutz, welcher verhindert da die Firmware auf eine ältere,
+	verwundbare Version zurückgesetzt werden kann. Ohne diesen Schutz hätten Angreifer die Möglichkeit alte Firmware
 	mit bekannten Schwachstellen zu installieren.
-	Angriffe auf die Firmware stellen ein besonders Risiko dar, da sid unterhlab von firewall und Betriebssystem liegt 
-	und für den benutzt oftmals unichtbar zu erkenen ist. \cite{regenscheid2018bb}
+	Angriffe auf die Firmware stellen ein besonders Risiko dar, da sie unterhalb von Firewall und Betriebssystem liegt 
+	und für den Benutzter oftmals schwer zu erkennen sind. \cite{regenscheid2018bb}
 
 	\chapter{Schachstellen im Router}
 	\label{sec:Schwachstellen im Router}
 	%-----Allgemeine beschreibung aktuller Router Schwachstellen----------%
 	%-----Herstellen usw werden hier nicht spezifiziert-------------------%
 	%-----Schwachstellen sollen hier im Allgemeinen betrachtet werden-----%
-	Im folgendem Kapitel soll es um die allgemeinen Schwachstellen in Routern gehen.
+	Im folgenden Kapitel soll es um die allgemeinen Schwachstellen in Routern gehen.
 	Es werden verschiedene Angriffsarten und anderweitiger Missbrauch der Router beschrieben, 
-	sowie aktuelle Beispiele für unsichere router und deren Auswirkunge.
+	sowie aktuelle Beispiele für unsichere Router und deren Auswirkungen.
 	\subsection{Speicherfehler}
-	Buffer Overflow, Integer Overflow, Memry Corruption
-	Speicherfehler bezeichenn Schwachstellen, die durch falsche Implementierung entstehen und 
-	den Speicher Kompromitieren. Sie sind bilden häufig die Grundlage für weiterführende Angriffe und bieten dem
+	Speicherfehler bezeichnen Schwachstellen, die durch falsche Implementierung entstehen und 
+	den Speicher Kompromittieren. Sie bilden häufig die Grundlage für weiterführende Angriffe und bieten dem
 	Angreifer einen Einstieg in das System.
 
-	Einer der bekanntesten Speicherfehler ist der Buffer Overflow. Dabei werden Operatione auf einem Speicherpuffer
+	Einer der bekanntesten Speicherfehler ist der Buffer Overflow. Dabei werden Operation auf einem Speicherpuffer
 	durchgeführt, wobei Daten über die vorgesehene Speichergrenze hinaus gelesen und geschrieben werden. 
 	Der dadurch angesprochene angrenzende Speicherbereich kann andere Variablen, Datenstrukturen oder
-	internen Programmen verlinken, wodurch es möglich wird auf diese interne Strukturen des Routers
-	zuzugreifen oder diese zu manipulieren. In der Praxis kann ein BufferOverflow dazu genutzten werden, 
-	um beliebigen Code auszuführen, Programmabläufe zu verändern oder sicherheitsrelevamte Daten zu überchreiben.
+	internen Programmen verlinken, wodurch es möglich wird auf diese internen Strukturen des Routers
+	zuzugreifen oder diese zu manipulieren. In der Praxis kann ein Buffer Overflow dazu genutzten werden, 
+	um beliebigen Code auszuführen, Programmabläufe zu verändern oder sicherheitsrelevante Daten zu überschreiben.
 	Darüber hinaus kann es zur Korruption von relevantem Speicher kommen was zu 
-	einem möglichen Korrupieren kritischer Speicherbereiche führen, was folglich zu destabilisierung oder sogar 
+	einem möglichen korrupieren kritischer Speicherbereiche führen, was folglich zu Destabilisierung oder sogar 
 	vollständigem Ausfall des Systems führen kann. In einigen Fällen lassen sich sensible Informationen
 	wie Zugangs- oder Systemdaten aus dem Speicher auslesen, welche wiederum für weitere Angriff verwendet werden können.
 
 	Eine weitere relevante Schwachstelle ist der Integer Overflow. 
-	Dieser tritt auf, wenn arithmetische Operationen Werte erzeugen, die auserhalb des darstellbaren Wertebereichs eines
+	Dieser tritt auf, wenn arithmetische Operationen Werte erzeugen, die außerhalb des darstellbaren Wertebereichs eines
 	Datentyps liegen.
-	Der Speicherlüberlauf führt zu einem sehr kleinen oder einem negativen Ergebniss.
+	Der Speicherüberlauf führt zu einem sehr kleinen oder einem negativen Ergebnis.
 	Diese Schwachstelle kann sicherheitskritische Auswirkungen haben, 
 	insbesondere wenn die betroffenen Werte für Speicherallokation genutzt, Schleifenbedingungen oder Indexberechnungen verwendet werden. 
-	Diese Fehler können gneutzt werden un unvorhersehbares Systemverhalten zu provozieren oder gezielte Abstürze herbeizuführen.
+	Diese Fehler können genutzt werde, um unvorhersehbares Systemverhalten zu provozieren oder gezielte Abstürze herbeizuführen.
 	In bestimmten Fällen kann ein Integer Overflow einen Buffer Overflow auslösen, etwa wenn fehlerhafte 
 	Größenberechnungen für Speicherpuffer verwendet werden.
 	Dies führt zu den oben aufgeführten Risiken. 
-	Falls der Overflow in einer Index Variable für einer Schleife ausgeführt wird
-	könnte diese Schleife zur falschen Zeit, also entwerder zu früh, zu spät oder 
-	gar nicht terminiert werden. Zu viele Schleifen Interationen können dazu führen, das zu viel Speicher Ressourcen 
-	verwendet werden was wiederum zum Bruch des Sytems führt oder anderere Denial-of-Service-Attacken begünstigt.
+	Falls der Overflow in einer Indexvariable für einer Schleife ausgeführt wird,
+	könnte diese Schleife zur falschen Zeit, also entweder zu früh, zu spät oder 
+	gar nicht terminiert werden. Zu viele Schleifen Iterationen können dazu führen, das zu viel Speicher Ressourcen 
+	verwendet werden, was wiederum zum Bruch des Systems führt oder andere Denial-of-Service-Attacken begünstigt.
 
 	\subsection{Authentifizierungs- und Zugriffsfehler}
-	Authentication Bypass, Hardcoded Credentials, Schwache Passwlörzer, Privilage Excalation
 	Zu den Authentifizierungs- und Zugriffsfehler, gehört jede Art der Schwachstelle die es einem 
-	Angreifer ermöglicht Sicherheitsmechnismen zur Identitätsprüfung oder Zugriffskontrolle
+	Angreifer ermöglicht Sicherheitsmechanismen zur Identitätsprüfung oder Zugriffskontrolle
 	zu umgehen.
 	
-	Eine zentraler Angriffstyp ist der Authentikation Bypass.
-	Authentifizierung bezeichnet den Prozesses der Verifikation einer digitalen Identität, typischerweise durch
+	Ein zentraler Angriffstyp ist der Authentication Bypass.
+	Authentifizierung bezeichnet des Prozesses der Verifikation einer digitalen Identität, typischerweise durch
 	Benutzername und Passwort. Bei Umgehung der Authentifizierung bekommt der Angreifer Zugriff auf das System
 	ohne sich vorher Authentifizieren zu müssen.
-	Dies ist beispielsweise möglich indem die URL Parameter manipuliert werden oder die
+	Dies ist beispielsweise möglich, indem die URL Parameter manipuliert werden oder die
 	Session gefälscht wird. 
-	Die Ursachen die soche Angriffsvektoren ermöglichen, können entlang des gesamten Software Entwicklungzyklus auftreten. 
+	Die Ursachen die solche Angriffsvektoren ermöglichen, können entlang der gesamten Software Entwicklungszyklus auftreten. 
 	In der Entwurfsphase entstehen sie etwa durch unzureichende definierte Zugriffskontrollen oder
 	die Verwendung  unsicherer Protokoll für das Übertragen der Zugangsdaten.
 	In der Implementierungsphase sind häufig fehlerhafte Vaidierungsmechanismen
-	oder unsichere Pogrammierspraktiken verantwortlich.
+	oder unsichere Pogrammierpraktiken verantwortlich.
 	Während der Bereitstellung können Fehlkonfigurationen, unzureichende Dokumentation oder mangelnde 
 	Fachkenntnisse dazu führen, dass Sicherheitsmechanismen nicht korrekt aktiviert oder umgesetzt werden.
 	
-	Mit der manipulation von HTTP-Parameter kann die Authentifizierung vollständig Umgangen werden, etwa wenn
-	serverseitige Prüfungen fehlen oder fehlerhaft implementiert wurden. Ebenso unsicher sind Session-Managemnet-
-	Menchanismen, die Session-IDs nicht ausreichned zufällig generieren. Den dann können Angreifer IDs
+	Mit der Manipulation von HTTP-Parameter kann die Authentifizierung vollständig Umgangen werden, etwa wenn
+	serverseitige Prüfungen fehlen oder fehlerhaft implementiert wurden. Ebenso unsicher sind Session-Management-Mechanismen, 
+	die Session-IDs nicht ausreichend zufällig generieren. Den dann können Angreifer IDs
 	vorhersagen und eine gültige Sitzung übernehmen.
 
 	Eine weitere Schwachstelle sind Passwörter die hartkodiert oder schlecht gewählt sind.
-	Hardcoded Credentials beschreibt das feste hinterlegen der Zugangsdaten im Code. Angreifer können diese
+	Hardcoded Credentials beschreibt das feste Hinterlegen der Zugangsdaten im Code. Angreifer können diese
 	dann einfach aus dem Quellcode herauslesen oder über andere Schwachstellen an sie gelangen.
-	Schlecht gewählte Passwörter, lassen sich wiederum durch automatissierte Angriffe oder in manchen Fällen
-	durch schlichtes raten herausfinden. 
+	Schlecht gewählte Passwörter lassen sich wiederum durch automatisierte Angriffe oder in manchen Fällen
+	durch schlichtes Raten herausfinden. 
 	
-	Ergänzend spielen auch klassische Web-Schwachtellen eine Rolle. Beispielsweise können SQL-Injections
-	genutzt werden, um Authentifizierungsmechanismen zu umgehen, indem Datenbankabfagen manipuliert werden.
+	Ergänzend spielen auch klassische Web-Schwachstellen eine Rolle. Beispielsweise können SQL-Injection
+	genutzt werden, um Authentifizierungsmechanismen zu umgehen, indem Datenbankabfragen manipuliert werden.
 	Ebenso können sprachspezifische Besonderheiten wie PHP Loose Comparison dazu führen, dass Vergleiche
 	zwischen Werten als gültig interpretiert werden und dadurch Sicherheitsprüfungen fehlschlagen.
 
 	\subsection{Eingabevalidierungsfehler}
-	Command Injection, OS Command Injection, Web Interface Injection
 	Eingabevalididerungsfehler sind Fehler in dem Valisierungsmechanismus eines Systems. 
 	Das System erhält externe Eingaben, prüft, filtert oder bereinigt diese aber nicht ausreichend.
 	Insbesondere wenn ein System Benutzereingaben übernimmt, ohne deren Struktur oder Kontext angemessen
-	zu validideren, hat das folgen für die sicherheit des Systems.
+	zu validieren, hat das folgen für die Sicherheit des Systems.
 
 	Comand Injection ist eine besonders kritische Ausprägung dieser Fehlerklasse.
 	Dabei gelingt es einem Angreifer Kommandos so zu modifizieren, das zusätzliche Befehle in einen 
 	bestehenden Ausführungskontext einzuschleusen. Eingaben werden dabei meistens direkt in Systemaufrufe
-	oder Shell-Kommandos integriert werden, ohne zuvor ausreichend neutralisisert zu werden.
-	Einem legitimer Eingabewert wird ein weiters Kommando angehängt, welcher anschließend vom System interpretiert
-	und ausgefühert wird. Damit können unter Umständen Authentifizierungdaten ausgegeben werden.
-	Neben der Ausführung von beliebigen Code können Angreifer ihre Privilegien Erweitern, 
+	oder Shell-Kommandos integriert werden, ohne zuvor ausreichend neutralisiert zu werden.
+	Einem legitimen Eingabewert wird ein weiteres Kommando angehängt, welcher anschließend vom System interpretiert
+	und ausgeführt wird. Damit können unter Umständen Authentifizierungsdaten ausgegeben werden.
+	Neben der Ausführung von beliebigem Code können Angreifer ihre Privilegien Erweitern, 
 	vertrauliche Daten auslesen oder die vollständige Kontrolle über das Gerät erlangen.
-	Gerade ber Routern kann dies weitreichende Folgen haben, da diese die Schnittstelle zum Netzwerkdarstellt.
-	Bei einer kompromitierung können Angriffe auf das gesamte Netzwerk ausgebreitett werden.
+	Gerade aber Routern kann dies weitreichende Folgen haben, da diese die Schnittstelle zum Netzwerk darstellt.
+	Bei einer Kompromittierung können Angriffe auf das gesamte Netzwerk ausgebreitet werden.
 
-	Bei Routern treten diese Art der Angriffe insbesondere im zusammenhang mit der Administrationsoberflächen
-	auf. Diese Web Interface Injections enstehen, wenn HTTP-Parameter oder Formulareingaben serverseitig
+	Bei Routern treten diese Art der Angriffe, insbesondere im Zusammenhang mit der Administrationsoberflächen
+	auf. Diese Web-Interface-Injections entstehen, wenn HTTP-Parameter oder Formulareingaben serverseitig
 	verarbeitet werden.
 
 	\subsection{Unsichere Firmware-Architektur}	
-	Unsichere Updates, Veraltet bibs.Drittanbieter Komponentenb, Fehlende Patches
-	Die Firmware ist das grundgerüst des Routers, wird sie kompromitiert hat der Angreifer zugriff auf das gesamte System.
-	Eine unichere Firmware Architektur basiert weiniger auf einzelnen Programmierfehlern, sondern vielmehr
-	aus struktuellen Problemen in der System-Architektur sowie im gesamten Lebenszyklus der Firmware.
-	Fehlende Update-Mechanismen, die Wiederverwendung veralteter Softwarekomponenten sowie unzureichnedes
-	Patchmanagment sind zentrale Risikofaktoren.
+	Die Firmware ist das Grundgerüst des Routers, wird sie kompromittiert hat der Angreifer Zugriff auf das gesamte System.
+	Eine unsichere Firmware Architektur basiert weniger auf einzelnen Programmierfehlern, sondern vielmehr
+	aus strukturellen Problemen in der System-Architektur sowie im gesamten Lebenszyklus der Firmware.
+	Fehlende Update-Mechanismen, die Wiederverwendung veralteter Softwarekomponenten sowie unzureichendes
+	Patchmanagement sind zentrale Risikofaktoren.
 
-	Ein wesentlicher Aspekt sind unsichere Firmware Updates. Einige Router implementieren Update-Mechnismen nicht
-	ausreichend abgesichert. Diese sollten durch eine kryptographische Signatur, Identitätsprüfung und
-	sichere Übertragungsprotokolle geschützt werden. Ist dies nicht der Fall, besteht das Risiko das dass
-	Gerät mit manipulierter Software geupdatet wird.
+	Ein wesentlicher Aspekt sind unsichere Firmware Updates. Einige Router implementieren Update-Mechanismen nicht
+	ausreichend abgesichert. Diese sollten durch eine kryptografische Signatur, Identitätsprüfung und
+	sichere Übertragungsprotokolle geschützt werden. Ist dies nicht der Fall, besteht das Risiko, dass das
+	Gerät mit manipulierter Software aktualisiert wird.
 
-	Ein weiteres Problem ist das verwenden veralteter oder nicht gewarteter Softwarebibliotheken.
+	Ein weiteres Problem ist das Verwenden veralteter oder nicht gewarteter Softwarebibliotheken.
 	Die Firmware auf den Routern basiert oftmals auf veralteten Linux-Kernel-Versionen und
 	Open-Source-Komponenten, die bekannte Schwachstellen enthalten. Wird der Software dritter nicht regelmäßig
-	aktualisiert und ist veraltet beleiben bereits entdeckte Sicherheitslücken erhalten und können 
+	aktualisiert und ist veraltet bleiben bereits entdeckte Sicherheitslücken erhalten und können 
 	von Angreifern ausgenutzt werden. Auch fehlende oder verzögert durchgeführte Sicherheitsupdates
-	stellen einen Angriffsvektor dar. Viele Router besitzten keine automatisiserte Update-Mechnismen oder
+	stellen einen Angriffsvektor dar. Viele Router besitzen keine automatisierte Update-Mechanismen oder
 	keine langfristige Herstellerunterstützung. Auch das führt dazu das bereits bekannte Schwachstellen
-	weiter auf dem Gerät exsistieren.
+	weiter auf dem Gerät existieren.
 
-	Zusätzlich spielt die mangelnde Kontrolle über Drittanbieter-Komponenten eine entscheidente Rolle.
-	Firmware wird oftmals aus mehreren externen Modulen zusammengesetzt, deren Sicherheitsniveu heterogen ist.
-	Werden diese Komponenten und Schnittstellen nicht regeklmäßig geprüft können sich Schwachstellen in das 
-	gesamte System einschleußen. Diese Risiken stehen zwar nicht im direkten Einflussbereich des 
-	Router-Hersteller, trotzdem ist es dessen Aufgabe die Schnitstellen ausreichnd zu testen und abzusichern
-	um eine sichere Architektur gewährleisten ztu können.
+	Zusätzlich spielt die mangelnde Kontrolle über Drittanbieter-Komponenten eine entscheidende Rolle.
+	Firmware wird oftmals aus mehreren externen Modulen zusammengesetzt, deren Sicherheitsniveau heterogen ist.
+	Werden diese Komponenten und Schnittstellen nicht regelmäßig geprüft können sich Schwachstellen in das 
+	gesamte System einschleusen. Diese Risiken stehen zwar nicht im direkten Einflussbereich des 
+	Router-Herstellers, trotzdem ist es dessen Aufgabe die Schnittstellen ausreichend zu testen und abzusichern
+	um eine sichere Architektur gewährleisten zu können.
 
 	\chapter{Tests D-Link DIR-600}
 	\label{sec:Tests D-Link DIR-600}
@@ -920,7 +916,7 @@
 	\end{table}
 
 	Es wurden verschiedene Zugangsdaten getestet, jedoch ohne Erfolg. Nach einem Factory Reset
-	durch das Gedrückthalten der Reset-Taste für etwa 15 Sekunden wurden die Zugangsdaten auf die
+	durch das Gedrückt halten der Reset-Taste für etwa 15 Sekunden wurden die Zugangsdaten auf die
 	Werkseinstellungen zurückgesetzt. Anschließend war ein Login mit dem Standardbenutzer
 	\texttt{admin} und einem leeren Passwort möglich.
 
@@ -942,11 +938,11 @@
 	
 	Der Router folgt einer klassischen Embedded-System-Architektur mit klar getrennten Schichten.
 	Nach dem Start wird der Bootloader geladen. Er ist dafür zuständig die Hardware zu initialisieren, 
-	und den Linux Kenerl aus dem Flash zu laden, welcher die Hardware abstrahiert.
+	und den Linux Kernel aus dem Flash zu laden, welcher die Hardware abstrahiert.
 	Der Linux Kernel übernimmt die Prozessverwaltung, den Netzwerk-Stack und
-	die Treibersteuerung. Das Root-Filesystem (SquashFS) auf das in Kapitel X noch näher eingegangen wird, enthält
+	die Treibersteuerung. Das Root-Filesystem enthält
 	eine minimalistische Userspace-Umgebung auf Basis von Busybox. 
-	Das Konfigurationsdatenbank (xmldb) ist das zentrale Element der Firmware, auf das mit dem Tool
+	Die Konfigurationsdatenbank (xmldb) ist das zentrale Element der Firmware, auf das mit dem Tool
 	xmldbc zugegriffen wird. Dort werden in der sämtliche Systemparameter gespeichert und über Skripte dynamisch in
 	konkrete Systemkonfigurationen umgesetzt. Die Steuerung erfolgt über ein Webinterface, das mit PHP-Skripten
 	mit der Konfigurationsschicht interagiert. Netzwerkdienste wie DHCP, NAT und WLAN werden durch eine
@@ -962,31 +958,31 @@
 	\subsection{Werkseinstellungen}
 	\label{sec:Werkseinstellungen}
 	Vor Beginn der Tests wurde der Router auf die Werkeinstellungen mithilfe des Reset-Knopfs zurückgesetzt.
-	Im folgenden wird beschrieben welche Einstellungen des Router von Werk aus hat und was dies für
+	Im Folgenden wird beschrieben welche Einstellungen der Router von Werk aus hat, und was dies für
 	die Sicherheit des Routers bedeutet.
 	
-	Im Werkzusatnd ist das Gerät so konfiguriert das eine einfache Inbetriebnahme ermöglicht wird.
+	Im Werkszustand ist das Gerät so konfiguriert, dass eine einfache Inbetriebnahme ermöglicht wird.
 	Hierbei werden Sicherheitsaspekte nur rudimentär berücksichtigt. 
-	Die Administrationsoberfläche ist über die standartisierte lokale IP-Adresse 192.168.0.1 erreichbar.
-	Für den Zugriff auf die Weboberfläche sind standart Zugangsdaten hinterlegt, welche sowohl auf dem Router
-	selbst als auch in der Bedinungsanlleitung und im Internet offen hinterlegt sind.
-	Falls das Passwort nach dem ersten Login nicht geändert wird, stellt dies ein ehebliches Sicherheitsrisiko dar,
+	Die Administrationsoberfläche ist über die standardisierte lokale IP-Adresse 192.168.0.1 erreichbar.
+	Für den Zugriff auf die Weboberfläche sind Standard Zugangsdaten hinterlegt, welche sowohl auf dem Router
+	selbst als auch in der Bedienungsanleitung und im Internet offen hinterlegt sind.
+	Falls das Passwort nach dem ersten Login nicht geändert wird, stellt dies ein erhebliches Sicherheitsrisiko dar,
 	da ein Angreifer leicht Zugriff zu der Oberfläche bekommt. Der Nutzer wird nicht dazu aufgefordert sein Passwort
-	zu ändern und es gibt keine beschränkung bei der Wahl des Passworts, es können also auch kurze oder einfältige
+	zu ändern und es gibt keine Beschränkung bei der Wahl des Passworts, es können also auch kurze oder einfältige
 	Passwörter gewählt werden, die durch eine Brute Force Attack leicht zu komprimieren sind.
 
 	Auch die Netzwerkkonfiguration ist im Auslieferungszustand sehr offen gestaltet. Der Router vergibt 
-	Standartmäßig Adressen mit DHCP im privaten Adressbereich und stellt grundlegende Routing-Funktionalitäten zwischen
-	lokalem Netz un Internet bereit. Besonders kritisch sind die Standardkonfiguration des WLAN-Bereichs. In der usprünglichen Konfiguration ist
-	die Verschlüssel ausgestellt. Zumindest wird auf der Seite darufhingewiesen, das diese Einstellung nicht
-	empfolen wird. Unauthorisierter Zugriff auf das Netzwerk wird nicht unterbunden, das bedeutet jedes Gerät
-	in Reichweite des Netzwerk kann sich mit diesem Verbinden.MAC-Adressenfilterung, Firewall-Regelungen und Zugriffsbeschränkungen
+	Standardmäßig Adressen mit DHCP im privaten Adressbereich und stellt grundlegende Routing-Funktionalitäten zwischen
+	lokalem Netz und Internet bereit. Besonders kritisch sind die Standardkonfiguration des WLAN-Bereichs. In der ursprünglichen Konfiguration ist
+	die Verschlüssel ausgestellt. Zumindest wird auf der Seite darauf hingewiesen, dass diese Einstellung nicht
+	empfohlen wird. Unautorisierter Zugriff auf das Netzwerk wird nicht unterbunden, das bedeutet jedes Gerät
+	in Reichweite des Netzwerks kann sich mit diesem Verbinden.MAC-Adressenfilterung, Firewall-Regelungen und Zugriffsbeschränkungen
 	sind deaktiviert oder nicht konfiguriert.
 	Dadurch wird die Netzwerkinfrastruktur im Auslieferungszustand offen gehalten, dies erleichtert die 
 	Inbetriebnahme des Gerätes für den Nutzer.
 
 	Die Kommunikation mit dem Webinterface erfolgt standardmäßig unverschlüsselt über HTTP, 
-	Daten werrden können potenziell ausgelesen und mitgeschnitten werden.
+	Daten können potenziell ausgelesen und mitgeschnitten werden.
 
 	Insgesamt zeigt die Analyse der Werkeinstellungen, dass der Router primär auf einfache Inbetriebnahme
 	und Kompatibilität ausgelegt ist, während Sicherheitsmechanismen nur minimal vorhanden sind.
@@ -995,14 +991,13 @@
 
 	\subsection{Gehärteter Router}
 	\label{sec:Gehärteter Router}
-	***In Arbeit***
 	Nach der initialen Analyse der Werkseinstellungen wurde der Router durch gezielte Sicherheitskonfigurationen gehärtet, 
 	um unautorisierten Zugriff zu verhindern und die Angriffsfläche zu reduzieren.
 
-	Zunächst wurden die WLAN-Sicherheit auf WPA/WPA2 mit AES verschlüsselung und PSK
-	eingestellt und ein Passwort gesetzt. Dies hat zur folge, das eine Authentifizierung
-	nötig ist bevor ein Gerätz Zugriff auf das Netzwerk erhält.
-	Dadurch werden unkontrollierte Zugriffe auf das WLAN erschwert. Aktive und Passive Angriffe auf das 
+	Zunächst wurden die WLAN-Sicherheit auf WPA/WPA2 mit AES Verschlüsselung und PSK
+	eingestellt und ein Passwort gesetzt. Dies hat zur Folge, dass eine Authentifizierung
+	nötig ist bevor ein Gerät Zugriff auf das Netzwerk erhält.
+	Dadurch werden unkontrollierte Zugriffe auf das WLAN erschwert. Aktive und passive Angriffe auf das 
 	LAN werden minimiert.
 	\begin{figure}[H]
 		\centering
@@ -1010,8 +1005,8 @@
 		\caption{WPA/WPA2 Einstellugen}
 		\label{fig:http}
 	\end{figure}
-	Zusätzlich wurde die Standart-IP-Adresse des Routers im lokalen Netzwerk angepasst. Diese Maßnahme dient weniger
-	der eigentlichen Sicherheit, sondern reduziert automatisierte Standarttangriffe, auf die Administrationsoberfläche.
+	Zusätzlich wurde die Standard-IP-Adressen des Routers im lokalen Netzwerk angepasst. Diese Maßnahme dient weniger
+	der eigentlichen Sicherheit, sondern reduziert automatisierte Standardangriffe, auf die Administrationsoberfläche.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{img/IP-Adresse ändern.png}
@@ -1035,15 +1030,15 @@
 		\label{fig:http}
 	\end{figure}	
 
-	Desweiteren unterstützt der Router statisches Routing und Port Forwarding.
+	Des weiteren unterstützt der Router statisches Routing und Port Forwarding.
 	Diese Funktionen ermöglichen die gezielte Weiterleitung von Netzwerkverkehr an interne Geräte und
 	werden typischerweise für spezielle Dienste oder Serveranwendungen genutzt.
 	Allerdings stellen sie bei Fehlkonfiguration ein Sicherheitsrisiko dar, da interne Systeme nach außen
 	exponiert werden.
 
-	Der Router bietet außerdem die Möglichkeit Remote Administration zu aktivieren. Diese Funkltion ermöglicht
-	Zugriff auf die Administrationsoberfläche von außerhalb des Netztwerks über die Öffentliche IP-Adresse.
-	Standartmäßig ist dieser Zugriff sehr offenb konfiguriert (alle IP-Adressen 0.0.0.0), wodurch 
+	Der Router bietet außerdem die Möglichkeit Remote Administration zu aktivieren. Diese Funktion ermöglicht
+	Zugriff auf die Administrationsoberfläche von außerhalb des Netzwerks über die öffentliche IP-Adresse.
+	Standardmäßig ist dieser Zugriff sehr offen konfiguriert (alle IP-Adressen 0.0.0.0), wodurch 
 	die Oberfläche im Grunde weltweit erreichbar ist. Aus diesem Grund sollte Remote Administration entweder
 	deaktiviert oder auf eine definierte IP-Adresse beschränkt werden.
 	\begin{figure}[H]
@@ -1061,9 +1056,9 @@
 	\label{sec:Analyse des Netzwerkverkehrs}
 
 	Der Router ist mit dem Laptop über ein LAN-Kabel mit Port 1 verbunden. Der Router ist mit dem Internet verbunden.
-	Zum Mittschnitt des Netzwerkverkehrs wurde das Tool Wireshark verwendet.
+	Zum Mitschnitt des Netzwerkverkehrs wurde das Tool Wireshark verwendet.
 	Mit dem Filter \texttt{dns} lassen sich lediglich die Pakete anzeigen die an den DNS-Server gesendet werden.
-	Der klassische DNS Server nutzt UDP (Port 53) und verschlüsselt seine Inhalte nicht.
+	Der klassische DNS-Server nutzt UDP (Port 53) und verschlüsselt seine Inhalte nicht.
 	Die besuchten Domänen und Hintergrundinformationen sind voll einsehbar.
 
 	\begin{figure}[H]
@@ -1073,12 +1068,12 @@
 		\label{fig:http}
 	\end{figure}
 	Der Router nutzt HTTP, das bedeutet die Pakete werden unverschlüsselt übertragen.
-	Beim Login auf die Admin Seite des Routers http://192.168.0.1 sind die Benutzer und Passwort
+	Beim Login auf die Admin-Seite des Routers http://192.168.0.1 sind die Benutzer und Passwort
 	im Klartext einsehbar. Auch das Ändern des Passworts und das Einstellen anderer
 	Konfigurationen konnte im Netzwerkmitschnitt beobachtet werden.
 	Die Web-Oberfläche inklusive der UI, Statusseite und den Konfigurationen wird über HTTP geladen.
 	Ohne Transportverschlüsselung können Daten und Session-Inhalte passiv oder aktiv durch Man-in-the-Middle-Angriffe
-	mittgeschnitten oder manipuliert werden.
+	mitgeschnitten oder manipuliert werden.
 
 \begin{figure}[H]
 	\centering
@@ -1091,14 +1086,14 @@
 	Telnet arbeitet zeichenbasiert, daher wird jedes Zeichen als eigenes Paket oder Teil eines Streams geschickt.
 	Sitzungen können vollständig rekonstruiert werden.
 
-	Das Address Resolution Protocol (ARP) ist ein Netzwerkprotokoll, welches zu einer Netzwerkadresse die 
+	Das Address-Resolution-Protocol (ARP) ist ein Netzwerkprotokoll, welches zu einer Netzwerkadresse die 
 	physische Adresse ermittelt und diese Zuordnung in der ARP-Tabelle gegebenenfalls hinterlegt.
 	ARP ist ein Layer 2 Protokoll und bietet keine Authentifizierung. Angriffe wie MAC-Spoofing oder 
 	ARP-Spoofing sind möglich. 
 
-	Dieselben Mittschnitte wurden über das WLAN ebenfalls untersucht, es wurden keine prägnanten Unterschiede festgestellt.
+	Dieselben Mitschnitte wurden über das WLAN ebenfalls untersucht, es wurden keine prägnanten Unterschiede festgestellt.
 
-	Die Analyse zeigt, das mehrere zentrale Dienste ohne kryptographische Absicherung betrieben werden. Dies macht
+	Die Analyse zeigt, dass mehrere zentrale Dienste ohne kryptografische Absicherung betrieben werden. Dies macht
 	Angriffe auf das Netzwerk möglich, wodurch Authentifizierungsdaten kompromittiert werden können.
 
 	\section{Firmware-Analyse}
@@ -1161,7 +1156,7 @@
 	\begin{lstlisting}[basicstyle=\ttfamily]
 		binwalk -e DIR600B_FW205b01.bin 
 	\end{lstlisting}
-	wurde die Förmwear extrahiert und das Dateisystem zugänglich gemacht. \cite{squashfs40filesystemab}
+	wurde die Firmwear extrahiert und das Dateisystem zugänglich gemacht. \cite{squashfs40filesystemab}
 	
 	\subsection{LFI-Schwachstelle}
 	\label{sec:LFI-Schwachstelle}
@@ -1196,12 +1191,12 @@ if($REQUIRE_FILE!="")
 	\end{figure}
 
 	Auswirkung
-	Die Datei /var/etc/httpasswd enthält für den aktuellen Benutzername und das Passwort,
+	Die Datei /var/etc/httpasswd enthält für den aktuellen Benutzernamen und das Passwort,
 	welche wiederum oft nur schwach gehasht oder wie in diesem Fall im Klartext in der Datei gespeichert wird.
 	Dies ermöglicht die Umgehung der Authentifizierung.
 
 	Automatisierte Analyse
-	Ein automatisiertes Testskript wurde verwendet um verschiedene Dateisysteme abzurufen.
+	Ein automatisiertes Testskript wurde verwendet, um verschiedene Dateisysteme abzurufen.
 \begin{lstlisting}[language=bash]
 #!/bin/bash
 
@@ -1283,7 +1278,7 @@ exit
 	\end{itemize}
 
 
-	Router wurde reseted, durch langes drücken des Reset Knopfs.
+	Router wurde zurückgesetzt, durch langes Drücken des Resetknopfs.
 	Nutzer und Passwort wurden zurückgesetzt.
 	Nutzer: admin
 	Passwort: (blank)
@@ -1294,7 +1289,7 @@ exit
 	Zugriff auf das Webinterface des Routers (LAN/WLAN).
 
 	\textbf{Gesamtbewertung:}  
-	High, durch das extrahieren der Authentifizierungsdaten sind weitere Angriffe auf den Router möglich.
+	High, durch das Extrahieren der Authentifizierungsdaten sind weitere Angriffe auf den Router möglich.
 
 	\textbf{Begründung:}  
 	Die Schwachstelle erlaubt das Auslesen sensibler Systemdateien ohne
@@ -1312,7 +1307,7 @@ nc -zv 192.168.0.1 23
 Connection to 192.168.0.1 23 port [tcp/telnet] succeeded!
 \end{lstlisting}
 	
-	Der D-Link DIR 600 besitzt eine Telnet-Schnittstelle, welche durch einen Nutzter und ein Passwort
+	Der D-Link DIR 600 besitzt eine Telnet-Schnittstelle, welche durch einen Nutzer und ein Passwort
 	geschützt sind. Unter einem Embedded Linux ist der Standardnutzer in diesem Fall \texttt{Alphanetworks}.
 	Dies lässt sich durch eine kurze Recherche über das Internet herausfinden. Das Standardpasswort des Routers unterscheidet sich
 	nach Modell. Um das Passwort der Telnet-Schnittstelle herauszufinden, wurden die Firmware des Routers
@@ -1322,7 +1317,7 @@ Connection to 192.168.0.1 23 port [tcp/telnet] succeeded!
 squashfs-root/etc/scripts/misc/telnetd\.sh: \
 telnetd -l "/usr/sbin/login" -u Alphanetworks:\$image\_sign -i \$lf &}
 \end{lstlisting}
-	Mit dem grep Befehl wurde die Firmware nach dem Standartnutzer rekursiv durchsucht.
+	Mit dem grep Befehl wurde die Firmware nach dem Standardnutzer rekursiv durchsucht.
 	Das Ergebnis zeigt den Benutzer und das Passwort, welches in \texttt{\$image\_sign} gespeichert wird.
 	\texttt{grep -r "image\_sign" squashfs-root/}
 \begin{lstlisting}
@@ -1363,7 +1358,7 @@ ramfs on /var type ramfs (rw)
 	auslösen. Da Schreibrechte auf dem /var Verzeichnis existieren könnten dort viele und große Dateien erzeugt werden, um so den 
 	Speicher zu füllen und die Dienste zu destabilisieren. Dies könnte den Router verlangsamen oder zu einem 
 	reboot führen. Außerdem kann der Angreifer durch Befehle wie ping, msh, kill oder busybox Prozesse mehrfach starten und die CPU dauerhaft belasten.
-	Desweiteren können Routerkonfigurationen, die interne Netzstruktur, DNS und Gateway sowie die aktiven Clients
+	Des Weiteren können Routerkonfigurationen, die interne Netzstruktur, DNS und Gateway sowie die aktiven Clients
 	eingesehen werden, was die Informationsgewinnung erleichtert. \cite{nvdcve202642375ab,telnetprotocolspecificationb}
 
 	\subsection{Bewertung:}
@@ -1387,11 +1382,11 @@ ramfs on /var type ramfs (rw)
 	Zugriff über Telnet (LAN/WLAN), ermitteln des Passworts.
 
 	\textbf{Gesamtbewertung:}  
-	High, es sind weitere Angriffe über die Telnet-Verbidung möglich.
+	High, es sind weitere Angriffe über die Telnet-Verbindung möglich.
 
 	\textbf{Begründung:}  
 	Die Schwachstelle erlaubt den Zugriff auf eine Remote Shell.
-	Sensible Daten könne ausgelsen werden und Befehle ausgeführt werden.
+	Sensible Daten könne ausgelesen werden und Befehle ausgeführt werden.
 	Die Ausnutzung ist trivial und erfordert keine besonderen Bedingungen. 
 
 	\subsection{Analyse des DDNS-Systems}
@@ -1447,11 +1442,11 @@ case 0x53: // -S
 \end{lstlisting}
 	
 	Anschließend wird anhand einer Service-ID entschieden, welcher DDNS-Anbieter
-	verwendet wird. Hierfür wird eine intern Tabelle verwendet, welche Service-Namen numerische Identifikation zuordnet.
-	Falls die Parameter ungültig oder unvollständig führt dies zum Programm abbruch.
+	verwendet wird. Hierfür wird eine interne Tabelle verwendet, welche Service-Namen numerische Identifikation zuordnet.
+	Falls die Parameter ungültig oder unvollständig führt dies zum Programm Abbruch.
 
 	Nach der Konfigurationsphase folgt die Netzwerklogik.
-	Das Programm arbeitet mit zustandbasierter Logik über \texttt{select()}:
+	Das Programm arbeitet mit zustandsbasierter Logik über \texttt{select()}:
 \begin{lstlisting}[language=c]
 iVar2 = select(uVar7 + 1,
 		(fd_set *)local_288,
@@ -1513,12 +1508,12 @@ snprintf(acStack_260,500,
 	\textbf{Voraussetzungen:}  
 	Zugriff auf das Netzwerk (LAN).
 
-	\textbf{Gesamtbewertung:}  
-	High, es ist möglich den Netzwerkverkehr zu verfolgen (Man-in-the-Middle Attack)
+	\textbf{Gesamtbewertung:}  S
+	High, es ist möglich, den Netzwerkverkehr zu verfolgen (Man-in-the-Middle Attack)
 
 	\textbf{Begründung:}  
-	Die DDNS-Kommunikation erfolgt unverschlüsseltüber HTTP, wodurch Authentifizierungdaten
-	im Klartext übertragen werden. Ein Angreifer kann diese durch einen Netzwerk-Mittschnitt
+	Die DDNS-Kommunikation erfolgt unverschlüsselt über HTTP, wodurch Authentifizierungsdaten
+	im Klartext übertragen werden. Ein Angreifer kann diese durch einen Netzwerk-Mitschnitt
 	abfangen und für weiter Angriffe verwenden.
 	Dies ist mit geringem Aufwand möglich und erfordert keine besondere Voraussetzung.
 
