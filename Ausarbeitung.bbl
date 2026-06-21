@@ -628,8 +628,8 @@
       \endverb
     \endentry
     \entry{hostapdieee80211ab}{misc}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{title}{Hostapd: {{IEEE}} 802.11 {{AP}}, {{IEEE}} 802.{{1X}}/{{WPA}}/{{WPA2}}/{{WPA3}}/{{EAP}}/{{RADIUS Authenticator}}}
       \field{urlday}{1}
@@ -638,8 +638,8 @@
       \field{urldateera}{ce}
     \endentry
     \entry{netfilteriptablesprojectb}{misc}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{title}{Netfilter/Iptables Project Homepage - {{Documentation}} about the Netfilter/Iptables Project}
       \field{urlday}{31}
@@ -648,8 +648,8 @@
       \field{urldateera}{ce}
     \endentry
     \entry{dlinksupportresourcesb}{misc}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{title}{D-{{Link Support Resources}}}
       \field{urlday}{31}
@@ -658,8 +658,8 @@
       \field{urldateera}{ce}
     \endentry
     \entry{squashfs40filesystemab}{misc}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{title}{Squashfs 4.0 {{Filesystem}} --- {{The Linux Kernel}} Documentation}
       \field{urlday}{1}
@@ -668,8 +668,8 @@
       \field{urldateera}{ce}
     \endentry
     \entry{pathtraversalowaspb}{misc}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{abstract}{Path Traversal on the main website for The OWASP Foundation. OWASP is a nonprofit foundation that works to improve the security of software.}
       \field{langid}{english}
@@ -696,8 +696,8 @@
       \strng{authorbibnamehash}{c07b881ce18f1c139ec16860aa2c8dad}
       \strng{authornamehash}{c07b881ce18f1c139ec16860aa2c8dad}
       \strng{authorfullhash}{c07b881ce18f1c139ec16860aa2c8dad}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{This document defines the "Basic" Hypertext Transfer Protocol (HTTP) authentication scheme, which transmits credentials as user-id/ password pairs, encoded using Base64.}
@@ -715,8 +715,8 @@
       \endverb
     \endentry
     \entry{wstgstableowaspb}{misc}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{abstract}{WSTG - Stable on the main website for The OWASP Foundation. OWASP is a nonprofit foundation that works to improve the security of software.}
       \field{langid}{english}
@@ -727,8 +727,8 @@
       \field{urldateera}{ce}
     \endentry
     \entry{nvdcve202642375ab}{misc}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{title}{{{NVD}} - {{CVE-2026-42375}}}
       \field{urlday}{1}
@@ -740,8 +740,8 @@
       \list{institution}{1}{%
         {Internet Engineering Task Force}%
       }
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{abstract}{This is the specification of the Telnet protocol used for remote terminal access in the ARPA Internet. The purpose of the TELNET Protocol is to provide a fairly general, bi-directional, eight-bit byte oriented communications facility. Its primary goal is to allow a standard method of interfacing terminal devices and terminal-oriented processes to each other. It is envisioned that the protocol may also be used for terminal-terminal communication ("linking") and process-process communication (distributed computation). This RFC specifies a standard for the ARPA Internet community. Hosts on the ARPA Internet are expected to adopt and implement this standard. Obsoletes NIC 18639.}
       \field{month}{5}
@@ -876,8 +876,8 @@
       \endverb
     \endentry
     \entry{cverecordcve2014125122}{misc}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{howpublished}{https://www.cve.org/CVERecord?id=CVE-2014-125122}
       \field{title}{{{CVE Record}}: {{CVE-2014-125122}}}
@@ -890,8 +890,8 @@
       \endverb
     \endentry
     \entry{cwecwe121stackbased}{misc}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{howpublished}{https://cwe.mitre.org/data/definitions/121.html}
       \field{title}{{{CWE}} - {{CWE-121}}: {{Stack-based Buffer Overflow}} (4.20)}
@@ -1052,8 +1052,8 @@
       \strng{authorbibnamehash}{61913b91f853f86042f045cee8ee97a7}
       \strng{authornamehash}{61913b91f853f86042f045cee8ee97a7}
       \strng{authorfullhash}{61913b91f853f86042f045cee8ee97a7}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{WRT120N 1.0.0.7 - Remote Stack Overflow. CVE-103521 . remote exploit for Hardware platform}
@@ -1072,8 +1072,8 @@
       \endverb
     \endentry
     \entry{reversingwrt120nsfirmware}{misc}{}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labeltitlesource}{title}
       \field{howpublished}{https://web.archive.org/web/20210416210329/http://www.devttys0.com/2014/02/reversing-the-wrt120n-firmware-obfuscation/}
       \field{month}{4}
@@ -1111,8 +1111,8 @@
       \strng{authorbibnamehash}{71f5c2585c576fd9af736848fe11bc35}
       \strng{authornamehash}{71f5c2585c576fd9af736848fe11bc35}
       \strng{authorfullhash}{71f5c2585c576fd9af736848fe11bc35}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The Hypertext Transfer Protocol (HTTP) is a stateless application-level protocol for distributed, collaborative, hypertext information systems. This document describes the overall architecture of HTTP, establishes common terminology, and defines aspects of the protocol that are shared by all versions. In this definition are core protocol elements, extensibility mechanisms, and the "http" and "https" Uniform Resource Identifier (URI) schemes. This document updates RFC 3864 and obsoletes RFCs 2818, 7231, 7232, 7233, 7235, 7538, 7615, 7694, and portions of 7230.}
@@ -1222,8 +1222,8 @@
       \strng{authornamehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
       \strng{authorfullhash}{44ea1b356dcd7bfe0ece54601fb6bcec}
       \field{extraname}{3}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Cyber-Sicherheitsempfehlungen/Router-WLAN-VPN/WLAN-LAN-was-man-wissen-sollte/wlan-lan-was-man-wissen-sollte.html?nn=131126}
@@ -1239,6 +1239,18 @@
       \endverb
     \endentry
   \enddatalist
+  \missing{bakhshi2024}
+  \missing{cwecwe119improper}
+  \missing{cwecwe190integer}
+  \missing{cwecwe20improper}
+  \missing{cwecwe521weak}
+  \missing{cwecwe77improper}
+  \missing{cwecwe798use}
+  \missing{cwecwe89improper}
+  \missing{qasem2024}
+  \missing{sessionmanagementowasp}
+  \missing{smashingstackfun}
+  \missing{wstgstableowaspa}
 \endrefsection
 \endinput
 
