@@ -1332,20 +1332,14 @@ snprintf(acStack_260,500,
 	die erzielten Ergebnisse und aufgetretene Probleme. Darüber hinaus werden die daraus
 	gewonnenen Erkenntnisse analysiert und bewertet. Falls relevant, werden die
 	Ergebnisse zusätzlich mit wissenschaftlichen Quellen oder Studien verglichen.
-	Sofern im Folgenden auf das Handbuch bzw. den User Guide verwiesen wird, ist 
+	Sofern im Folgenden auf das Handbuch beziehungsweise den User Guide verwiesen wird, ist 
 	das Dokument \emph{WRT120N-EMEA\_combo\_UG.pdf} gemeint. Da keine öffentlich
 	zugängliche und dauerhaft verfügbare Online-Quelle mehr existiert, wird das 
 	PDF-Dokument der Ausarbeitung als Anhang beigefügt.
 
-	%=======================notes jf - need to be deleted later
-	%testen was passiert wenn Router auf Werkseinstellungen ist
-	% -> kommt man dann einfach rein? ist wahrscheinlich sehr häufig der Fall
-	% Bezugnahme Frauenhofer Router Test und das Paper "But is it exploitable?"
-	% da dort auch beschrieben wird wie das "normale" user handhaben
-	%=========================================================
 	\section{Erster Versuch des Verbindungsaufbaus}
 	\label{sec:w_failed_test}
-	Ziel: Router Webinterface erreichen und Standardeinstellungen prüfen
+	Ziel: Router Webinterface erreichen und Standardeinstellungen prüfen.
 	\begin{table}[H]
 		\hypertarget{tab_w_01}{}
 		\begin{tabularx}{\columnwidth}{|l|X|}
@@ -1406,10 +1400,10 @@ snprintf(acStack_260,500,
 	\end{figure}
 	Aufgrund der Artikel \cite{chalhoub2023, vomdorp2022, schwarz2021} 
 	war eine veraltete Firmwareversion nicht abwegig daher wurde über 
-	die Website \emph{archive.org} eine Firmware Version 1.0.05 heruntergeladen und diese
-	über das Feld "Browse" ausgewählt. Die Meldung \emph{File to big} wurde ausgegeben.
-	Diese Abfolge von Test wurde ebenfalls in der Windows10 VM durchgeführt und hatte
-	dieselben negativen Ergebnisse.
+	die Website \emph{archive.org} eine Firmware Version 1.0.05 (siehe Anhang RouterSetup.iso) 
+	heruntergeladen und diese über das Feld "Browse" ausgewählt. Die Meldung 
+	\emph{File to big} wurde ausgegeben. Diese Abfolge von Test wurde ebenfalls in der 
+	Windows10 VM durchgeführt und hatte dieselben negativen Ergebnisse.
 	Da der Zustand des Routers unverändert blieb, wurde mehrfach versucht über
 	den Reset-Button das Gerät auf Werkseinstellungen zurück zusetzten, was jedoch
 	nicht den erwarteten Effekt hatte. Ebenfalls wurde der Router stromlos geschaltet,
@@ -1425,9 +1419,6 @@ snprintf(acStack_260,500,
 	Router speziell für diese Tests verwendet wird, wird vermutet, dass vorherige 
 	Nutzer entsprechende Konfigurationen vorgenommen haben, um den Zugriff auf 
 	die Web-Oberfläche zu ermöglichen.
-	%---
-	%ToDo: Firmware muss mit abgegeben werden
-	%---
 
 	%Änderung an der VM: Network: Intel PRO/1000 MT Desktop (NAT)
 
@@ -1459,7 +1450,7 @@ snprintf(acStack_260,500,
 		\caption{WRT120N Testumgebung 3}
 		\label{tab:tab_03}
 	\end{table}
-	Getätigte Einstellungen mitilfe des Userguides:
+	Getätigte Einstellungen mithilfe des Userguides:
 	\begin{enumerate}
 		\item Neues Router Passwort angelegt \emph{wrtcentoventin}
 		\item Internetverbindungstyp: DHCP
@@ -1486,7 +1477,7 @@ snprintf(acStack_260,500,
 \begin{lstlisting}[language=bash]
 sudo wireshark
 \end{lstlisting}
-	Im Terminal kann mit \texttt{iwconfig} kann die WLAN-Netzwerkschnittstellen
+	Im Terminal kann mit \texttt{iwconfig} die WLAN-Netzwerkschnittstellen
 	abgefragt werden. Die Bezeichnungen in der ersten Spalte sind in Wireshark
 	ebenfalls aufgelistet und nach Anwahl des WLAN Adapters wird der 
 	Netzwerkverkehr im WLAN des Routers mitgeschnitten. Um das erfolgreiche
@@ -1495,12 +1486,12 @@ sudo wireshark
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{img/nwtraffic_laptop_t3.png}
-		\caption{Netzwerkverkehr PC Test3}
+		\caption{Netzwerkverkehr - Datei: laptop\_iphone\_nw-traffic\_t3.pcapng}
 		\label{fig:nwtraff_pc_t3}
 	\end{figure}
 	Abbildung \ref{fig:nwtraff_pc_t3} zeigt einen gefilterten Ausschnitt der
 	Kommunikation des Laptops. Man kann im Info-Feld sehen, dass die Seite
-	hackthebox aufgerufen wurde. Weitere Informationen können aus den IP-Adressen 
+	\emph{hackthebox} aufgerufen wurde. Weitere Informationen können aus den IP-Adressen 
 	gewonnen werden, da durch die Eingabe der Adressen auf Websites wie 
 	\emph{WhoIsFreaks} \cite{ipwhois142251150119} teilweise ermittelt
 	werden kann, wessen Server diese IP-Adresse hat. In der genannten Quelle
@@ -1509,12 +1500,12 @@ sudo wireshark
 	mit \texttt{ip addr} in Erfahrung gebracht und innerhalb der Aufzeichnung
 	von Wireshark dann explizit nach dieser IP gesucht. Das gleiche Verfahren
 	wurde für das Smartphone angewandt, dessen IP-Adresse in den WLAN-
-	Einstellungen zu finden ist. Die Abbildung \ref{fig:nwtraff_iphone_t3}
+	Einstellungen des Gerätes zu finden ist. Die Abbildung \ref{fig:nwtraff_iphone_t3}
 	zeigt den Teil der Kommunikation, der mitgeschnitten wurde.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{img/nwtraffic_iphone_t3.png}
-		\caption{Netzwerkverkehr Iphone Test3}
+		\caption{Netzwerkverkehr Iphone - Datei: laptop\_iphone\_nw-traffic\_t3.pcapng}
 		\label{fig:nwtraff_iphone_t3}
 	\end{figure}
 	Da das genutzte Smartphone (IPhone 13Mini) selbst noch Sicherheitsmechanismen
@@ -1562,7 +1553,7 @@ sudo wireshark
 	\cite[S.54]{baun2025} zu finden. Wie im Abschnitt \ref{sec:attractiv_target} 
 	erwähnt, wird der Standardname des Routers geändert, um daraus keine Schlüsse
 	auf den genutzten Router zu ziehen. Die SSID-Übertragung wurde auf den
-	Standardeinstellungen belassen, der Router keinen sprechenden Namen mehr hat.
+	Standardeinstellungen belassen, da der Router keinen sprechenden Namen mehr hat.
 	Per Default ist die Wireless-Sicherheit deaktiviert, diese wird auf WPA2-Personal
 	gesetzt, da diese das sicherste Verfahren der angebotenen Möglichkeiten
 	ist und es keine RADIUS Server im Netz gibt \cite[S.64]{baun2025}.
@@ -1583,7 +1574,7 @@ sudo wireshark
 	\end{figure}
 	Um eine weitere Sicherheitsstufe hinzuzufügen können unter \emph{Wireless MAC-Filter}
 	MAC-Adressen definiert werden, denen der Zugriff auf das WLAN erlaubt oder 
-	verweigert wird. Die MAC-Adresse des PCs wird explizit erlaubt für das WLAN.
+	verweigert wird. Die MAC-Adresse des PCs wird explizit erlaubt.
 	Die Verbindung zum Internet über das Ethernet Kabel und den Internet Port wurde
 	wieder hergestellt für die nachfolgenden Tests.
 	\begin{description}
@@ -1591,8 +1582,8 @@ sudo wireshark
 		eingetragen PC lässt sich mit der Eingabe des Kennworts mit dem WLAN
 		verbinden und hat eine stabile Internetverbindung. Nachdem die MAC-Adresse
 		des PCs aus der Liste entfernt wurde, ist nochmals ein Verbindungsaufbau
-		versucht worden. Die Verbindung wird versucht aufgebaut zu werden, aber 
-		es wird abgebrochen mit der Meldung "Verbindung fehlgeschlagen". Erst 
+		versucht worden. Der Verbindungsaufbau wird gestartet, jedoch mit der 
+		Meldung „Verbindung fehlgeschlagen“ abgebrochen. Erst 
 		nachdem die Wireless-MAC-Filter Liste umgestellt wurde, dass diese
 		Liste nur die darin definierten Adressen verweigert, wird die Verbindung
 		unter Kenntnis des Passworts erlaubt. Steht eine MAC-Adresse auf der
@@ -1622,12 +1613,11 @@ sudo wireshark
 	nutzen und nur den eigenen Geräten, deren MAC-Adressen man kennt den Zugriff
 	ins WLAN zu erlauben.
 
-
 	\section{Schwachstelle CVE-2014-125122}
 	\label{w_cve}
-	Ziel: Schwachstelle \cite{cverecordcve2014125122} und deren Auswirkungen verstehen. 
+	Ziel: Schwachstelle CVE-2014-125122 \cite{cverecordcve2014125122} und deren Auswirkungen verstehen. 
 	Mithilfe des Tools \emph{Metasploit} oder einem Pythonskript die Schwachstelle 
-	auslösen.
+	ausnutzen.
 	\newline
 	In der Datenbank \emph{CVE.org} ist eine Schwachstelle zu diesem Typ Router	
 	aufgelistet. Da der Router sowohl EOL als auch seit Juli 2022 EOS ist 
@@ -1635,7 +1625,7 @@ sudo wireshark
 	veröffentlicht wurde, ist diese vom Hersteller nicht mehr behoben worden.
 	Im Bericht der CVE ist zudem die betroffenen Firmwareversion festgehalten,
 	welche der aktuellen Firmwareversion 1.0.07 des Routers entspricht, 
-	siehe Abbildung \ref{fig:firmware_version_wrt120n}
+	siehe Abbildung \ref{fig:firmware_version_wrt120n}.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.7\textwidth]{img/linksys_page-firmware_v1-0-07.png}
@@ -1643,10 +1633,10 @@ sudo wireshark
 		\label{fig:firmware_version_wrt120n}
 	\end{figure}
 	Für diese Schwachstelle muss sich der Angreifer im WLAN des Routers befinden,
-	das heißt die erste Hürde, das WLAN Passwort muss von im geknackt werden,
+	dass heißt die erste Hürde, das WLAN Passwort muss von ihm geknackt werden,
 	sofern es nicht das Default Passwort ist, welches einfach zu erfahren ist.
 	In der Datei \emph{tmUnblock.cgi} befindet sich die Schwachstelle, welche
-	einen Stack-Overflow auslösen kann und damit kurzzeitig das Adminpasswort
+	einen Stack-Overflow auslösen kann und damit das Adminpasswort
 	des Routers zurücksetzt, sodass ein Angreifer sich zur Website des Routers 
 	Zugriff verschaffen kann. Dafür muss ein zu langer TM\_Block\_URL Parameter
 	per HTTP Post-Anfrage an den Router gesendet werden.
@@ -1672,7 +1662,8 @@ sudo wireshark
 	Möglichkeiten, einmal ein Pythonskript und ein Programm für das Framework
 	Metasploit. Dieses wird zum Durchführen von Penetrationstests genutzt und 
 	ist standardmäßig bei Kali Linux vorinstalliert \cite{metasploitpenetrationtesting}.
-	Mit dem folgenden Python Skript wurde der Exploit getestet:
+	Mit dem folgenden Python Skript (Datei: remote\_stack\_overflow.py) wurde 
+	der Exploit getestet:
 \begin{lstlisting}[language=Python]
 #!/usr/bin/env python
 #...
@@ -1742,7 +1733,7 @@ except KeyboardInterrupt:
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{img/exploit_bash_nwtraffic_httppost.png}
-		\caption{Netzwerkverkehr - HTTP-Post Exploit}
+		\caption{Netzwerkverkehr - Datei: http-post\_exploit.pcapng}
 		\label{fig:w_exploit}
 	\end{figure}
 	In dieser Abbildung ist unten rechts blau markiert der HTTP-Post zusehen,
@@ -1771,17 +1762,17 @@ except KeyboardInterrupt:
 	schrittweise wieder rückgängig gemacht, um deren Auswirkungen auf die 
 	Ausführung des Skripts zu überprüfen.
 	\begin{enumerate}
-		\item Wireless Sicherheit \emph{Sicherheitsmodus} deaktivieren: keine 
+		\item Wireless Sicherheit \emph{Sicherheitsmodus} deaktivieren: Keine 
 		Änderung im Verhalten. Das Passwort für die Website wird immer noch gefordert
-		\item Grundlegende Wirelesseinstellungen auf Default setzen: keine
+		\item Grundlegende Wirelesseinstellungen auf Default setzen: Keine
 		Änderung im Verhalten.
 		\item Firmware Upload durch die genutze Firmware von Heffner 
 		\cite{reversingwrt120nsfirmware}. Angehängt an die Ausarbeitung 
 		(FW\_WRT120N\_1.0.07.002\_US.bin). Firmware-Verifizierung hat sich 
 		geändert aber nich das Verhalten beim Ausführen des Exploits.
 		\item MAC-Adressen des Routers im Pythenskript eingepflegt (Zeile 16).
-		keine Veränderung
-		\item Router Reset auf Werkseinstellungen: keine Veränderung
+		Keine Veränderung
+		\item Router Reset auf Werkseinstellungen: Keine Veränderung
 	\end{enumerate}
 	\cite{urllibrequestextensiblelibrary, fielding2022, builtinexceptions}
 	Nach diesen Versuchen ist festzustellen, dass der Remote Exploit mit dem
@@ -1865,8 +1856,8 @@ rescue ::Rex::ConnectionError
 	funktioniert \cite{wrt120nfprintfstack}. Vermutet wird anhand der Wireshark
 	Aufzeichnungen der beiden Exploit Ausführungen, dass es an den verschiedenen 
 	Inhalt der Posts liegt. Das der Inhalt verschieden sein muss wird an den 
-	verschiedenen Größen der HTTP-Post klar. Die \emph{File Data} des Posts vom
-	Pythonskript hat eine Größe von 438 Byte, im Gegensatz zu 462 Byte vom Metasploit. 
+	unterschiedlichen Größen der HTTP-Posts klar. Die \emph{File Data} des Posts des
+	Pythonskripts hat eine Größe von 438 Byte, im Gegensatz zu 462 Byte vom Metasploit. 
 	Zudem sind die Frames unterschiedlich groß, 492Byte Pythonskript und 770 Byte 
 	Metasploit.
 	\newline
@@ -1879,7 +1870,8 @@ rescue ::Rex::ConnectionError
 	Schlussfolgerung: Die Schwachstelle lässt sich erfolgreich mit der Software Metasploit
 	ausführen und ermöglich einem sich im WLAN Netzwerk befindenden Angreifer, den
 	Zugriff auf alle Einstellungen des Routers. Auch erweiterte Einstellungen der
-	Sicherheitskonfiguration machen den Angriff möglich. Daher ist als Nutzer
+	Sicherheitskonfiguration machen den Angriff möglich, was die Schwachstelle zu einem
+	hohen Sicherheitsrisiko macht. Daher ist als Nutzer
 	wichtig im eigenen WLAN nur Geräte zuzulassen, deren MAC-Adressen bekannt sind
 	damit wird dem Angreifer direkt der Zugang zum WLAN verweigert und diese
 	Schwachstelle kann nicht ausgenutzt werden.
@@ -1896,17 +1888,17 @@ rescue ::Rex::ConnectionError
 	reproduziert werden. Dies lag zum einen daran, dass die erforderlichen Firmwareversionen 
 	aufgrund des Status des Router (EOL und EOS) nicht verfügbar waren, und zum anderen 
 	daran, dass die nötige Recherche, um die Schwachstellen auszunutzen den zeitlichen 
-	Rahmen dieser Ausarbeitung überschitten hätte. Die Ergebnisse der einzelnen Tests 
+	Rahmen dieser Ausarbeitung überschritten hätte. Die Ergebnisse der einzelnen Tests 
 	wurden jeweils unmittelbar nach der Durchführung ausgewertet und hinsichtlich 
 	ihrer Auswirkungen auf die Sicherheit analysiert. Im Folgenden werden die 
-	wichtigsten Erkenntnisse der kritischen Schwachstellen zusammenfassend bewertet.
+	wichtigsten Erkenntnisse der kritischen Schwachstellen zusammengefasst.
 
 	Am kritischten Einzuschätzten ist beim DIR-600 Router von D-Link die LFI-Schwachstelle, da sie 
 	einem Angreifer Zugriff auf sensible Daten, insbesonder der Benutzername und das 
 	Passwort gibt und dadurch die Zugriffskontrolle der Webapplikation des Routers nutzlos wird.
 	Dies hat zur Folge das Einstellungen analysiert und manipuliert werden können.
 	Selbst ein Reset oder das Ändern des Passworts hat keine Auswirkung auf die 
-	Schwachstelle selbst. Durch wiederholen der Attacke kann der Angreifer sich erneut 
+	Schwachstelle selbst. Durch das Wiederholen der Attacke kann der Angreifer sich erneut 
 	Zugriff zu dem Gerät verschaffen.
 	Nutzerendgeräte können sich somit nicht mehr sicher mit ihrem Netzwerk verbinden.
 	Durch eine kurze Recherche im Internet kann die Schwachstelle gefunden werden.
@@ -1930,7 +1922,8 @@ rescue ::Rex::ConnectionError
 	Geräte des eigentlichen Nutzers nicht mehr sich mit dem WLAN verbinden
 	können. Lediglich ein manueller Reset des Routers, durchgeführt von einem 
 	Nutzer, der physischen Zugriff auf den Router hat, kann diese kompromittierten
-	Einstellungen rückgängig machen.
+	Einstellungen rückgängig machen. Sollte ein Angreifer sich daraufhin
+	wieder Zugriff zum WLAN verschaffen kann der Angriff wiederholt werden.
 	Nach langem Ausprobieren des Pythonskripts, welches sich nicht erfolgreich
 	ausführen lies, war das Ausführen der Schwachstelle über das Programm
 	Metasploit sehr einfach. Daraus lässt sich ableiten, dass ein Angreifer
@@ -1969,6 +1962,9 @@ rescue ::Rex::ConnectionError
 	% die Hersteller Seite, daher sind sie im Anhang. Ist das in Ordnung?
 
 	% Müssen wir die Kali Linux abgeben? Es wurde lediglich der Adapter angepasst
+	% Muss die Windows VM abgegeben werden, die wurde nur für Test verwendet ob es
+	% am BS liegt? Ich hätte die nicht abgegeben weil darauf keine  wichtigen
+	% Tests gemacht wurden und es die Standardversion ist und diese beschrieben ists
 
 	% Vor der Abgabe der Ausabeitung unterscheiben wir beide hinteinander die
 	% Eidesstatliche Erklärung und geben die Pdf dann ab?
@@ -1984,7 +1980,7 @@ rescue ::Rex::ConnectionError
 	
 	\chapter{Zusammenfassung und Ausblick}
 	\section{Zusammenfassung der erreichten Ergebnisse}
-	Zu Beginn der Ausarbeitung wurden die nötigten Grundlagen für Router erläutert, um
+	Zu Beginn der Ausarbeitung wurden die nötigen Grundlagen für Router erläutert, um
 	die folgenden Kapitel nachvollziehen zu können. Die typischen Schwachstellen und
 	damit verbundenen Mechanismen wurden beschrieben als auch im Bereich der Tests
 	teilweise praktisch umgesetzt. Nach jedem durchgeführten Test erfolgte eine 
@@ -1993,16 +1989,16 @@ rescue ::Rex::ConnectionError
 	Schwachstellen mit den geeigneten
 	Tools und hinreichendem Wissen ausgenutzt werden könnne, sodass dadurch die
 	Sicherheit der Daten der Nutzer des WLANs gefährdet sind. 
-	Da die Nutzung eines Routers daheim für die meisten Personen unabdingbar ist,
+	Da die Nutzung eines Routers zu Hause für die meisten Personen unabdingbar ist,
 	sollten gerade deshalb die Anweisungen der Routerhersteller umgesetzt werden. 
-	Dies stellt sich auf aber nicht immer als umsetzbar herraus, da viele User
+	Dies stellt sich aber nicht immer als umsetzbar herraus, da viele User
 	nicht die technischen Kenntnisse haben diese Anweisungen umzusetzen \cite{chalhoub2023}.
 	Um Angriffe wie in Abschnitt \ref{sec:tests_wrt120n}, \ref{sec:Tests D-Link DIR-600}
 	zu vermeiden oder bei einem sehr versierten Angreifer zu verzögern, sollten die 
 	bereits mehrfach empfohlenen Einstellungen getätigt werden:
 	\begin{itemize}
 		\item Standardname des Routers ändern
-		\item Standard Credentials in sichere Credentials ändern
+		\item Standard Credentials (Passwort, Benutzername) in sichere Credentials ändern
 		\item Sicherheitseinstellung aktivieren
 		\item Wenn möglich, Zugriff auf WLAN abhängig von der MAC-Adresse zulassen
 		\item Automatische Update Funktion aktivieren
@@ -2016,13 +2012,13 @@ rescue ::Rex::ConnectionError
 	\section{Ausblick}
 	Die Ausarbeitung hat viel Potezial um erweitert zu werden. Dazu zählen vorallem 
 	die Schwachstellen des Routers D-600 für den es weitere Schwachstellen für ältere
-	Firmwareversionen gibt als auch Untersuchungen der Hardware angelehnt an das Paper 
+	Firmwareversionen gibt als auch Untersuchungen der Hardware, angelehnt an das Paper 
 	von Schwarz et al. \cite{schwarz2021}.
 	Das Fraunhofer Institut gibt ebenfalls einen Einblick, wie diese Ergebnisse
 	erweitert werden können \cite{vomdorp2022}. Der Bericht zeigt, dass es viele
 	weiter Möglichkeiten gibt die Bestandteile des Routers zu untersuchen, dazu 
 	gehören der genutzte Kernel, dessen Betriebssystem und viele weiter Angriffspunkte,
-	die im Bericht beschrieben werden. Für derlei Tests ist neben der nötigen Recherche auch 
+	die beschrieben werden. Für derlei Tests ist neben der nötigen Recherche auch 
 	weiteres Werkzeugt nötig, um interne Schnittstellen wie UART auslesen zu können
 	\cite{schwarz2021, vomdorp2022}. 
 	Bei beiden untersuchten Routern gibt es keine Begrenzung für falsche Passworteingaben,
