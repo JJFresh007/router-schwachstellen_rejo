@@ -18,11 +18,11 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Hauptseite der Website}}{41}{figure.5.1}%
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Reboot Seite}}{41}{figure.5.2}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Netzwerkverkehr PC Test3}}{43}{figure.5.3}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Netzwerkverkehr Iphone Test3}}{44}{figure.5.4}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Ansicht WLAN Verbindung nach Konfiguration}}{45}{figure.5.5}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Netzwerkverkehr - Datei: laptop\_iphone\_nw-traffic\_t3.pcapng}}{43}{figure.5.3}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Netzwerkverkehr Iphone - Datei: laptop\_iphone\_nw-traffic\_t3.pcapng}}{44}{figure.5.4}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Ansicht WLAN-Verbindung nach Konfiguration}}{45}{figure.5.5}%
 \contentsline {figure}{\numberline {5.6}{\ignorespaces Firmware Version - WRT120N}}{46}{figure.5.6}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Netzwerkverkehr - HTTP-Post Exploit}}{49}{figure.5.7}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Netzwerkverkehr - Datei: http-post\_exploit.pcapng}}{49}{figure.5.7}%
 \contentsline {figure}{\numberline {5.8}{\ignorespaces Netzwerkverkehr - Datei: http-post\_exploit\_metasploit.pcapng}}{51}{figure.5.8}%
 \contentsline {figure}{\numberline {5.9}{\ignorespaces Python Skript vs. Ruby Programmcode in Metasploit}}{51}{figure.5.9}%
 \addvspace {10\p@ }
