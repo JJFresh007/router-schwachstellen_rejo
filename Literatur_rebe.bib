@@ -1,4 +1,24 @@
-@misc{cheng2021,
+@article{bakhshi2024,
+  title = {A {{Review}} of {{IoT Firmware Vulnerabilities}} and {{Auditing Techniques}}},
+  author = {Bakhshi, Taimur and Ghita, Bogdan and Kuzminykh, Ievgeniia},
+  year = 2024,
+  month = jan,
+  journal = {Sensors},
+  volume = {24},
+  number = {2},
+  pages = {708},
+  publisher = {Multidisciplinary Digital Publishing Institute},
+  issn = {1424-8220},
+  doi = {10.3390/s24020708},
+  urldate = {2026-06-13},
+  abstract = {In recent years, the Internet of Things (IoT) paradigm has been widely applied across a variety of industrial and consumer areas to facilitate greater automation and increase productivity. Higher dependability on connected devices led to a growing range of cyber security threats targeting IoT-enabled platforms, specifically device firmware vulnerabilities, often overlooked during development and deployment. A comprehensive security strategy aiming to mitigate IoT firmware vulnerabilities would entail auditing the IoT device firmware environment, from software components, storage, and configuration, to delivery, maintenance, and updating, as well as understanding the efficacy of tools and techniques available for this purpose. To this effect, this paper reviews the state-of-the-art technology in IoT firmware vulnerability assessment from a holistic perspective. To help with the process, the IoT ecosystem is divided into eight categories: system properties, access controls, hardware and software re-use, network interfacing, image management, user awareness, regulatory compliance, and adversarial vectors. Following the review of individual areas, the paper further investigates the efficiency and scalability of auditing techniques for detecting firmware vulnerabilities. Beyond the technical aspects, state-of-the-art IoT firmware architectures and respective evaluation platforms are also reviewed according to their technical, regulatory, and standardization challenges. The discussion is accompanied also by a review of the existing auditing tools, the vulnerabilities addressed, the analysis method used, and their abilities to scale and detect unknown attacks. The review also proposes a taxonomy of vulnerabilities and maps them with their exploitation vectors and with the auditing tools that could help in identifying them. Given the current interest in analysis automation, the paper explores the feasibility and impact of evolving machine learning and blockchain applications in securing IoT firmware. The paper concludes with a summary of ongoing and future research challenges in IoT firmware to facilitate and support secure IoT development.},
+  copyright = {http://creativecommons.org/licenses/by/3.0/},
+  langid = {english},
+  keywords = {firmware auditing,Internet of Things,reverse engineering,security testing},
+  file = {/home/rebecca/Zotero/storage/YGFKK6S5/Bakhshi et al. - 2024 - A Review of IoT Firmware Vulnerabilities and Auditing Techniques.pdf}
+}
+
+@misc{cheng2021a,
   title = {Finding {{Taint-Style Vulnerabilities}} in {{Linux-based Embedded Firmware}} with {{SSE-based Alias Analysis}}},
   author = {Cheng, Kai and Liu, Tao and Guan, Le and Liu, Peng and Li, Hong and Zhu, Hongsong and Sun, Limin},
   year = 2021,
@@ -12,19 +32,85 @@
   abstract = {Although the importance of using static analysis to detect taint-style vulnerabilities in Linux-based embedded firmware is widely recognized, existing approaches are plagued by three major limitations. (a) Approaches based on symbolic execution may miss alias information and therefore suffer from a high false-negative rate. (b) Approaches based on VSA (value set analysis) often provide an over-approximate pointer range. As a result, many false positives could be produced. (c) Existing work for detecting taint-style vulnerability does not consider indirect call resolution, whereas indirect calls are frequently used in Internet-facing embedded devices. As a result, many false negatives could be produced.},
   archiveprefix = {arXiv},
   keywords = {Computer Science - Cryptography and Security,Computer Science - Software Engineering},
-  note = {Comment: 14 pages, 4 figures},
-  file = {/home/rebecca/Zotero/storage/I5ENWDCF/Cheng et al. - 2021 - Finding Taint-Style Vulnerabilities in Linux-based Embedded Firmware with SSE-based Alias Analysis.pdf}
+  note = {Comment: 14 pages, 4 figures}
 }
 
-@article{costin,
+@article{cheng2023,
+  title = {{{MSLFuzzer}}: Black-Box Fuzzing of {{SOHO}} Router Devices via Message Segment List Inference},
+  shorttitle = {{{MSLFuzzer}}},
+  author = {Cheng, Yixuan and Fan, Wenqing and Huang, Wei and Yang, Jingyu and Yu, Gaoqing and Liu, Wen},
+  year = 2023,
+  month = nov,
+  journal = {Cybersecurity},
+  volume = {6},
+  number = {1},
+  pages = {51},
+  issn = {2523-3246},
+  doi = {10.1186/s42400-023-00186-5},
+  urldate = {2026-06-13},
+  abstract = {The popularity of small office and home office routers has brought convenience, but it also caused many security issues due to vulnerabilities. Black-box fuzzing through network protocols to discover vulnerabilities becomes a viable option. The main drawbacks of state-of-the-art black-box fuzzers can be summarized as follows. First, the feedback process neglects to discover the missing fields in the raw message. Secondly, the guidance of the raw message content in the mutation process is aimless. Finally, the randomized validity of the test case structure can cause most fuzzing tests to end up with an invalid response of the tested device. To address these challenges, we propose a novel black-box fuzzing framework called MSLFuzzer. MSLFuzzer infers the raw message structure according to the response from a tested device and generates a message segment list. Furthermore, MSLFuzzer performs semantic, sequence, and stability analyses on each message segment to enhance the complementation of missing fields in the raw message and guide the mutation process. We construct a dataset of 35 real-world vulnerabilities and evaluate MSLFuzzer. The evaluation results show that MSLFuzzer can find more vulnerabilities and elicit more types of responses from fuzzing targets. Additionally, MSLFuzzer successfully discovered 10 previously unknown vulnerabilities.},
+  langid = {english},
+  keywords = {Black-box fuzzing,Feedback mechanism,SOHO routers,Vulnerability discovery},
+  file = {/home/rebecca/Zotero/storage/MYAEVQ5T/Cheng et al. - 2023 - MSLFuzzer black-box fuzzing of SOHO router devices via message segment list inference.pdf}
+}
+
+@article{costina,
   title = {Automated {{Dynamic Firmware Analysis}} at {{Scale}}: {{A Case Study}} on {{Embedded Web Interfaces}}},
   author = {Costin, Andrei and Zarras, Apostolis and Bochum, Ruhr-University and Francillon, Aurelien},
   abstract = {Embedded devices are becoming more widespread, interconnected, and web-enabled than ever. However, recent studies showed that these devices are far from being secure. Moreover, many embedded systems rely on web interfaces for user interaction or administration. Unfortunately, web security is known to be difficult, and therefore the web interfaces of embedded systems represent a considerable attack surface.},
-  langid = {english},
-  file = {/home/rebecca/Zotero/storage/RQUQYH34/Costin et al. - Automated Dynamic Firmware Analysis at Scale A Case Study on Embedded Web Interfaces.pdf}
+  langid = {english}
 }
 
-@inproceedings{das2015b,
+@misc{cwecwe119improper,
+  title = {{{CWE}} - {{CWE-119}}: {{Improper Restriction}} of {{Operations}} within the {{Bounds}} of a {{Memory Buffer}} (4.20)},
+  urldate = {2026-06-13},
+  howpublished = {https://cwe.mitre.org/data/definitions/119.html},
+  file = {/home/rebecca/Zotero/storage/E4MD27AR/119.html}
+}
+
+@misc{cwecwe190integer,
+  title = {{{CWE}} - {{CWE-190}}: {{Integer Overflow}} or {{Wraparound}} (4.20)},
+  urldate = {2026-06-13},
+  howpublished = {https://cwe.mitre.org/data/definitions/190.html},
+  file = {/home/rebecca/Zotero/storage/4XKYL9E4/190.html}
+}
+
+@misc{cwecwe20improper,
+  title = {{{CWE}} - {{CWE-20}}: {{Improper Input Validation}} (4.20)},
+  urldate = {2026-06-14},
+  howpublished = {https://cwe.mitre.org/data/definitions/20.html},
+  file = {/home/rebecca/Zotero/storage/QUU87FUC/20.html}
+}
+
+@misc{cwecwe521weak,
+  title = {{{CWE}} - {{CWE-521}}: {{Weak Password Requirements}} (4.20)},
+  urldate = {2026-06-21},
+  howpublished = {https://cwe.mitre.org/data/definitions/521.html},
+  file = {/home/rebecca/Zotero/storage/3AHBPJK5/521.html}
+}
+
+@misc{cwecwe77improper,
+  title = {{{CWE}} - {{CWE-77}}: {{Improper Neutralization}} of {{Special Elements}} Used in a {{Command}} ('{{Command Injection}}') (4.20)},
+  urldate = {2026-06-13},
+  howpublished = {https://cwe.mitre.org/data/definitions/77.html},
+  file = {/home/rebecca/Zotero/storage/KXXZWSB4/77.html}
+}
+
+@misc{cwecwe798use,
+  title = {{{CWE}} - {{CWE-798}}: {{Use}} of {{Hard-coded Credentials}} (4.20)},
+  urldate = {2026-06-21},
+  howpublished = {https://cwe.mitre.org/data/definitions/798.html},
+  file = {/home/rebecca/Zotero/storage/8KYEH64R/798.html}
+}
+
+@misc{cwecwe89improper,
+  title = {{{CWE}} - {{CWE-89}}: {{Improper Neutralization}} of {{Special Elements}} Used in an {{SQL Command}} ('{{SQL Injection}}') (4.20)},
+  urldate = {2026-06-21},
+  howpublished = {https://cwe.mitre.org/data/definitions/89.html},
+  file = {/home/rebecca/Zotero/storage/LUBI6JYF/89.html}
+}
+
+@inproceedings{das2015ba,
   title = {Common Network Attack Types and Defense Mechanisms},
   booktitle = {2015 23nd {{Signal Processing}} and {{Communications Applications Conference}} ({{SIU}})},
   author = {Da{\c s}, Resul and Karabade, Abubakar and Tuna, Gurkan},
@@ -35,25 +121,20 @@
   doi = {10.1109/SIU.2015.7130435},
   urldate = {2026-05-31},
   abstract = {For every organization having a well secured network is the primary requirement to reach their goals. A network is said to be secure if it can protect itself from sophisticated attacks. Due to the rapid increase in the number of network users, security becomes the main challenge in the area of network field. Most security related threats target the layers of the OSI reference model. Sophisticated attack types such as Distributed Denial of Service (DDoS), Man-in-the-Middle and IP spoofing attacks are used to attack these layers. In this paper, we analyze most of the attack types that cause serious problems in computer networks and defense techniques to stop or prevent these attacks.},
-  keywords = {attack analysis,attacks detection,Computer crime,IP networks,Network attacks,network defense mechanisms,Ports (Computers),Servers,Switches},
-  file = {/home/rebecca/Zotero/storage/2E5VLC77/Daş et al. - 2015 - Common network attack types and defense mechanisms.pdf}
+  keywords = {attack analysis,attacks detection,Computer crime,IP networks,Network attacks,network defense mechanisms,Ports (Computers),Servers,Switches}
 }
 
-@misc{dlinksupportresources,
+@misc{dlinksupportresourcesa,
   title = {D-{{Link Support Resources}}},
-  urldate = {2026-05-31},
-  howpublished = {http://support.dlink.com.au/download/download.aspx?product=DIR-600},
-  file = {/home/rebecca/Zotero/storage/PG4CR3DL/download.html}
+  urldate = {2026-05-31}
 }
 
-@misc{dnsmasqnetworkservices,
+@misc{dnsmasqnetworkservicesa,
   title = {Dnsmasq - Network Services for Small Networks.},
-  urldate = {2026-05-31},
-  howpublished = {https://thekelleys.org.uk/dnsmasq/doc.html},
-  file = {/home/rebecca/Zotero/storage/R3YG9CHL/doc.html}
+  urldate = {2026-05-31}
 }
 
-@techreport{egevang2001,
+@techreport{egevang2001a,
   type = {Request for {{Comments}}},
   title = {Traditional {{IP Network Address Translator}} ({{Traditional NAT}})},
   author = {Egevang, Kjeld Borch and Srisuresh, Pyda},
@@ -63,11 +144,10 @@
   institution = {Internet Engineering Task Force},
   doi = {10.17487/RFC3022},
   urldate = {2026-05-25},
-  abstract = {The NAT operation described in this document extends address translation introduced in RFC 1631 and includes a new type of network address and TCP/UDP port translation. In addition, this document corrects the Checksum adjustment algorithm published in RFC 1631 and attempts to discuss NAT operation and limitations in detail. This memo provides information for the Internet community.},
-  file = {/home/rebecca/Zotero/storage/24MALFNU/Egevang and Srisuresh - 2001 - Traditional IP Network Address Translator (Traditional NAT).pdf}
+  abstract = {The NAT operation described in this document extends address translation introduced in RFC 1631 and includes a new type of network address and TCP/UDP port translation. In addition, this document corrects the Checksum adjustment algorithm published in RFC 1631 and attempts to discuss NAT operation and limitations in detail. This memo provides information for the Internet community.}
 }
 
-@article{frankel2007,
+@article{frankel2007a,
   title = {Establishing {{Wireless Robust Security Networks}}: {{A Guide}} to {{IEEE}} 802.11i},
   shorttitle = {Establishing {{Wireless Robust Security Networks}}},
   author = {Frankel, Sheila E. and Eydt, Bernard and Owens, L. and Scarfone, Karen Kent},
@@ -78,32 +158,42 @@
   urldate = {2026-06-01},
   abstract = {This report provides readers with a detailed explanation of next generation 802.11 wireless security.},
   langid = {english},
-  annotation = {Last Modified: 2017-02-19T20:02-05:00},
-  file = {/home/rebecca/Zotero/storage/9TKNL7E5/Frankel et al. - 2007 - Establishing Wireless Robust Security Networks A Guide to IEEE 802.11i.pdf}
+  note = {Last Modified: 2017-02-19T20:02-05:00}
 }
 
-@misc{hostapdieee80211a,
+@misc{hostapdieee80211aa,
   title = {Hostapd: {{IEEE}} 802.11 {{AP}}, {{IEEE}} 802.{{1X}}/{{WPA}}/{{WPA2}}/{{WPA3}}/{{EAP}}/{{RADIUS Authenticator}}},
-  urldate = {2026-06-01},
-  howpublished = {https://w1.fi/hostapd/},
-  file = {/home/rebecca/Zotero/storage/3AMP7HRE/hostapd.html}
+  urldate = {2026-06-01}
 }
 
-@misc{iptablestutorial123,
+@misc{iptablestutorial123a,
   title = {Iptables {{Tutorial}} 1.2.3},
-  urldate = {2026-06-01},
-  howpublished = {https://www.frozentux.net/iptables-tutorial/iptables-tutorial.html},
-  file = {/home/rebecca/Zotero/storage/76TW8LN6/iptables-tutorial.html}
+  urldate = {2026-06-01}
 }
 
-@misc{linuxkerneldocumentationa,
+@article{kim2024,
+  title = {{{HD-FUZZ}}: {{Hardware}} Dependency-Aware Firmware Fuzzing via Hybrid {{MMIO}} Modeling},
+  shorttitle = {{{HD-FUZZ}}},
+  author = {Kim, Juhwan and Yu, Jihyeon and Lee, Youngwoo and Kim, Dan Dongseong and Yun, Joobeom},
+  year = 2024,
+  month = apr,
+  journal = {Journal of Network and Computer Applications},
+  volume = {224},
+  pages = {103835},
+  issn = {1084-8045},
+  doi = {10.1016/j.jnca.2024.103835},
+  urldate = {2026-06-13},
+  abstract = {Numerous interconnected small embedded systems, such as Internet of Things (IoT) devices, are pervasive in our daily lives; however, their security lags behind. In particular, firmware vulnerabilities in low-level infrastructure have a more severe impact than application-level vulnerabilities. Fuzzing is the most effective technique for detecting vulnerabilities in firmware, but it encounters several challenges such as hardware-dependency, input channel, and instrumentation. Existing studies attempt to overcome these challenges by applying fuzzing to firmware re-hosting. However, they explore only worthwhile paths based on heuristics and human assistance without identifying security-critical firmware code. This results in low code coverage and reduces the likelihood of discovering potential bugs. In this work, we propose a novel hardware dependency-aware re-hosting system named HD-FUZZ that focuses on the firmware fuzzing process to efficiently discover bugs by exploring all possible paths in security-critical firmware code. The key ideas of HD-FUZZ are: (1) to propose a hybrid memory-mapped I/O (MMIO) modeling; (2) to achieve efficiency by mainly performing MMIO modeling through fuzzing; and (3) to achieve completeness by performing MMIO modeling through symbolic execution only to satisfy complex checks affecting the execution flow. HD-FUZZ has been extensively evaluated on both unit test cases and real-world targets, covering 12 hardware platforms and 67 firmware images. Compared to state-of-the-art works, HD-FUZZ achieves the highest passing rate in unit test benchmarks, reaches up to 2.62 times higher code coverage in fuzzing benchmarks, and generates initial access models up to 11.6 times faster. Notably, HD-FUZZ finds two new bugs, including ones in targets that were previously analyzed by other works.},
+  keywords = {Firmware,Fuzzing,Internet of Things,Symbolic execution,Vulnerability},
+  file = {/home/rebecca/Zotero/storage/KIDFI2BZ/S1084804524000122.html}
+}
+
+@misc{linuxkerneldocumentationaa,
   title = {The {{Linux Kernel}} Documentation --- {{The Linux Kernel}} Documentation},
-  urldate = {2026-06-01},
-  howpublished = {https://www.kernel.org/doc/html/latest/},
-  file = {/home/rebecca/Zotero/storage/F6SFI5XC/latest.html}
+  urldate = {2026-06-01}
 }
 
-@misc{nationalsecurityagencyghidra,
+@misc{nationalsecurityagencyghidraa,
   title = {{{NationalSecurityAgency}}/Ghidra},
   year = 2026,
   month = may,
@@ -114,30 +204,65 @@
   keywords = {disassembler,reverse-engineering,software-analysis}
 }
 
-@misc{netfilteriptablesproject,
+@misc{netfilteriptablesprojecta,
   title = {Netfilter/Iptables Project Homepage - {{Documentation}} about the Netfilter/Iptables Project},
-  urldate = {2026-05-31},
-  howpublished = {https://www.netfilter.org/documentation/},
-  file = {/home/rebecca/Zotero/storage/NDZH49SA/documentation.html}
+  urldate = {2026-05-31}
 }
 
-@misc{nvdcve202642375a,
+@misc{nvdcve202642375aa,
   title = {{{NVD}} - {{CVE-2026-42375}}},
-  urldate = {2026-06-01},
-  howpublished = {https://nvd.nist.gov/vuln/detail/CVE-2026-42375},
-  file = {/home/rebecca/Zotero/storage/TTLK2CXU/CVE-2026-42375.html}
+  urldate = {2026-06-01}
 }
 
-@misc{pathtraversalowasp,
+@misc{pathtraversalowaspa,
   title = {Path {{Traversal}} \textbar{} {{OWASP Foundation}}},
   urldate = {2026-05-30},
   abstract = {Path Traversal on the main website for The OWASP Foundation. OWASP is a nonprofit foundation that works to improve the security of software.},
-  howpublished = {https://owasp.org/www-community/attacks/Path\_Traversal},
-  langid = {english},
-  file = {/home/rebecca/Zotero/storage/KT6RK7YG/Path_Traversal.html}
+  langid = {english}
 }
 
-@misc{refirmlabsbinwalk,
+@misc{pdfinvestigationrouter,
+  title = {({{PDF}}) {{An Investigation}} into {{Router Firmware Security}} and the {{Embedded Device Challenge}}},
+  journal = {ResearchGate},
+  urldate = {2026-06-13},
+  abstract = {PDF \textbar{} In the present IoT world the need for robust network security is more important than ever as the internet-connected gadgets are everywhere and our... \textbar{} Find, read and cite all the research you need on ResearchGate},
+  howpublished = {https://www.researchgate.net/publication/378774859\_An\_Investigation\_into\_Router\_Firmware\_Security\_and\_the\_Embedded\_Device\_Challenge},
+  langid = {english},
+  file = {/home/rebecca/Zotero/storage/7YPNGVDD/378774859_An_Investigation_into_Router_Firmware_Security_and_the_Embedded_Device_Challenge.html}
+}
+
+@article{pdfuncoveringhidden,
+  title = {({{PDF}}) {{Uncovering Hidden Risks}} in {{IoT}} Devices: {{A Post-Pandemic National Study}} of {{SOHO Wi-Fi Router Security}}},
+  shorttitle = {({{PDF}}) {{Uncovering Hidden Risks}} in {{IoT}} Devices},
+  year = 2025,
+  month = dec,
+  journal = {ResearchGate},
+  doi = {10.5753/jisa.2024.3834},
+  urldate = {2026-06-13},
+  abstract = {PDF \textbar{} This study thoroughly analyzes the cybersecurity status of Small Office/Home Office (SOHO) Wi-Fi routers. These routers are crucial but frequently... \textbar{} Find, read and cite all the research you need on ResearchGate},
+  langid = {english},
+  file = {/home/rebecca/Zotero/storage/C4ITHG88/2025 - (PDF) Uncovering Hidden Risks in IoT devices A Post-Pandemic National Study of SOHO Wi-Fi Router Se.pdf;/home/rebecca/Zotero/storage/G2FUUJZ6/385175222_Uncovering_Hidden_Risks_in_IoT_devices_A_Post-Pandemic_National_Study_of_SOHO_Wi-Fi_R.html}
+}
+
+@inproceedings{qasem2024,
+  title = {{{OctopusTaint}}: {{Advanced Data Flow Analysis}} for {{Detecting Taint-Based Vulnerabilities}} in {{IoT}}/{{IIoT Firmware}}},
+  shorttitle = {{{OctopusTaint}}},
+  booktitle = {Proceedings of the 2024 on {{ACM SIGSAC Conference}} on {{Computer}} and {{Communications Security}}},
+  author = {Qasem, Abdullah and Debbabi, Mourad and Soeanu, Andrei},
+  year = 2024,
+  month = dec,
+  series = {{{CCS}} '24},
+  pages = {2355--2369},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  doi = {10.1145/3658644.3690307},
+  urldate = {2026-06-14},
+  abstract = {The widespread integration of Internet of Things (IoT) and Industrial IoT (IIoT) devices in respectively home and business environments offers both benefits and perils. While these devices, such as IP cameras and network routers improve operational efficiency with their user-friendly web interfaces, they also broaden the potential for cybersecurity vulnerabilities. Recent studies highlight the vulnerability of these devices to taint-based attacks, demonstrating that even attackers with limited permissions can gain control of a device. Current state-of-the-art solutions for mitigating these risks primarily utilize Dynamic Symbolic Execution (DSE). Although effective, DSE is computationally costly and challenging for large-scale analysis. Besides, during inspection, these approaches typically exhibit over-taint behavior by producing a large number of alerts, many of which are false positives due to ineffective handling of sanitization measures that might be in place. To overcome these limitations, we introduce OctopusTaint, an innovative static-based taint analysis approach that integrates advanced data flow analysis with backtracking techniques. OctopusTaint is distinguished by its integration of a sanitization inspection module and sophisticated post-processing filters. These features are specifically designed to minimize false positives effectively while ensuring the accurate identification of genuine security threats. OctopusTaint also excels in tracking transformed tainted inputs across NVRAM, identifying new user-defined taint source functions while addressing the challenges associated with indirect calls and aliasing. Through comparative performance evaluations, OctopusTaint demonstrates superior performance over the current state-of-the-art solutions, SaTC, EmTaint, and MangoDFA. It reports genuine extra tainted sinks in considerable less time (24\% faster). Furthermore, OctopusTaint identifies 82\% of tainted sinks within EmTaint 's labeled dataset while exhibiting its advanced capability in sanitization inspection. It correctly flags as sanitized 320 sinks, which were misidentified as genuine alerts by EmTaint. Furthermore, OctopusTaint uncovers additional candidates overlooked by EmTaint, leveraging its enhanced detection mechanisms for new taint sources. OctopusTaint successfully identifies 142 n -day vulnerabilities previously reported by SaTC and EmTaint, in addition to discovering dozens of potential 0-day candidates.},
+  isbn = {979-8-4007-0636-3},
+  file = {/home/rebecca/Zotero/storage/MTE3SEKY/Qasem et al. - 2024 - OctopusTaint Advanced Data Flow Analysis for Detecting Taint-Based Vulnerabilities in IoTIIoT Firm.pdf}
+}
+
+@misc{refirmlabsbinwalka,
   title = {{{ReFirmLabs}}/Binwalk},
   year = 2026,
   month = may,
@@ -147,7 +272,7 @@
   howpublished = {ReFirm Labs}
 }
 
-@techreport{regenscheid2018b,
+@techreport{regenscheid2018ba,
   title = {Platform Firmware Resiliency Guidelines},
   author = {Regenscheid, Andrew},
   year = 2018,
@@ -159,11 +284,10 @@
   doi = {10.6028/NIST.SP.800-193},
   urldate = {2026-06-01},
   abstract = {This document provides technical guidelines and recommendations supporting resiliency of platform firmware and data against potentially destructive attacks. The platform is a collection of fundamental hardware and firmware components needed to boot and operate a system. A successful attack on platform firmware could render a system inoperable, perhaps permanently, or requiring reprogramming by the original manufacturer, resulting in significant disruptions to users. The technical guidelines in this document promote resiliency in the platform by describing security mechanisms for protecting the platform against unauthorized changes, detecting unauthorized changes that occur, and recovering from attacks rapidly and securely. Implementers, including Original Equipment Manufacturers (OEMs) and component/device suppliers, can use these guidelines to build stronger security mechanisms into platforms. System administrators, security professionals, and users can use this document to guide procurement strategies and priorities for future systems.},
-  langid = {english},
-  file = {/home/rebecca/Zotero/storage/PPDFCRBG/Regenscheid - 2018 - Platform firmware resiliency guidelines.pdf}
+  langid = {english}
 }
 
-@techreport{reschke2015,
+@techreport{reschke2015a,
   type = {Request for {{Comments}}},
   title = {The '{{Basic}}' {{HTTP Authentication Scheme}}},
   author = {Reschke, Julian},
@@ -173,11 +297,10 @@
   institution = {Internet Engineering Task Force},
   doi = {10.17487/RFC7617},
   urldate = {2026-05-30},
-  abstract = {This document defines the "Basic" Hypertext Transfer Protocol (HTTP) authentication scheme, which transmits credentials as user-id/ password pairs, encoded using Base64.},
-  file = {/home/rebecca/Zotero/storage/36ZCJESD/Reschke - 2015 - The 'Basic' HTTP Authentication Scheme.pdf}
+  abstract = {This document defines the "Basic" Hypertext Transfer Protocol (HTTP) authentication scheme, which transmits credentials as user-id/ password pairs, encoded using Base64.}
 }
 
-@techreport{scarfone2009,
+@techreport{scarfone2009a,
   title = {Guidelines on {{Firewalls}} and {{Firewall Policy}}},
   author = {Scarfone, Karen and Hoffman, Paul},
   year = 2009,
@@ -187,11 +310,27 @@
   doi = {10.6028/NIST.SP.800-41r1},
   urldate = {2026-05-25},
   abstract = {Firewalls are devices or programs that control the flow of network traffic between networks or hosts employing differing security postures. This publication provides an overview of several types of firewall technologies and discusses their security capabilities and their relative advantages and disadvantages in detail. It also makes recommendations for establishing firewall policies and for selecting, configuring, testing, deploying, and managing firewall solutions.},
-  langid = {english},
-  file = {/home/rebecca/Zotero/storage/DX244MXH/Scarfone and Hoffman - 2009 - Guidelines on Firewalls and Firewall Policy.pdf}
+  langid = {english}
 }
 
-@techreport{souppaya2012,
+@misc{sessionmanagementowasp,
+  title = {Session {{Management}} - {{OWASP Cheat Sheet Series}}},
+  urldate = {2026-06-21},
+  howpublished = {https://cheatsheetseries.owasp.org/cheatsheets/Session\_Management\_Cheat\_Sheet.html},
+  file = {/home/rebecca/Zotero/storage/VLP4P5WY/Session_Management_Cheat_Sheet.html}
+}
+
+@misc{smashingstackfun,
+  title = {Smashing {{The Stack For Fun And Profit}}},
+  journal = {Phrack},
+  urldate = {2026-06-14},
+  abstract = {Click to read the article on phrack},
+  howpublished = {https://phrack.org/issues/49/14.html},
+  langid = {english},
+  file = {/home/rebecca/Zotero/storage/NUS2UFCW/14.html}
+}
+
+@techreport{souppaya2012a,
   title = {Guidelines for {{Securing Wireless Local Area Networks}} ({{WLANs}})},
   author = {Souppaya, Murugiah and Scarfone, Karen},
   year = 2012,
@@ -201,18 +340,15 @@
   doi = {10.6028/NIST.SP.800-153},
   urldate = {2026-05-25},
   abstract = {A wireless local area network (WLAN) is a group of wireless networking devices within a limited geographic area, such as an office building, that exchange data through radio communications. The security of each WLAN is heavily dependent on how well each WLAN component---including client devices, access points (AP), and wireless switches---is secured throughout the WLAN lifecycle, from initial WLAN design and deployment through ongoing maintenance and monitoring. The purpose of this publication is to help organizations improve their WLAN security by providing recommendations for WLAN security configuration and monitoring. This publication supplements other NIST publications by consolidating and strengthening their key recommendations.},
-  langid = {english},
-  file = {/home/rebecca/Zotero/storage/BVSFBIM4/Souppaya and Scarfone - 2012 - Guidelines for Securing Wireless Local Area Networks (WLANs).pdf}
+  langid = {english}
 }
 
-@misc{squashfs40filesystema,
+@misc{squashfs40filesystemaa,
   title = {Squashfs 4.0 {{Filesystem}} --- {{The Linux Kernel}} Documentation},
-  urldate = {2026-06-01},
-  howpublished = {https://www.kernel.org/doc/html/latest/filesystems/squashfs.html},
-  file = {/home/rebecca/Zotero/storage/AIJL29ND/squashfs.html}
+  urldate = {2026-06-01}
 }
 
-@techreport{telnetprotocolspecification,
+@techreport{telnetprotocolspecificationa,
   type = {Request for {{Comments}}},
   title = {Telnet {{Protocol Specification}}},
   year = 1983,
@@ -221,27 +357,24 @@
   institution = {Internet Engineering Task Force},
   doi = {10.17487/RFC0854},
   urldate = {2026-05-31},
-  abstract = {This is the specification of the Telnet protocol used for remote terminal access in the ARPA Internet. The purpose of the TELNET Protocol is to provide a fairly general, bi-directional, eight-bit byte oriented communications facility. Its primary goal is to allow a standard method of interfacing terminal devices and terminal-oriented processes to each other. It is envisioned that the protocol may also be used for terminal-terminal communication ("linking") and process-process communication (distributed computation). This RFC specifies a standard for the ARPA Internet community. Hosts on the ARPA Internet are expected to adopt and implement this standard. Obsoletes NIC 18639.},
-  file = {/home/rebecca/Zotero/storage/892LW63B/1983 - Telnet Protocol Specification.pdf}
+  abstract = {This is the specification of the Telnet protocol used for remote terminal access in the ARPA Internet. The purpose of the TELNET Protocol is to provide a fairly general, bi-directional, eight-bit byte oriented communications facility. Its primary goal is to allow a standard method of interfacing terminal devices and terminal-oriented processes to each other. It is envisioned that the protocol may also be used for terminal-terminal communication ("linking") and process-process communication (distributed computation). This RFC specifies a standard for the ARPA Internet community. Hosts on the ARPA Internet are expected to adopt and implement this standard. Obsoletes NIC 18639.}
 }
 
-@article{thomas2021,
+@article{thomas2021a,
   title = {Cutting {{Through}} the {{Complexity}} of {{Reverse Engineering Embedded Devices}}},
   author = {Thomas, Sam L. and Van Den Herrewegen, Jan and Vasilakis, Georgios and Chen, Zitai and Ordean, Mihai and Garcia, Flavio D.},
   year = 2021,
   month = jul,
-  journal = {IACR Transactions on Cryptographic Hardware and Embedded Systems},
+  journal = {TCHES},
   pages = {360--389},
   issn = {2569-2925},
   doi = {10.46586/tches.v2021.i3.360-389},
   urldate = {2026-05-30},
   abstract = {Performing security analysis of embedded devices is a challenging task. They present many difficulties not usually found when analyzing commodity systems: undocumented peripherals, esoteric instruction sets, and limited tool support. Thus, a significant amount of reverse engineering is almost always required to analyze such devices. In this paper, we present Incision, an architecture and operating-system agnostic reverse engineering framework. Incision tackles the problem of reducing the upfront effort to analyze complex end-user devices. It combines static and dynamic analyses in a feedback loop, enabling information from each to be used in tandem to improve our overall understanding of the firmware analyzed. We use Incision to analyze a variety of devices and firmware. Our evaluation spans firmware based on three RTOSes, an automotive ECU, and a 4G/LTE baseband. We demonstrate that Incision does not introduce significant complexity to the standard reverse engineering process and requires little manual effort to use. Moreover, its analyses produce correct results with high confidence and are robust across different OSes and ISAs.},
-  copyright = {https://creativecommons.org/licenses/by/4.0/},
-  langid = {english},
-  file = {/home/rebecca/Zotero/storage/GB6XM2Y8/Thomas et al. - 2021 - Cutting Through the Complexity of Reverse Engineering Embedded Devices.pdf}
+  langid = {english}
 }
 
-@techreport{tracy2007,
+@techreport{tracy2007a,
   title = {Guidelines on {{Securing Public Web Servers}}},
   author = {Tracy, Miles and Jansen, Wayne and Scarfone, Karen and Winograd, Theodore},
   year = 2007,
@@ -251,17 +384,16 @@
   doi = {10.6028/NIST.SP.800-44ver2},
   urldate = {2026-05-25},
   abstract = {Web servers are often the most targeted and attacked hosts on organizations' networks. As a result, it is essential to secure Web servers and the network infrastructure that supports them. This document is intended to assist organizations in installing, configuring, and maintaining secure public Web servers. Practices described in detail include choosing Web server software and platforms, securing the underlying operating system and Web server software, deploying appropriate network protection mechanisms, and using, publicizing, and protecting information in a careful and systematic manner. The publication also provides recommendations for maintaining secure configurations through patching and upgrades, security testing, log monitoring, and backups of data and operating system files.},
-  langid = {english},
-  file = {/home/rebecca/Zotero/storage/3LSSLRBL/Tracy et al. - 2007 - Guidelines on Securing Public Web Servers.pdf}
+  langid = {english}
 }
 
-@article{ulhaq2023,
-  title = {A Survey on {{IoT}} \& Embedded Device Firmware Security: Architecture, Extraction Techniques, and Vulnerability Analysis Frameworks},
+@article{ulhaq2023a,
+  title = {A Survey on {{IoT}} \& Embedded Device Firmware Security: {{Architecture}}, Extraction Techniques, and Vulnerability Analysis Frameworks},
   shorttitle = {A Survey on {{IoT}} \& Embedded Device Firmware Security},
   author = {Ul Haq, Shahid and Singh, Yashwant and Sharma, Amit and Gupta, Rahul and Gupta, Dipak},
   year = 2023,
   month = oct,
-  journal = {Discover Internet of Things},
+  journal = {Discov Internet Things},
   volume = {3},
   number = {1},
   pages = {17},
@@ -270,15 +402,38 @@
   urldate = {2026-05-30},
   abstract = {IoT and Embedded devices grow at an exponential rate, however, without adequate security mechanisms in place. One of the key challenges in the cyber world is the security of these devices. One of the main reasons that these devices are active targets for large-scale cyber-attacks is a lack of security standards and thorough testing by manufacturers. Manufacturer-specific operating systems or firmware of various architectures and characteristics are typically included with these devices. However, due to a lack of security testing and/or late patching, the underlying firmware or operating systems are vulnerable to numerous types of vulnerabilities. Reverse engineering and in-depth research of the firmware is required to detect the vulnerabilities. In this paper, we've delved into various aspects of IoT and embedded devices. This includes a comprehensive survey on the architecture of firmware, techniques for firmware extraction, and state-of-the-art vulnerability analysis frameworks for the detection of vulnerabilities using various approaches like static, dynamic, and hybrid approaches. Furthermore, we've scrutinized the challenges of existing vulnerability analysis frameworks and proposed a novel framework to address these issues.},
   langid = {english},
-  keywords = {Analysis,Architecture,Embedded,Extraction,Firmware,Frameworks,IoT,Vulnerability},
-  file = {/home/rebecca/Zotero/storage/Z5N2HSPM/Ul Haq et al. - 2023 - A survey on IoT & embedded device firmware security architecture, extraction techniques, and vulner.pdf}
+  keywords = {Analysis,Architecture,Embedded,Extraction,Firmware,Frameworks,IoT,Vulnerability}
 }
 
-@misc{wstgstableowasp,
+@misc{wstgstableowaspa,
   title = {{{WSTG}} - {{Stable}} \textbar{} {{OWASP Foundation}}},
   urldate = {2026-05-30},
   abstract = {WSTG - Stable on the main website for The OWASP Foundation. OWASP is a nonprofit foundation that works to improve the security of software.},
-  howpublished = {https://owasp.org/www-project-web-security-testing-guide/stable/4-Web\_Application\_Security\_Testing/07-Input\_Validation\_Testing/11.1-Testing\_for\_Local\_File\_Inclusion},
+  langid = {english}
+}
+
+@article{younan,
+  title = {An Overview of Common Programming Security Vulnerabilities and Possible Solutions},
+  author = {Younan, Yves},
   langid = {english},
-  file = {/home/rebecca/Zotero/storage/KVIPMF2T/11.html}
+  file = {/home/rebecca/Zotero/storage/HB66ZUAX/Younan - An overview of common programming security vulnerabilities and possible solutions.pdf}
+}
+
+@article{zhang2021,
+  title = {{{ESRFuzzer}}: An Enhanced Fuzzing Framework for Physical {{SOHO}} Router Devices to Discover Multi-{{Type}} Vulnerabilities},
+  shorttitle = {{{ESRFuzzer}}},
+  author = {Zhang, Yu and Huo, Wei and Jian, Kunpeng and Shi, Ji and Liu, Longquan and Zou, Yanyan and Zhang, Chao and Liu, Baoxu},
+  year = 2021,
+  month = jul,
+  journal = {Cybersecur},
+  volume = {4},
+  number = {1},
+  pages = {24},
+  issn = {2523-3246},
+  doi = {10.1186/s42400-021-00091-9},
+  urldate = {2026-06-13},
+  abstract = {SOHO (small office/home office) routers provide services for end devices to connect to the Internet, playing an important role in cyberspace. Unfortunately, security vulnerabilities pervasively exist in these routers, especially in the web server modules, greatly endangering end users. To discover these vulnerabilities, fuzzing web server modules of SOHO routers is the most popular solution. However, its effectiveness is limited due to the lack of input specification, lack of routers' internal running states, and lack of testing environment recovery mechanisms. Moreover, existing works for device fuzzing are more likely to detect memory corruption vulnerabilities.In this paper, we propose a solution ESRFuzzer to address these issues. It is a fully automated fuzzing framework for testing physical SOHO devices. It continuously and effectively generates test cases by leveraging two input semantic models, i.e., KEY-VALUE data model and CONF-READ communication model, and automatically recovers the testing environment with power management. It also coordinates diversified mutation rules with multiple monitoring mechanisms to trigger multi-type vulnerabilities. With the guidance of the two semantic models, ESRFuzzer can work in two ways: general mode fuzzing and D-CONF mode fuzzing. General mode fuzzing can discover both issues which occur in the CONF and READ operation, while D-CONF mode fuzzing focus on the READ-op issues especially missed by general mode fuzzing.We ran ESRFuzzer on 10 popular routers across five vendors. In total, it discovered 136 unique issues, 120 of which have been confirmed as 0-day vulnerabilities we found. As an improvement of SRFuzzer, ESRFuzzer have discovered 35 previous undiscovered READ-op issues that belong to three vulnerability types, and 23 of them have been confirmed as 0-day vulnerabilities by vendors. The experimental results show that ESRFuzzer outperforms state-of-the-art solutions in terms of types and number of vulnerabilities found.},
+  langid = {english},
+  keywords = {Automatic vulnerability detection,Fuzzing,IoT},
+  file = {/home/rebecca/Zotero/storage/JAAGQP9Q/Zhang et al. - 2021 - ESRFuzzer an enhanced fuzzing framework for physical SOHO router devices to discover multi-Type vul.pdf}
 }

