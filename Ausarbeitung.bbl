@@ -64,14 +64,11 @@
       \verb{doi}
       \verb 10.1145/3617072.3617110
       \endverb
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/QPNHYR7G/Chalhoub and Martin - 2023 - But is it exploitable Exploring how Router Vendors Manage and Patch Security Vulnerabilities in Con.pdf
-      \endverb
     \endentry
     \entry{bsi}{misc}{}
       \name{author}{1}{}{%
         {{hash=44ea1b356dcd7bfe0ece54601fb6bcec}{%
-           family={BSI},
+           family={{BSI}},
            familyi={B\bibinitperiod}}}%
       }
       \strng{namehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
@@ -86,8 +83,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Welche Aufgabe hat ein Router? Wie sichere ich meinen Router wirksam ab? Adil Aden erklärt die wichtigsten Dinge, die man über Router wissen muss.}
-      \field{howpublished}{https://www.bsi.bund.de/SharedDocs/Videos/DE/BSI/VerbraucherInnen/statementvideo-routersicherheit.html?nn=132646}
-      \field{journaltitle}{Bundesamt für Sicherheit in der Informationstechnik}
       \field{langid}{ngerman}
       \field{shorttitle}{{BSI-Experte erklärt}}
       \field{title}{{BSI-Experte erklärt: Alles Wichtige rund um den Router}}
@@ -101,31 +96,22 @@
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{abstract}{Experience fast, reliable, secure and easy to use WiFi when you level up with connectivity solutions made for home, business, and enterprise from Linksys.}
-      \field{howpublished}{https://www.linksys.com/pages/linksys-product-end-of-life}
-      \field{journaltitle}{Linksys}
       \field{langid}{english}
       \field{title}{Linksys {{Product End}} of {{Life}}}
       \field{urlday}{26}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/KTALRCNX/linksys-product-end-of-life.html
-      \endverb
     \endentry
     \entry{dlinktechnicalsupport}{misc}{}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
-      \field{howpublished}{https://supportannouncement.us.dlink.com/security/publication.aspx?name=SAP10408}
       \field{title}{D-{{Link Technical Support}}}
       \field{urlday}{30}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/CH79BKN3/publication.html
-      \endverb
     \endentry
     \entry{zisler2022}{book}{}
       \name{author}{1}{}{%
@@ -196,9 +182,6 @@
       \verb{doi}
       \verb 10.1007/978-3-658-48605-1
       \endverb
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/ZKRBFTG4/Baun - 2025 - Computernetze kompakt Eine praxisorientierte Einführung für Studium und Beruf.pdf
-      \endverb
     \endentry
     \entry{mandl2019}{incollection}{}
       \name{author}{1}{}{%
@@ -248,9 +231,6 @@
       \range{pages}{34}
       \verb{doi}
       \verb 10.1007/978-3-658-23536-9_5
-      \endverb
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/SXWL6G7F/Mandl - 2019 - Routing und Forwarding.pdf
       \endverb
     \endentry
     \entry{schwarz2021}{article}{}
@@ -331,14 +311,11 @@
       \verb{doi}
       \verb 10.2352/ISSN.2470-1173.2021.3.MOBMU-135
       \endverb
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/VW9SA56L/Schwarz et al. - 2021 - Firmware Vulnerability Analysis of Widely Used Low-Budget TP-Link Routers.pdf
-      \endverb
     \endentry
     \entry{bsia}{misc}{}
       \name{author}{1}{}{%
         {{hash=44ea1b356dcd7bfe0ece54601fb6bcec}{%
-           family={BSI},
+           family={{BSI}},
            familyi={B\bibinitperiod}}}%
       }
       \strng{namehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
@@ -352,17 +329,12 @@
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Cyber-Sicherheitsempfehlungen/Router-WLAN-VPN/Sicherheitstipps-fuer-privates-und-oeffentliches-WLAN/sicherheitstipps-fuer-privates-und-oeffentliches-wlan.html?nn=131138}
-      \field{journaltitle}{Bundesamt für Sicherheit in der Informationstechnik}
       \field{langid}{ngerman}
       \field{title}{{Sicherheitstipps im privaten und öffentlichen WLAN}}
       \field{urlday}{21}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/3DM7MGQT/sicherheitstipps-fuer-privates-und-oeffentliches-wlan.html
-      \endverb
     \endentry
     \entry{egevang2001b}{report}{}
       \name{author}{2}{}{%
@@ -627,6 +599,244 @@
       \verb 10.6028/NIST.SP.800-193
       \endverb
     \endentry
+    \entry{cwecwe190integer}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://cwe.mitre.org/data/definitions/190.html}
+      \field{title}{{{CWE}} - {{CWE-190}}: {{Integer Overflow}} or {{Wraparound}} (4.20)}
+      \field{urlday}{13}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/rebecca/Zotero/storage/4XKYL9E4/190.html
+      \endverb
+    \endentry
+    \entry{cwecwe119improper}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://cwe.mitre.org/data/definitions/119.html}
+      \field{title}{{{CWE}} - {{CWE-119}}: {{Improper Restriction}} of {{Operations}} within the {{Bounds}} of a {{Memory Buffer}} (4.20)}
+      \field{urlday}{13}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/rebecca/Zotero/storage/E4MD27AR/119.html
+      \endverb
+    \endentry
+    \entry{smashingstackfun}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Click to read the article on phrack}
+      \field{howpublished}{https://phrack.org/issues/49/14.html}
+      \field{journaltitle}{Phrack}
+      \field{langid}{english}
+      \field{title}{Smashing {{The Stack For Fun And Profit}}}
+      \field{urlday}{14}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/rebecca/Zotero/storage/NUS2UFCW/14.html
+      \endverb
+    \endentry
+    \entry{sessionmanagementowasp}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://cheatsheetseries.owasp.org/cheatsheets/Session\_Management\_Cheat\_Sheet.html}
+      \field{title}{Session {{Management}} - {{OWASP Cheat Sheet Series}}}
+      \field{urlday}{21}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/rebecca/Zotero/storage/VLP4P5WY/Session_Management_Cheat_Sheet.html
+      \endverb
+    \endentry
+    \entry{cwecwe798use}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://cwe.mitre.org/data/definitions/798.html}
+      \field{title}{{{CWE}} - {{CWE-798}}: {{Use}} of {{Hard-coded Credentials}} (4.20)}
+      \field{urlday}{21}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/rebecca/Zotero/storage/8KYEH64R/798.html
+      \endverb
+    \endentry
+    \entry{cwecwe521weak}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://cwe.mitre.org/data/definitions/521.html}
+      \field{title}{{{CWE}} - {{CWE-521}}: {{Weak Password Requirements}} (4.20)}
+      \field{urlday}{21}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/rebecca/Zotero/storage/3AHBPJK5/521.html
+      \endverb
+    \endentry
+    \entry{cwecwe89improper}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://cwe.mitre.org/data/definitions/89.html}
+      \field{title}{{{CWE}} - {{CWE-89}}: {{Improper Neutralization}} of {{Special Elements}} Used in an {{SQL Command}} ('{{SQL Injection}}') (4.20)}
+      \field{urlday}{21}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/rebecca/Zotero/storage/LUBI6JYF/89.html
+      \endverb
+    \endentry
+    \entry{bakhshi2024}{article}{}
+      \name{author}{3}{}{%
+        {{hash=95f13981bfba6f103dd1b8fe86aa7098}{%
+           family={Bakhshi},
+           familyi={B\bibinitperiod},
+           given={Taimur},
+           giveni={T\bibinitperiod}}}%
+        {{hash=56da7a80a7dcab18daf9fefab9441060}{%
+           family={Ghita},
+           familyi={G\bibinitperiod},
+           given={Bogdan},
+           giveni={B\bibinitperiod}}}%
+        {{hash=5f5d68cbb8210670ae3a5113c7a97045}{%
+           family={Kuzminykh},
+           familyi={K\bibinitperiod},
+           given={Ievgeniia},
+           giveni={I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Multidisciplinary Digital Publishing Institute}%
+      }
+      \strng{namehash}{40bc398360be905f9ae98fa06027873b}
+      \strng{fullhash}{40bc398360be905f9ae98fa06027873b}
+      \strng{bibnamehash}{40bc398360be905f9ae98fa06027873b}
+      \strng{authorbibnamehash}{40bc398360be905f9ae98fa06027873b}
+      \strng{authornamehash}{40bc398360be905f9ae98fa06027873b}
+      \strng{authorfullhash}{40bc398360be905f9ae98fa06027873b}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In recent years, the Internet of Things (IoT) paradigm has been widely applied across a variety of industrial and consumer areas to facilitate greater automation and increase productivity. Higher dependability on connected devices led to a growing range of cyber security threats targeting IoT-enabled platforms, specifically device firmware vulnerabilities, often overlooked during development and deployment. A comprehensive security strategy aiming to mitigate IoT firmware vulnerabilities would entail auditing the IoT device firmware environment, from software components, storage, and configuration, to delivery, maintenance, and updating, as well as understanding the efficacy of tools and techniques available for this purpose. To this effect, this paper reviews the state-of-the-art technology in IoT firmware vulnerability assessment from a holistic perspective. To help with the process, the IoT ecosystem is divided into eight categories: system properties, access controls, hardware and software re-use, network interfacing, image management, user awareness, regulatory compliance, and adversarial vectors. Following the review of individual areas, the paper further investigates the efficiency and scalability of auditing techniques for detecting firmware vulnerabilities. Beyond the technical aspects, state-of-the-art IoT firmware architectures and respective evaluation platforms are also reviewed according to their technical, regulatory, and standardization challenges. The discussion is accompanied also by a review of the existing auditing tools, the vulnerabilities addressed, the analysis method used, and their abilities to scale and detect unknown attacks. The review also proposes a taxonomy of vulnerabilities and maps them with their exploitation vectors and with the auditing tools that could help in identifying them. Given the current interest in analysis automation, the paper explores the feasibility and impact of evolving machine learning and blockchain applications in securing IoT firmware. The paper concludes with a summary of ongoing and future research challenges in IoT firmware to facilitate and support secure IoT development.}
+      \field{issn}{1424-8220}
+      \field{journaltitle}{Sensors}
+      \field{langid}{english}
+      \field{month}{1}
+      \field{number}{2}
+      \field{title}{A {{Review}} of {{IoT Firmware Vulnerabilities}} and {{Auditing Techniques}}}
+      \field{urlday}{13}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{volume}{24}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \field{pages}{708}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/s24020708
+      \endverb
+      \verb{file}
+      \verb /home/rebecca/Zotero/storage/YGFKK6S5/Bakhshi et al. - 2024 - A Review of IoT Firmware Vulnerabilities and Auditing Techniques.pdf
+      \endverb
+      \keyw{firmware auditing,Internet of Things,reverse engineering,security testing}
+    \endentry
+    \entry{cwecwe77improper}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://cwe.mitre.org/data/definitions/77.html}
+      \field{title}{{{CWE}} - {{CWE-77}}: {{Improper Neutralization}} of {{Special Elements}} Used in a {{Command}} ('{{Command Injection}}') (4.20)}
+      \field{urlday}{13}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/rebecca/Zotero/storage/KXXZWSB4/77.html
+      \endverb
+    \endentry
+    \entry{cwecwe20improper}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://cwe.mitre.org/data/definitions/20.html}
+      \field{title}{{{CWE}} - {{CWE-20}}: {{Improper Input Validation}} (4.20)}
+      \field{urlday}{14}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /home/rebecca/Zotero/storage/QUU87FUC/20.html
+      \endverb
+    \endentry
+    \entry{qasem2024}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=9b50c54ed4a1774ebe6b22e35d244fc8}{%
+           family={Qasem},
+           familyi={Q\bibinitperiod},
+           given={Abdullah},
+           giveni={A\bibinitperiod}}}%
+        {{hash=619ef0bcc9c9d05a0247301216d80827}{%
+           family={Debbabi},
+           familyi={D\bibinitperiod},
+           given={Mourad},
+           giveni={M\bibinitperiod}}}%
+        {{hash=85cd875a7f4446935fe4e1d4993b324c}{%
+           family={Soeanu},
+           familyi={S\bibinitperiod},
+           given={Andrei},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{72383ea49fc2b5a136e415841209cb26}
+      \strng{fullhash}{72383ea49fc2b5a136e415841209cb26}
+      \strng{bibnamehash}{72383ea49fc2b5a136e415841209cb26}
+      \strng{authorbibnamehash}{72383ea49fc2b5a136e415841209cb26}
+      \strng{authornamehash}{72383ea49fc2b5a136e415841209cb26}
+      \strng{authorfullhash}{72383ea49fc2b5a136e415841209cb26}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{The widespread integration of Internet of Things (IoT) and Industrial IoT (IIoT) devices in respectively home and business environments offers both benefits and perils. While these devices, such as IP cameras and network routers improve operational efficiency with their user-friendly web interfaces, they also broaden the potential for cybersecurity vulnerabilities. Recent studies highlight the vulnerability of these devices to taint-based attacks, demonstrating that even attackers with limited permissions can gain control of a device. Current state-of-the-art solutions for mitigating these risks primarily utilize Dynamic Symbolic Execution (DSE). Although effective, DSE is computationally costly and challenging for large-scale analysis. Besides, during inspection, these approaches typically exhibit over-taint behavior by producing a large number of alerts, many of which are false positives due to ineffective handling of sanitization measures that might be in place. To overcome these limitations, we introduce OctopusTaint, an innovative static-based taint analysis approach that integrates advanced data flow analysis with backtracking techniques. OctopusTaint is distinguished by its integration of a sanitization inspection module and sophisticated post-processing filters. These features are specifically designed to minimize false positives effectively while ensuring the accurate identification of genuine security threats. OctopusTaint also excels in tracking transformed tainted inputs across NVRAM, identifying new user-defined taint source functions while addressing the challenges associated with indirect calls and aliasing. Through comparative performance evaluations, OctopusTaint demonstrates superior performance over the current state-of-the-art solutions, SaTC, EmTaint, and MangoDFA. It reports genuine extra tainted sinks in considerable less time (24\% faster). Furthermore, OctopusTaint identifies 82\% of tainted sinks within EmTaint 's labeled dataset while exhibiting its advanced capability in sanitization inspection. It correctly flags as sanitized 320 sinks, which were misidentified as genuine alerts by EmTaint. Furthermore, OctopusTaint uncovers additional candidates overlooked by EmTaint, leveraging its enhanced detection mechanisms for new taint sources. OctopusTaint successfully identifies 142 n -day vulnerabilities previously reported by SaTC and EmTaint, in addition to discovering dozens of potential 0-day candidates.}
+      \field{booktitle}{Proceedings of the 2024 on {{ACM SIGSAC Conference}} on {{Computer}} and {{Communications Security}}}
+      \field{isbn}{979-8-4007-0636-3}
+      \field{month}{12}
+      \field{series}{{{CCS}} '24}
+      \field{shorttitle}{{{OctopusTaint}}}
+      \field{title}{{{OctopusTaint}}: {{Advanced Data Flow Analysis}} for {{Detecting Taint-Based Vulnerabilities}} in {{IoT}}/{{IIoT Firmware}}}
+      \field{urlday}{14}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \field{pages}{2355\bibrangedash 2369}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1145/3658644.3690307
+      \endverb
+      \verb{file}
+      \verb /home/rebecca/Zotero/storage/MTE3SEKY/Qasem et al. - 2024 - OctopusTaint Advanced Data Flow Analysis for Detecting Taint-Based Vulnerabilities in IoTIIoT Firm.pdf
+      \endverb
+    \endentry
     \entry{hostapdieee80211ab}{misc}{}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
@@ -715,6 +925,18 @@
       \endverb
     \endentry
     \entry{wstgstableowaspb}{misc}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{WSTG - Stable on the main website for The OWASP Foundation. OWASP is a nonprofit foundation that works to improve the security of software.}
+      \field{langid}{english}
+      \field{title}{{{WSTG}} - {{Stable}} |{} {{OWASP Foundation}}}
+      \field{urlday}{30}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+    \endentry
+    \entry{wstgstableowaspa}{misc}{}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
@@ -848,60 +1070,43 @@
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
-      \field{howpublished}{https://wiki.wireshark.org/CaptureSetup/WLAN}
       \field{title}{{{CaptureSetup}}/{{WLAN}} - {{Wireshark Wiki}}}
       \field{urlday}{26}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/RA4UNK92/WLAN.html
-      \endverb
     \endentry
     \entry{ipwhois142251150119}{misc}{}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{abstract}{WHOIS data for IP 142.251.150.119: owner, ISP, ASN, CIDR, abuse contact. Free lookup with live data from ARIN, RIPE, APNIC, LACNIC, AFRINIC.}
-      \field{howpublished}{https://whoisfreaks.com/tools/ip-whois/lookup/142.251.150.119}
-      \field{journaltitle}{WhoisFreaks}
       \field{langid}{english}
       \field{title}{{{IP WHOIS}} for 142.251.150.119 |{} {{Owner}}, {{ISP}} \& {{ASN}} for {{Any IP}}}
       \field{urlday}{26}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/24PYIGLQ/142.251.150.html
-      \endverb
     \endentry
     \entry{cverecordcve2014125122}{misc}{}
       \field{sortinit}{4}
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
-      \field{howpublished}{https://www.cve.org/CVERecord?id=CVE-2014-125122}
       \field{title}{{{CVE Record}}: {{CVE-2014-125122}}}
       \field{urlday}{28}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/GD37HZPL/CVERecord.html
-      \endverb
     \endentry
     \entry{cwecwe121stackbased}{misc}{}
       \field{sortinit}{4}
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
-      \field{howpublished}{https://cwe.mitre.org/data/definitions/121.html}
       \field{title}{{{CWE}} - {{CWE-121}}: {{Stack-based Buffer Overflow}} (4.20)}
       \field{urlday}{28}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/RR3B8R58/121.html
-      \endverb
     \endentry
     \entry{porath2020}{book}{}
       \name{author}{1}{}{%
@@ -945,23 +1150,18 @@
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{abstract}{W3Schools offers free online tutorials, references and exercises in all the major languages of the web. Covering popular subjects like HTML, CSS, JavaScript, Python, SQL, Java, and many, many more.}
-      \field{howpublished}{https://www.w3schools.com/tags/ref\_httpmethods.asp}
       \field{langid}{american}
       \field{title}{{{HTTP Methods GET}} vs {{POST}}}
       \field{urlday}{28}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/SYSF7RMZ/ref_httpmethods.html
-      \endverb
     \endentry
     \entry{ibm}{misc}{}
       \field{sortinit}{4}
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{abstract}{The Common Gateway Interface (CGI) specification was introduced to enable and standardize the interface between Web servers and external programs. The CGI is a relatively simple, platform and language independent, industry-standard interface for Web application development. Programs that implement the CGI standard are commonly called CGI programs.}
-      \field{howpublished}{https://www.ibm.com/docs/en/i/7.6.0?topic=functionality-cgi}
       \field{langid}{american}
       \field{month}{9}
       \field{title}{{{IBM}} i}
@@ -970,49 +1170,35 @@
       \field{urlyear}{2026}
       \field{year}{2025}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/F5D73J95/7.6.html
-      \endverb
     \endentry
     \entry{metasploitpenetrationtesting}{misc}{}
       \field{sortinit}{4}
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{abstract}{Find security issues, verify vulnerability mitigations \& manage security assessments with Metasploit. Get the world's best penetration testing software now.}
-      \field{howpublished}{https://www.metasploit.com/}
-      \field{journaltitle}{Metasploit}
       \field{langid}{english}
       \field{title}{Metasploit |{} {{Penetration Testing Software}}, {{Pen Testing Security}}}
       \field{urlday}{31}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/SEEPRLVA/www.metasploit.com.html
-      \endverb
     \endentry
     \entry{builtinexceptions}{misc}{}
       \field{sortinit}{4}
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{abstract}{In Python, all exceptions must be instances of a class that derives from BaseException. In a try statement with an except clause that mentions a particular class, that clause also handles any excep...}
-      \field{howpublished}{https://docs.python.org/3/library/exceptions.html}
-      \field{journaltitle}{Python documentation}
       \field{langid}{english}
       \field{title}{Built-in {{Exceptions}}}
       \field{urlday}{29}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/EYH2IQNS/exceptions.html
-      \endverb
     \endentry
     \entry{wrt120nfprintfstack}{misc}{}
       \field{sortinit}{4}
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
-      \field{howpublished}{https://web.archive.org/web/20210424073058/http://www.devttys0.com/2014/02/wrt120n-fprintf-stack-overflow/}
       \field{month}{4}
       \field{title}{{{WRT120N}} Fprintf {{Stack Overflow}} -- /Dev/{{ttyS0}}}
       \field{urlday}{21}
@@ -1026,17 +1212,12 @@
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{abstract}{Source code: Lib/urllib/request.py The urllib.request module defines functions and classes which help in opening URLs (mostly HTTP) in a complex world --- basic and digest authentication, redirection...}
-      \field{howpublished}{https://docs.python.org/3/library/urllib.request.html}
-      \field{journaltitle}{Python documentation}
       \field{langid}{english}
       \field{title}{Urllib.Request --- {{Extensible}} Library for Opening {{URLs}}}
       \field{urlday}{29}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/VBUY8SNG/urllib.request.html
-      \endverb
     \endentry
     \entry{heffner2014}{misc}{}
       \name{author}{1}{}{%
@@ -1057,8 +1238,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{WRT120N 1.0.0.7 - Remote Stack Overflow. CVE-103521 . remote exploit for Hardware platform}
-      \field{howpublished}{https://www.exploit-db.com/exploits/31758}
-      \field{journaltitle}{Exploit Database}
       \field{langid}{english}
       \field{month}{2}
       \field{title}{{{WRT120N}} 1.0.0.7 - {{Remote Stack Overflow}}}
@@ -1067,15 +1246,11 @@
       \field{urlyear}{2026}
       \field{year}{2014}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/J3MVEV5G/31758.html
-      \endverb
     \endentry
     \entry{reversingwrt120nsfirmware}{misc}{}
       \field{sortinit}{5}
       \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labeltitlesource}{title}
-      \field{howpublished}{https://web.archive.org/web/20210416210329/http://www.devttys0.com/2014/02/reversing-the-wrt120n-firmware-obfuscation/}
       \field{month}{4}
       \field{title}{Reversing the {{WRT120N}}'s {{Firmware Obfuscation}} -- /Dev/{{ttyS0}}}
       \field{urlday}{29}
@@ -1128,9 +1303,6 @@
       \verb{doi}
       \verb 10.17487/RFC9110
       \endverb
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/HUX9GQFP/Fielding et al. - 2022 - HTTP Semantics.pdf
-      \endverb
     \endentry
     \entry{rapid7metasploitframework}{misc}{}
       \field{sortinit}{5}
@@ -1151,68 +1323,51 @@
       \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Documenting RubyGems, Stdlib, and GitHub Projects}
-      \field{howpublished}{https://www.rubydoc.info/gems/rex-text/0.1.2/Rex\%2FText.rand\_text\_alpha}
       \field{shorttitle}{{{RubyDoc}}.Info}
       \field{title}{{{RubyDoc}}.Info: {{Method}}: {{Rex}}::{{Text}}.Rand\_text\_alpha -- {{Documentation}} for Rex-Text (0.1.2) -- {{RubyDoc}}.Info}
       \field{urlday}{31}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/YYFC78KE/RexText.html
-      \endverb
     \endentry
     \entry{rubydocinfomethodaddressable}{misc}{}
       \field{sortinit}{5}
       \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Documenting RubyGems, Stdlib, and GitHub Projects}
-      \field{howpublished}{https://www.rubydoc.info/gems/addressable/Addressable\%2FURI:normalize}
       \field{shorttitle}{{{RubyDoc}}.Info}
       \field{title}{{{RubyDoc}}.Info: {{Method}}: {{Addressable}}::{{URI}}\#normalize -- {{Documentation}} for Addressable (2.9.0) -- {{RubyDoc}}.Info}
       \field{urlday}{31}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/F56HZRIN/AddressableURInormalize.html
-      \endverb
     \endentry
     \entry{documentationruby33}{misc}{}
       \field{sortinit}{5}
       \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labeltitlesource}{title}
-      \field{howpublished}{https://docs.ruby-lang.org/en/3.3/}
       \field{title}{Documentation for {{Ruby}} 3.3}
       \field{urlday}{31}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/QU5DFRW4/3.3.html
-      \endverb
     \endentry
     \entry{howhandleruby}{misc}{}
       \field{sortinit}{5}
       \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labeltitlesource}{title}
       \field{abstract}{Master Ruby syntax for advanced Cybersecurity exploit development in Metasploit, learn module design techniques, and enhance penetration testing skills with practical coding strategies.}
-      \field{howpublished}{https://labex.io/tutorials/nmap-how-to-handle-ruby-syntax-in-metasploit-419611}
-      \field{journaltitle}{LabEx}
       \field{langid}{english}
       \field{title}{How to Handle {{Ruby}} Syntax in {{Metasploit}}}
       \field{urlday}{31}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/CTZQCIWB/nmap-how-to-handle-ruby-syntax-in-metasploit-419611.html
-      \endverb
     \endentry
     \entry{bsib}{misc}{}
       \name{author}{1}{}{%
         {{hash=44ea1b356dcd7bfe0ece54601fb6bcec}{%
-           family={BSI},
+           family={{BSI}},
            familyi={B\bibinitperiod}}}%
       }
       \strng{namehash}{44ea1b356dcd7bfe0ece54601fb6bcec}
@@ -1226,31 +1381,14 @@
       \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Cyber-Sicherheitsempfehlungen/Router-WLAN-VPN/WLAN-LAN-was-man-wissen-sollte/wlan-lan-was-man-wissen-sollte.html?nn=131126}
-      \field{journaltitle}{Bundesamt für Sicherheit in der Informationstechnik}
       \field{langid}{ngerman}
       \field{title}{{WLAN -- was man wissen sollte}}
       \field{urlday}{21}
       \field{urlmonth}{5}
       \field{urlyear}{2026}
       \field{urldateera}{ce}
-      \verb{file}
-      \verb /home/johanna/Zotero/storage/NKJVNS4A/wlan-lan-was-man-wissen-sollte.html
-      \endverb
     \endentry
   \enddatalist
-  \missing{bakhshi2024}
-  \missing{cwecwe119improper}
-  \missing{cwecwe190integer}
-  \missing{cwecwe20improper}
-  \missing{cwecwe521weak}
-  \missing{cwecwe77improper}
-  \missing{cwecwe798use}
-  \missing{cwecwe89improper}
-  \missing{qasem2024}
-  \missing{sessionmanagementowasp}
-  \missing{smashingstackfun}
-  \missing{wstgstableowaspa}
 \endrefsection
 \endinput
 
