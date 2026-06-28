@@ -1,5 +1,4 @@
 \input{tex/pre} % Ausgelagerte Präambel
-
 % Hier können die Informationen über die Ausarbeitung eingetragen werden
 \newcommand*{\Course}{Sichere Hardware} % Bei vorlesungsbegleitenden Ausarbeitungen
 \newcommand*{\Subject}{Router Schwachstellen}
@@ -45,23 +44,24 @@
 	\chapter*{Kurzfassung}
 	In dieser Ausarbeitung wird auf die Funktionsweise und die Schwachstellen
 	eines Routers eingegangen. Dieser koordiniert die Kommunikation über Netzwerkgrenzen
-	hinweg und ermöglicht auch eine Verbindung ins Internet. Neben den Ports
+	hinweg und ermöglicht eine Verbindung ins Internet. Neben den Ports
 	am Router, über die internetfähige Geräte direkt angeschlossen werden 
-	können ist auch das Zurverfügungstellen eines WLAN möglich. Bleibt der 
+	können, ist auch das Zurverfügungstellen eines WLAN möglich. Bleibt der 
 	Router bei der Installation auf den Werkseinstellungen birgt das einige
 	Gefahren und macht es unter anderem sehr einfach sich unbemerkt in das WLAN
-	einzuloggen. Die daraus entstehenden Sicherheitslücken werden beleuchtet, als
-	auch allgemeine Schwachstellen der Router. Wie eben beschrieben kann der
-	Router auch eine Verbindung ins Internet darstellen und hat dadurch eine 
-	noch größere Angriffsfläche für Angreifer. Schwachstellen, die über 
+	einzuloggen. Die daraus entstehenden Sicherheitslücken werden beleuchtet, sowie
+	allgemeine Schwachstellen der Router. Wie eben beschrieben, kann der
+	Router eine Verbindung ins Internet aufbauen und hat dadurch eine 
+	noch größere Angriffsfläche. Schwachstellen, die über 
 	offizielle Stellen wie die \emph{CVE.org} oder das \emph{NIST} veröffentlicht 
 	wurden, werden in dieser Ausarbeitung teilweise praktisch ausgenutzt. Dabei 
 	werden die Auswirkungen dieser Schwachstellen auf den Router sowie auf 
 	die Sicherheit der im Netzwerk befindlichen Geräte untersucht.
-	Die Hersteller Hinweise einzuhalten und bei der Konfiguration des Routers
-	umzusetzen ist sehr wichtig, was auch die Tests zeigen. Zudem sollten 
+	Die durchgeführten Tests zeigen, das es wichtig ist die Herstellerhinweise
+	einzuhalten und bei der Konfiguration des Routers
+	umzusetzen. Zudem sollten 
 	Updates, wenn möglich automatisch oder manuell regelmäßig, durchgeführt 
-	werden, um sicherzustellen, dass Schwachstellen auch auf dem eigenen Router
+	werden, um sicherzustellen, dass Schwachstellen auf dem eigenen Router
 	tatsächlich behoben sind.
 
 		%Ziel der Kurzfassung ist es, einen (eiligen) Leser zu informieren, so dass
@@ -93,14 +93,14 @@
 	\chapter{Einleitung}
 	In dieser Ausarbeitung geht es um die Schwachstellen von Routern und die 
 	Auswirkungen getätigter Sicherheitsmechanismen. Da jeder, der internetfähige
-	Endgeräte benutzt, diese früher oder später mit einem Router per WLAN verbindet,
+	Endgeräte benutzt, diese früher oder später mit einem Router per LAN oder WLAN verbindet,
 	ist es wichtig die Schwachstellen der Router zu kennen. Sind diese Probleme
-	bekannt, kann der User sich und seine  Daten schützen und auch selbst den
-	Router im eigenen Heimnetz bestmöglich vor unbefugtem Zugriff über das
-	WLAN schützen. In den Abschnitten, die die Tests enthalten wird unter
+	bekannt, kann der User seine Geräte, seine Daten und den
+	Router selbst im eigenen Heimnetz bestmöglich vor unbefugtem Zugriff schützen. 
+	In den Abschnitten, die die Tests enthalten wird unter
 	anderem gezeigt, welche Auswirkungen kleine Änderungen der Sicherheitseinstellungen
 	in der Router Konfiguration haben. Zudem werden bereits bekannte Schwachstellen
-	der beiden Router getestet, als auch deren Auswirkungen dokumentiert.
+	der beiden Router getestet, sowie deren Auswirkungen dokumentiert.
 		%Die Einleitung dient dazu, beim Leser Interesse für das Thema der Arbeit zu
 		%wecken, das behandelte Problem aufzuzeigen und den zu seiner Lösung
 		%eingeschlagenen Weg zu beschreiben.
@@ -115,7 +115,7 @@
 	werden, werden über den Router übertragen. Durch eine unsichere Einrichtung des
 	Routers können massive Schwachstellen entstehen, die Angreifer ausnutzen können.
 	Daher ist es wichtig den Router im Heimnetzwerk so gut wie möglich abzusichern, 
-	die Angriffsfläche so klein wie möglich zu halten und ihn up-to-date zu halten.
+	die Angriffsfläche so klein wie möglich zu halten und ihn up to date zu halten.
 	\cite{chalhoub2023, bsi} %Chapter 1, p.277 -> Covid Pandemie
 		%In der Motivation wird dargestellt, wieso es notwendig ist, sich mit dem in der
 		%Arbeit identifizierten und behandelten Problem zu beschäftigen.
@@ -123,7 +123,7 @@
 	\section{Problemstellung und -abgrenzung}
 	In dieser Ausarbeitung werden primär Router für Heimnetzwerke und deren 
 	Schwachstellen betrachtet. 
-	Sowohl im theoretischen Teil als auch im Rahmen der praktischen Tests liegt 
+	Sowohl im theoretischen Teil als auch in den praktischen Tests liegt 
 	der Fokus auf Geräten und Einsatzszenarien im privaten beziehungsweise 
 	kleineren Netzwerkumfeld. Router für große beziehungsweise unternehmensweite 
 	Netzwerke werden lediglich dann berücksichtigt, wenn dies zum besseren 
@@ -146,13 +146,12 @@
 	zu Hause und der Kommunikation ins Internet darzulegen. Zudem soll die Arbeit
 	zeigen, dass bereits simple Änderungen der Einstellungen, die Sicherheit
 	massiv verbessern können. Hierzu werden schrittweise die Sicherheitseinstellungen
-	erhöht und jeweils ein Vorher-Nachher-Vergleich gemacht, die darstellen
-	sollen welchen Einfluss die getätigten Einstellungen haben. Zudem werden
-	bereits bekannte Schwachstellen, der in den Tests genutzten Router ausgenutzt, 
-	um hierbei zu veranschaulichen, wie wichtig es ist die Sicherheitseinstellungen
-	zu tätigen, Informationen der Hersteller zu Updates als auch deren Hinweise
-	dringend zu tätigender Einstellungen umzusetzen. Alle Schwachstellen sind 
-	durch anerkannte Organisationen veröffentlicht worden.
+	erhöht und jeweils in einem Vorher-Nachher-Vergleich dargestellt, welchen
+	Einfluss die vorgenommenen Einstellungen haben. Zudem werden
+	bereits bekannte Schwachstellen, der untersuchten Router in Tests ausgenutzt.
+	Dadurch wird veranschaulicht wie wichtig es ist die Informationen der Hersteller
+	zu Sicherheit und Updates zu beachten und Sicherheitseinstellungen vorzunehmen.
+	Alle Schwachstellen sind durch anerkannte Organisationen veröffentlicht worden.
 		%Mit dem Ziel der Arbeit wird der angestrebte Lösungsansatz festgelegt. An 
 		%diesem Ziel wird die Arbeit gemessen.Mit dem Ziel der Arbeit wird der 
 		%angestrebte Lösungsansatz festgelegt.
@@ -168,13 +167,13 @@
 	Leser dessen Wichtigkeit versteht. Wenn dieses Fundament geschaffen ist,
 	werden die Sicherheitsmechanismen und deren Schwachstellen erläutert, diese
 	sind allgemein auf das Thema Router ausgerichtet. Nachdem sowohl der Router
-	als auch dessen Schwachstellen und Sicherheitsmechanismen erläutert wurden
+	als auch dessen Schwachstellen und Sicherheitsmechanismen erläutert wurden,
 	folgen die Tests. Dafür wurden zwei Router von verschiedenen Herstellern
 	ausgewählt. Der \emph{WRT120} Wireless-N Home Router von Linksys by Cisco 
 	und der \emph{DIR-600} Wireless N 150 Home Router von D-Link. Beide Router
-	sind vom Hersteller offiziell nicht mehr unterstützt 
+	werden vom Hersteller offiziell nicht mehr unterstützt 
 	\cite{linksysproductend, dlinktechnicalsupport}.
-	Wie auf der Website von \emph{CVE.org} zu sehen haben beide Router Schwachstellen. 
+	Wie auf der Website von \emph{CVE.org} zu sehen, haben beide Router Schwachstellen. 
 	Da der Router WRT120N lediglich eine hat, wird bei diesem
 	vermehrt auf mögliche Sicherheitseinstellungen auf Basis des Handbuchs des
 	Herstellers und deren Auswirkungen eingegangen.
@@ -188,12 +187,12 @@
 		%werden.
 	
 	\chapter{Grundlagen}
-	In diesem Kapitel werden zu aller erst in der folgenden Tabelle wichtige Definitionen 
+	In diesem Kapitel werden zuallererst in der folgenden Tabelle wichtige Definitionen 
 	festgehalten, die im weiteren Verlauf wichtig sind. Es werden 
 	die Grundlagen zum Router erläutert, dessen Aufgaben im Netzwerk, die Funktionen 
 	und auch Gründe genannt, die den Router zu einem attraktiven Ziel für Angreifer machen.
 	Nachdem die Basis zum Verständnis des Routers geschaffen ist, folgen die 
-	Sicherheitsmechanismen, über die er verfügen kann, als auch eine Beschreibung 
+	Sicherheitsmechanismen, über die er verfügen kann, sowie eine Beschreibung 
 	dieser.
 		%In diesem Kapitel werden für die weitere Arbeit wichtige Begriffe eingeführt. 
 		%Dabei ist darauf zu achten, nur solche Inhalte in das Grundlagenkapitel 
@@ -235,15 +234,15 @@
 		\label{tab:definition}
 	\end{table}
 	\section{Router Grundlagen}
-	Wie der Name erahnen lässt ist der Router innerhalb eines Netzwerks dafür
+	Wie der Name erahnen lässt, ist der Router innerhalb eines Netzwerks dafür
 	zuständig Nachrichten von einer verbundenen Quelle zum Ziel zu leiten.
 	Der Router kümmert sich darum, dass der optimale Weg von der Quelle zum Ziel 
-	gefunden wird. Welcher Pfad gewählt wird hängt unter anderem von den Protokollen
-	und der Konfiguration ab, es kann der schnellste Weg genutzt werden oder
+	gefunden wird. Welcher Pfad gewählt wird, hängt unter anderem von den Protokollen
+	und der Konfiguration ab. Es kann der schnellste Weg genutzt werden oder
 	auch eine definierte Route über verschiedene Punkte. Es gibt zwei Arten
-	des Routing, dynamisches und statisches Routing. Auf diese wird im Abschnitt
+	des Routings, dynamisches und statisches Routing. Auf diese wird im Abschnitt
 	\ref{sec:Routing-Arten} weiter eingegangen.
-	Wichtig zu Beachten ist der Unterschied zwischen Router und Switch. Beide
+	Wichtig zu beachten, ist der Unterschied zwischen Router und Switch. Beide
 	Geräte sind für die Weiterleitung der Pakete an das richtige Ziel zuständig.
 	Die Switches der Schicht 2 (ISO/OSI Modell) können nur Frames innerhalb 
 	eines lokalen Netzwerks auf Basis der MAC-Adressen weiterleiten. 
@@ -263,7 +262,7 @@
 	Die Segmentierung eines Netzwerkes ist dann sinnvoll, wenn es
 	sich um eine große Infrastruktur, wie die eines Unternehmen handelt. Die 
 	Subnetze besitzen einen logischen Adressraum, der abhängig sein sollte 
-	von der Anzahl an Geräten, die in diesem Netzwerk sein sollen. 
+	von der Anzahl an Geräten, die in diesem Netzwerk befinden. 
 	Um zu verstehen, wie eine Segmentierung funktioniert, muss zuerst der Aufbau
 	der IP-Adresse verstanden werden, wobei IP für \emph{Internet Protocol} steht. 
 	In dieser Ausarbeitung wird nur mit
@@ -295,7 +294,7 @@
 	Wird ein Paket innerhalb des gleichen IP-Subnetz versendet, wird mit der MAC-Adresse
 	gearbeitet. Der Sender hat eine sogenannte ARP Tabelle (Address Resolution Protocol)
 	in der die MAC-Adressen der Geräte, an die der Sender bereits ein Frame gesendet hat, enthalten
-	sind. Es sind die IP-Adressen und die dazugehörige MAC-Adresse enthalten. Diese
+	sind. Es sind die IP-Adressen und die dazugehörige MAC-Adresse enthalten. Diese % RF relevant??
 	Informationen werden dann in der Tabelle gespeichert, nach einer konfigurierten
 	Zeit gelöscht und müssen dann bei erneutem Senden an den Empfänger wieder 
 	angefragt und gespeichert werden. Um die MAC-Adresse des Empfängers zu ermitteln,
@@ -307,13 +306,13 @@
 	Befinden sich die Geräte nicht im gleichen Subnetz, ist das Ergebnis der 
 	Berechnung mit der Subnetzmaske verschieden und es muss über Layer 3, mit 
 	dem Router das Paket versendet werden. Dafür wird das Paket 
-	an die IP-Adresse des Routers gesendet, auch bekannt als Gateway. Die Routing-
-	Tabelle im Router wird für die Kommunikation genutzt, um herauszufinden über welchen 
-	Port der Router das Paket weitergeleitet werden muss. Da der Router ein Layer 3 Gerät ist, 
+	an die IP-Adresse des Routers gesendet, auch bekannt als Gateway. Die Routing-Tabelle 
+	im Router wird für die Kommunikation genutzt, um herauszufinden über welchen 
+	Port des Routers das Paket weitergeleitet werden muss. Da der Router ein Layer 3 Gerät ist, 
 	muss er die IP-Adresse des Zielgerätes kennen, um das Paket in das richtige 
 	Netzwerk zu leiten. Die Tabelle beinhaltet alle Netzwerke, die über ein 
-	Interface mit dem Router verbunden sind als auch deren Standardrouten. 
-	Da sich das Subnetz über IP und Subnetzmaske berechnen lässt erkennt der 
+	Interface mit dem Router verbunden sind sowie deren Standardrouten. 
+	Da sich das Subnetz über IP und Subnetzmaske berechnen lässt, erkennt der 
 	Router in welches Subnetz das 
 	Paket gesendet werden muss. Dieser leitet es in das entsprechende Subnetz, 
 	wo es dann entweder weiter geleitet oder direkt mit der MAC-Adresse an das 
@@ -340,7 +339,7 @@
 	Beispiel ein Server von Google, wurden mit RFC 1918 die Adressbereiche für 
 	private IP-Adressen definiert. Dafür wurden ein Teil der IPv4 Adressen für den 
 	privaten Gebrauch reserviert. Geräte in privaten Haushalten nutzen daher
-	häufig den Netzbereich 192.168.0.0/16. Das bedeutet, dass innerhalb eines 
+	häufig den Netzbereich 192.168.0.0/16. Das bedeutet, dass innerhalb eines % IP Adresse nochmal vorbereiten
 	Haushalts 256 einzelne Netze mit jeweils 256 Adressen zur Verfügung stehen, 
 	was in der Regel für einen normalen Haushalt ausreichend ist.
 	Die öffentliche IP-Adresse ist die Adresse, die vom ISP zugewiesen wird. Der
@@ -366,7 +365,7 @@
 	werden nur beschrieben, wenn diese eine mögliche Schwachstelle darstellen,
 	die in den folgenden Tests ausgenutzt wird.
 	An der Rückseite der Router befinden sich die Ports, Reset-Button zum 
-	zurücksetzen auf Werkseinstellungen, Internet-Port als auch der Anschluss
+	Zurücksetzen auf Werkseinstellungen, Internet-Port als auch der Anschluss
 	für die Stromversorgung.
 	Beide Router werden über den Internet Port mit einem Ethernet Kabel an das 
 	eigene Netz entweder per Kabel- oder DSL-Internetverbindung angeschlossen.
@@ -383,7 +382,7 @@
 		\caption{WRT120N Anschlüsse hinten, Quelle: WRT120N-EMEA\_combo\_UG.pdf}
 		\label{fig:wrt120n-ports}
 	\end{figure}
-	Wurde das WLAN mithilfe der Anleitung eingerichtet sind die Router nicht
+	Wurde das WLAN mithilfe der Anleitung eingerichtet, sind die Router nicht
 	nur sichtbar als WLAN Provider, sondern können nach erfolgreicher Verbindung
 	auch eine stabile Internetverbindung bieten, nachzulesen in den beiden Handbüchern im
 	Anhang.
@@ -394,7 +393,7 @@
 	übliches Einsatzgebiet.
 	\begin{description}
 		\item[Statisches Routing]
-		Die Route werden fest definiert und die Pakete werden immer auf demselben 
+		Die Route wird fest definiert und die Pakete werden immer auf demselben 
 		Weg versendet. 
 		\begin{itemize}
 			\item Vorteil: Kein Austausch über die Pfade mit anderen Routern
@@ -420,14 +419,14 @@
 	Sie können die Wegfindung im Netzwerk steuern, die Verwaltung der Routingtabellen
 	sowie das Verhalten bei Störungen. Im Falle eines Ausfalls ermöglichen sie die
 	automatische Berechnung alternativer Routen. Welche Informationen ausgetauscht
-	werden hängt vom jeweiligen Protokoll ab. Diese Protokolle werden nur beim 
+	werden, hängt vom jeweiligen Protokoll ab. Diese Protokolle werden nur beim 
 	dynamischen Routing eingesetzt, da dort die Wege mit den übermittelten Informationen
 	automatisch angepasst werden. Im Weiteren werden in aller Kürze die zwei Typen von
-	Protokollen aufgezählt als auch jeweils einen speziellen Typen:
+	Protokollen aufgezählt, als auch jeweils ein spezieller Typ:
 	\begin{description}
 		\item[Distanzvektorprotokolle] arbeitet auf Grundlage des Bellman-Ford 
 		Algorithmus. Beispiel: RIP (Routing Information Protocol) 
-		\item[Link-State-Routing-Protokolle] arbeite auf Grundlage des Dijkstra-
+		\item[Link-State-Routing-Protokolle] arbeitet auf Grundlage des Dijkstra-
 		Algorithmus. Beispiel: OSPF (Open Shortest Path First)
 	\end{description} \cite[S.191]{baun2025}
 	Auf die Unterschiede der Routing-Protokolle hinsichtlich ihrer Einsatzgebiete
@@ -460,7 +459,7 @@
 	Paket gehört. Kommt ein Paket bei einem Router an und müsste fragmentiert werden,
 	um in das Zielnetz weitergeleitet zu werden, kann es sein das diese verworfen
 	wird, da eine Flag im Paket ausdrücklich das Fragmentieren dieses Pakets verbietet.
-	Pakete von IPv4 haben auch eine Prüfsumme inkludiert, welche aber zur Verbesserung
+	Pakete von IPv4 haben eine Prüfsumme inkludiert, welche aber zur Verbesserung
 	der Datenübertragungsgeschwindigkeit nicht von Router überprüft wird. 
 	\newline
 	Möchte ein Benutzer eine Website im Internet aufrufen, gibt dieser in der
@@ -483,10 +482,11 @@
 	Netzwerk zuordnen und an dessen private IP-Adresse weiterleiten.
 	\cite{zisler2022, baun2025}
 	%Chapter 7.2.4 ff von Baun
+	% wenn Packt nicht freagmentiert wird muss es eigentlich verworfen werden
 
 	\subsection{Router als attraktives Ziel für Angreifer}
 	\label{sec:attractiv_target}
-	Die oben genannten Funktionen des Routers machen deutlich das dieser auch
+	Die oben genannten Funktionen des Routers machen deutlich, dass dieser auch
 	über das Internet als Angriffsziel genutzt werden kann. Zudem ist ein Router
 	attraktiv, da man keinen physischen Zugang zum Gerät braucht, um in ein 
 	privates Netz zu kommen. Der Router als Ziel hat vor allem in der Covid 
@@ -499,7 +499,7 @@
 		Netzwerken stellen sie zudem den größten Angriffsvektor dar.
 		\cite{schwarz2021}
 	\end{quote}
-	In den meisten Haushalten ist ein Router Bestandteil und sehr oft sind 
+	In den meisten Haushalten ist ein Router Bestandteil der Netzwerkinfrastruktur und sehr oft sind 
 	die Besitzer technisch nicht versiert genug oder sie interessieren sich 
 	nicht für die Sicherheit ihres Routers. Es reicht völlig aus, wenn sie 
 	ihn anschließen, dieser funktioniert und ab dann wird am Router selbst
@@ -526,8 +526,8 @@
 	Kapazität haben erstellte Patches ausreichend zu testen oder aber auch 
 	weil die Priorisierung von Schwachstellen nicht standardisiert ist und jeder
 	Hersteller eine andere Taktik anwendet. Die Schwachstellen werden teilweise
-	nach der aktuellen Gefahrenlage priorisiert, das bedeutet gibt es eine 
-	Schwachstelle, die oft ausgenutzt wird, hat diese einen größeren Einfluss
+	nach der aktuellen Gefahrenlage priorisiert. Das bedeutet, wenn es eine Schachstelle
+	gibt, die oft ausgenutzt wird, hat diese einen größeren Einfluss
 	auf den User und wird daher höher eingestuft als vielleicht eine Zero-Day
 	Schwachstelle, die von der CVE oder NIST schwerwiegender eingestuft aber nicht
 	oft ausgenutzt wird. Hierbei ist \emph{nicht oft}, relativ zu sehen, da diese
@@ -554,9 +554,9 @@
 		Quelle: WRT120N-EMEA\_combo\_UG.pdf
 	\end{quote}
 	Diese Aussage verleitet dazu die Updates nur zu machen, wenn der 
-	Router nicht mehr eine stabile Internetverbindung zur Verfügung stellt,
+	Router keine eine stabile Internetverbindung zur Verfügung stellt,
 	was wiederum die Aussage von Chalhoub und Martin \cite{chalhoub2023} 
-	untermauert, dass der Router nur nochmals vom Benutzer eingestellt wird,
+	untermauert, dass der Router dann vom Benutzer eingestellt wird,
 	wenn dieser nicht ordnungsgemäß funktioniert.
 
 
@@ -568,7 +568,7 @@
 	%-----------Nochmal überarbeiten----formulierung und rechtschreibung anpassen----%
 	Networke Address Translation(NAT) ist ein Mechanismus, bei dem der Router interne 
 	IP-Adressen eines lokalen Netzwerks (LAN) in eine öffentliche IP-Adresse übersetzt.
-	Es gibt weltweit ungefähr 4 Milliarden public IPv4 Adressen, sie sind durch ihre Architektur begrenzt.
+	Es gibt weltweit ungefähr 4 Milliarden public IPv4 Adressen, die durch ihre Architektur begrenzt sind.
 	Private Adressen werden lediglich innerhalb eines lokalen Netzwerks genutzt.
 	Haushalte und Firmen haben alle eine private IP-Adresse über die sie mit dem Router verbunden sind.
 	Der Router ist die Schnittstelle zwischen den Geräten des Netzwerks und dem Internet.
